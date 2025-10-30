@@ -3,14 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Natalia Almagro (Nali) - Artista multidisciplinaria de Salta, Argentina. Música, tatuadora, diseñadora y activista animal. Creadora de Séptima Pacha.">
-    <meta name="keywords" content="Nali, Natalia Almagro, artista multidisciplinaria, tatuaje Salta, música andina, activismo animal, Séptima Pacha">
-    <meta property="og:title" content="Nali - Artista Multidisciplinaria | Séptima Pacha">
-    <meta property="og:description" content="Portfolio de Natalia Almagro: música, arte visual, tatuaje y activismo desde Salta, Argentina">
-    <meta property="og:image" content="https://septimapacha.com/logo.png">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Natalia Almagro (Nali) - Artista multidisciplinaria de Salta, Argentina. Música, tatuadora, diseñadora web y activista animal. Portfolio profesional y proyectos creativos.">
+    <meta name="keywords" content="Nali, Natalia Almagro, artista Salta, tatuaje Argentina, música andina, activismo animal, diseño web Salta, Séptima Pacha, arte multidisciplinario, tatuadora Salta, Huellitas Salta, Tribu Rescate">
+    <meta name="author" content="Natalia Almagro - Nali">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="Spanish">
+    <meta name="revisit-after" content="7 days">
+    
+    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <title>Nali - Artista Multidisciplinaria | Séptima Pacha</title>
+    <meta property="og:url" content="https://septimapacha.com/">
+    <meta property="og:title" content="Nali - Artista Multidisciplinaria | Música, Arte, Tatuaje y Activismo">
+    <meta property="og:description" content="Portfolio de Natalia Almagro: música, arte visual, tatuaje y activismo animal desde Salta, Argentina. Creadora de Séptima Pacha y fundadora de Huellitas Salta.">
+    <meta property="og:image" content="https://septimapacha.com/nali-og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="es_AR">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://septimapacha.com/">
+    <meta name="twitter:title" content="Nali - Artista Multidisciplinaria">
+    <meta name="twitter:description" content="Música, arte, tatuaje y activismo animal desde Salta, Argentina">
+    <meta name="twitter:image" content="https://septimapacha.com/nali-og-image.jpg">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://septimapacha.com/">
+    
+    <title>Nali - Artista Multidisciplinaria | Música, Tatuaje, Diseño & Activismo | Salta, Argentina</title>
+    
     <link rel="icon" type="image/png" href="https://septimapacha.com/favicon.png">
+    
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Natalia Almagro",
+      "alternateName": "Nali",
+      "description": "Artista multidisciplinaria, música, tatuadora, diseñadora web y activista animal",
+      "birthDate": "1993-08-22",
+      "birthPlace": {
+        "@type": "Place",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Salta",
+          "addressCountry": "AR"
+        }
+      },
+      "jobTitle": ["Artista", "Tatuadora", "Músico", "Diseñadora Web", "Activista Animal"],
+      "url": "https://septimapacha.com",
+      "sameAs": [
+        "https://www.instagram.com/nali.alma/",
+        "https://www.tiktok.com/@nalialma",
+        "https://www.instagram.com/nali.ttoo/",
+        "https://www.youtube.com/@animanalia",
+        "https://www.bandlab.com/nalia_alma/music-overview"
+      ],
+      "knowsAbout": ["Música", "Tatuaje", "Diseño Web", "Artes Visuales", "Activismo Animal", "Producción Musical", "Animación"],
+      "alumniOf": "Autodidacta en múltiples disciplinas artísticas"
+    }
+    </script>
+    
     <style>
         * {
             margin: 0;
@@ -19,14 +75,16 @@
         }
 
         :root {
-            --terracota: #D4695B;
-            --ocre: #E8A25F;
-            --verde-selva: #4A7C59;
-            --azul-cielo: #5B9BD5;
-            --morado: #8B5A9E;
-            --amarillo: #F4C430;
+            --coral: #FF6B6B;
+            --salmon: #FFA07A;
+            --peach: #FFCBA4;
+            --rose: #FFB6C1;
+            --apricot: #FFAB91;
+            --warm-orange: #FF8C69;
+            --soft-pink: #FFE5EC;
             --background: #1a1410;
             --text: #f5f1e8;
+            --accent-gold: #FFD700;
         }
 
         body {
@@ -37,14 +95,14 @@
             line-height: 1.6;
         }
 
-        /* INTRO LOGO ANIMADO */
+        /* INTRO LOGO ANIMADO CON SVG */
         #intro-screen {
             position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: linear-gradient(135deg, var(--morado), var(--terracota), var(--ocre));
+            background: linear-gradient(135deg, var(--coral), var(--salmon), var(--peach));
             display: flex;
             align-items: center;
             justify-content: center;
@@ -53,12 +111,16 @@
         }
 
         #intro-logo {
-            font-size: 4rem;
-            font-weight: bold;
-            color: white;
-            text-align: center;
+            width: 400px;
+            height: 200px;
             animation: pulse 2s ease-in-out infinite;
-            text-shadow: 0 0 30px rgba(255,255,255,0.8);
+            filter: drop-shadow(0 0 30px rgba(255,255,255,0.8));
+        }
+
+        #intro-logo path {
+            fill: white;
+            stroke: white;
+            stroke-width: 2;
         }
 
         @keyframes pulse {
@@ -93,7 +155,7 @@
         .logo-nav {
             font-size: 1.8rem;
             font-weight: bold;
-            background: linear-gradient(45deg, var(--terracota), var(--ocre), var(--amarillo));
+            background: linear-gradient(45deg, var(--coral), var(--salmon), var(--peach));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -116,7 +178,7 @@
             display: block;
             width: 100%;
             height: 3px;
-            background: var(--ocre);
+            background: var(--salmon);
             margin: 6px 0;
             transition: 0.3s;
         }
@@ -142,7 +204,7 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: linear-gradient(90deg, var(--terracota), var(--ocre));
+            background: linear-gradient(90deg, var(--coral), var(--salmon));
             transition: width 0.3s;
         }
 
@@ -150,7 +212,7 @@
             width: 100%;
         }
 
-        /* HERO SECTION */
+        /* HERO SECTION CON CARRUSEL */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -161,13 +223,58 @@
             padding: 6rem 2rem 2rem;
         }
 
-        .geometric-bg {
+        .hero-background {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             z-index: 0;
+        }
+
+        .hero-image-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .hero-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+        }
+
+        .hero-image.active {
+            opacity: 0.3;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, 
+                rgba(255, 107, 107, 0.6), 
+                rgba(255, 160, 122, 0.6), 
+                rgba(255, 203, 164, 0.5));
+            mix-blend-mode: multiply;
+        }
+
+        .geometric-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
         }
 
         .geo-shape {
@@ -179,7 +286,7 @@
         .geo-shape:nth-child(1) {
             width: 300px;
             height: 300px;
-            background: linear-gradient(135deg, var(--terracota), transparent);
+            background: linear-gradient(135deg, var(--coral), transparent);
             clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
             top: 10%;
             left: 5%;
@@ -189,7 +296,7 @@
         .geo-shape:nth-child(2) {
             width: 200px;
             height: 200px;
-            background: linear-gradient(135deg, var(--morado), transparent);
+            background: linear-gradient(135deg, var(--rose), transparent);
             clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
             top: 60%;
             right: 10%;
@@ -199,7 +306,7 @@
         .geo-shape:nth-child(3) {
             width: 250px;
             height: 250px;
-            background: linear-gradient(135deg, var(--verde-selva), transparent);
+            background: linear-gradient(135deg, var(--salmon), transparent);
             clip-path: circle(50%);
             bottom: 10%;
             left: 15%;
@@ -209,7 +316,7 @@
         .geo-shape:nth-child(4) {
             width: 180px;
             height: 180px;
-            background: linear-gradient(135deg, var(--amarillo), transparent);
+            background: linear-gradient(135deg, var(--peach), transparent);
             clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
             top: 30%;
             right: 20%;
@@ -225,7 +332,7 @@
 
         .hero-content {
             position: relative;
-            z-index: 1;
+            z-index: 2;
             text-align: center;
             max-width: 800px;
         }
@@ -233,7 +340,7 @@
         .hero h1 {
             font-size: 4.5rem;
             margin-bottom: 1rem;
-            background: linear-gradient(45deg, var(--terracota), var(--ocre), var(--amarillo), var(--morado));
+            background: linear-gradient(45deg, var(--coral), var(--salmon), var(--peach), var(--rose));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -248,7 +355,7 @@
 
         .hero .subtitle {
             font-size: 1.8rem;
-            color: var(--ocre);
+            color: var(--salmon);
             margin-bottom: 2rem;
             opacity: 0;
             animation: fadeInUp 1s ease 0.5s forwards;
@@ -296,7 +403,7 @@
             left: 0;
             width: 100%;
             height: 4px;
-            background: linear-gradient(90deg, var(--terracota), var(--ocre), var(--verde-selva));
+            background: linear-gradient(90deg, var(--coral), var(--salmon), var(--peach));
         }
 
         /* BIOGRAFÍA */
@@ -325,8 +432,8 @@
         }
 
         .bio-highlight {
-            background: rgba(232, 162, 95, 0.2);
-            border-left: 4px solid var(--ocre);
+            background: rgba(255, 160, 122, 0.2);
+            border-left: 4px solid var(--salmon);
             padding: 1.5rem;
             margin: 2rem 0;
             border-radius: 8px;
@@ -341,7 +448,7 @@
         }
 
         .skill-card {
-            background: linear-gradient(135deg, rgba(139, 90, 158, 0.2), rgba(74, 124, 89, 0.2));
+            background: linear-gradient(135deg, rgba(255, 107, 107, 0.2), rgba(255, 160, 122, 0.2));
             padding: 2rem;
             border-radius: 15px;
             transition: all 0.3s;
@@ -357,7 +464,7 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(232, 162, 95, 0.3), transparent);
+            background: linear-gradient(45deg, transparent, rgba(255, 160, 122, 0.3), transparent);
             transform: rotate(45deg);
             transition: 0.5s;
         }
@@ -368,19 +475,19 @@
 
         .skill-card:hover {
             transform: translateY(-10px);
-            border-color: var(--ocre);
-            box-shadow: 0 10px 30px rgba(232, 162, 95, 0.3);
+            border-color: var(--salmon);
+            box-shadow: 0 10px 30px rgba(255, 160, 122, 0.3);
         }
 
         .skill-card h3 {
             font-size: 1.5rem;
-            color: var(--amarillo);
+            color: var(--peach);
             margin-bottom: 1rem;
         }
 
         /* ACTIVISMO */
         .activism-content {
-            background: linear-gradient(135deg, rgba(74, 124, 89, 0.3), rgba(139, 90, 158, 0.3));
+            background: linear-gradient(135deg, rgba(255, 107, 107, 0.3), rgba(255, 160, 122, 0.3));
             padding: 3rem;
             border-radius: 20px;
             margin-top: 3rem;
@@ -388,13 +495,30 @@
 
         .activism-content h3 {
             font-size: 2rem;
-            color: var(--verde-selva);
+            color: var(--coral);
             margin-bottom: 1.5rem;
+        }
+
+        .activism-section {
+            margin-bottom: 2.5rem;
+            padding: 1.5rem;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+        }
+
+        .activism-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .activism-section h4 {
+            font-size: 1.5rem;
+            color: var(--salmon);
+            margin-bottom: 1rem;
         }
 
         /* VIDEO SECTION */
         .video-placeholder {
-            background: linear-gradient(135deg, rgba(91, 155, 213, 0.3), rgba(212, 105, 91, 0.3));
+            background: linear-gradient(135deg, rgba(255, 160, 122, 0.3), rgba(255, 107, 107, 0.3));
             padding: 4rem 2rem;
             border-radius: 20px;
             text-align: center;
@@ -415,7 +539,7 @@
 
         .video-placeholder h3 {
             font-size: 2.5rem;
-            color: var(--azul-cielo);
+            color: var(--salmon);
             margin-bottom: 1rem;
             position: relative;
             z-index: 1;
@@ -447,8 +571,8 @@
 
         .social-button:hover {
             transform: translateY(-10px) scale(1.05);
-            border-color: var(--ocre);
-            box-shadow: 0 15px 40px rgba(232, 162, 95, 0.4);
+            border-color: var(--salmon);
+            box-shadow: 0 15px 40px rgba(255, 160, 122, 0.4);
         }
 
         .social-icon {
@@ -463,12 +587,12 @@
         }
 
         /* SVG ICONS */
-        .icon-music { fill: var(--morado); }
-        .icon-video { fill: var(--azul-cielo); }
-        .icon-art { fill: var(--terracota); }
-        .icon-tattoo { fill: var(--ocre); }
-        .icon-photo { fill: var(--verde-selva); }
-        .icon-animal { fill: var(--amarillo); }
+        .icon-music { fill: var(--coral); }
+        .icon-video { fill: var(--salmon); }
+        .icon-art { fill: var(--peach); }
+        .icon-tattoo { fill: var(--apricot); }
+        .icon-photo { fill: var(--rose); }
+        .icon-animal { fill: var(--warm-orange); }
 
         /* FOOTER */
         footer {
@@ -479,7 +603,7 @@
         }
 
         footer p {
-            color: var(--ocre);
+            color: var(--salmon);
             font-size: 1.1rem;
         }
 
@@ -530,6 +654,11 @@
             .social-grid {
                 grid-template-columns: 1fr;
             }
+
+            #intro-logo {
+                width: 250px;
+                height: 125px;
+            }
         }
 
         /* SCROLL ANIMATIONS */
@@ -546,18 +675,41 @@
     </style>
 </head>
 <body>
-    <!-- INTRO ANIMADO -->
+    <!-- INTRO ANIMADO CON SVG -->
     <div id="intro-screen">
-        <div id="intro-logo">
-            SÉPTIMA PACHA
-        </div>
+        <svg id="intro-logo" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+            <!-- Letra N -->
+            <path d="M 30 50 L 30 150 M 30 50 L 80 150 M 80 50 L 80 150">
+                <animate attributeName="stroke-dasharray" from="0 400" to="400 0" dur="2s" fill="freeze"/>
+            </path>
+            
+            <!-- Letra A -->
+            <path d="M 100 150 L 125 50 L 150 150 M 110 110 L 140 110">
+                <animate attributeName="stroke-dasharray" from="0 400" to="400 0" dur="2s" begin="0.3s" fill="freeze"/>
+            </path>
+            
+            <!-- Letra L -->
+            <path d="M 170 50 L 170 150 L 210 150">
+                <animate attributeName="stroke-dasharray" from="0 400" to="400 0" dur="2s" begin="0.6s" fill="freeze"/>
+            </path>
+            
+            <!-- Letra I -->
+            <path d="M 240 50 L 240 150 M 225 50 L 255 50 M 225 150 L 255 150">
+                <animate attributeName="stroke-dasharray" from="0 400" to="400 0" dur="2s" begin="0.9s" fill="freeze"/>
+            </path>
+            
+            <!-- Decoración -->
+            <circle cx="200" cy="100" r="80" fill="none" stroke="white" stroke-width="2" opacity="0.3">
+                <animate attributeName="r" from="0" to="80" dur="2s" fill="freeze"/>
+            </circle>
+        </svg>
     </div>
 
     <!-- HEADER -->
     <header>
         <nav>
             <div class="logo-nav">NALI</div>
-            <button class="menu-toggle" onclick="toggleMenu()" aria-label="Menú">
+            <button class="menu-toggle" onclick="toggleMenu()" aria-label="Menú de navegación">
                 <div class="menu-icon">
                     <span></span>
                     <span></span>
@@ -574,8 +726,21 @@
         </nav>
     </header>
 
-    <!-- HERO -->
+    <!-- HERO CON CARRUSEL DE IMÁGENES -->
     <section id="inicio" class="hero">
+        <div class="hero-background">
+            <div class="hero-image-container">
+                <img src="https://scontent.fsla3-1.fna.fbcdn.net/v/t39.30808-6/571347850_10236895236775508_5333826108838375337_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeHliKkXBxNKi7aeoFO1OCNMBAfb0lURJD0EB9vSVREkPdyBF-6JNx-2fnKwGKNRLAs&_nc_ohc=sorRYmu_Y-MQ7kNvwHGIzMn&_nc_oc=Adl3DCoupJv586RX8Mj26UsP6sNKg-iRPf-Im8iP6CIrSP8fMJ92YNZCFd4Q_nM_mCw&_nc_zt=23&_nc_ht=scontent.fsla3-1.fna&_nc_gid=y6yaDXv2Js1HMducKsOyzA&oh=00_Afei0huKVITkEC4lPOVMf0wuJfRZCADw5Ymo5langU8Nsg&oe=6909ABE2" 
+                     alt="Natalia Almagro - Nali artista multidisciplinaria" 
+                     class="hero-image active"
+                     loading="eager">
+                <img src="https://scontent.fsla4-1.fna.fbcdn.net/v/t1.6435-9/71906545_10218231271668045_5442703173057773568_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=a5f93a&_nc_eui2=AeGGhQ36CV7GRVftLZjcT2WiMpa8YH_9jAsylrxgf_2MCwgdUzBYuwoqXuxaUQnzbvA&_nc_ohc=Jjco9Lul6iwQ7kNvwFgCOP1&_nc_oc=AdmHIMv8X78lps3OaJ9pcUBK20iH_NCNN1KEvg5ZPFKHKU0NXzrHPtqWHk3EjXD2inA&_nc_zt=23&_nc_ht=scontent.fsla4-1.fna&_nc_gid=YgHNwpDqyPUTxzTgDTDZeQ&oh=00_AfcJNdVxQKQXjW1YNt6OlRDNCw_x4G_Z15ZFbRi4HpL4OQ&oe=692B2DDB" 
+                     alt="Nali - Tatuadora y artista visual de Salta" 
+                     class="hero-image"
+                     loading="lazy">
+            </div>
+            <div class="hero-overlay"></div>
+        </div>
         <div class="geometric-bg">
             <div class="geo-shape"></div>
             <div class="geo-shape"></div>
@@ -614,7 +779,7 @@
         <div class="skills-grid">
             <div class="skill-card fade-in">
                 <h3>🎵 Música</h3>
-                <p>Composición, voz quechua, producción musical. Explorando sonidos ancestrales con herramientas contemporáneas.</p>
+                <p>Composición, voz, producción musical. Explorando sonidos ancestrales andinos con herramientas contemporáneas.</p>
             </div>
             <div class="skill-card fade-in">
                 <h3>🎬 Video</h3>
@@ -643,11 +808,30 @@
     <section id="activismo">
         <h2>Activismo Animal y Ambiental</h2>
         <div class="activism-content fade-in">
-            <h3>🐾 Tribu Rescate</h3>
-            <p>Trabajo activamente con <strong>Tribu Rescate</strong>, una comunidad online que fundé junto a Marina Laura y Yiya, dedicada al rescate, reubicación y concientización sobre animales en situación de calle.</p>
-            <p>Nuestra misión es crear conciencia sobre la tenencia responsable, promover la adopción, y ser la voz de quienes no pueden hablar.</p>
-            <p>También gestiono un TikTok dedicado a los rescatados que viven conmigo, con mi madre y mi hermana. Cada video es un testimonio de amor, resiliencia y segunda oportunidad.</p>
-            <p><strong>El activismo no es solo una práctica, es una forma de vida.</strong> Cada animal rescatado es una victoria, cada persona concientizada es un paso hacia un mundo más compasivo.</p>
+            <div class="activism-section">
+                <h3>🏡 Santuario Huellitas Salta</h3>
+                <h4>Refugio Independiente de Amor Animal</h4>
+                <p>Orgullosamente gestiono un <strong>santuario independiente</strong> en Salta donde <strong>12 perros y 4 gatos</strong> han encontrado su hogar para siempre. Este espacio es más que un refugio: es un hogar donde cada animal rescatado recibe amor, cuidado veterinario y la oportunidad de vivir con dignidad.</p>
+                <p>Cada uno de ellos tiene una historia de superación, desde abandono hasta maltrato, y hoy todos viven en un ambiente seguro y lleno de cariño. Este proyecto personal es mi compromiso diario con el bienestar animal.</p>
+            </div>
+
+            <div class="activism-section">
+                <h3>🐾 Tribu Rescate</h3>
+                <h4>Comunidad de Rescate Animal</h4>
+                <p>Fundé junto a Marina Laura y Yiya <strong>Tribu Rescate</strong>, una comunidad online dedicada al rescate, reubicación y concientización sobre animales en situación de calle en Salta.</p>
+                <p>Nuestra misión es crear conciencia sobre la tenencia responsable, promover la adopción, y ser la voz de quienes no pueden hablar. A través de redes sociales, compartimos casos de rescate, educamos sobre cuidado animal y conectamos animales con familias adoptivas responsables.</p>
+            </div>
+
+            <div class="activism-section">
+                <h3>🌍 Activismo Ambiental</h3>
+                <h4>Greenpeace & Asamblea Socioambiental</h4>
+                <p>Fui <strong>activista de Greenpeace</strong>, participando en campañas de concientización ambiental y acciones directas para la protección del medio ambiente.</p>
+                <p>También formé parte de la <strong>Asamblea de Lucha Socioambiental</strong> en Salta, defendiendo territorios, recursos naturales y comunidades contra proyectos extractivistas y contaminantes. La lucha ambiental es inseparable de la justicia social.</p>
+            </div>
+
+            <p style="margin-top: 2rem; font-weight: bold; font-size: 1.2rem; text-align: center;">
+                <strong>El activismo no es solo una práctica, es una forma de vida.</strong> Cada animal rescatado es una victoria, cada persona concientizada es un paso hacia un mundo más compasivo y sustentable.
+            </p>
         </div>
     </section>
 
@@ -657,7 +841,7 @@
         <div class="video-placeholder fade-in">
             <h3>PRÓXIMAMENTE</h3>
             <p>Una biografía animada contando mi historia de manera visual y emotiva.</p>
-            <p style="font-style: italic; margin-top: 1rem; color: var(--ocre);">En producción...</p>
+            <p style="font-style: italic; margin-top: 1rem; color: var(--salmon);">En producción...</p>
         </div>
     </section>
 
@@ -665,39 +849,39 @@
     <section id="redes">
         <h2>Conecta Conmigo</h2>
         <div class="social-grid">
-            <a href="https://septimapacha.com" target="_blank" rel="noopener" class="social-button fade-in">
-                <svg class="social-icon icon-music" viewBox="0 0 100 100">
+            <a href="https://septimapacha.com" target="_blank" rel="noopener noreferrer" class="social-button fade-in" aria-label="Visita Séptima Pacha">
+                <svg class="social-icon icon-music" viewBox="0 0 100 100" aria-hidden="true">
                     <circle cx="50" cy="50" r="40"/>
                     <path d="M30 40 L70 40 L70 60 L30 60 Z" fill="white"/>
                 </svg>
                 <span>Séptima Pacha</span>
             </a>
 
-            <a href="https://www.instagram.com/nali.alma/" target="_blank" rel="noopener" class="social-button fade-in">
-                <svg class="social-icon icon-music" viewBox="0 0 100 100">
+            <a href="https://www.instagram.com/nali.alma/" target="_blank" rel="noopener noreferrer" class="social-button fade-in" aria-label="Instagram de música de Nali">
+                <svg class="social-icon icon-music" viewBox="0 0 100 100" aria-hidden="true">
                     <rect x="20" y="20" width="60" height="60" rx="15"/>
                     <circle cx="50" cy="50" r="15" fill="white"/>
                 </svg>
                 <span>Instagram Música</span>
             </a>
 
-            <a href="https://www.tiktok.com/@nalialma" target="_blank" rel="noopener" class="social-button fade-in">
-                <svg class="social-icon icon-video" viewBox="0 0 100 100">
+            <a href="https://www.tiktok.com/@nalialma" target="_blank" rel="noopener noreferrer" class="social-button fade-in" aria-label="TikTok personal de Nali">
+                <svg class="social-icon icon-video" viewBox="0 0 100 100" aria-hidden="true">
                     <path d="M40 30 L70 50 L40 70 Z"/>
                 </svg>
                 <span>TikTok Personal</span>
             </a>
 
-            <a href="https://youtu.be/I-kJxkPrIkg" target="_blank" rel="noopener" class="social-button fade-in">
-                <svg class="social-icon icon-video" viewBox="0 0 100 100">
+            <a href="https://youtu.be/I-kJxkPrIkg" target="_blank" rel="noopener noreferrer" class="social-button fade-in" aria-label="Video clip musical de Nali">
+                <svg class="social-icon icon-video" viewBox="0 0 100 100" aria-hidden="true">
                     <rect x="15" y="30" width="70" height="40" rx="5"/>
                     <polygon points="45,40 60,50 45,60" fill="white"/>
                 </svg>
                 <span>Video Clip</span>
             </a>
 
-            <a href="https://www.bandlab.com/nalia_alma/music-overview" target="_blank" rel="noopener" class="social-button fade-in">
-                <svg class="social-icon icon-music" viewBox="0 0 100 100">
+            <a href="https://www.bandlab.com/nalia_alma/music-overview" target="_blank" rel="noopener noreferrer" class="social-button fade-in" aria-label="Música de Nali en BandLab">
+                <svg class="social-icon icon-music" viewBox="0 0 100 100" aria-hidden="true">
                     <rect x="30" y="40" width="8" height="40"/>
                     <rect x="46" y="25" width="8" height="55"/>
                     <rect x="62" y="35" width="8" height="45"/>
@@ -705,23 +889,23 @@
                 <span>BandLab</span>
             </a>
 
-            <a href="https://www.instagram.com/nali.ttoo/" target="_blank" rel="noopener" class="social-button fade-in">
-                <svg class="social-icon icon-tattoo" viewBox="0 0 100 100">
+            <a href="https://www.instagram.com/nali.ttoo/" target="_blank" rel="noopener noreferrer" class="social-button fade-in" aria-label="Instagram de tatuajes de Nali">
+                <svg class="social-icon icon-tattoo" viewBox="0 0 100 100" aria-hidden="true">
                     <line x1="50" y1="20" x2="50" y2="80" stroke-width="6"/>
                     <circle cx="50" cy="25" r="8"/>
                 </svg>
                 <span>Instagram Tattoo</span>
             </a>
 
-            <a href="https://www.tiktok.com/@nalia.tattoo" target="_blank" rel="noopener" class="social-button fade-in">
-                <svg class="social-icon icon-tattoo" viewBox="0 0 100 100">
+            <a href="https://www.tiktok.com/@nalia.tattoo" target="_blank" rel="noopener noreferrer" class="social-button fade-in" aria-label="TikTok de tatuajes de Nali">
+                <svg class="social-icon icon-tattoo" viewBox="0 0 100 100" aria-hidden="true">
                     <path d="M30 30 Q50 10 70 30 T70 70 Q50 90 30 70 T30 30"/>
                 </svg>
                 <span>TikTok Tattoo</span>
             </a>
 
-            <a href="https://www.instagram.com/naliart.ok/" target="_blank" rel="noopener" class="social-button fade-in">
-                <svg class="social-icon icon-art" viewBox="0 0 100 100">
+            <a href="https://www.instagram.com/naliart.ok/" target="_blank" rel="noopener noreferrer" class="social-button fade-in" aria-label="Instagram de artesanías de Nali">
+                <svg class="social-icon icon-art" viewBox="0 0 100 100" aria-hidden="true">
                     <rect x="25" y="30" width="50" height="50" rx="5"/>
                     <circle cx="40" cy="50" r="8" fill="white"/>
                     <circle cx="60" cy="65" r="5" fill="white"/>
@@ -729,16 +913,16 @@
                 <span>Artesanías</span>
             </a>
 
-            <a href="https://www.youtube.com/@animanalia" target="_blank" rel="noopener" class="social-button fade-in">
-                <svg class="social-icon icon-video" viewBox="0 0 100 100">
+            <a href="https://www.youtube.com/@animanalia" target="_blank" rel="noopener noreferrer" class="social-button fade-in" aria-label="Canal de animación de Nali en YouTube">
+                <svg class="social-icon icon-video" viewBox="0 0 100 100" aria-hidden="true">
                     <rect x="20" y="35" width="60" height="30" rx="3"/>
                     <polygon points="42,45 58,52.5 42,60" fill="white"/>
                 </svg>
                 <span>Animación YouTube</span>
             </a>
 
-            <a href="https://www.instagram.com/lalicergicaluz/" target="_blank" rel="noopener" class="social-button fade-in">
-                <svg class="social-icon icon-photo" viewBox="0 0 100 100">
+            <a href="https://www.instagram.com/lalicergicaluz/" target="_blank" rel="noopener noreferrer" class="social-button fade-in" aria-label="Instagram de fotografía de Nali">
+                <svg class="social-icon icon-photo" viewBox="0 0 100 100" aria-hidden="true">
                     <rect x="25" y="30" width="50" height="40" rx="5"/>
                     <circle cx="50" cy="50" r="12" fill="white"/>
                     <rect x="60" y="33" width="8" height="5"/>
@@ -746,8 +930,8 @@
                 <span>Fotografía</span>
             </a>
 
-            <a href="https://www.instagram.com/huellitasalta.ok/" target="_blank" rel="noopener" class="social-button fade-in">
-                <svg class="social-icon icon-animal" viewBox="0 0 100 100">
+            <a href="https://www.instagram.com/huellitasalta.ok/" target="_blank" rel="noopener noreferrer" class="social-button fade-in" aria-label="Instagram de Huellita Salta - Santuario animal">
+                <svg class="social-icon icon-animal" viewBox="0 0 100 100" aria-hidden="true">
                     <ellipse cx="50" cy="60" rx="15" ry="20"/>
                     <circle cx="40" cy="35" r="7"/>
                     <circle cx="60" cy="35" r="7"/>
@@ -757,8 +941,8 @@
                 <span>Huellita Salta IG</span>
             </a>
 
-            <a href="https://www.tiktok.com/@huellitasalta" target="_blank" rel="noopener" class="social-button fade-in">
-                <svg class="social-icon icon-animal" viewBox="0 0 100 100">
+            <a href="https://www.tiktok.com/@huellitasalta" target="_blank" rel="noopener noreferrer" class="social-button fade-in" aria-label="TikTok de Huellita Salta">
+                <svg class="social-icon icon-animal" viewBox="0 0 100 100" aria-hidden="true">
                     <circle cx="35" cy="40" r="8"/>
                     <circle cx="65" cy="40" r="8"/>
                     <path d="M30 60 Q50 75 70 60" stroke-width="4" fill="none" stroke="currentColor"/>
@@ -766,16 +950,16 @@
                 <span>Huellita TikTok</span>
             </a>
 
-            <a href="https://www.instagram.com/triburescatesalta/" target="_blank" rel="noopener" class="social-button fade-in">
-                <svg class="social-icon icon-animal" viewBox="0 0 100 100">
+            <a href="https://www.instagram.com/triburescatesalta/" target="_blank" rel="noopener noreferrer" class="social-button fade-in" aria-label="Instagram de Tribu Rescate Salta">
+                <svg class="social-icon icon-animal" viewBox="0 0 100 100" aria-hidden="true">
                     <circle cx="50" cy="50" r="30"/>
                     <path d="M35 50 L45 60 L65 40" stroke="white" stroke-width="5" fill="none"/>
                 </svg>
                 <span>Tribu Rescate IG</span>
             </a>
 
-            <a href="https://www.tiktok.com/@tribu.rescate.salta" target="_blank" rel="noopener" class="social-button fade-in">
-                <svg class="social-icon icon-animal" viewBox="0 0 100 100">
+            <a href="https://www.tiktok.com/@tribu.rescate.salta" target="_blank" rel="noopener noreferrer" class="social-button fade-in" aria-label="TikTok de Tribu Rescate Salta">
+                <svg class="social-icon icon-animal" viewBox="0 0 100 100" aria-hidden="true">
                     <path d="M50 20 L65 45 L90 45 L70 60 L80 85 L50 70 L20 85 L30 60 L10 45 L35 45 Z"/>
                 </svg>
                 <span>Tribu Rescate TikTok</span>
@@ -793,6 +977,19 @@
     </footer>
 
     <script>
+        // CARRUSEL DE IMÁGENES EN HERO
+        const heroImages = document.querySelectorAll('.hero-image');
+        let currentImageIndex = 0;
+
+        function changeHeroImage() {
+            heroImages[currentImageIndex].classList.remove('active');
+            currentImageIndex = (currentImageIndex + 1) % heroImages.length;
+            heroImages[currentImageIndex].classList.add('active');
+        }
+
+        // Cambiar imagen cada 5 segundos
+        setInterval(changeHeroImage, 5000);
+
         // Toggle menu móvil
         function toggleMenu() {
             const menu = document.getElementById('nav-menu');
@@ -873,8 +1070,8 @@
         document.querySelectorAll('.social-button').forEach(button => {
             button.addEventListener('mouseenter', function() {
                 this.style.background = `linear-gradient(135deg, 
-                    rgba(212, 105, 91, 0.3), 
-                    rgba(232, 162, 95, 0.3))`;
+                    rgba(255, 107, 107, 0.3), 
+                    rgba(255, 160, 122, 0.3))`;
             });
             button.addEventListener('mouseleave', function() {
                 this.style.background = 'rgba(255, 255, 255, 0.05)';
@@ -888,7 +1085,7 @@
             if (clickCount === 7) {
                 document.body.style.animation = 'gradient-shift 2s ease';
                 setTimeout(() => {
-                    alert('¡Séptima Pacha te saluda! 🌟');
+                    alert('¡Has descubierto el secreto de Nali! ✨');
                     clickCount = 0;
                 }, 100);
             }
