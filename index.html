@@ -1,1124 +1,1256 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="Natalia Almagro (Nali) - Artista multidisciplinaria de Salta, Argentina. Música, tatuadora, diseñadora web y activista animal. Portfolio profesional y proyectos creativos.">
-    <meta name="keywords" content="Nali, Natalia Almagro, artista Salta, tatuaje Argentina, música andina, activismo animal, diseño web Salta, Séptima Pacha, arte multidisciplinario, tatuadora Salta, Huellitas Salta, Tribu Rescate">
-    <meta name="author" content="Natalia Almagro - Nali">
-    <meta name="robots" content="index, follow">
-    <meta name="language" content="Spanish">
-    <meta name="revisit-after" content="7 days">
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://septimapacha.com/">
-    <meta property="og:title" content="Nali - Artista Multidisciplinaria | Música, Arte, Tatuaje y Activismo">
-    <meta property="og:description" content="Portfolio de Natalia Almagro: música, arte visual, tatuaje y activismo animal desde Salta, Argentina. Creadora de Séptima Pacha y fundadora de Huellitas Salta.">
-    <meta property="og:image" content="https://septimapacha.com/nali-og-image.jpg">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta property="og:locale" content="es_AR">
-    
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="https://septimapacha.com/">
-    <meta name="twitter:title" content="Nali - Artista Multidisciplinaria">
-    <meta name="twitter:description" content="Música, arte, tatuaje y activismo animal desde Salta, Argentina">
-    <meta name="twitter:image" content="https://septimapacha.com/nali-og-image.jpg">
-    
-    <!-- Canonical URL -->
-    <link rel="canonical" href="https://septimapacha.com/">
-    
-    <title>Nali - Artista Multidisciplinaria | Música, Tatuaje, Diseño & Activismo | Salta, Argentina</title>
-    
-    <link rel="icon" type="image/png" href="https://septimapacha.com/favicon.png">
-    
-    <!-- Schema.org Structured Data -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Natalia Almagro",
-      "alternateName": "Nali",
-      "description": "Artista multidisciplinaria, música, tatuadora, diseñadora web y activista animal",
-      "birthDate": "1993-08-22",
-      "birthPlace": {
-        "@type": "Place",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Salta",
-          "addressCountry": "AR"
-        }
-      },
-      "jobTitle": ["Artista", "Tatuadora", "Músico", "Diseñadora Web", "Activista Animal"],
-      "url": "https://septimapacha.com",
-      "sameAs": [
-        "https://www.instagram.com/nali.alma/",
-        "https://www.tiktok.com/@nalialma",
-        "https://www.instagram.com/nali.ttoo/",
-        "https://www.youtube.com/@animanalia",
-        "https://www.bandlab.com/nalia_alma/music-overview"
-      ],
-      "knowsAbout": ["Música", "Tatuaje", "Diseño Web", "Artes Visuales", "Activismo Animal", "Producción Musical", "Animación"],
-      "alumniOf": "Autodidacta en múltiples disciplinas artísticas"
-    }
-    </script>
-    
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --coral: #FF6B6B;
-            --salmon: #FFA07A;
-            --peach: #FFCBA4;
-            --rose: #FFB6C1;
-            --apricot: #FFAB91;
-            --warm-orange: #FF8C69;
-            --soft-pink: #FFE5EC;
-            --background: #FFF5EB;
-            --background-alt: #FFE8D6;
-            --text: #2d1810;
-            --text-light: #5a3a2a;
-            --accent-gold: #FFD700;
-        }
-
-        body {
-            font-family: 'Georgia', serif;
-            background: linear-gradient(180deg, 
-                #FFF5EB 0%, 
-                #FFE8D6 25%, 
-                #FFDDC1 50%, 
-                #FFD4B3 75%, 
-                #FFCBA4 100%);
-            background-attachment: fixed;
-            color: var(--text);
-            overflow-x: hidden;
-            line-height: 1.6;
-        }
-
-        /* INTRO LOGO ANIMADO CON SVG */
-        #intro-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: linear-gradient(135deg, var(--coral), var(--salmon), var(--peach));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 9999;
-            animation: fadeOut 0.8s ease 4.2s forwards;
-        }
-
-        #intro-logo {
-            width: 400px;
-            height: 200px;
-            animation: pulse 2s ease-in-out infinite;
-            filter: drop-shadow(0 0 30px rgba(255,255,255,0.8));
-        }
-
-        #intro-logo path {
-            fill: white;
-            stroke: white;
-            stroke-width: 2;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 0.9; }
-            50% { transform: scale(1.1); opacity: 1; }
-        }
-
-        @keyframes fadeOut {
-            to { opacity: 0; visibility: hidden; }
-        }
-
-        /* HEADER Y NAVEGACIÓN */
-        header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(255, 245, 235, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            padding: 1rem 2rem;
-            box-shadow: 0 2px 20px rgba(255, 160, 122, 0.3);
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .logo-nav {
-            font-size: 1.8rem;
-            font-weight: bold;
-            background: linear-gradient(45deg, var(--coral), var(--salmon), var(--peach));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            cursor: pointer;
-        }
-
-        .menu-icon {
-            width: 30px;
-            height: 24px;
-            position: relative;
-        }
-
-        .menu-icon span {
-            display: block;
-            width: 100%;
-            height: 3px;
-            background: var(--salmon);
-            margin: 6px 0;
-            transition: 0.3s;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        nav a {
-            color: var(--text);
-            text-decoration: none;
-            font-size: 1.1rem;
-            transition: all 0.3s;
-            position: relative;
-            font-weight: 500;
-        }
-
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(90deg, var(--coral), var(--salmon));
-            transition: width 0.3s;
-        }
-
-        nav a:hover::after {
-            width: 100%;
-        }
-
-        /* HERO SECTION CON CARRUSEL */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-            padding: 6rem 2rem 2rem;
-        }
-
-        .hero-background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-        }
-
-        .hero-image-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-
-        .hero-image {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0;
-            transition: opacity 1.5s ease-in-out;
-        }
-
-        .hero-image.active {
-            opacity: 0.3;
-        }
-
-        .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, 
-                rgba(255, 140, 105, 0.4), 
-                rgba(255, 182, 193, 0.4), 
-                rgba(255, 203, 164, 0.3));
-            mix-blend-mode: overlay;
-        }
-
-        .geometric-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-        }
-
-        .geo-shape {
-            position: absolute;
-            opacity: 0.15;
-            animation: float 8s ease-in-out infinite;
-        }
-
-        .geo-shape:nth-child(1) {
-            width: 300px;
-            height: 300px;
-            background: linear-gradient(135deg, var(--coral), transparent);
-            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
-            top: 10%;
-            left: 5%;
-            animation-delay: 0s;
-        }
-
-        .geo-shape:nth-child(2) {
-            width: 200px;
-            height: 200px;
-            background: linear-gradient(135deg, var(--rose), transparent);
-            clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
-            top: 60%;
-            right: 10%;
-            animation-delay: 2s;
-        }
-
-        .geo-shape:nth-child(3) {
-            width: 250px;
-            height: 250px;
-            background: linear-gradient(135deg, var(--salmon), transparent);
-            clip-path: circle(50%);
-            bottom: 10%;
-            left: 15%;
-            animation-delay: 4s;
-        }
-
-        .geo-shape:nth-child(4) {
-            width: 180px;
-            height: 180px;
-            background: linear-gradient(135deg, var(--peach), transparent);
-            clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
-            top: 30%;
-            right: 20%;
-            animation-delay: 6s;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            25% { transform: translate(20px, -20px) rotate(90deg); }
-            50% { transform: translate(-10px, 30px) rotate(180deg); }
-            75% { transform: translate(30px, 10px) rotate(270deg); }
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-            max-width: 800px;
-        }
-
-        .hero h1 {
-            font-size: 4.5rem;
-            margin-bottom: 1rem;
-            background: linear-gradient(45deg, var(--coral), var(--salmon), var(--peach), var(--rose));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: gradient-shift 4s ease infinite;
-            background-size: 300% 300%;
-        }
-
-        @keyframes gradient-shift {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-
-        .hero .subtitle {
-            font-size: 1.8rem;
-            color: var(--salmon);
-            margin-bottom: 2rem;
-            opacity: 0;
-            animation: fadeInUp 1s ease 0.5s forwards;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            opacity: 0;
-            animation: fadeInUp 1s ease 1s forwards;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* SECCIONES */
-        section {
-            padding: 5rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        section h2 {
-            font-size: 3rem;
-            margin-bottom: 2rem;
-            text-align: center;
-            position: relative;
-            display: inline-block;
-            left: 50%;
-            transform: translateX(-50%);
-            color: var(--text);
-            font-weight: bold;
-        }
-
-        section h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, var(--coral), var(--salmon), var(--peach));
-        }
-
-        /* BIOGRAFÍA */
-        .bio-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            margin-top: 3rem;
-        }
-
-        .bio-text {
-            font-size: 1.1rem;
-            line-height: 1.8;
-        }
-
-        .bio-text p {
-            margin-bottom: 1.5rem;
-            opacity: 0;
-            transform: translateX(-50px);
-            transition: all 0.8s ease;
-        }
-
-        .bio-text p.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .bio-highlight {
-            background: rgba(255, 203, 164, 0.6);
-            border-left: 4px solid var(--salmon);
-            padding: 1.5rem;
-            margin: 2rem 0;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(255, 140, 105, 0.2);
-        }
-
-        /* HABILIDADES */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .skill-card {
-            background: linear-gradient(135deg, rgba(255, 182, 193, 0.5), rgba(255, 203, 164, 0.5));
-            padding: 2rem;
-            border-radius: 15px;
-            transition: all 0.3s;
-            border: 2px solid rgba(255, 160, 122, 0.3);
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(255, 140, 105, 0.2);
-        }
-
-        .skill-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255, 160, 122, 0.3), transparent);
-            transform: rotate(45deg);
-            transition: 0.5s;
-        }
-
-        .skill-card:hover::before {
-            left: 100%;
-        }
-
-        .skill-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--salmon);
-            box-shadow: 0 10px 30px rgba(255, 160, 122, 0.3);
-        }
-
-        .skill-card h3 {
-            font-size: 1.5rem;
-            color: var(--coral);
-            margin-bottom: 1rem;
-            font-weight: bold;
-        }
-
-        /* ACTIVISMO */
-        .activism-content {
-            background: linear-gradient(135deg, rgba(255, 182, 193, 0.6), rgba(255, 203, 164, 0.6));
-            padding: 3rem;
-            border-radius: 20px;
-            margin-top: 3rem;
-            box-shadow: 0 8px 25px rgba(255, 140, 105, 0.3);
-        }
-
-        .activism-content h3 {
-            font-size: 2rem;
-            color: var(--coral);
-            margin-bottom: 1.5rem;
-        }
-
-        .activism-section {
-            margin-bottom: 2.5rem;
-            padding: 1.5rem;
-            background: rgba(255, 255, 255, 0.5);
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(255, 140, 105, 0.15);
-        }
-
-        .activism-section:last-child {
-            margin-bottom: 0;
-        }
-
-        .activism-section h4 {
-            font-size: 1.5rem;
-            color: var(--salmon);
-            margin-bottom: 1rem;
-        }
-
-        /* VIDEO SECTION */
-        .video-placeholder {
-            background: linear-gradient(135deg, rgba(255, 203, 164, 0.6), rgba(255, 182, 193, 0.6));
-            padding: 4rem 2rem;
-            border-radius: 20px;
-            text-align: center;
-            margin-top: 3rem;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 8px 25px rgba(255, 140, 105, 0.3);
-        }
-
-        .video-placeholder::before {
-            content: '▶';
-            position: absolute;
-            font-size: 8rem;
-            color: rgba(255, 255, 255, 0.1);
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-
-        .video-placeholder h3 {
-            font-size: 2.5rem;
-            color: var(--salmon);
-            margin-bottom: 1rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        /* REDES SOCIALES */
-        .social-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .social-button {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem;
-            background: rgba(255, 255, 255, 0.6);
-            border-radius: 15px;
-            text-decoration: none;
-            color: var(--text);
-            transition: all 0.3s;
-            border: 2px solid rgba(255, 160, 122, 0.3);
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(255, 140, 105, 0.2);
-        }
-
-        .social-button:hover {
-            transform: translateY(-10px) scale(1.05);
-            border-color: var(--salmon);
-            box-shadow: 0 15px 40px rgba(255, 160, 122, 0.4);
-        }
-
-        .social-icon {
-            width: 60px;
-            height: 60px;
-            margin-bottom: 1rem;
-            transition: transform 0.3s;
-        }
-
-        .social-button:hover .social-icon {
-            transform: rotate(360deg);
-        }
-
-        /* SVG ICONS */
-        .icon-music { fill: var(--coral); }
-        .icon-video { fill: var(--salmon); }
-        .icon-art { fill: var(--peach); }
-        .icon-tattoo { fill: var(--apricot); }
-        .icon-photo { fill: var(--rose); }
-        .icon-animal { fill: var(--warm-orange); }
-
-        /* FOOTER */
-        footer {
-            background: linear-gradient(135deg, rgba(255, 203, 164, 0.8), rgba(255, 182, 193, 0.8));
-            padding: 3rem 2rem;
-            text-align: center;
-            margin-top: 5rem;
-            box-shadow: 0 -4px 20px rgba(255, 140, 105, 0.3);
-        }
-
-        footer p {
-            color: var(--text);
-            font-size: 1.1rem;
-            font-weight: 500;
-        }
-
-        /* RESPONSIVE */
-        @media (max-width: 768px) {
-            .menu-toggle {
-                display: block;
-            }
-
-            nav ul {
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background: rgba(255, 245, 235, 0.98);
-                flex-direction: column;
-                padding: 2rem;
-                gap: 1rem;
-                transform: translateY(-100%);
-                opacity: 0;
-                visibility: hidden;
-                transition: all 0.3s;
-            }
-
-            nav ul.active {
-                transform: translateY(0);
-                opacity: 1;
-                visibility: visible;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero .subtitle {
-                font-size: 1.3rem;
-            }
-
-            .bio-content {
-                grid-template-columns: 1fr;
-            }
-
-            section h2 {
-                font-size: 2rem;
-            }
-
-            .skills-grid,
-            .social-grid {
-                grid-template-columns: 1fr;
-            }
-
-            #intro-logo {
-                width: 250px;
-                height: 125px;
-            }
-        }
-
-        /* SCROLL ANIMATIONS */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 0.8s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+<!-- ══ SEO META TAGS ══ -->
+<title>Nali Alma | Artista Multidisciplinar · Muralismo · Tatuaje · Música · Argentina · Polonia</title>
+<meta name="description" content="Nali Alma (Natalia Almagro) — artista multidisciplinar de Salta, Argentina. Muralismo, pintura, tatuaje artístico y música con identidad andina e impacto social. Disponible en Polonia 2026 para residencias, convocatorias y proyectos culturales.">
+<meta name="keywords" content="Nali Alma, arte contemporáneo, muralismo, pintura andina, arte social, arte ambiental, tatuaje artístico, artista argentina, arte latinoamericano, residencia artística Europa, arte indígena, Pachamama, Salta Argentina, artista Polonia, multidisciplinary artist, mural art, Andean art, contemporary art Poland">
+<meta name="author" content="Natalia Jimena Almagro — Nali Alma">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://naliart.ok/">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Nali Alma | Arte Andino · Muralismo · Tatuaje · Música">
+<meta property="og:description" content="Artista multidisciplinar de Salta, Argentina. Muralismo con identidad andina, tatuaje artístico, música. Disponible en Polonia 2026.">
+<meta property="og:image" content="https://i.ibb.co/DD37KnBN/IMG-20260527-WA0150-1.jpg">
+<meta property="og:image:alt" content="Mural de Nali Alma — Arte Andino, Salta Argentina">
+<meta property="og:type" content="profile">
+<meta property="og:locale" content="es_AR">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:locale:alternate" content="pl_PL">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Nali Alma | Arte Andino · Muralismo · Tatuaje · Música">
+<meta name="twitter:description" content="Artista multidisciplinar de Salta, Argentina. Disponible en Polonia 2026.">
+<meta name="twitter:image" content="https://i.ibb.co/DD37KnBN/IMG-20260527-WA0150-1.jpg">
+
+<!-- Schema.org -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Nali Alma",
+  "alternateName": "Natalia Jimena Almagro",
+  "description": "Artista multidisciplinar argentina. Muralismo, pintura, tatuaje artístico, música y fotografía con identidad andina e impacto socioambiental.",
+  "url": "https://naliart.ok/",
+  "image": "https://i.ibb.co/DD37KnBN/IMG-20260527-WA0150-1.jpg",
+  "birthPlace": {"@type": "Place", "name": "Salta, Argentina"},
+  "nationality": "Argentine",
+  "jobTitle": ["Muralist", "Tattoo Artist", "Visual Artist", "Musician"],
+  "sameAs": [
+    "https://www.instagram.com/naliart.ok",
+    "https://www.instagram.com/nali.ttoo",
+    "https://www.instagram.com/nali.alma"
+  ]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Barlow:wght@300;400;600&family=Barlow+Condensed:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+/* ══ TOKENS ══ */
+:root{
+  --rojo:#CC0000;--naranja:#E8720C;--amarillo:#F5C400;
+  --verde:#00913A;--azul:#005BAA;--violeta:#5C2D91;--wipblanco:#F0EAD6;
+  --noche:#07050A;--oro:#C8922A;--oro-l:#E8B84B;
+  --crema:#F0E6D0;--cdim:rgba(240,230,208,.65);
+  --glass:rgba(10,4,2,.58);--gb:rgba(200,146,42,.22);
+  --ffd:'Cinzel',serif;--ffb:'Barlow',sans-serif;--ffc:'Barlow Condensed',sans-serif;
+  --ease:cubic-bezier(.4,0,.2,1);--tr:.38s var(--ease);
+  --nav:68px;
+}
+
+/* ══ RESET ══ */
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--ffb);background:var(--noche);color:var(--crema);overflow-x:hidden;}
+body.locked{overflow:hidden;touch-action:none;}
+
+/* ══ SPLASH ══ */
+#splash{
+  position:fixed;inset:0;z-index:9000;
+  background:var(--noche);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  transition:opacity .85s var(--ease),visibility .85s;
+}
+#splash.out{opacity:0;visibility:hidden;pointer-events:none;}
+#splash canvas{position:absolute;inset:0;width:100%;height:100%;}
+.spl-inner{position:relative;z-index:2;text-align:center;display:flex;flex-direction:column;align-items:center;gap:.9rem;}
+.spl-logo{
+  font-family:var(--ffd);font-weight:900;
+  font-size:clamp(3.5rem,15vw,7rem);letter-spacing:8px;
+  background:linear-gradient(135deg,var(--rojo),var(--naranja),var(--amarillo),var(--oro));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  opacity:0;animation:fadeUp .9s var(--ease) .4s forwards;
+}
+.spl-sub{
+  font-family:var(--ffc);font-size:clamp(.8rem,3.5vw,1.1rem);
+  letter-spacing:6px;text-transform:uppercase;color:var(--oro-l);
+  opacity:0;animation:fadeUp .9s var(--ease) .9s forwards;
+}
+.spl-bar{
+  width:min(240px,68vw);height:5px;border-radius:3px;
+  background:linear-gradient(90deg,var(--rojo),var(--naranja),var(--amarillo),var(--wipblanco),var(--verde),var(--azul),var(--violeta));
+  opacity:0;animation:fadeUp .9s var(--ease) 1.3s forwards;
+}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+
+/* ══ AMBIENT ══ */
+body::before{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(ellipse 60% 70% at 15% 60%,rgba(204,0,0,.08) 0%,transparent 100%),
+    radial-gradient(ellipse 50% 60% at 85% 20%,rgba(92,45,145,.09) 0%,transparent 100%),
+    radial-gradient(ellipse 80% 50% at 50% 100%,rgba(74,32,0,.48) 0%,transparent 100%);
+}
+#stars{position:fixed;inset:0;pointer-events:none;z-index:0;}
+.star{position:absolute;background:#fff;border-radius:50%;animation:twinkle var(--d,3s) infinite var(--dl,0s);}
+@keyframes twinkle{0%,100%{opacity:.07;}50%{opacity:.6;}}
+
+/* ══ WIPHALA ══ */
+.wiphala{
+  width:100%;height:5px;
+  background:linear-gradient(90deg,
+    var(--rojo) 0% 14.28%,var(--naranja) 14.28% 28.56%,
+    var(--amarillo) 28.56% 42.84%,var(--wipblanco) 42.84% 57.12%,
+    var(--verde) 57.12% 71.40%,var(--azul) 71.40% 85.68%,
+    var(--violeta) 85.68% 100%);
+}
+
+/* ══ NAV ══ */
+nav{position:fixed;top:0;left:0;width:100%;z-index:500;display:flex;flex-direction:column;}
+.nav-bar{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 2.5rem;height:var(--nav);
+  background:rgba(7,5,10,.78);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--gb);
+  transition:background var(--tr);
+  position:relative;z-index:501;
+}
+nav.scrolled .nav-bar{background:rgba(7,5,10,.97);}
+.nav-logo{
+  font-family:var(--ffd);font-size:1.45rem;font-weight:700;
+  letter-spacing:4px;color:var(--crema);text-decoration:none;flex-shrink:0;
+}
+.nav-logo span{color:var(--oro);}
+
+.nav-links{display:flex;list-style:none;gap:.1rem;align-items:center;}
+.nav-links a{
+  font-family:var(--ffc);font-size:.82rem;letter-spacing:1.8px;
+  text-transform:uppercase;font-weight:600;
+  color:var(--cdim);text-decoration:none;
+  padding:.45rem .85rem;border-radius:6px;
+  position:relative;transition:color var(--tr);
+}
+.nav-links a::after{
+  content:'';position:absolute;bottom:2px;left:50%;
+  transform:translateX(-50%);width:0;height:1.5px;
+  background:var(--oro);border-radius:2px;transition:width .3s;
+}
+.nav-links a:hover{color:var(--oro-l);}
+.nav-links a:hover::after{width:60%;}
+.nav-right{display:flex;align-items:center;gap:.7rem;}
+
+.lang-sel{
+  display:flex;gap:.12rem;align-items:center;
+  background:rgba(200,146,42,.07);border:1px solid var(--gb);
+  border-radius:30px;padding:.18rem .4rem;
+}
+.lang-btn{
+  background:none;border:none;cursor:pointer;
+  font-family:var(--ffc);font-size:.72rem;font-weight:700;letter-spacing:1px;
+  color:rgba(240,230,208,.4);padding:.18rem .42rem;border-radius:14px;
+  transition:var(--tr);text-transform:uppercase;min-width:28px;
+}
+.lang-btn.active{background:var(--oro);color:var(--noche);}
+.lang-btn:hover:not(.active){color:var(--oro-l);}
+
+.hamburger{
+  display:none;flex-direction:column;justify-content:center;align-items:center;gap:5px;
+  cursor:pointer;background:none;border:none;
+  width:44px;height:44px;flex-shrink:0;
+  -webkit-tap-highlight-color:transparent;
+}
+.hamburger span{
+  display:block;width:26px;height:2.5px;
+  background:var(--oro);border-radius:3px;
+  transition:transform .35s var(--ease),opacity .35s;
+  transform-origin:center;
+}
+.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5.5px,5.5px);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5.5px,-5.5px);}
+
+/* ══ MOBILE DRAWER ══ */
+.drawer-overlay{
+  position:fixed;inset:0;z-index:510;
+  background:rgba(0,0,0,.6);
+  opacity:0;visibility:hidden;
+  transition:opacity .35s,visibility .35s;
+  -webkit-tap-highlight-color:transparent;
+}
+.drawer-overlay.open{opacity:1;visibility:visible;}
+.mobile-drawer{
+  position:fixed;top:0;right:0;bottom:0;
+  width:min(310px,88vw);z-index:520;
+  background:rgba(7,5,10,.99);
+  backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
+  border-left:1px solid rgba(200,146,42,.2);
+  display:flex;flex-direction:column;
+  overflow-y:auto;-webkit-overflow-scrolling:touch;
+  transform:translateX(100%);
+  transition:transform .38s var(--ease);
+}
+.mobile-drawer.open{transform:translateX(0);}
+.drawer-head{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 1.5rem;height:var(--nav);
+  border-bottom:1px solid rgba(200,146,42,.12);flex-shrink:0;
+}
+.drawer-head .nav-logo{font-size:1.2rem;}
+.drawer-close{
+  background:none;border:none;cursor:pointer;
+  color:var(--oro);font-size:1.3rem;
+  width:40px;height:40px;
+  display:flex;align-items:center;justify-content:center;
+  border-radius:50%;border:1px solid rgba(200,146,42,.25);
+  transition:var(--tr);-webkit-tap-highlight-color:transparent;
+}
+.drawer-close:hover{background:rgba(200,146,42,.15);}
+.drawer-body{
+  flex:1;padding:1.5rem 1.5rem 1rem;
+  display:flex;flex-direction:column;gap:0;
+}
+.drawer-link{
+  display:flex;align-items:center;gap:.9rem;
+  font-family:var(--ffc);font-size:1.25rem;letter-spacing:2px;
+  text-transform:uppercase;color:var(--crema);text-decoration:none;
+  padding:1rem 0;border-bottom:1px solid rgba(200,146,42,.1);
+  transition:color .25s,padding-left .25s;
+  min-height:54px;-webkit-tap-highlight-color:transparent;
+}
+.drawer-link:last-of-type{border-bottom:none;}
+.drawer-link:hover,.drawer-link:active{color:var(--oro);padding-left:.4rem;}
+.drawer-link .di{
+  width:30px;height:30px;border-radius:8px;
+  background:rgba(200,146,42,.1);border:1px solid rgba(200,146,42,.2);
+  display:flex;align-items:center;justify-content:center;
+  font-size:.85rem;color:var(--oro);flex-shrink:0;
+}
+.drawer-foot{
+  padding:1.2rem 1.5rem 1.5rem;
+  border-top:1px solid rgba(200,146,42,.1);
+  display:flex;flex-direction:column;gap:1rem;flex-shrink:0;
+}
+.drawer-wa{
+  display:flex;align-items:center;justify-content:center;gap:.6rem;
+  background:linear-gradient(135deg,#128C7E,#075E54);
+  color:#fff;text-decoration:none;
+  font-family:var(--ffc);font-size:.88rem;letter-spacing:1.5px;text-transform:uppercase;font-weight:700;
+  padding:.85rem 1.4rem;border-radius:50px;
+  transition:var(--tr);-webkit-tap-highlight-color:transparent;
+}
+.drawer-wa:hover{opacity:.88;}
+.drawer-lang{display:flex;gap:.5rem;flex-wrap:wrap;}
+.drawer-lang .lang-btn{
+  background:rgba(200,146,42,.1);border:1px solid var(--gb);
+  border-radius:22px;padding:.55rem 1rem;
+  font-size:.82rem;color:var(--crema);
+  min-height:40px;min-width:46px;
+}
+.drawer-lang .lang-btn.active{background:var(--oro);color:var(--noche);font-weight:900;}
+
+/* ══ HERO ══ */
+.hero{
+  position:relative;z-index:1;
+  min-height:100dvh;
+  display:grid;grid-template-columns:1fr 1fr;
+  align-items:center;
+  padding:calc(var(--nav) + 40px) 2.5rem 4rem;
+  max-width:1340px;margin:0 auto;gap:4rem;
+}
+.hero-photo-wrap{display:flex;justify-content:center;align-items:center;position:relative;}
+.hero-photo-frame{
+  position:relative;width:100%;max-width:460px;
+  aspect-ratio:3/4;border-radius:20px;overflow:hidden;
+  border:1.5px solid rgba(200,146,42,.28);
+  box-shadow:0 30px 80px rgba(0,0,0,.7),0 0 60px rgba(200,146,42,.08);
+  transition:transform .6s var(--ease);
+}
+.hero-photo-frame:hover{transform:scale(1.018);}
+.hero-photo-frame img{
+  width:100%;height:100%;object-fit:cover;display:block;
+  transition:transform 1.4s var(--ease);
+}
+.hero-photo-frame:hover img{transform:scale(1.06);}
+.photo-wiphala{
+  position:absolute;top:0;left:0;right:0;height:4px;
+  background:linear-gradient(90deg,var(--rojo),var(--naranja),var(--amarillo),var(--wipblanco),var(--verde),var(--azul),var(--violeta));
+}
+.photo-badge{
+  position:absolute;bottom:1.2rem;left:1.2rem;right:1.2rem;
+  background:rgba(7,5,10,.82);backdrop-filter:blur(12px);
+  border:1px solid rgba(200,146,42,.25);border-radius:12px;
+  padding:.85rem 1.1rem;
+}
+.badge-name{font-family:var(--ffc);font-size:.95rem;font-weight:700;color:var(--oro-l);letter-spacing:1px;}
+.badge-sub{font-size:.74rem;color:var(--cdim);margin-top:.2rem;}
+.chakana-bg{
+  position:absolute;right:-18px;bottom:-18px;
+  width:140px;height:140px;opacity:.05;pointer-events:none;
+}
+.hero-text{max-width:560px;}
+.avail-pill{
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:rgba(0,145,58,.1);border:1px solid rgba(0,145,58,.28);
+  border-radius:30px;padding:.36rem 1rem;
+  font-family:var(--ffc);font-size:.74rem;letter-spacing:2px;text-transform:uppercase;
+  color:#3dd87d;margin-bottom:1.8rem;
+}
+.pill-dot{width:7px;height:7px;border-radius:50%;background:#00913A;flex-shrink:0;animation:pdot 2s ease infinite;}
+@keyframes pdot{0%,100%{box-shadow:0 0 0 0 rgba(0,145,58,.5);}50%{box-shadow:0 0 0 7px rgba(0,145,58,0);}}
+.hero-eyebrow{font-family:var(--ffc);font-size:.78rem;letter-spacing:4px;text-transform:uppercase;color:var(--oro);margin-bottom:.8rem;}
+.hero-name{
+  font-family:var(--ffd);font-size:clamp(3.5rem,8vw,7.5rem);
+  font-weight:900;line-height:.87;letter-spacing:2px;color:var(--crema);margin-bottom:1.2rem;
+}
+.hero-name .grad{
+  display:block;
+  background:linear-gradient(125deg,var(--rojo),var(--naranja) 45%,var(--amarillo));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.hero-role{
+  font-family:var(--ffc);font-size:clamp(.9rem,2vw,1.2rem);
+  font-weight:300;letter-spacing:3px;text-transform:uppercase;
+  color:var(--cdim);margin-bottom:1.4rem;
+  border-left:2px solid var(--naranja);padding-left:1rem;
+}
+.hero-desc{font-size:.97rem;color:var(--cdim);line-height:1.88;max-width:480px;margin-bottom:2.5rem;}
+
+/* ══ PORTALS ══ */
+.worlds{display:grid;grid-template-columns:repeat(3,1fr);gap:.85rem;margin-bottom:.85rem;}
+.worlds-row2{display:grid;grid-template-columns:repeat(2,1fr);gap:.85rem;margin-bottom:2.2rem;}
+.world-card{
+  position:relative;overflow:hidden;
+  border-radius:16px;
+  border:1.5px solid rgba(200,146,42,.16);
+  background:var(--glass);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  text-decoration:none;
+  display:flex;flex-direction:column;
+  padding:1.3rem 1.1rem 1.1rem;gap:.4rem;
+  transition:var(--tr);-webkit-tap-highlight-color:transparent;
+}
+.world-card::before{content:'';position:absolute;inset:0;background:var(--hov,rgba(200,146,42,.06));opacity:0;transition:opacity .4s;}
+.world-card:hover::before,.world-card:active::before{opacity:1;}
+.world-card:hover,.world-card:active{
+  border-color:var(--hov-b,rgba(200,146,42,.5));
+  transform:translateY(-5px);box-shadow:0 18px 44px rgba(0,0,0,.45);
+}
+.world-card.art{--hov:rgba(232,114,12,.1);--hov-b:rgba(232,114,12,.55);}
+.world-card.tattoo{--hov:rgba(200,146,42,.1);--hov-b:rgba(200,146,42,.55);}
+.world-card.music{--hov:rgba(92,45,145,.15);--hov-b:rgba(92,45,145,.6);}
+.world-card.photo{--hov:rgba(0,91,170,.12);--hov-b:rgba(0,91,170,.55);}
+.world-card.poetry{--hov:rgba(0,145,58,.1);--hov-b:rgba(0,145,58,.55);}
+.world-icon{font-size:1.55rem;margin-bottom:.3rem;transition:transform .4s var(--ease);}
+.world-card:hover .world-icon{transform:scale(1.2);}
+.world-title{font-family:var(--ffd);font-size:.9rem;font-weight:700;letter-spacing:.5px;color:var(--crema);}
+.world-sub{font-family:var(--ffc);font-size:.66rem;letter-spacing:1.2px;text-transform:uppercase;color:var(--cdim);line-height:1.4;}
+.world-arrow{position:absolute;bottom:.9rem;right:.9rem;font-size:.7rem;color:var(--oro);opacity:0;transform:translateX(-5px);transition:var(--tr);}
+.world-card:hover .world-arrow{opacity:1;transform:translateX(0);}
+
+/* ══ CONTACTS ══ */
+.hero-contacts{display:flex;gap:.8rem;align-items:center;flex-wrap:wrap;}
+.btn-wa{
+  display:inline-flex;align-items:center;gap:.55rem;
+  background:linear-gradient(135deg,#128C7E,#075E54);
+  color:#fff;text-decoration:none;
+  font-family:var(--ffc);font-size:.86rem;letter-spacing:1.5px;text-transform:uppercase;font-weight:700;
+  padding:.72rem 1.7rem;border-radius:50px;
+  box-shadow:0 8px 24px rgba(18,140,126,.3);
+  transition:var(--tr);white-space:nowrap;-webkit-tap-highlight-color:transparent;
+}
+.btn-wa:hover{transform:translateY(-3px);box-shadow:0 14px 32px rgba(18,140,126,.45);}
+.soc-row{display:flex;gap:.45rem;}
+.soc-btn{
+  width:40px;height:40px;border-radius:50%;
+  border:1px solid rgba(200,146,42,.22);background:rgba(200,146,42,.06);
+  color:var(--cdim);text-decoration:none;
+  display:inline-flex;align-items:center;justify-content:center;
+  font-size:.88rem;transition:var(--tr);-webkit-tap-highlight-color:transparent;
+}
+.soc-btn:hover{border-color:var(--oro);color:var(--oro-l);background:rgba(200,146,42,.14);transform:translateY(-2px);}
+
+/* ══ STATS ══ */
+.stats{
+  position:relative;z-index:1;
+  border-top:1px solid rgba(200,146,42,.1);border-bottom:1px solid rgba(200,146,42,.1);
+  background:rgba(200,146,42,.04);
+}
+.stats-inner{max-width:1340px;margin:0 auto;padding:1.4rem 2.5rem;display:flex;justify-content:center;flex-wrap:wrap;}
+.stat{display:flex;align-items:center;gap:.8rem;padding:.5rem 2.5rem;border-right:1px solid rgba(200,146,42,.12);}
+.stat:last-child{border-right:none;}
+.stat-num{font-family:var(--ffd);font-size:1.7rem;font-weight:700;color:var(--oro);line-height:1;}
+.stat-label{font-family:var(--ffc);font-size:.73rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--cdim);line-height:1.3;}
+
+/* ══ DIVIDER ══ */
+.andean-div{
+  height:2px;
+  background:linear-gradient(90deg,transparent,var(--rojo),var(--naranja),var(--amarillo),var(--verde),var(--azul),var(--violeta),transparent);
+  opacity:.3;
+}
+
+/* ══ BIO ══ */
+.bio{
+  position:relative;z-index:1;
+  max-width:1340px;margin:0 auto;
+  padding:6rem 2.5rem;
+  display:grid;grid-template-columns:1.1fr 1fr;gap:6rem;align-items:center;
+}
+.sec-label{font-family:var(--ffc);font-size:.72rem;letter-spacing:4px;text-transform:uppercase;color:var(--oro);margin-bottom:.8rem;display:flex;align-items:center;gap:.7rem;}
+.sec-label::before{content:'';width:26px;height:1px;background:var(--oro);}
+.bio-text h2{font-family:var(--ffd);font-size:clamp(1.9rem,4.5vw,3.2rem);font-weight:700;color:var(--crema);line-height:1.05;margin-bottom:1.2rem;}
+.bio-text h2 em{font-style:normal;background:linear-gradient(125deg,var(--naranja),var(--amarillo));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.bio-quote{font-family:var(--ffd);font-size:clamp(.9rem,1.8vw,1.15rem);font-style:italic;color:var(--oro-l);line-height:1.55;padding-left:1.2rem;border-left:2.5px solid var(--naranja);margin-bottom:1.5rem;}
+.bio-p{font-size:.95rem;color:var(--cdim);line-height:1.9;margin-bottom:.9rem;}
+.skills{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:1.5rem;}
+.skill{font-family:var(--ffc);font-size:.72rem;letter-spacing:1px;text-transform:uppercase;padding:.26rem .82rem;border-radius:20px;background:rgba(200,146,42,.08);border:1px solid rgba(200,146,42,.2);color:var(--oro-l);}
+.bio-visual{display:grid;grid-template-rows:1fr 1fr;gap:1rem;height:520px;}
+.bio-img{border-radius:16px;overflow:hidden;border:1.5px solid rgba(200,146,42,.18);}
+.bio-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 1.2s var(--ease);}
+.bio-img:hover img{transform:scale(1.05);}
+.bio-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.bio-row .bio-img{border-radius:14px;}
+
+/* ══ ARTIST STATEMENT ══ */
+.statement{
+  position:relative;z-index:1;
+  max-width:1340px;margin:0 auto;
+  padding:5rem 2.5rem 6rem;
+}
+.statement-inner{
+  max-width:820px;margin:0 auto;text-align:center;
+}
+.statement-inner .sec-label{justify-content:center;}
+.statement-inner .sec-label::before{display:none;}
+.statement-inner .sec-label::after{content:'';width:26px;height:1px;background:var(--oro);}
+.statement-h{
+  font-family:var(--ffd);font-size:clamp(1.6rem,3.8vw,2.6rem);
+  font-weight:700;color:var(--crema);line-height:1.1;margin-bottom:2.2rem;
+}
+.statement-h em{font-style:normal;background:linear-gradient(125deg,var(--naranja),var(--amarillo));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.statement-body{
+  font-size:1.05rem;color:var(--cdim);line-height:2;
+  max-width:720px;margin:0 auto;
+}
+.statement-body p{margin-bottom:1.3rem;}
+.statement-quote{
+  font-family:var(--ffd);font-size:clamp(1rem,2.2vw,1.35rem);
+  font-style:italic;color:var(--oro-l);line-height:1.6;
+  padding:1.8rem 2.5rem;margin:2.5rem 0;
+  border-top:1px solid rgba(200,146,42,.2);
+  border-bottom:1px solid rgba(200,146,42,.2);
+  position:relative;
+}
+.statement-quote::before{
+  content:'"';font-family:var(--ffd);font-size:5rem;color:rgba(200,146,42,.12);
+  position:absolute;top:-1rem;left:1rem;line-height:1;
+}
+
+/* ══ TRAYECTORIA ══ */
+.trayectoria{
+  position:relative;z-index:1;
+  background:rgba(200,146,42,.03);
+  border-top:1px solid rgba(200,146,42,.08);
+  border-bottom:1px solid rgba(200,146,42,.08);
+}
+.tray-inner{
+  max-width:1340px;margin:0 auto;
+  padding:5rem 2.5rem;
+  display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;
+}
+.tray-col h3{
+  font-family:var(--ffd);font-size:clamp(1.2rem,2.5vw,1.7rem);
+  font-weight:700;color:var(--crema);margin-bottom:1.8rem;
+}
+.tray-col h3 span{color:var(--oro);}
+.tray-item{
+  display:flex;gap:1.1rem;align-items:flex-start;
+  margin-bottom:1.5rem;
+  padding-bottom:1.5rem;
+  border-bottom:1px solid rgba(200,146,42,.08);
+}
+.tray-item:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+.tray-icon{
+  width:36px;height:36px;border-radius:10px;flex-shrink:0;
+  background:rgba(200,146,42,.1);border:1px solid rgba(200,146,42,.2);
+  display:flex;align-items:center;justify-content:center;
+  font-size:.9rem;color:var(--oro);margin-top:.1rem;
+}
+.tray-title{font-family:var(--ffc);font-size:.88rem;font-weight:700;color:var(--crema);letter-spacing:.5px;margin-bottom:.3rem;}
+.tray-desc{font-size:.83rem;color:var(--cdim);line-height:1.7;}
+.tray-tag{
+  display:inline-block;margin-top:.4rem;
+  font-family:var(--ffc);font-size:.65rem;letter-spacing:1px;text-transform:uppercase;
+  padding:.15rem .55rem;border-radius:10px;
+  background:rgba(200,146,42,.1);border:1px solid rgba(200,146,42,.18);color:var(--oro-l);
+}
+
+/* ══ FOOTER ══ */
+footer{position:relative;z-index:1;border-top:1px solid rgba(200,146,42,.1);padding:2.5rem 2rem 1.8rem;text-align:center;}
+.footer-logo{font-family:var(--ffd);font-size:1.3rem;color:var(--oro);letter-spacing:3px;margin-bottom:.4rem;}
+.footer-sub{font-family:var(--ffc);font-size:.68rem;letter-spacing:2px;text-transform:uppercase;color:rgba(240,230,208,.22);}
+.footer-credit{margin-top:.8rem;font-family:var(--ffc);font-size:.68rem;color:rgba(240,230,208,.18);}
+.footer-credit a{color:inherit;text-decoration:none;}
+
+/* ══ SCROLL REVEAL ══ */
+.sr{opacity:0;transform:translateY(24px);transition:opacity .7s var(--ease),transform .7s var(--ease);}
+.sr.visible{opacity:1;transform:none;}
+.d1{transition-delay:.1s;}.d2{transition-delay:.2s;}.d3{transition-delay:.3s;}
+
+/* ══ RESPONSIVE ══ */
+@media(max-width:1024px){
+  .hero{grid-template-columns:1fr;padding:calc(var(--nav)+36px) 2rem 4rem;text-align:center;gap:2.5rem;}
+  .hero-photo-wrap{order:-1;}
+  .hero-photo-frame{max-width:340px;}
+  .hero-text{max-width:100%;}
+  .hero-desc{margin:0 auto 2.5rem;}
+  .worlds{max-width:480px;margin-left:auto;margin-right:auto;}
+  .worlds-row2{max-width:480px;margin-left:auto;margin-right:auto;}
+  .hero-contacts{justify-content:center;}
+  .bio{grid-template-columns:1fr;gap:3rem;padding:4rem 2rem;}
+  .bio-visual{height:380px;}
+  .bio-row{display:none;}
+  .tray-inner{grid-template-columns:1fr;gap:3rem;padding:4rem 2rem;}
+}
+@media(max-width:768px){
+  :root{--nav:60px;}
+  .nav-bar{padding:0 1.2rem;}
+  .nav-links,.lang-sel{display:none !important;}
+  .hamburger{display:flex !important;}
+  .hero{padding:calc(var(--nav)+28px) 1.2rem 3.5rem;gap:2rem;}
+  .hero-photo-frame{max-width:260px;}
+  .hero-name{font-size:clamp(3rem,12vw,4.5rem);}
+  .photo-badge{padding:.65rem .85rem;}
+  .badge-name{font-size:.82rem;}
+  .worlds{grid-template-columns:1fr;max-width:100%;}
+  .worlds-row2{grid-template-columns:1fr;max-width:100%;}
+  .world-card{flex-direction:row;align-items:center;padding:1rem 1.2rem;gap:1rem;}
+  .world-icon{font-size:1.3rem;margin-bottom:0;flex-shrink:0;}
+  .world-title{font-size:.9rem;}
+  .world-arrow{position:static;opacity:1;transform:none;margin-left:auto;color:var(--oro);}
+  .stats-inner{flex-direction:column;align-items:center;padding:1rem;}
+  .stat{padding:.55rem 1rem;width:100%;max-width:280px;border-right:none;border-bottom:1px solid rgba(200,146,42,.1);justify-content:center;}
+  .stat:last-child{border-bottom:none;}
+  .bio{padding:3.5rem 1.2rem;}
+  .bio-visual{height:250px;}
+  .statement{padding:3.5rem 1.2rem;}
+  .statement-quote{padding:1.2rem 1.5rem;}
+  .tray-inner{padding:3rem 1.2rem;}
+}
+@media(max-width:420px){
+  .hero-photo-frame{max-width:220px;}
+  .hero-contacts{flex-direction:column;align-items:stretch;}
+  .btn-wa{justify-content:center;}
+  .soc-row{justify-content:center;}
+}
+@supports(padding:max(0px)){
+  .mobile-drawer{padding-bottom:env(safe-area-inset-bottom);}
+}
+@media(prefers-reduced-motion:reduce){
+  .sr{opacity:1;transform:none;}
+  *{animation-duration:.01ms !important;transition-duration:.01ms !important;}
+}
+
+.mask-link{
+  position:fixed;
+  left:16px;
+  bottom:calc(16px + env(safe-area-inset-bottom, 0px));
+  z-index:495;
+  width:42px;height:42px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(20,15,10,.6);
+  border:1px solid rgba(200,146,42,.3);
+  box-shadow:0 4px 14px rgba(0,0,0,.35);
+  font-size:1.15rem;line-height:1;text-decoration:none;
+  opacity:.62;
+  transition:opacity .4s var(--ease),transform .4s var(--ease),border-color .3s,background .3s,box-shadow .3s;
+  -webkit-tap-highlight-color:transparent;
+}
+.mask-link:hover,.mask-link:focus-visible{
+  opacity:1;border-color:rgba(200,146,42,.6);background:rgba(200,146,42,.16);
+  box-shadow:0 8px 22px rgba(0,0,0,.5);transform:translateY(-3px) scale(1.08);
+}
+@media(max-width:480px){
+  .mask-link{width:38px;height:38px;font-size:1.02rem;left:12px;bottom:calc(12px + env(safe-area-inset-bottom, 0px));}
+}
+</style>
 </head>
 <body>
-    <!-- INTRO ANIMADO CON SVG -->
-    <div id="intro-screen">
-        <svg id="intro-logo" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
-            <!-- Letra N -->
-            <path d="M 30 50 L 30 150 M 30 50 L 80 150 M 80 50 L 80 150">
-                <animate attributeName="stroke-dasharray" from="0 400" to="400 0" dur="2s" fill="freeze"/>
-            </path>
-            
-            <!-- Letra A -->
-            <path d="M 100 150 L 125 50 L 150 150 M 110 110 L 140 110">
-                <animate attributeName="stroke-dasharray" from="0 400" to="400 0" dur="2s" begin="0.3s" fill="freeze"/>
-            </path>
-            
-            <!-- Letra L -->
-            <path d="M 170 50 L 170 150 L 210 150">
-                <animate attributeName="stroke-dasharray" from="0 400" to="400 0" dur="2s" begin="0.6s" fill="freeze"/>
-            </path>
-            
-            <!-- Letra I -->
-            <path d="M 240 50 L 240 150 M 225 50 L 255 50 M 225 150 L 255 150">
-                <animate attributeName="stroke-dasharray" from="0 400" to="400 0" dur="2s" begin="0.9s" fill="freeze"/>
-            </path>
-            
-            <!-- Decoración -->
-            <circle cx="200" cy="100" r="80" fill="none" stroke="white" stroke-width="2" opacity="0.3">
-                <animate attributeName="r" from="0" to="80" dur="2s" fill="freeze"/>
-            </circle>
-        </svg>
+
+<!-- ══ SPLASH ══ -->
+<div id="splash" role="status" aria-label="Cargando">
+  <canvas id="splashCanvas"></canvas>
+  <div class="spl-inner">
+    <div class="spl-logo">NALI</div>
+    <div class="spl-sub">Arte Andino · Murales · Tatuajes · Música</div>
+    <div class="spl-bar"></div>
+  </div>
+</div>
+
+<!-- STARS -->
+<div id="stars" aria-hidden="true"></div>
+
+<!-- ══ NAV ══ -->
+<nav id="nav" aria-label="Navegación principal">
+  <div class="wiphala" aria-hidden="true"></div>
+  <div class="nav-bar">
+    <a href="#" class="nav-logo" aria-label="Nali Alma — inicio">NAL<span>I</span></a>
+    <ul class="nav-links" role="list">
+      <li><a href="#sobre"           data-i18n="n_about">Sobre mí</a></li>
+      <li><a href="#statement"       data-i18n="n_st">Declaración</a></li>
+      <li><a href="Galer.html"       data-i18n="n_art">Arte Visual</a></li>
+      <li><a href="nali-tattoo.html" data-i18n="n_tat">Tatuajes</a></li>
+      <li><a href="nali-musica.html" data-i18n="n_mus">Música</a></li>
+      <li><a href="#contacto"        data-i18n="n_con">Contacto</a></li>
+    </ul>
+    <div class="nav-right">
+      <div class="lang-sel" role="group" aria-label="Seleccionar idioma">
+        <button class="lang-btn active" data-lang="es" aria-label="Español">ES</button>
+        <button class="lang-btn" data-lang="en" aria-label="English">EN</button>
+        <button class="lang-btn" data-lang="pl" aria-label="Polski">PL</button>
+        <button class="lang-btn" data-lang="fr" aria-label="Français">FR</button>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- ══ MOBILE DRAWER ══ -->
+<div class="drawer-overlay" id="dOverlay"></div>
+<div class="mobile-drawer" id="drawer" role="dialog" aria-modal="true" aria-label="Navegación">
+  <div class="drawer-head">
+    <span class="nav-logo">NAL<span>I</span></span>
+    <button class="drawer-close" id="drawerClose" aria-label="Cerrar menú">
+      <i class="fas fa-times"></i>
+    </button>
+  </div>
+  <div class="drawer-body">
+    <a href="#sobre"           class="drawer-link" data-i18n="n_about"><span class="di"><i class="fas fa-user"></i></span>Sobre mí</a>
+    <a href="#statement"       class="drawer-link" data-i18n="n_st"><span class="di"><i class="fas fa-feather"></i></span>Declaración</a>
+    <a href="Galer.html"       class="drawer-link" data-i18n="n_art"><span class="di"><i class="fas fa-palette"></i></span>Arte Visual</a>
+    <a href="nali-tattoo.html" class="drawer-link" data-i18n="n_tat"><span class="di"><i class="fas fa-pen-nib"></i></span>Tatuajes</a>
+    <a href="nali-musica.html" class="drawer-link" data-i18n="n_mus"><span class="di"><i class="fas fa-music"></i></span>Música</a>
+    <a href="#contacto"        class="drawer-link" data-i18n="n_con"><span class="di"><i class="fas fa-envelope"></i></span>Contacto</a>
+  </div>
+  <div class="drawer-foot">
+    <a href="https://wa.me/48692971895?text=Hola%20Nali" target="_blank" rel="noopener" class="drawer-wa">
+      <i class="fab fa-whatsapp"></i>
+      <span data-i18n="cta_wa">WhatsApp</span>
+    </a>
+    <div class="drawer-lang">
+      <button class="lang-btn active" data-lang="es">ES</button>
+      <button class="lang-btn" data-lang="en">EN</button>
+      <button class="lang-btn" data-lang="pl">PL</button>
+      <button class="lang-btn" data-lang="fr">FR</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ MAIN CONTENT ══ -->
+<main id="main-content">
+
+  <!-- ══ HERO ══ -->
+  <section class="hero" id="hero" aria-labelledby="hero-heading">
+    <div class="hero-photo-wrap">
+      <div class="hero-photo-frame">
+        <div class="photo-wiphala" aria-hidden="true"></div>
+        <img
+          src="https://i.ibb.co/MDTvFcMc/IMG-20260421-WA0079-1.jpg"
+          alt="Nali Alma, artista multidisciplinar andina de Salta, Argentina — retrato"
+          loading="eager"
+          width="460" height="614"
+        >
+        <div class="photo-badge" aria-hidden="true">
+          <div class="badge-name" data-i18n="badge_n">Nali Alma — Artista Andina</div>
+          <div class="badge-sub"  data-i18n="badge_s">Salta, Argentina · Polonia 2026</div>
+        </div>
+      </div>
+      <svg class="chakana-bg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation">
+        <path d="M35 0H65V35H100V65H65V100H35V65H0V35H35Z" fill="none" stroke="#C8922A" stroke-width="1.5"/>
+        <rect x="37" y="37" width="26" height="26" fill="none" stroke="#C8922A" stroke-width="1"/>
+      </svg>
     </div>
 
-    <!-- HEADER -->
-    <header>
-        <nav>
-            <div class="logo-nav">NALI</div>
-            <button class="menu-toggle" onclick="toggleMenu()" aria-label="Menú de navegación">
-                <div class="menu-icon">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </button>
-            <ul id="nav-menu">
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#biografia">Biografía</a></li>
-                <li><a href="#habilidades">Habilidades</a></li>
-                <li><a href="#activismo">Activismo</a></li>
-                <li><a href="#redes">Redes</a></li>
-            </ul>
-        </nav>
-    </header>
+    <div class="hero-text">
+      <div class="avail-pill" role="status">
+        <span class="pill-dot" aria-hidden="true"></span>
+        <span data-i18n="pill">Disponible · Polonia 2026</span>
+      </div>
+      <p class="hero-eyebrow" data-i18n="eyebrow">Arte Andino · Salta, Argentina</p>
+      <h1 class="hero-name" id="hero-heading">
+        NALI
+        <span class="grad" data-i18n="hgrad">Alma</span>
+      </h1>
+      <p class="hero-role" data-i18n="hrole">Muralista · Tatuadora · Música · Fotografía</p>
+      <p class="hero-desc" data-i18n="hdesc">
+        Artista multidisciplinar nacida en Salta, Argentina. Llevo los colores de la Quebrada, los símbolos de los pueblos andinos y la energía de la Pachamama a muros, piel y sonido — ahora en Europa.
+      </p>
 
-    <!-- HERO CON CARRUSEL DE IMÁGENES -->
-    <section id="inicio" class="hero">
-        <div class="hero-background">
-            <div class="hero-image-container">
-                <img src="https://scontent.fsla4-1.fna.fbcdn.net/v/t39.30808-6/501489557_10234293726699382_6889922516573169759_n.jpg?stp=dst-jpg_s552x414_tt6&_nc_cat=108&ccb=1-7&_nc_sid=a5f93a&_nc_eui2=AeGOJXQ_7yYqDyq0YXV0h-q9V6f30oe6TeRXp_fSh7pN5GitoDqYEFnzxCwggOnLwjo&_nc_ohc=7UYhzNOR0-UQ7kNvwHzo2il&_nc_oc=AdkxQ19ssr5DisfT3jGu8yHBCAJ3nH7w89FrVRlHd-zraDjE2qEsbYRUQysCqzFklFc&_nc_zt=23&_nc_ht=scontent.fsla4-1.fna&_nc_gid=hWdUTX2oxEax3dma_BunQg&oh=00_AfdMOlyakPv8SF3zRLX-nyuhvN9FMNlqmB43TCPoGzSoCA&oe=69098B51" 
-                     alt="Natalia Almagro - Nali artista multidisciplinaria" 
-                     class="hero-image active"
-                     loading="eager">
-                <img src="https://scontent.fsla4-1.fna.fbcdn.net/v/t39.30808-6/506802556_10234607475422904_2588679122231500455_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=86c6b0&_nc_eui2=AeHwcoGoJ83MpKqXq0VaQsSds52ln8aGoUSznaWfxoahREHpS8YpK265C77Lf70-XJE&_nc_ohc=zRDg-5NQZFsQ7kNvwG7k6i6&_nc_oc=Adnt1Vi6f1rigNZurBbjotbYGcEiwjJGR_Y_Ju-WqiX9TcB87oG-XWpOpgXEYbXXM3I&_nc_zt=23&_nc_ht=scontent.fsla4-1.fna&_nc_gid=ofc7Qobb7KmMB8tnL7HgIA&oh=00_Affal9j0FvdulMiqWurg0KM7PnkNwXU0QnfclLJH0yIHSg&oe=6909A632" 
-                     alt="Nali - Tatuadora y artista visual de Salta" 
-                     class="hero-image"
-                     loading="lazy">
-            </div>
-            <div class="hero-overlay"></div>
+      <div class="worlds" role="list">
+        <a href="Galer.html" class="world-card art" role="listitem">
+          <div class="world-icon" aria-hidden="true">🎨</div>
+          <div>
+            <div class="world-title" data-i18n="wa_t">Arte Visual</div>
+            <div class="world-sub"   data-i18n="wa_s">Murales · Pintura · Ilustración</div>
+          </div>
+          <i class="fas fa-arrow-right world-arrow" aria-hidden="true"></i>
+        </a>
+        <a href="nali-tattoo.html" class="world-card tattoo" role="listitem">
+          <div class="world-icon" aria-hidden="true">🪡</div>
+          <div>
+            <div class="world-title" data-i18n="wt_t">Tatuajes</div>
+            <div class="world-sub"   data-i18n="wt_s">7 años · Salta · Polonia 2026</div>
+          </div>
+          <i class="fas fa-arrow-right world-arrow" aria-hidden="true"></i>
+        </a>
+        <a href="nali-musica.html" class="world-card music" role="listitem">
+          <div class="world-icon" aria-hidden="true">🎵</div>
+          <div>
+            <div class="world-title" data-i18n="wm_t">Música</div>
+            <div class="world-sub"   data-i18n="wm_s">Composición · Voz · Sonido</div>
+          </div>
+          <i class="fas fa-arrow-right world-arrow" aria-hidden="true"></i>
+        </a>
+      </div><!-- /worlds -->
+
+      <div class="worlds-row2" role="list">
+        <a href="nali-fotografia.html" class="world-card photo" role="listitem">
+          <div class="world-icon" aria-hidden="true">📷</div>
+          <div>
+            <div class="world-title" data-i18n="wf_t">Fotografía</div>
+            <div class="world-sub"   data-i18n="wf_s">Registro · Sensibilidad · Visual</div>
+          </div>
+          <i class="fas fa-arrow-right world-arrow" aria-hidden="true"></i>
+        </a>
+        <a href="nali-poesia.html" class="world-card poetry" role="listitem">
+          <div class="world-icon" aria-hidden="true">✍️</div>
+          <div>
+            <div class="world-title" data-i18n="wp_t">Poesía</div>
+            <div class="world-sub"   data-i18n="wp_s">Letras · Palabra · Tierra</div>
+          </div>
+          <i class="fas fa-arrow-right world-arrow" aria-hidden="true"></i>
+        </a>
+      </div>
+
+      <div class="hero-contacts" id="contacto">
+        <a href="https://wa.me/48692971895?text=Hola%20Nali%2C%20me%20interesa%20tu%20trabajo"
+           target="_blank" rel="noopener" class="btn-wa">
+          <i class="fab fa-whatsapp" aria-hidden="true"></i>
+          <span data-i18n="cta_wa_l">Escribir por WhatsApp</span>
+        </a>
+        <div class="soc-row">
+          <a href="https://www.instagram.com/naliart.ok"  target="_blank" rel="noopener" class="soc-btn" aria-label="Instagram Arte — @naliart.ok"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+          <a href="https://www.instagram.com/nali.ttoo"   target="_blank" rel="noopener" class="soc-btn" aria-label="Instagram Tattoo — @nali.ttoo"><i class="fas fa-pen-nib" aria-hidden="true"></i></a>
+          <a href="https://www.instagram.com/nali.alma"   target="_blank" rel="noopener" class="soc-btn" aria-label="Instagram Música — @nali.alma"><i class="fas fa-music" aria-hidden="true"></i></a>
+          <a href="mailto:nali@septimapacha.com" class="soc-btn" aria-label="Email — nali@septimapacha.com"><i class="fas fa-envelope" aria-hidden="true"></i></a>
         </div>
-        <div class="geometric-bg">
-            <div class="geo-shape"></div>
-            <div class="geo-shape"></div>
-            <div class="geo-shape"></div>
-            <div class="geo-shape"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <aside class="stats" aria-label="Datos destacados">
+    <div class="stats-inner">
+      <div class="stat sr"><div><div class="stat-num">7+</div><div class="stat-label" data-i18n="sy">Años tatuando</div></div></div>
+      <div class="stat sr d1"><div><div class="stat-num">2</div><div class="stat-label" data-i18n="sc">Continentes</div></div></div>
+      <div class="stat sr d2"><div><div class="stat-num">2</div><div class="stat-label" data-i18n="sd">Discos editados</div></div></div>
+      <div class="stat sr d3"><div><div class="stat-num">PL</div><div class="stat-label" data-i18n="sp">Disponible 2026</div></div></div>
+    </div>
+  </aside>
+
+  <div class="andean-div" aria-hidden="true"></div>
+
+  <!-- BIO -->
+  <section class="bio" id="sobre" aria-labelledby="bio-heading">
+    <div class="bio-text sr">
+      <div class="sec-label" data-i18n="bio_l">Sobre mí</div>
+      <h2 id="bio-heading" data-i18n="bio_h">Soy <em>Nali Alma</em></h2>
+      <blockquote class="bio-quote" data-i18n="bio_q">
+        "Llevo el alma andina en cada trazo, cada línea, cada muro que pinto."
+      </blockquote>
+      <p class="bio-p" data-i18n="bio_p1">
+        Soy Natalia Jimena Almagro, artista multidisciplinar nacida en Salta, Argentina. Mi primer recuerdo es dibujar. Desde entonces no he parado: me formé en el Centro Polivalente de Arte de Salta, estudié música en el Conservatorio José Lo Giudice, y construí mi camino desde la cerámica hasta el tatuaje, desde el mural hasta la canción.
+      </p>
+      <p class="bio-p" data-i18n="bio_p2">
+        Con más de 7 años tatuando, dos discos editados y una trayectoria activa en muralismo, pintura, ilustración y fotografía, llevo mi identidad andina a Europa. Fundadora de Séptima Pacha Co. Disponible en Polonia durante 2026 para proyectos artísticos, residencias y convocatorias internacionales.
+      </p>
+      <div class="skills" aria-label="Disciplinas artísticas">
+        <span class="skill" data-i18n="sk1">Arte Mural</span>
+        <span class="skill" data-i18n="sk2">Tatuaje</span>
+        <span class="skill" data-i18n="sk3">Pintura</span>
+        <span class="skill" data-i18n="sk4">Cerámica</span>
+        <span class="skill" data-i18n="sk5">Ilustración</span>
+        <span class="skill" data-i18n="sk6">Música</span>
+        <span class="skill" data-i18n="sk7">Fotografía</span>
+        <span class="skill" data-i18n="sk8">Arte Andino</span>
+      </div>
+    </div>
+    <div class="bio-visual sr d2" aria-hidden="true">
+      <div class="bio-img">
+        <img src="https://i.ibb.co/DD37KnBN/IMG-20260527-WA0150-1.jpg"
+             alt="Mural Abya Yala pintado por Nali Alma en Salta, Argentina — arte mural andino con simbolismo originario"
+             loading="lazy" width="600" height="400">
+      </div>
+      <div class="bio-row">
+        <div class="bio-img">
+          <img src="https://i.ibb.co/MKGq6K7/IMG-20260527-WA0050-1.jpg"
+               alt="Mural Coya de Nali Alma — pintura mural con identidad andina en Salta"
+               loading="lazy" width="300" height="200">
         </div>
-        <div class="hero-content">
-            <h1>NALI</h1>
-            <p class="subtitle">Artista Multidisciplinaria</p>
-            <p>Creadora, soñadora y activista desde Salta, Argentina. Explorando el arte en todas sus formas: música, tatuaje, diseño, y más allá.</p>
+        <div class="bio-img">
+          <img src="https://i.ibb.co/d0P0Knz4/IMG-20260521-WA0023.jpg"
+               alt="Obra mural de Nali Alma en Salta, Argentina — muralismo social y ambiental"
+               loading="lazy" width="300" height="200">
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <!-- BIOGRAFÍA -->
-    <section id="biografia">
-        <h2>Mi Historia</h2>
-        <div class="bio-content">
-            <div class="bio-text">
-                <p>Nacida el 22 de agosto de 1993 en Salta, Argentina, en el seno de una familia humilde. Mi madre trabajó incansablemente para sacarnos adelante, y su fuerza se convirtió en mi inspiración.</p>
-                <p>Desde muy niña, el arte fue mi refugio y mi lenguaje. Primero fue el dibujo, luego la escritura, la música, el canto y la composición. Cada disciplina me abrió una nueva puerta para expresar lo que llevaba dentro.</p>
-                <p>Con el tiempo, exploré la pintura, la cerámica, el grabado y hace 5 años comencé mi práctica en el tatuaje. Aunque estudié múltiples disciplinas, circunstancias personales me impidieron terminar formalmente, pero nunca dejé de crear.</p>
-            </div>
-            <div class="bio-text">
-                <div class="bio-highlight">
-                    <p><strong>Hoy</strong>, me encuentro inmersa en el aprendizaje autodidacta de programación web, fusionando tecnología con creatividad para construir experiencias digitales únicas.</p>
-                </div>
-                <p>Soy la creadora de <strong>Séptima Pacha</strong>, un proyecto que nace del corazón de la tierra andina y se proyecta hacia el futuro.</p>
-                <p>Mi arte es mi voz, mi compromiso con el mundo, y mi manera de honrar de dónde vengo mientras construyo hacia dónde voy.</p>
-            </div>
-        </div>
-    </section>
+  <div class="andean-div" aria-hidden="true"></div>
 
-    <!-- HABILIDADES -->
-    <section id="habilidades">
-        <h2>Habilidades Artísticas</h2>
-        <div class="skills-grid">
-            <div class="skill-card fade-in">
-                <h3>🎵 Música</h3>
-                <p>Composición, voz, producción musical. Explorando sonidos ancestrales andinos con herramientas contemporáneas.</p>
-            </div>
-            <div class="skill-card fade-in">
-                <h3>🎬 Video</h3>
-                <p>Stop motion, rotoscopia, edición creativa. Dando vida a historias cuadro por cuadro.</p>
-            </div>
-            <div class="skill-card fade-in">
-                <h3>💻 Diseño Web</h3>
-                <p>Desarrollo web, identidad de marca, experiencias digitales. Construyendo puentes entre el arte y la tecnología.</p>
-            </div>
-            <div class="skill-card fade-in">
-                <h3>🎨 Artes Visuales</h3>
-                <p>Cerámica, pintura, grabado. Cada material es una oportunidad para crear algo único.</p>
-            </div>
-            <div class="skill-card fade-in">
-                <h3>✒️ Tatuaje</h3>
-                <p>5 años de práctica convirtiendo piel en lienzo, historias en arte permanente.</p>
-            </div>
-            <div class="skill-card fade-in">
-                <h3>🤖 IA Ética</h3>
-                <p>Uso consciente y ético de inteligencia artificial como herramienta creativa.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- ACTIVISMO -->
-    <section id="activismo">
-        <h2>Activismo Animal y Ambiental</h2>
-        <div class="activism-content fade-in">
-            <div class="activism-section">
-                <h3>🏡 Santuario Huellitas Salta</h3>
-                <h4>Refugio Independiente de Amor Animal</h4>
-                <p>Orgullosamente gestiono un <strong>santuario independiente</strong> en Salta donde <strong>12 perros y 4 gatos</strong> han encontrado su hogar para siempre. Este espacio es más que un refugio: es un hogar donde cada animal rescatado recibe amor, cuidado veterinario y la oportunidad de vivir con dignidad.</p>
-                <p>Cada uno de ellos tiene una historia de superación, desde abandono hasta maltrato, y hoy todos viven en un ambiente seguro y lleno de cariño. Este proyecto personal es mi compromiso diario con el bienestar animal.</p>
-            </div>
-
-            <div class="activism-section">
-                <h3>🐾 Tribu Rescate</h3>
-                <h4>Comunidad de Rescate Animal</h4>
-                <p>Fundé junto a Marina Laura y Yiya <strong>Tribu Rescate</strong>, una comunidad online dedicada al rescate, reubicación y concientización sobre animales en situación de calle en Salta.</p>
-                <p>Nuestra misión es crear conciencia sobre la tenencia responsable, promover la adopción, y ser la voz de quienes no pueden hablar. A través de redes sociales, compartimos casos de rescate, educamos sobre cuidado animal y conectamos animales con familias adoptivas responsables.</p>
-            </div>
-
-            <div class="activism-section">
-                <h3>🌍 Activismo Ambiental</h3>
-                <h4>Greenpeace & Asamblea Socioambiental</h4>
-                <p>Fui <strong>activista de Greenpeace</strong>, participando en campañas de concientización ambiental y acciones directas para la protección del medio ambiente.</p>
-                <p>También formé parte de la <strong>Asamblea de Lucha Socioambiental</strong> en Salta, defendiendo territorios, recursos naturales y comunidades contra proyectos extractivistas y contaminantes. La lucha ambiental es inseparable de la justicia social.</p>
-            </div>
-
-            <p style="margin-top: 2rem; font-weight: bold; font-size: 1.2rem; text-align: center;">
-                <strong>El activismo no es solo una práctica, es una forma de vida.</strong> Cada animal rescatado es una victoria, cada persona concientizada es un paso hacia un mundo más compasivo y sustentable.
-            </p>
-        </div>
-    </section>
-
-    <!-- VIDEO DRAW MY LIFE -->
-    <section id="video">
-        <h2>Draw My Life</h2>
-        <div class="video-placeholder fade-in">
-            <h3>PRÓXIMAMENTE</h3>
-            <p>Una biografía animada contando mi historia de manera visual y emotiva.</p>
-            <p style="font-style: italic; margin-top: 1rem; color: var(--salmon);">En producción...</p>
-        </div>
-    </section>
-
-    <!-- REDES SOCIALES -->
-    <section id="redes">
-        <h2>Conecta Conmigo</h2>
-        <div class="social-grid">
-            <a href="https://septimapacha.com" target="_blank" rel="noopener noreferrer" class="social-button fade-in" aria-label="Visita Séptima Pacha">
-                <svg class="social-icon icon-music" viewBox="0 0 100 100" aria-hidden="true">
-                    <circle cx="50" cy="50" r="40"/>
-                    <path d="M30 40 L70 40 L70 60 L30 60 Z" fill="white"/>
-                </svg>
-                <span>Séptima Pacha</span>
-            </a>
-
-            <a href="https://www.instagram.com/nali.alma/" target="_blank" rel="noopener noreferrer" class="social-button fade-in" aria-label="Instagram de música de Nali">
-                <svg class="social-icon icon-music" viewBox="0 0 100 100" aria-hidden="true">
-                    <rect x="20" y="20" width="60" height="60" rx="15"/>
-                    <circle cx="50" cy="50" r="15" fill="white"/>
-                </svg>
-                <span>Instagram Música</span>
-            </a>
-
-            <a href="https://www.tiktok.com/@nalialma" target="_blank" rel="noopener noreferrer" class="social-button fade-in" aria-label="TikTok personal de Nali">
-                <svg class="social-icon icon-video" viewBox="0 0 100 100" aria-hidden="true">
-                    <path d="M40 30 L70 50 L40 70 Z"/>
-                </svg>
-                <span>TikTok Personal</span>
-            </a>
-
-            <a href="https://youtu.be/I-kJxkPrIkg" target="_blank" rel="noopener noreferrer" class="social-button fade-in" aria-label="Video clip musical de Nali">
-                <svg class="social-icon icon-video" viewBox="0 0 100 100" aria-hidden="true">
-                    <rect x="15" y="30" width="70" height="40" rx="5"/>
-                    <polygon points="45,40 60,50 45,60" fill="white"/>
-                </svg>
-                <span>Video Clip</span>
-            </a>
-
-            <a href="https://www.bandlab.com/nalia_alma/music-overview" target="_blank" rel="noopener noreferrer" class="social-button fade-in" aria-label="Música de Nali en BandLab">
-                <svg class="social-icon icon-music" viewBox="0 0 100 100" aria-hidden="true">
-                    <rect x="30" y="40" width="8" height="40"/>
-                    <rect x="46" y="25" width="8" height="55"/>
-                    <rect x="62" y="35" width="8" height="45"/>
-                </svg>
-                <span>BandLab</span>
-            </a>
-
-            <a href="https://www.instagram.com/nali.ttoo/" target="_blank" rel="noopener noreferrer" class="social-button fade-in" aria-label="Instagram de tatuajes de Nali">
-                <svg class="social-icon icon-tattoo" viewBox="0 0 100 100" aria-hidden="true">
-                    <line x1="50" y1="20" x2="50" y2="80" stroke-width="6"/>
-                    <circle cx="50" cy="25" r="8"/>
-                </svg>
-                <span>Instagram Tattoo</span>
-            </a>
-
-            <a href="https://www.tiktok.com/@nalia.tattoo" target="_blank" rel="noopener noreferrer" class="social-button fade-in" aria-label="TikTok de tatuajes de Nali">
-                <svg class="social-icon icon-tattoo" viewBox="0 0 100 100" aria-hidden="true">
-                    <path d="M30 30 Q50 10 70 30 T70 70 Q50 90 30 70 T30 30"/>
-                </svg>
-                <span>TikTok Tattoo</span>
-            </a>
-
-            <a href="https://www.instagram.com/naliart.ok/" target="_blank" rel="noopener noreferrer" class="social-button fade-in" aria-label="Instagram de artesanías de Nali">
-                <svg class="social-icon icon-art" viewBox="0 0 100 100" aria-hidden="true">
-                    <rect x="25" y="30" width="50" height="50" rx="5"/>
-                    <circle cx="40" cy="50" r="8" fill="white"/>
-                    <circle cx="60" cy="65" r="5" fill="white"/>
-                </svg>
-                <span>Artesanías</span>
-            </a>
-
-            <a href="https://www.youtube.com/@animanalia" target="_blank" rel="noopener noreferrer" class="social-button fade-in" aria-label="Canal de animación de Nali en YouTube">
-                <svg class="social-icon icon-video" viewBox="0 0 100 100" aria-hidden="true">
-                    <rect x="20" y="35" width="60" height="30" rx="3"/>
-                    <polygon points="42,45 58,52.5 42,60" fill="white"/>
-                </svg>
-                <span>Animación YouTube</span>
-            </a>
-
-            <a href="https://www.instagram.com/lalicergicaluz/" target="_blank" rel="noopener noreferrer" class="social-button fade-in" aria-label="Instagram de fotografía de Nali">
-                <svg class="social-icon icon-photo" viewBox="0 0 100 100" aria-hidden="true">
-                    <rect x="25" y="30" width="50" height="40" rx="5"/>
-                    <circle cx="50" cy="50" r="12" fill="white"/>
-                    <rect x="60" y="33" width="8" height="5"/>
-                </svg>
-                <span>Fotografía</span>
-            </a>
-
-            <a href="https://www.instagram.com/huellitasalta.ok/" target="_blank" rel="noopener noreferrer" class="social-button fade-in" aria-label="Instagram de Huellita Salta - Santuario animal">
-                <svg class="social-icon icon-animal" viewBox="0 0 100 100" aria-hidden="true">
-                    <ellipse cx="50" cy="60" rx="15" ry="20"/>
-                    <circle cx="40" cy="35" r="7"/>
-                    <circle cx="60" cy="35" r="7"/>
-                    <circle cx="30" cy="45" r="7"/>
-                    <circle cx="70" cy="45" r="7"/>
-                </svg>
-                <span>Huellita Salta IG</span>
-            </a>
-
-            <a href="https://www.tiktok.com/@huellitasalta" target="_blank" rel="noopener noreferrer" class="social-button fade-in" aria-label="TikTok de Huellita Salta">
-                <svg class="social-icon icon-animal" viewBox="0 0 100 100" aria-hidden="true">
-                    <circle cx="35" cy="40" r="8"/>
-                    <circle cx="65" cy="40" r="8"/>
-                    <path d="M30 60 Q50 75 70 60" stroke-width="4" fill="none" stroke="currentColor"/>
-                </svg>
-                <span>Huellita TikTok</span>
-            </a>
-
-            <a href="https://www.instagram.com/triburescatesalta/" target="_blank" rel="noopener noreferrer" class="social-button fade-in" aria-label="Instagram de Tribu Rescate Salta">
-                <svg class="social-icon icon-animal" viewBox="0 0 100 100" aria-hidden="true">
-                    <circle cx="50" cy="50" r="30"/>
-                    <path d="M35 50 L45 60 L65 40" stroke="white" stroke-width="5" fill="none"/>
-                </svg>
-                <span>Tribu Rescate IG</span>
-            </a>
-
-            <a href="https://www.tiktok.com/@tribu.rescate.salta" target="_blank" rel="noopener noreferrer" class="social-button fade-in" aria-label="TikTok de Tribu Rescate Salta">
-                <svg class="social-icon icon-animal" viewBox="0 0 100 100" aria-hidden="true">
-                    <path d="M50 20 L65 45 L90 45 L70 60 L80 85 L50 70 L20 85 L30 60 L10 45 L35 45 Z"/>
-                </svg>
-                <span>Tribu Rescate TikTok</span>
-            </a>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer>
-        <p>💫 NALI - Artista Multidisciplinaria</p>
-        <p>Salta, Argentina | 2025</p>
-        <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.7;">
-            Creado con amor, código y arte 🎨
+  <!-- ══ ARTIST STATEMENT ══ -->
+  <section class="statement" id="statement" aria-labelledby="statement-heading">
+    <div class="statement-inner">
+      <div class="sec-label" data-i18n="st_l">Declaración de Intenciones</div>
+      <h2 class="statement-h" id="statement-heading" data-i18n="st_h">
+        Mi obra es <em>resistencia</em><br>y es raíz
+      </h2>
+      <div class="statement-body sr">
+        <p data-i18n="st_p1">
+          Nací en el norte argentino, donde la tierra tiene nombre propio y los cerros guardan memorias que ningún libro recoge del todo. Crecí dibujando lo que no podía decir en voz alta — y con el tiempo comprendí que eso era ya un acto político.
         </p>
-    </footer>
+        <blockquote class="statement-quote" data-i18n="st_q">
+          Mis imágenes no son decoración. Son documentos. Son el registro de lo que se intenta borrar: la identidad de los pueblos originarios, el derecho a la tierra, la voz de la naturaleza cuando no tiene abogados.
+        </blockquote>
+        <p data-i18n="st_p2">
+          Mi trabajo visual nace de la militancia: fui parte de asambleas socioambientales en defensa del territorio, activista de Greenpeace y fundadora de Tribu Rescate, una comunidad dedicada a mitigar el abandono animal. Esta práctica no es paralela a mi arte — es su columna vertebral.
+        </p>
+        <p data-i18n="st_p3">
+          El mural, el tatuaje, la canción y la fotografía son para mí lenguajes distintos de un mismo grito. La Pachamama no es un concepto decorativo en mi obra: es la protagonista urgente de una crisis que no puede seguir siendo invisible.
+        </p>
+        <p data-i18n="st_p4">
+          Hoy llevo ese trabajo a Europa porque creo que el diálogo intercultural es imprescindible. El arte andino no es folclore de exportación — es una forma de ver el mundo que el mundo necesita escuchar.
+        </p>
+      </div>
+    </div>
+  </section>
 
-    <script>
-        // CARRUSEL DE IMÁGENES EN HERO
-        const heroImages = document.querySelectorAll('.hero-image');
-        let currentImageIndex = 0;
+  <div class="andean-div" aria-hidden="true"></div>
 
-        function changeHeroImage() {
-            heroImages[currentImageIndex].classList.remove('active');
-            currentImageIndex = (currentImageIndex + 1) % heroImages.length;
-            heroImages[currentImageIndex].classList.add('active');
-        }
+  <!-- ══ TRAYECTORIA ══ -->
+  <section class="trayectoria" id="trayectoria" aria-labelledby="tray-heading">
+    <div class="tray-inner">
+      <div class="tray-col sr">
+        <div class="sec-label" data-i18n="tr_l">Formación y Trayectoria</div>
+        <h2 id="tray-heading" data-i18n="tr_h">Un camino <span>multidisciplinar</span></h2>
 
-        // Cambiar imagen cada 5 segundos
-        setInterval(changeHeroImage, 5000);
+        <article class="tray-item">
+          <div class="tray-icon" aria-hidden="true"><i class="fas fa-palette"></i></div>
+          <div>
+            <div class="tray-title" data-i18n="tr1_t">Centro Polivalente de Arte · Salta</div>
+            <div class="tray-desc" data-i18n="tr1_d">Talleres de artes visuales — base técnica en pintura, dibujo y cerámica que definió mi lenguaje plástico.</div>
+            <span class="tray-tag" data-i18n="tr1_tag">Artes Visuales</span>
+          </div>
+        </article>
 
-        // Toggle menu móvil
-        function toggleMenu() {
-            const menu = document.getElementById('nav-menu');
-            menu.classList.toggle('active');
-        }
+        <article class="tray-item">
+          <div class="tray-icon" aria-hidden="true"><i class="fas fa-music"></i></div>
+          <div>
+            <div class="tray-title" data-i18n="tr2_t">Escuela Superior de Música José Lo Giudice</div>
+            <div class="tray-desc" data-i18n="tr2_d">Dos años de formación musical durante la secundaria. Guitarra, teoría y composición — los fundamentos de mis dos álbumes.</div>
+            <span class="tray-tag" data-i18n="tr2_tag">Música</span>
+          </div>
+        </article>
 
-        // Cerrar menú al hacer clic en un enlace
-        document.querySelectorAll('nav a').forEach(link => {
-            link.addEventListener('click', () => {
-                document.getElementById('nav-menu').classList.remove('active');
-            });
-        });
+        <article class="tray-item">
+          <div class="tray-icon" aria-hidden="true"><i class="fas fa-broadcast-tower"></i></div>
+          <div>
+            <div class="tray-title" data-i18n="tr3_t">Ciencias de la Comunicación · UNSa</div>
+            <div class="tray-desc" data-i18n="tr3_d">Dos años formativos que me llevaron a trabajar como conductora y panelista de TV y locutora de radio en medios locales de Salta.</div>
+            <span class="tray-tag" data-i18n="tr3_tag">Medios · Comunicación</span>
+          </div>
+        </article>
 
-        // Smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
+        <article class="tray-item">
+          <div class="tray-icon" aria-hidden="true"><i class="fas fa-chalkboard-teacher"></i></div>
+          <div>
+            <div class="tray-title" data-i18n="tr4_t">Profesorado en Artes Visuales · Tomás Cabrera</div>
+            <div class="tray-desc" data-i18n="tr4_d">En las prácticas descubrí que mi camino era la creación pura — no la enseñanza formal. Una certeza que redirigió toda mi energía al taller y al muro.</div>
+            <span class="tray-tag" data-i18n="tr4_tag">Artes Visuales</span>
+          </div>
+        </article>
 
-        // Animación de scroll para elementos
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
+        <article class="tray-item">
+          <div class="tray-icon" aria-hidden="true"><i class="fas fa-laptop-code"></i></div>
+          <div>
+            <div class="tray-title" data-i18n="tr5_t">Diseño Digital y Programación · Siglo XXI</div>
+            <div class="tray-desc" data-i18n="tr5_d">Diseño y animación digital, programación web (HTML, CSS, JS) e integración de herramientas de IA — incluyendo este sitio, construido por mí.</div>
+            <span class="tray-tag" data-i18n="tr5_tag">Tech · Diseño Digital</span>
+          </div>
+        </article>
+      </div>
 
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
+      <div class="tray-col sr d2">
+        <div class="sec-label" data-i18n="tr_l2">Activismo y Obra</div>
+        <h2 data-i18n="tr_h2">Arte como <span>acto</span></h2>
 
-        // Observar elementos con clase fade-in
-        document.querySelectorAll('.fade-in').forEach(el => {
-            observer.observe(el);
-        });
+        <article class="tray-item">
+          <div class="tray-icon" aria-hidden="true"><i class="fas fa-fist-raised"></i></div>
+          <div>
+            <div class="tray-title" data-i18n="ta1_t">Asamblea de Lucha Socioambiental</div>
+            <div class="tray-desc" data-i18n="ta1_d">Militancia activa en asambleas populares de defensa del territorio en el norte argentino — lucha directamente integrada en mi lenguaje visual.</div>
+            <span class="tray-tag" data-i18n="ta1_tag">Activismo Territorial</span>
+          </div>
+        </article>
 
-        // Observar párrafos de biografía
-        document.querySelectorAll('.bio-text p').forEach(el => {
-            observer.observe(el);
-        });
+        <article class="tray-item">
+          <div class="tray-icon" aria-hidden="true"><i class="fas fa-leaf"></i></div>
+          <div>
+            <div class="tray-title" data-i18n="ta2_t">Greenpeace Argentina</div>
+            <div class="tray-desc" data-i18n="ta2_d">Activismo ambiental que nutre mi obra plástica y musical — la defensa de la naturaleza como práctica estética y ética.</div>
+            <span class="tray-tag" data-i18n="ta2_tag">Activismo Ambiental</span>
+          </div>
+        </article>
 
-        // Efecto parallax suave en formas geométricas
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const shapes = document.querySelectorAll('.geo-shape');
-            shapes.forEach((shape, index) => {
-                const speed = 0.5 + (index * 0.1);
-                shape.style.transform = `translateY(${scrolled * speed}px)`;
-            });
-        });
+        <article class="tray-item">
+          <div class="tray-icon" aria-hidden="true"><i class="fas fa-paw"></i></div>
+          <div>
+            <div class="tray-title" data-i18n="ta3_t">Tribu Rescate — Fundadora</div>
+            <div class="tray-desc" data-i18n="ta3_d">Comunidad creada para mitigar el abandono animal en Salta. Proteccionista municipal registrada.</div>
+            <span class="tray-tag" data-i18n="ta3_tag">Derechos Animales</span>
+          </div>
+        </article>
 
-        // Cambio de color en header al hacer scroll
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
-            if (window.scrollY > 100) {
-                header.style.background = 'rgba(255, 245, 235, 0.98)';
-                header.style.boxShadow = '0 2px 25px rgba(255, 140, 105, 0.4)';
-            } else {
-                header.style.background = 'rgba(255, 245, 235, 0.95)';
-                header.style.boxShadow = '0 2px 20px rgba(255, 160, 122, 0.3)';
-            }
-        });
+        <article class="tray-item">
+          <div class="tray-icon" aria-hidden="true"><i class="fas fa-compact-disc"></i></div>
+          <div>
+            <div class="tray-title" data-i18n="ta4_t">Dos Discos Editados</div>
+            <div class="tray-desc" data-i18n="ta4_d">Primer álbum de folclore bajo mi nombre completo. Segundo álbum bajo el nombre artístico Nali Alma. Actualmente produciendo pistas de forma independiente.</div>
+            <span class="tray-tag" data-i18n="ta4_tag">Música Independiente</span>
+          </div>
+        </article>
 
-        // Animación extra para skill cards
-        document.querySelectorAll('.skill-card').forEach((card, index) => {
-            card.style.animationDelay = `${index * 0.1}s`;
-        });
+        <article class="tray-item">
+          <div class="tray-icon" aria-hidden="true"><i class="fas fa-globe-americas"></i></div>
+          <div>
+            <div class="tray-title" data-i18n="ta5_t">Séptima Pacha Co. — Fundadora</div>
+            <div class="tray-desc" data-i18n="ta5_d">Proyecto cultural independiente que integra arte visual, música, activismo y comunicación desde una perspectiva andina y contemporánea.</div>
+            <span class="tray-tag" data-i18n="ta5_tag">Proyecto Cultural</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
 
-        // Efecto de color cambiante en botones sociales al hover
-        document.querySelectorAll('.social-button').forEach(button => {
-            button.addEventListener('mouseenter', function() {
-                this.style.background = `linear-gradient(135deg, 
-                    rgba(255, 182, 193, 0.8), 
-                    rgba(255, 203, 164, 0.8))`;
-            });
-            button.addEventListener('mouseleave', function() {
-                this.style.background = 'rgba(255, 255, 255, 0.6)';
-            });
-        });
+</main><!-- /main -->
 
-        // Easter egg: Click en el logo
-        let clickCount = 0;
-        document.querySelector('.logo-nav').addEventListener('click', () => {
-            clickCount++;
-            if (clickCount === 7) {
-                document.body.style.animation = 'gradient-shift 2s ease';
-                setTimeout(() => {
-                    alert('¡Has descubierto el secreto de Nali! ✨');
-                    clickCount = 0;
-                }, 100);
-            }
-        });
+<div class="andean-div" aria-hidden="true"></div>
 
-        // Precargar intro
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                document.getElementById('intro-screen').style.display = 'none';
-            }, 5000);
-        });
-    </script>
+<!-- FOOTER -->
+<footer>
+  <div class="wiphala" style="max-width:260px;margin:0 auto 1.5rem;border-radius:3px;" aria-hidden="true"></div>
+  <div class="footer-logo">NALI ALMA</div>
+  <p class="footer-sub" data-i18n="foot">Arte Andino · Murales · Tatuajes · Música · Polonia 2026</p>
+  <p class="footer-credit">© 2026 Nali Alma · <a href="https://septimapacha.com" target="_blank" rel="noopener">Séptima Pacha Co.</a></p>
+</footer>
+
+<a href="Artnoni.html" class="mask-link" aria-label="Más arte" title="Más arte">🎭</a>
+
+<!-- ══ SCRIPTS ══ -->
+<script>
+/* ─── TRANSLATIONS ─── */
+const T={
+  es:{
+    n_about:'Sobre mí',n_st:'Declaración',n_art:'Arte Visual',n_tat:'Tatuajes',n_mus:'Música',n_con:'Contacto',
+    badge_n:'Nali Alma — Artista Andina',badge_s:'Salta, Argentina · Polonia 2026',
+    pill:'Disponible · Polonia 2026',eyebrow:'Arte Andino · Salta, Argentina',
+    hgrad:'Alma',hrole:'Muralista · Tatuadora · Música · Fotografía',
+    hdesc:'Artista multidisciplinar nacida en Salta, Argentina. Llevo los colores de la Quebrada, los símbolos de los pueblos andinos y la energía de la Pachamama a muros, piel y sonido — ahora en Europa.',
+    wa_t:'Arte Visual',wa_s:'Murales · Pintura · Ilustración',
+    wt_t:'Tatuajes',wt_s:'7 años · Salta · Polonia 2026',
+    wm_t:'Música',wm_s:'Composición · Voz · Sonido',
+    wf_t:'Fotografía',wf_s:'Registro · Sensibilidad · Visual',
+    wp_t:'Poesía',wp_s:'Letras · Palabra · Tierra',
+    cta_wa:'WhatsApp',cta_wa_l:'Escribir por WhatsApp',
+    sy:'Años tatuando',sc:'Continentes',sd:'Discos editados',sp:'Disponible 2026',
+    bio_l:'Sobre mí',bio_h:'Soy <em>Nali Alma</em>',
+    bio_q:'"Llevo el alma andina en cada trazo, cada línea, cada muro que pinto."',
+    bio_p1:'Soy Natalia Jimena Almagro, artista multidisciplinar nacida en Salta, Argentina. Mi primer recuerdo es dibujar. Desde entonces no he parado: me formé en el Centro Polivalente de Arte de Salta, estudié música en el Conservatorio José Lo Giudice, y construí mi camino desde la cerámica hasta el tatuaje, desde el mural hasta la canción.',
+    bio_p2:'Con más de 7 años tatuando, dos discos editados y una trayectoria activa en muralismo, pintura, ilustración y fotografía, llevo mi identidad andina a Europa. Fundadora de Séptima Pacha Co. Disponible en Polonia durante 2026 para proyectos artísticos, residencias y convocatorias internacionales.',
+    sk1:'Arte Mural',sk2:'Tatuaje',sk3:'Pintura',sk4:'Cerámica',sk5:'Ilustración',sk6:'Música',sk7:'Fotografía',sk8:'Arte Andino',
+    st_l:'Declaración de Intenciones',st_h:'Mi obra es <em>resistencia</em><br>y es raíz',
+    st_p1:'Nací en el norte argentino, donde la tierra tiene nombre propio y los cerros guardan memorias que ningún libro recoge del todo. Crecí dibujando lo que no podía decir en voz alta — y con el tiempo comprendí que eso era ya un acto político.',
+    st_q:'Mis imágenes no son decoración. Son documentos. Son el registro de lo que se intenta borrar: la identidad de los pueblos originarios, el derecho a la tierra, la voz de la naturaleza cuando no tiene abogados.',
+    st_p2:'Mi trabajo visual nace de la militancia: fui parte de asambleas socioambientales en defensa del territorio, activista de Greenpeace y fundadora de Tribu Rescate, una comunidad dedicada a mitigar el abandono animal. Esta práctica no es paralela a mi arte — es su columna vertebral.',
+    st_p3:'El mural, el tatuaje, la canción y la fotografía son para mí lenguajes distintos de un mismo grito. La Pachamama no es un concepto decorativo en mi obra: es la protagonista urgente de una crisis que no puede seguir siendo invisible.',
+    st_p4:'Hoy llevo ese trabajo a Europa porque creo que el diálogo intercultural es imprescindible. El arte andino no es folclore de exportación — es una forma de ver el mundo que el mundo necesita escuchar.',
+    tr_l:'Formación y Trayectoria',tr_h:'Un camino <span>multidisciplinar</span>',
+    tr_l2:'Activismo y Obra',tr_h2:'Arte como <span>acto</span>',
+    tr1_t:'Centro Polivalente de Arte · Salta',tr1_d:'Talleres de artes visuales — base técnica en pintura, dibujo y cerámica que definió mi lenguaje plástico.',tr1_tag:'Artes Visuales',
+    tr2_t:'Escuela Superior de Música José Lo Giudice',tr2_d:'Dos años de formación musical durante la secundaria. Guitarra, teoría y composición — los fundamentos de mis dos álbumes.',tr2_tag:'Música',
+    tr3_t:'Ciencias de la Comunicación · UNSa',tr3_d:'Dos años formativos que me llevaron a trabajar como conductora y panelista de TV y locutora de radio en medios locales de Salta.',tr3_tag:'Medios · Comunicación',
+    tr4_t:'Profesorado en Artes Visuales · Tomás Cabrera',tr4_d:'En las prácticas descubrí que mi camino era la creación pura — no la enseñanza formal. Una certeza que redirigió toda mi energía al taller y al muro.',tr4_tag:'Artes Visuales',
+    tr5_t:'Diseño Digital y Programación · Siglo XXI',tr5_d:'Diseño y animación digital, programación web (HTML, CSS, JS) e integración de herramientas de IA — incluyendo este sitio, construido por mí.',tr5_tag:'Tech · Diseño Digital',
+    ta1_t:'Asamblea de Lucha Socioambiental',ta1_d:'Militancia activa en asambleas populares de defensa del territorio en el norte argentino — lucha directamente integrada en mi lenguaje visual.',ta1_tag:'Activismo Territorial',
+    ta2_t:'Greenpeace Argentina',ta2_d:'Activismo ambiental que nutre mi obra plástica y musical — la defensa de la naturaleza como práctica estética y ética.',ta2_tag:'Activismo Ambiental',
+    ta3_t:'Tribu Rescate — Fundadora',ta3_d:'Comunidad creada para mitigar el abandono animal en Salta. Proteccionista municipal registrada.',ta3_tag:'Derechos Animales',
+    ta4_t:'Dos Discos Editados',ta4_d:'Primer álbum de folclore bajo mi nombre completo. Segundo álbum bajo el nombre artístico Nali Alma. Actualmente produciendo pistas de forma independiente.',ta4_tag:'Música Independiente',
+    ta5_t:'Séptima Pacha Co. — Fundadora',ta5_d:'Proyecto cultural independiente que integra arte visual, música, activismo y comunicación desde una perspectiva andina y contemporánea.',ta5_tag:'Proyecto Cultural',
+    foot:'Arte Andino · Murales · Tatuajes · Música · Polonia 2026',
+  },
+  en:{
+    n_about:'About',n_st:'Statement',n_art:'Visual Art',n_tat:'Tattoos',n_mus:'Music',n_con:'Contact',
+    badge_n:'Nali Alma — Andean Artist',badge_s:'Salta, Argentina · Poland 2026',
+    pill:'Available · Poland 2026',eyebrow:'Andean Art · Salta, Argentina',
+    hgrad:'Alma',hrole:'Muralist · Tattoo Artist · Music · Photography',
+    hdesc:"Multidisciplinary artist from northern Argentina. I bring the colors of the Quebrada, the symbols of the Andean peoples and the energy of Pachamama to walls, skin and sound — now in Europe.",
+    wa_t:'Visual Art',wa_s:'Murals · Painting · Illustration',
+    wt_t:'Tattoos',wt_s:'7 years · Salta · Poland 2026',
+    wm_t:'Music',wm_s:'Composition · Voice · Sound',
+    wf_t:'Photography',wf_s:'Gaze · Sensibility · Visual',
+    wp_t:'Poetry',wp_s:'Lyrics · Word · Earth',
+    cta_wa:'WhatsApp',cta_wa_l:'Write on WhatsApp',
+    sy:'Years tattooing',sc:'Continents',sd:'Albums released',sp:'Available 2026',
+    bio_l:'About me',bio_h:'I am <em>Nali Alma</em>',
+    bio_q:'"I carry the Andean soul in every stroke, every line, every wall I paint."',
+    bio_p1:"I'm Natalia Jimena Almagro, a multidisciplinary artist born in Salta, Argentina. My first memory is drawing. I trained at the Centro Polivalente de Arte de Salta, studied music at the Conservatorio José Lo Giudice, and built my path from ceramics to tattoo, from the mural to the song.",
+    bio_p2:"With over 7 years tattooing, two released albums and an active career in muralism, painting, illustration and photography, I carry my Andean identity to Europe. Founder of Séptima Pacha Co. Available in Poland during 2026 for artistic projects, residencies and international open calls.",
+    sk1:'Mural Art',sk2:'Tattoo',sk3:'Painting',sk4:'Ceramics',sk5:'Illustration',sk6:'Music',sk7:'Photography',sk8:'Andean Art',
+    st_l:'Artist Statement',st_h:'My work is <em>resistance</em><br>and it is roots',
+    st_p1:"I was born in northern Argentina, where the land has its own name and the hills hold memories no book fully captures. I grew up drawing what I could not say aloud — and in time I understood that was already a political act.",
+    st_q:'My images are not decoration. They are documents. They are the record of what is being erased: the identity of indigenous peoples, the right to the land, the voice of nature when it has no lawyers.',
+    st_p2:"My visual work is born from activism: I was part of socio-environmental assemblies defending territory, an activist with Greenpeace, and founder of Tribu Rescate, a community dedicated to reducing animal abandonment. This practice is not parallel to my art — it is its backbone.",
+    st_p3:"The mural, the tattoo, the song and the photograph are for me different languages of the same cry. Pachamama is not a decorative concept in my work: she is the urgent protagonist of a crisis that can no longer remain invisible.",
+    st_p4:"Today I bring this work to Europe because I believe intercultural dialogue is indispensable. Andean art is not export folklore — it is a way of seeing the world that the world needs to hear.",
+    tr_l:'Education & Career',tr_h:'A <span>multidisciplinary</span> path',
+    tr_l2:'Activism & Practice',tr_h2:'Art as <span>action</span>',
+    tr1_t:'Centro Polivalente de Arte · Salta',tr1_d:'Visual arts workshops — technical grounding in painting, drawing and ceramics that shaped my artistic language.',tr1_tag:'Visual Arts',
+    tr2_t:'Conservatorio José Lo Giudice',tr2_d:'Two years of musical training during secondary school. Guitar, theory and composition — the foundation of my two albums.',tr2_tag:'Music',
+    tr3_t:'Communication Sciences · UNSa',tr3_d:'Two formative years that led me to work as a TV presenter, panelist and radio broadcaster in local Salta media.',tr3_tag:'Media · Communication',
+    tr4_t:'Visual Arts Teaching Degree · Tomás Cabrera',tr4_d:'During practice teaching I discovered my path was pure creation — not formal education. A certainty that redirected all my energy to the studio and the wall.',tr4_tag:'Visual Arts',
+    tr5_t:'Digital Design & Programming · Siglo XXI',tr5_d:'Digital design and animation, web programming (HTML, CSS, JS) and AI tool integration — including this site, built by me.',tr5_tag:'Tech · Digital Design',
+    ta1_t:'Socio-Environmental Assembly',ta1_d:'Active participation in people\'s assemblies defending territory in northern Argentina — a struggle directly integrated into my visual language.',ta1_tag:'Territorial Activism',
+    ta2_t:'Greenpeace Argentina',ta2_d:'Environmental activism that feeds my visual and musical work — the defence of nature as aesthetic and ethical practice.',ta2_tag:'Environmental Activism',
+    ta3_t:'Tribu Rescate — Founder',ta3_d:'Community created to reduce animal abandonment in Salta. Registered municipal animal welfare advocate.',ta3_tag:'Animal Rights',
+    ta4_t:'Two Released Albums',ta4_d:'First folklore album under my full name. Second album under the artistic name Nali Alma. Currently producing tracks independently.',ta4_tag:'Independent Music',
+    ta5_t:'Séptima Pacha Co. — Founder',ta5_d:'Independent cultural project integrating visual art, music, activism and communication from an Andean and contemporary perspective.',ta5_tag:'Cultural Project',
+    foot:'Andean Art · Murals · Tattoos · Music · Poland 2026',
+  },
+  pl:{
+    n_about:'O mnie',n_st:'Manifest',n_art:'Sztuka',n_tat:'Tatuaże',n_mus:'Muzyka',n_con:'Kontakt',
+    badge_n:'Nali Alma — Artystka Andyjska',badge_s:'Salta, Argentyna · Polska 2026',
+    pill:'Dostępna · Polska 2026',eyebrow:'Sztuka Andyjska · Salta, Argentyna',
+    hgrad:'Alma',hrole:'Muralistka · Tatuażystka · Muzyka · Fotografia',
+    hdesc:'Interdyscyplinarna artystka z północnej Argentyny. Przenoszę kolory Quebrada, symbole ludów andyjskich i energię Pachamamy na ściany, skórę i dźwięk — teraz w Europie.',
+    wa_t:'Sztuka Wizualna',wa_s:'Murale · Malarstwo · Ilustracja',
+    wt_t:'Tatuaże',wt_s:'7 lat · Salta · Polska 2026',
+    wm_t:'Muzyka',wm_s:'Kompozycja · Głos · Dźwięk',
+    wf_t:'Fotografia',wf_s:'Kadr · Wrażliwość · Wizja',
+    wp_t:'Poezja',wp_s:'Słowa · Wiersze · Ziemia',
+    cta_wa:'WhatsApp',cta_wa_l:'Napisz przez WhatsApp',
+    sy:'Lat tatuowania',sc:'Kontynenty',sd:'Wydane albumy',sp:'Dostępna 2026',
+    bio_l:'O mnie',bio_h:'Jestem <em>Nali Alma</em>',
+    bio_q:'"Noszę andyjską duszę w każdym pociągnięciu, każdej linii, każdej ścianie, którą maluję."',
+    bio_p1:'Jestem Natalia Jimena Almagro, interdyscyplinarna artystka urodzona w Salta w Argentynie. Moim pierwszym wspomnieniem jest rysowanie. Od tamtej pory nie przestałam: kształciłam się w Centro Polivalente de Arte de Salta, studiowałam muzykę w Konserwatorium José Lo Giudice i budowałam swoją ścieżkę od ceramiki do tatuażu, od muralu do piosenki.',
+    bio_p2:'Z ponad 7-letnim doświadczeniem w tatuowaniu, dwoma wydanymi albumami i aktywną karierą w malarstwie muralowym, malarstwie, ilustracji i fotografii, przenoszę swoją andyjską tożsamość do Europy. Założycielka Séptima Pacha Co. Dostępna w Polsce w 2026 roku na projekty artystyczne, rezydencje i międzynarodowe nabory.',
+    sk1:'Mural',sk2:'Tatuaż',sk3:'Malarstwo',sk4:'Ceramika',sk5:'Ilustracja',sk6:'Muzyka',sk7:'Fotografia',sk8:'Sztuka Andyjska',
+    st_l:'Manifest Artystyczny',st_h:'Moja sztuka to <em>opór</em><br>i korzeń',
+    st_p1:'Urodziłam się na północy Argentyny, gdzie ziemia ma własne imię, a góry przechowują wspomnienia, których żadna książka w pełni nie oddaje. Dorastałam, rysując to, czego nie mogłam powiedzieć głośno — i z czasem zrozumiałam, że to już był akt polityczny.',
+    st_q:'Moje obrazy nie są dekoracją. Są dokumentami. Są zapisem tego, co próbuje się wymazać: tożsamości rdzennych ludów, prawa do ziemi, głosu natury, gdy nie ma prawników.',
+    st_p2:'Moja praca wizualna rodzi się z aktywizmu: byłam częścią zgromadzeń społeczno-środowiskowych w obronie terytorium, aktywistką Greenpeace i założycielką Tribu Rescate — wspólnoty poświęconej ograniczeniu porzucania zwierząt. Ta praktyka nie jest równoległa do mojej sztuki — jest jej kręgosłupem.',
+    st_p3:'Mural, tatuaż, pieśń i fotografia są dla mnie różnymi językami tego samego krzyku. Pachamama nie jest dekoracyjnym pojęciem w mojej twórczości: jest pilną protagonistką kryzysu, który nie może pozostawać niewidoczny.',
+    st_p4:'Dziś przynoszę tę pracę do Europy, bo wierzę, że dialog międzykulturowy jest niezbędny. Sztuka andyjska to nie folklor eksportowy — to sposób patrzenia na świat, którego świat potrzebuje usłyszeć.',
+    tr_l:'Wykształcenie i Kariera',tr_h:'Droga <span>multidyscyplinarna</span>',
+    tr_l2:'Aktywizm i Praktyka',tr_h2:'Sztuka jako <span>czyn</span>',
+    tr1_t:'Centro Polivalente de Arte · Salta',tr1_d:'Warsztaty sztuk wizualnych — techniczne podstawy malarstwa, rysunku i ceramiki, które ukształtowały mój język plastyczny.',tr1_tag:'Sztuki Wizualne',
+    tr2_t:'Konserwatorium José Lo Giudice',tr2_d:'Dwa lata edukacji muzycznej w liceum. Gitara, teoria i kompozycja — fundamenty moich dwóch albumów.',tr2_tag:'Muzyka',
+    tr3_t:'Nauki o Komunikacji · UNSa',tr3_d:'Dwa lata formacji, które doprowadziły mnie do pracy jako prezenterka TV, panelistka i spikerka radiowa w lokalnych mediach Salty.',tr3_tag:'Media · Komunikacja',
+    tr4_t:'Studia Pedagogiczne — Sztuki Wizualne · Tomás Cabrera',tr4_d:'Podczas praktyk odkryłam, że moją drogą jest czysta twórczość — nie formalne nauczanie. Pewność, która skierowała całą moją energię do pracowni i na mur.',tr4_tag:'Sztuki Wizualne',
+    tr5_t:'Projektowanie Cyfrowe i Programowanie · Siglo XXI',tr5_d:'Projektowanie i animacja cyfrowa, programowanie stron internetowych (HTML, CSS, JS) i integracja narzędzi AI — łącznie z tą stroną, zbudowaną przeze mnie.',tr5_tag:'Tech · Design Cyfrowy',
+    ta1_t:'Zgromadzenie Walki Społeczno-Środowiskowej',ta1_d:'Aktywny udział w ludowych zgromadzeniach w obronie terytorium na północy Argentyny — walka bezpośrednio wpleciona w mój język wizualny.',ta1_tag:'Aktywizm Terytorialny',
+    ta2_t:'Greenpeace Argentyna',ta2_d:'Aktywizm środowiskowy, który karmi moją twórczość plastyczną i muzyczną — obrona natury jako praktyka estetyczna i etyczna.',ta2_tag:'Aktywizm Ekologiczny',
+    ta3_t:'Tribu Rescate — Założycielka',ta3_d:'Wspólnota stworzona w celu ograniczenia porzucania zwierząt w Salcie. Zarejestrowana miejska opiekunka zwierząt.',ta3_tag:'Prawa Zwierząt',
+    ta4_t:'Dwa Wydane Albumy',ta4_d:'Pierwszy album folklorystyczny pod pełnym imieniem. Drugi album pod pseudonimem artystycznym Nali Alma. Obecnie niezależnie produkuje ścieżki dźwiękowe.',ta4_tag:'Muzyka Niezależna',
+    ta5_t:'Séptima Pacha Co. — Założycielka',ta5_d:'Niezależny projekt kulturalny integrujący sztuki wizualne, muzykę, aktywizm i komunikację z perspektywy andyjskiej i współczesnej.',ta5_tag:'Projekt Kulturalny',
+    foot:'Sztuka Andyjska · Murale · Tatuaże · Muzyka · Polska 2026',
+  },
+  fr:{
+    n_about:'À propos',n_st:'Déclaration',n_art:'Art visuel',n_tat:'Tatouages',n_mus:'Musique',n_con:'Contact',
+    badge_n:'Nali Alma — Artiste Andine',badge_s:'Salta, Argentine · Pologne 2026',
+    pill:'Disponible · Pologne 2026',eyebrow:'Art Andin · Salta, Argentine',
+    hgrad:'Alma',hrole:'Muraliste · Tatoueuse · Musique · Photographie',
+    hdesc:"Artiste multidisciplinaire du nord de l'Argentine. Je porte les couleurs de la Quebrada, les symboles des peuples andins et l'énergie de la Pachamama sur les murs, la peau et le son — maintenant en Europe.",
+    wa_t:'Art Visuel',wa_s:'Murales · Peinture · Illustration',
+    wt_t:'Tatouages',wt_s:'7 ans · Salta · Pologne 2026',
+    wm_t:'Musique',wm_s:'Composition · Voix · Son',
+    wf_t:'Photographie',wf_s:'Regard · Sensibilité · Visuel',
+    wp_t:'Poésie',wp_s:'Paroles · Mot · Terre',
+    cta_wa:'WhatsApp',cta_wa_l:'Écrire sur WhatsApp',
+    sy:'Ans de tatouage',sc:'Continents',sd:'Albums publiés',sp:'Disponible 2026',
+    bio_l:'À propos',bio_h:'Je suis <em>Nali Alma</em>',
+    bio_q:'"Je porte l\'âme andine dans chaque trait, chaque ligne, chaque mur que je peins."',
+    bio_p1:"Je suis Natalia Jimena Almagro, artiste multidisciplinaire née à Salta, en Argentine. Mon premier souvenir est de dessiner. Depuis, je n'ai pas arrêté : je me suis formée au Centro Polivalente de Arte de Salta, j'ai étudié la musique au Conservatoire José Lo Giudice, et j'ai construit mon chemin de la céramique au tatouage, du mural à la chanson.",
+    bio_p2:"Avec plus de 7 ans de tatouage, deux albums publiés et une carrière active dans la peinture murale, la peinture, l'illustration et la photographie, je porte mon identité andine en Europe. Fondatrice de Séptima Pacha Co. Disponible en Pologne en 2026 pour des projets artistiques, des résidences et des appels à candidatures internationaux.",
+    sk1:'Art Mural',sk2:'Tatouage',sk3:'Peinture',sk4:'Céramique',sk5:'Illustration',sk6:'Musique',sk7:'Photographie',sk8:'Art Andin',
+    st_l:'Déclaration d\'Intention',st_h:'Mon œuvre est <em>résistance</em><br>et est racine',
+    st_p1:"Je suis née dans le nord de l'Argentine, où la terre a un nom propre et les collines gardent des mémoires qu'aucun livre ne recueille tout à fait. J'ai grandi en dessinant ce que je ne pouvais pas dire à voix haute — et avec le temps j'ai compris que c'était déjà un acte politique.",
+    st_q:"Mes images ne sont pas de la décoration. Ce sont des documents. Ce sont le registre de ce qu'on tente d'effacer : l'identité des peuples originaires, le droit à la terre, la voix de la nature quand elle n'a pas d'avocats.",
+    st_p2:"Mon travail visuel naît du militantisme : j'ai fait partie d'assemblées socio-environnementales pour la défense du territoire, été militante de Greenpeace et fondatrice de Tribu Rescate, une communauté dédiée à réduire l'abandon animal. Cette pratique n'est pas parallèle à mon art — c'est sa colonne vertébrale.",
+    st_p3:"La fresque, le tatouage, la chanson et la photographie sont pour moi des langages différents d'un même cri. La Pachamama n'est pas un concept décoratif dans mon œuvre : elle est la protagoniste urgente d'une crise qui ne peut plus rester invisible.",
+    st_p4:"Aujourd'hui j'apporte ce travail en Europe parce que je crois que le dialogue interculturel est indispensable. L'art andin n'est pas un folklore d'exportation — c'est une façon de voir le monde dont le monde a besoin d'entendre parler.",
+    tr_l:'Formation et Parcours',tr_h:'Un chemin <span>multidisciplinaire</span>',
+    tr_l2:'Militantisme et Pratique',tr_h2:'L\'art comme <span>acte</span>',
+    tr1_t:'Centro Polivalente de Arte · Salta',tr1_d:'Ateliers d\'arts visuels — base technique en peinture, dessin et céramique qui a défini mon langage plastique.',tr1_tag:'Arts Visuels',
+    tr2_t:'Conservatoire José Lo Giudice',tr2_d:'Deux ans de formation musicale au lycée. Guitare, théorie et composition — les fondements de mes deux albums.',tr2_tag:'Musique',
+    tr3_t:'Sciences de la Communication · UNSa',tr3_d:'Deux années formatives qui m\'ont amenée à travailler comme présentatrice TV, panéliste et speakerine radio dans les médias locaux de Salta.',tr3_tag:'Médias · Communication',
+    tr4_t:'Enseignement des Arts Visuels · Tomás Cabrera',tr4_d:'Pendant les stages, j\'ai découvert que mon chemin était la création pure — pas l\'enseignement formel. Une certitude qui a redirigé toute mon énergie vers l\'atelier et le mur.',tr4_tag:'Arts Visuels',
+    tr5_t:'Design Digital et Programmation · Siglo XXI',tr5_d:'Design et animation numériques, programmation web (HTML, CSS, JS) et intégration d\'outils d\'IA — y compris ce site, construit par moi.',tr5_tag:'Tech · Design Digital',
+    ta1_t:'Assemblée de Lutte Socio-Environnementale',ta1_d:'Militantisme actif dans des assemblées populaires pour la défense du territoire dans le nord argentin — une lutte directement intégrée dans mon langage visuel.',ta1_tag:'Militantisme Territorial',
+    ta2_t:'Greenpeace Argentine',ta2_d:'Militantisme environnemental qui nourrit mon œuvre plastique et musicale — la défense de la nature comme pratique esthétique et éthique.',ta2_tag:'Militantisme Environnemental',
+    ta3_t:'Tribu Rescate — Fondatrice',ta3_d:'Communauté créée pour réduire l\'abandon animal à Salta. Protectrice animale municipale enregistrée.',ta3_tag:'Droits Animaux',
+    ta4_t:'Deux Albums Publiés',ta4_d:'Premier album de folklore sous mon nom complet. Deuxième album sous le nom artistique Nali Alma. Produit actuellement des pistes de façon indépendante.',ta4_tag:'Musique Indépendante',
+    ta5_t:'Séptima Pacha Co. — Fondatrice',ta5_d:'Projet culturel indépendant intégrant art visuel, musique, militantisme et communication depuis une perspective andine et contemporaine.',ta5_tag:'Projet Culturel',
+    foot:'Art Andin · Murales · Tatouages · Musique · Pologne 2026',
+  }
+};
+
+let lang='es';
+function applyLang(l){
+  lang=l;
+  document.documentElement.lang=l;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const k=el.getAttribute('data-i18n');
+    if(T[l]&&T[l][k]!=null) el.innerHTML=T[l][k];
+  });
+  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.dataset.lang===l));
+}
+document.querySelectorAll('.lang-btn').forEach(b=>b.addEventListener('click',()=>applyLang(b.dataset.lang)));
+
+/* ─── STARS ─── */
+(function(){
+  const c=document.getElementById('stars');
+  for(let i=0;i<80;i++){
+    const s=document.createElement('div');s.className='star';
+    const sz=Math.random()*1.8+.4;
+    s.style.cssText=`left:${Math.random()*100}%;top:${Math.random()*100}%;width:${sz}px;height:${sz}px;--d:${2+Math.random()*3}s;--dl:${Math.random()*4}s`;
+    c.appendChild(s);
+  }
+})();
+
+/* ─── SPLASH ─── */
+(function(){
+  const canvas=document.getElementById('splashCanvas');
+  const ctx=canvas.getContext('2d');
+  function resize(){canvas.width=window.innerWidth;canvas.height=window.innerHeight;}
+  resize();
+  window.addEventListener('resize',resize,{passive:true});
+  const colors=['#CC0000','#E8720C','#F5C400','#F0EAD6','#00913A','#005BAA','#5C2D91'];
+  let prog=0,raf;
+  function draw(){
+    prog=Math.min(prog+.007,1);
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    const cx=canvas.width/2, cy=canvas.height/2;
+    const r=Math.min(canvas.width,canvas.height)*.42*prog;
+    for(let i=0;i<7;i++){
+      const a=(i/7)*Math.PI*2-Math.PI/2;
+      ctx.strokeStyle=colors[i]+'88';ctx.lineWidth=1.5;
+      ctx.beginPath();ctx.moveTo(cx,cy);ctx.lineTo(cx+Math.cos(a)*r,cy+Math.sin(a)*r);ctx.stroke();
+      if(prog>.35){
+        const mid=r*.55,sub=r*.4,a2=a+.28,a3=a-.28;
+        ctx.strokeStyle=colors[i]+'44';ctx.lineWidth=1;
+        ctx.beginPath();ctx.moveTo(cx+Math.cos(a)*mid,cy+Math.sin(a)*mid);
+        ctx.lineTo(cx+Math.cos(a)*mid+Math.cos(a2)*sub,cy+Math.sin(a)*mid+Math.sin(a2)*sub);ctx.stroke();
+        ctx.beginPath();ctx.moveTo(cx+Math.cos(a)*mid,cy+Math.sin(a)*mid);
+        ctx.lineTo(cx+Math.cos(a)*mid+Math.cos(a3)*sub,cy+Math.sin(a)*mid+Math.sin(a3)*sub);ctx.stroke();
+      }
+    }
+    if(prog>.25){
+      ctx.strokeStyle='rgba(200,146,42,.35)';ctx.lineWidth=1;
+      ctx.beginPath();ctx.arc(cx,cy,(prog-.25)*r*1.3,0,Math.PI*2);ctx.stroke();
+    }
+    if(prog<1) raf=requestAnimationFrame(draw);
+  }
+  draw();
+  function hideSplash(){
+    cancelAnimationFrame(raf);
+    document.getElementById('splash').classList.add('out');
+  }
+  let loaded=false, timerDone=false;
+  function tryHide(){ if(loaded && timerDone) hideSplash(); }
+  window.addEventListener('load',()=>{ loaded=true; tryHide(); });
+  setTimeout(()=>{ timerDone=true; tryHide(); }, 3000);
+  setTimeout(hideSplash, 4500);
+})();
+
+/* ─── NAV SCROLL ─── */
+window.addEventListener('scroll',()=>
+  document.getElementById('nav').classList.toggle('scrolled',scrollY>60)
+,{passive:true});
+
+/* ─── DRAWER ─── */
+const hbg     = document.getElementById('hamburger');
+const drawer  = document.getElementById('drawer');
+const overlay = document.getElementById('dOverlay');
+const dClose  = document.getElementById('drawerClose');
+
+function openDrawer(){
+  drawer.classList.add('open');overlay.classList.add('open');
+  hbg.classList.add('open');hbg.setAttribute('aria-expanded','true');
+  document.body.classList.add('locked');
+  setTimeout(()=>{ dClose.focus(); }, 350);
+}
+function closeDrawer(){
+  drawer.classList.remove('open');overlay.classList.remove('open');
+  hbg.classList.remove('open');hbg.setAttribute('aria-expanded','false');
+  document.body.classList.remove('locked');
+  hbg.focus();
+}
+function toggleDrawer(){ drawer.classList.contains('open') ? closeDrawer() : openDrawer(); }
+
+hbg.addEventListener('click', e=>{ e.stopPropagation(); toggleDrawer(); });
+dClose.addEventListener('click', closeDrawer);
+overlay.addEventListener('click', closeDrawer);
+document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeDrawer(); });
+
+drawer.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click', e=>{
+    e.preventDefault();
+    const id = a.getAttribute('href');
+    closeDrawer();
+    setTimeout(()=>{
+      const el = document.querySelector(id);
+      if(el){
+        const navH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav')) || 68;
+        window.scrollTo({ top: el.getBoundingClientRect().top + scrollY - navH - 8, behavior:'smooth' });
+      }
+    }, 420);
+  });
+});
+
+/* ─── SCROLL REVEAL ─── */
+const obs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); } });
+},{threshold:.1,rootMargin:'0px 0px -28px 0px'});
+document.querySelectorAll('.sr').forEach(el=>obs.observe(el));
+</script>
 </body>
 </html>
