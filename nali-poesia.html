@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>En construcción · Nali — nalialma.art</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#07050A">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Barlow+Condensed:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+/* ═══════════════════════════
+   TOKENS
+   ═══════════════════════════ */
+:root{
+  --rojo:#CC0000; --naranja:#E8720C; --amarillo:#F5C400;
+  --verde:#00913A; --azul:#005BAA; --violeta:#5C2D91; --wipblanco:#F0EAD6;
+  --noche:#07050A; --oro:#C8922A; --oro-l:#E8B84B;
+  --crema:#F0E6D0; --cdim:rgba(240,230,208,.6);
+  --ffd:'Cinzel',serif; --ffc:'Barlow Condensed',sans-serif;
+  --ease:cubic-bezier(.4,0,.2,1);
+}
+
+/* ═══════════════════════════
+   BASE
+   ═══════════════════════════ */
+*{ margin:0; padding:0; box-sizing:border-box; }
+html, body{
+  height:100%; overflow-x:hidden;
+  background:var(--noche);
+  font-family:var(--ffc);
+  color:var(--crema);
+}
+
+/* ═══════════════════════════
+   WIPHALA (franja superior)
+   ═══════════════════════════ */
+.wiphala{
+  position:fixed; top:0; left:0; width:100%; height:5px; z-index:100;
+  background:linear-gradient(90deg,
+    var(--rojo) 0% 14.28%, var(--naranja) 14.28% 28.56%,
+    var(--amarillo) 28.56% 42.84%, var(--wipblanco) 42.84% 57.12%,
+    var(--verde) 57.12% 71.40%, var(--azul) 71.40% 85.68%,
+    var(--violeta) 85.68% 100%);
+}
+
+/* ═══════════════════════════
+   FONDO: GOTAS DE PINTURA ORBITANDO
+   Partículas en los 7 colores de la wiphala
+   que flotan y parpadean de fondo.
+   ═══════════════════════════ */
+#canvas-bg{
+  position:fixed; inset:0; z-index:0; pointer-events:none;
+}
+
+/* Resplandor ambiental suave */
+.ambient{
+  position:fixed; inset:0; z-index:0; pointer-events:none;
+  background:
+    radial-gradient(ellipse 50% 50% at 20% 30%, rgba(232,114,12,.06) 0%,transparent 70%),
+    radial-gradient(ellipse 45% 45% at 80% 70%, rgba(92,45,145,.07) 0%,transparent 70%),
+    radial-gradient(ellipse 60% 40% at 50% 100%, rgba(74,32,0,.4)   0%,transparent 60%);
+}
+
+/* ═══════════════════════════
+   SELECTOR DE IDIOMA (esquina)
+   ═══════════════════════════ */
+.lang-bar{
+  position:fixed; top:16px; right:1.4rem; z-index:200;
+  display:flex; gap:.2rem; align-items:center;
+  background:rgba(7,5,10,.7); border:1px solid rgba(200,146,42,.2);
+  border-radius:30px; padding:.2rem .4rem;
+  backdrop-filter:blur(12px);
+}
+.lb{
+  border:none; background:none;
+  font-family:var(--ffc); font-size:.68rem; font-weight:700;
+  letter-spacing:1px; text-transform:uppercase;
+  color:rgba(240,230,208,.38); padding:.2rem .4rem; border-radius:12px;
+  cursor:pointer; transition:.25s var(--ease);
+}
+.lb.active{ background:var(--oro); color:var(--noche); }
+.lb:hover:not(.active){ color:var(--oro-l); }
+
+/* ═══════════════════════════
+   CONTENIDO CENTRAL
+   ═══════════════════════════ */
+.page{
+  position:relative; z-index:10;
+  min-height:100dvh;
+  display:flex; flex-direction:column;
+  align-items:center; justify-content:center;
+  padding:6rem 1.5rem 4rem;
+  text-align:center;
+  gap:0;
+}
+
+/* ──────────────────────────
+   ANIMACIÓN: PINCEL PINTANDO
+   SVG animado con stroke-dashoffset.
+   Dibuja los trazos del ícono de pincel
+   de izquierda a derecha, como si estuviera
+   creando la página en vivo.
+   ────────────────────────── */
+.brush-wrap{
+  position:relative;
+  width:min(340px, 82vw);
+  margin-bottom:2.2rem;
+}
+
+/* Los trazos del pincel se "dibujan" uno a uno */
+.brush-stroke{
+  fill:none;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  animation:drawStroke 1.8s var(--ease) forwards;
+  stroke-dasharray:var(--len,400);
+  stroke-dashoffset:var(--len,400);
+  opacity:0;
+}
+@keyframes drawStroke{
+  0%{ stroke-dashoffset:var(--len,400); opacity:1; }
+  100%{ stroke-dashoffset:0; opacity:1; }
+}
+
+/* Manchas de pintura que aparecen cuando el pincel "toca" */
+.paint-drop{
+  opacity:0;
+  animation:dropIn .5s var(--ease) var(--dd,.5s) forwards;
+  transform-origin:center;
+}
+@keyframes dropIn{
+  0%{ opacity:0; transform:scale(0) rotate(-20deg); }
+  60%{ transform:scale(1.2) rotate(4deg); }
+  100%{ opacity:1; transform:scale(1) rotate(0deg); }
+}
+
+/* El pincel se mueve de derecha a izquierda */
+.brush-icon{
+  animation:brushMove 2.2s var(--ease) forwards;
+  transform-origin:right bottom;
+}
+@keyframes brushMove{
+  0%{ transform:translateX(0); opacity:1; }
+  85%{ transform:translateX(-280px); opacity:1; }
+  100%{ transform:translateX(-280px); opacity:0; }
+}
+
+/* ──────────────────────────
+   BARRA DE PROGRESO TIPO PINTURA
+   No es un porcentaje numérico — es una barra
+   que simula ser una pincelada que va creciendo.
+   ────────────────────────── */
+.progress-track{
+  width:min(260px,70vw);
+  height:8px;
+  background:rgba(255,255,255,.04);
+  border-radius:4px;
+  overflow:hidden;
+  position:relative;
+  margin:0 auto 2.8rem;
+  border:1px solid rgba(200,146,42,.15);
+}
+.progress-fill{
+  height:100%; width:0%;
+  background:linear-gradient(90deg,
+    var(--rojo),var(--naranja),var(--amarillo),
+    var(--verde),var(--azul),var(--violeta));
+  border-radius:4px;
+  animation:fillBar 3.5s cubic-bezier(.25,.46,.45,.94) 1.5s forwards;
+  position:relative;
+}
+/* Brillo que recorre la barra */
+.progress-fill::after{
+  content:'';
+  position:absolute; top:0; right:0;
+  width:24px; height:100%;
+  background:rgba(255,255,255,.45);
+  filter:blur(4px);
+  border-radius:4px;
+}
+@keyframes fillBar{ from{width:0%} to{width:73%} }
+
+/* Texto de estado */
+.progress-label{
+  font-family:var(--ffc); font-size:.6rem; letter-spacing:2.5px;
+  text-transform:uppercase; color:var(--cdim);
+  margin-top:.55rem;
+  animation:labelPulse 2s ease infinite 2s;
+}
+@keyframes labelPulse{ 0%,100%{opacity:.55} 50%{opacity:1} }
+
+/* ──────────────────────────
+   TITULAR Y MENSAJE
+   ────────────────────────── */
+.brand{
+  font-family:var(--ffd); font-size:.9rem; letter-spacing:6px;
+  color:var(--oro); margin-bottom:1rem;
+  opacity:0; animation:fadeUp .8s var(--ease) 2.8s forwards;
+}
+.main-msg{
+  font-family:var(--ffd);
+  font-size:clamp(1.5rem,5vw,2.6rem);
+  font-weight:700; line-height:1.12;
+  color:var(--crema); letter-spacing:.5px;
+  max-width:560px;
+  opacity:0; animation:fadeUp .9s var(--ease) 3.1s forwards;
+}
+.main-msg em{
+  font-style:normal;
+  background:linear-gradient(125deg,var(--naranja),var(--amarillo));
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.sub-msg{
+  font-size:clamp(.88rem,2.5vw,1.05rem);
+  color:var(--cdim); line-height:1.8;
+  max-width:400px; margin-top:1rem;
+  opacity:0; animation:fadeUp .9s var(--ease) 3.4s forwards;
+}
+@keyframes fadeUp{
+  from{ opacity:0; transform:translateY(14px); }
+  to  { opacity:1; transform:none; }
+}
+
+/* Anillo pulsante decorativo alrededor del "NALI" */
+.pulse-ring{
+  display:inline-block; position:relative;
+  margin-bottom:1.6rem;
+}
+.pulse-ring::before,
+.pulse-ring::after{
+  content:'';
+  position:absolute; inset:-8px; border-radius:50%;
+  border:1px solid rgba(200,146,42,.3);
+  animation:ringPulse 2.5s ease-out infinite;
+}
+.pulse-ring::after{ animation-delay:.9s; }
+@keyframes ringPulse{
+  0%  { transform:scale(.85); opacity:.7; }
+  100%{ transform:scale(1.55); opacity:0; }
+}
+.nali-monogram{
+  position:relative; z-index:1;
+  width:72px; height:72px; border-radius:50%;
+  background:rgba(200,146,42,.07);
+  border:1px solid rgba(200,146,42,.4);
+  display:flex; align-items:center; justify-content:center;
+  font-family:var(--ffd); font-size:1.3rem; font-weight:900;
+  color:var(--oro-l); letter-spacing:2px;
+}
+
+/* ──────────────────────────
+   ACCIONES: galería + WhatsApp
+   ────────────────────────── */
+.actions{
+  display:flex; flex-wrap:wrap; gap:.7rem; justify-content:center;
+  margin-top:2.2rem;
+  opacity:0; animation:fadeUp .9s var(--ease) 3.7s forwards;
+}
+.btn-gallery{
+  display:inline-flex; align-items:center; gap:.5rem;
+  font-family:var(--ffc); font-size:.78rem; letter-spacing:2px;
+  text-transform:uppercase; font-weight:700;
+  color:var(--crema);
+  border:1.5px solid rgba(200,146,42,.35);
+  border-radius:50px; padding:.65rem 1.4rem;
+  transition:.3s var(--ease); text-decoration:none;
+}
+.btn-gallery:hover{ border-color:var(--oro-l); color:var(--oro-l); background:rgba(200,146,42,.07); }
+.btn-wa{
+  display:inline-flex; align-items:center; gap:.5rem;
+  font-family:var(--ffc); font-size:.78rem; letter-spacing:2px;
+  text-transform:uppercase; font-weight:700;
+  color:#fff;
+  background:linear-gradient(135deg,#128C7E,#075E54);
+  border-radius:50px; padding:.65rem 1.4rem;
+  box-shadow:0 6px 20px rgba(18,140,126,.3);
+  transition:.3s var(--ease); text-decoration:none;
+}
+.btn-wa:hover{ transform:translateY(-2px); box-shadow:0 10px 28px rgba(18,140,126,.45); }
+
+/* ──────────────────────────
+   REDES SOCIALES
+   ────────────────────────── */
+.socials{
+  display:flex; flex-wrap:wrap; gap:.5rem; justify-content:center;
+  margin-top:1.8rem;
+  opacity:0; animation:fadeUp .9s var(--ease) 4s forwards;
+}
+.soc-pill{
+  display:inline-flex; align-items:center; gap:.4rem;
+  font-family:var(--ffc); font-size:.65rem; letter-spacing:1px;
+  color:var(--cdim);
+  border:1px solid rgba(200,146,42,.18);
+  border-radius:30px; padding:.28rem .8rem;
+  transition:.3s var(--ease); text-decoration:none;
+}
+.soc-pill i{ color:var(--oro); font-size:.7rem; }
+.soc-pill:hover{ color:var(--crema); border-color:rgba(200,146,42,.5); background:rgba(200,146,42,.07); }
+
+/* ──────────────────────────
+   FIRMA / PIE
+   ────────────────────────── */
+.footer-note{
+  position:fixed; bottom:1.2rem; left:0; right:0;
+  text-align:center; z-index:10;
+  font-family:var(--ffc); font-size:.6rem; letter-spacing:2px;
+  text-transform:uppercase; color:rgba(240,230,208,.18);
+}
+
+/* ═══════════════════════════
+   RESPONSIVE
+   ═══════════════════════════ */
+@media(max-width:480px){
+  .brush-wrap{ width:90vw; }
+  .main-msg{ font-size:clamp(1.3rem,6vw,2rem); }
+  .lang-bar{ top:12px; right:.8rem; }
+}
+@media(prefers-reduced-motion:reduce){
+  *{ animation-duration:.01ms !important; transition-duration:.01ms !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- Wiphala fija arriba -->
+<div class="wiphala"></div>
+
+<!-- Fondo ambiental -->
+<div class="ambient"></div>
+<canvas id="canvas-bg"></canvas>
+
+<!-- Selector de idioma -->
+<div class="lang-bar" role="group" aria-label="Idioma">
+  <button class="lb active" data-lang="es">ES</button>
+  <button class="lb" data-lang="pl">PL</button>
+  <button class="lb" data-lang="en">EN</button>
+  <button class="lb" data-lang="fr">FR</button>
+</div>
+
+<!-- ═══ CONTENIDO PRINCIPAL ═══ -->
+<main class="page" role="main">
+
+  <!-- Monograma con anillos pulsantes -->
+  <div class="pulse-ring" style="opacity:0;animation:fadeUp .8s var(--ease) .3s forwards;">
+    <div class="nali-monogram">AN</div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       ANIMACIÓN DEL PINCEL — SVG dibujado en CSS
+       El pincel "pinta" trazos que se revelan con
+       stroke-dashoffset, simulando el acto de crear.
+       Cada trazo tiene su propio delay y color.
+       ═══════════════════════════════════════════════ -->
+  <div class="brush-wrap" aria-hidden="true">
+    <svg viewBox="0 0 340 120" xmlns="http://www.w3.org/2000/svg">
+
+      <!-- Trazo 1: arco superior (naranja) -->
+      <path class="brush-stroke" style="--len:180;animation-delay:.4s"
+            d="M 20 90 Q 80 20 170 55 Q 220 75 260 45"
+            stroke="#E8720C" stroke-width="4.5"/>
+
+      <!-- Trazo 2: arco inferior (violeta) -->
+      <path class="brush-stroke" style="--len:190;animation-delay:.9s"
+            d="M 30 100 Q 100 50 185 80 Q 240 100 300 65"
+            stroke="#5C2D91" stroke-width="3.5"/>
+
+      <!-- Trazo 3: diagonal ascendente (verde) -->
+      <path class="brush-stroke" style="--len:250;animation-delay:1.3s"
+            d="M 10 108 C 70 108 120 30 200 35 C 260 38 295 80 330 78"
+            stroke="#00913A" stroke-width="3"/>
+
+      <!-- Trazo 4: curva corta central (rojo) -->
+      <path class="brush-stroke" style="--len:120;animation-delay:1.7s"
+            d="M 60 70 Q 130 25 195 55"
+            stroke="#CC0000" stroke-width="5"/>
+
+      <!-- Trazo 5: subrayado largo (amarillo) -->
+      <path class="brush-stroke" style="--len:280;animation-delay:2s"
+            d="M 5 112 Q 100 105 200 110 Q 270 113 335 108"
+            stroke="#F5C400" stroke-width="2.5"/>
+
+      <!-- Manchas de pintura (gotas que aparecen al "pisar" el pincel) -->
+      <circle class="paint-drop" style="--dd:.6s"  cx="80"  cy="55"  r="5"   fill="#E8720C" opacity=".7"/>
+      <circle class="paint-drop" style="--dd:1s"   cx="170" cy="57"  r="7"   fill="#5C2D91" opacity=".6"/>
+      <circle class="paint-drop" style="--dd:1.4s" cx="250" cy="47"  r="4"   fill="#00913A" opacity=".7"/>
+      <circle class="paint-drop" style="--dd:1.8s" cx="130" cy="38"  r="5.5" fill="#CC0000" opacity=".6"/>
+      <circle class="paint-drop" style="--dd:2.1s" cx="200" cy="110" r="4.5" fill="#F5C400" opacity=".65"/>
+      <circle class="paint-drop" style="--dd:2.4s" cx="310" cy="70"  r="3.5" fill="#005BAA" opacity=".7"/>
+
+      <!-- Ícono de pincel que se desplaza -->
+      <g class="brush-icon">
+        <!-- Mango -->
+        <rect x="290" y="55" width="42" height="9" rx="4" fill="#C8922A" opacity=".9"/>
+        <!-- Virola -->
+        <rect x="285" y="54" width="8"  height="11" rx="2" fill="#8B6520"/>
+        <!-- Cerda (punta del pincel) -->
+        <path d="M 285 56 Q 276 59.5 272 72 Q 276 64 285 65 Z"
+              fill="#F0E6D0" opacity=".85"/>
+        <!-- Toque de pintura en la punta -->
+        <ellipse cx="273" cy="71" rx="5" ry="3" fill="#E8720C" opacity=".8"/>
+      </g>
+    </svg>
+  </div>
+
+  <!-- Barra de progreso estilo pincelada -->
+  <div style="opacity:0;animation:fadeUp .8s var(--ease) 1.6s forwards;width:100%;display:flex;flex-direction:column;align-items:center;">
+    <div class="progress-track">
+      <div class="progress-fill"></div>
+    </div>
+    <p class="progress-label" data-i18n="progress">Estoy pintando esta página…</p>
+  </div>
+
+  <!-- Marca / nombre -->
+  <p class="brand">NALI — nalialma.art</p>
+
+  <!-- Mensaje principal -->
+  <h1 class="main-msg">
+    <span data-i18n-html="main_msg">Esta página <em>aún no está lista</em>.</span>
+  </h1>
+  <p class="sub-msg" data-i18n="sub_msg">
+    Sigo trabajando en ella — el arte toma su tiempo. Por favor, volvé en unos días.
+  </p>
+
+  <!-- Acciones -->
+  <div class="actions">
+    <a href="https://nalialma.art/Galer.html" class="btn-gallery">
+      <i class="fas fa-arrow-left"></i>
+      <span data-i18n="btn_gallery">Volver a la Galería</span>
+    </a>
+    <a href="https://wa.me/5493874498150" target="_blank" rel="noopener" class="btn-wa" id="wa-btn">
+      <i class="fab fa-whatsapp"></i>
+      <span data-i18n="btn_wa">Escribirme por WhatsApp</span>
+    </a>
+  </div>
+
+  <!-- Redes sociales -->
+  <div class="socials" aria-label="Redes sociales">
+    <a href="https://www.instagram.com/naliart.ok" target="_blank" rel="noopener" class="soc-pill" aria-label="Instagram Arte">
+      <i class="fab fa-instagram"></i><span>@naliart.ok</span>
+    </a>
+    <a href="https://www.instagram.com/nali.ttoo" target="_blank" rel="noopener" class="soc-pill" aria-label="Instagram Tatuajes">
+      <i class="fas fa-pen-nib"></i><span>@nali.ttoo</span>
+    </a>
+    <a href="https://www.instagram.com/nali.alma" target="_blank" rel="noopener" class="soc-pill" aria-label="Instagram Música">
+      <i class="fas fa-music"></i><span>@nali.alma</span>
+    </a>
+  </div>
+
+</main>
+
+<p class="footer-note">© 2026 Nali · Séptima Pacha Co.</p>
+
+<script>
+/* ═══════════════════════════════════════════
+   TRADUCCIONES
+   ═══════════════════════════════════════════ */
+const T = {
+  es:{
+    progress:"Estoy pintando esta página…",
+    main_msg:"Esta página <em>aún no está lista</em>.",
+    sub_msg:"Sigo trabajando en ella — el arte toma su tiempo. Por favor, volvé en unos días.",
+    btn_gallery:"Volver a la Galería",
+    btn_wa:"Escribirme por WhatsApp",
+    wa:"Hola Nali, vi que la página está en construcción. ¡Avísame cuando esté lista!"
+  },
+  pl:{
+    progress:"Właśnie maluję tę stronę…",
+    main_msg:"Ta strona <em>jeszcze nie jest gotowa</em>.",
+    sub_msg:"Wciąż nad nią pracuję — sztuka wymaga czasu. Proszę, wróć za kilka dni.",
+    btn_gallery:"Wróć do Galerii",
+    btn_wa:"Napisz przez WhatsApp",
+    wa:"Cześć Nali, widziałam/em, że strona jest w budowie. Daj mi znać, kiedy będzie gotowa!"
+  },
+  en:{
+    progress:"I'm painting this page…",
+    main_msg:"This page <em>isn't ready yet</em>.",
+    sub_msg:"I'm still working on it — art takes time. Please come back in a few days.",
+    btn_gallery:"Back to Gallery",
+    btn_wa:"Write me on WhatsApp",
+    wa:"Hi Nali, I saw the page is under construction. Let me know when it's ready!"
+  },
+  fr:{
+    progress:"Je peins cette page…",
+    main_msg:"Cette page <em>n'est pas encore prête</em>.",
+    sub_msg:"Je travaille encore dessus — l'art prend son temps. Revenez dans quelques jours.",
+    btn_gallery:"Retour à la Galerie",
+    btn_wa:"M'écrire sur WhatsApp",
+    wa:"Bonjour Nali, j'ai vu que la page est en construction. Prévenez-moi quand elle sera prête !"
+  }
+};
+
+let lang = 'es';
+function applyLang(l){
+  lang = l;
+  const t = T[l] || T.es;
+  document.documentElement.lang = l;
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const k = el.getAttribute('data-i18n');
+    if(t[k] != null) el.textContent = t[k];
+  });
+  document.querySelectorAll('[data-i18n-html]').forEach(el => {
+    const k = el.getAttribute('data-i18n-html');
+    if(t[k] != null) el.innerHTML = t[k];
+  });
+  document.querySelectorAll('.lb').forEach(b =>
+    b.classList.toggle('active', b.dataset.lang === l)
+  );
+  const waEl = document.getElementById('wa-btn');
+  if(waEl) waEl.href = `https://wa.me/5493874498150?text=${encodeURIComponent(t.wa)}`;
+}
+document.querySelectorAll('.lb').forEach(b =>
+  b.addEventListener('click', () => applyLang(b.dataset.lang))
+);
+
+/* ═══════════════════════════════════════════
+   CANVAS — PARTÍCULAS DE PINTURA ORBITANDO
+   Puntos de luz en los 7 colores de la wiphala
+   que flotan lentamente como si fueran pigmento
+   suspendido en el agua.
+   ═══════════════════════════════════════════ */
+(function(){
+  const canvas = document.getElementById('canvas-bg');
+  const ctx = canvas.getContext('2d');
+
+  const COLORS = [
+    '#CC0000','#E8720C','#F5C400',
+    '#F0EAD6','#00913A','#005BAA','#5C2D91'
+  ];
+
+  let W, H, particles = [];
+
+  function resize(){
+    W = canvas.width  = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize, { passive:true });
+
+  /* Crear partículas: cada una tiene forma de gota de pintura */
+  function createParticles(){
+    particles = [];
+    const count = Math.min(55, Math.floor((W * H) / 20000));
+    for(let i = 0; i < count; i++){
+      const color = COLORS[Math.floor(Math.random() * COLORS.length)];
+      particles.push({
+        x: Math.random() * W,
+        y: Math.random() * H,
+        vx: (Math.random() - .5) * .35,
+        vy: (Math.random() - .5) * .35,
+        r:  Math.random() * 2.8 + .8,       /* radio base */
+        tail: Math.random() * 2 + 1,         /* extensión de la "gota" */
+        angle: Math.random() * Math.PI * 2,  /* dirección de la cola */
+        color,
+        alpha: Math.random() * .45 + .08,
+        pulse: Math.random() * Math.PI * 2,  /* fase del parpadeo */
+        pulseSpeed: .008 + Math.random() * .012
+      });
+    }
+  }
+  createParticles();
+  window.addEventListener('resize', createParticles, { passive:true });
+
+  let frame = 0;
+  function draw(){
+    frame++;
+    ctx.clearRect(0, 0, W, H);
+
+    particles.forEach(p => {
+      /* Movimiento */
+      p.x += p.vx; p.y += p.vy;
+      p.pulse += p.pulseSpeed;
+
+      /* Rebote suave en los bordes */
+      if(p.x < -10)  p.x = W + 10;
+      if(p.x > W+10) p.x = -10;
+      if(p.y < -10)  p.y = H + 10;
+      if(p.y > H+10) p.y = -10;
+
+      const alpha = p.alpha * (.65 + .35 * Math.sin(p.pulse));
+
+      /* Forma: círculo con cola de gota */
+      ctx.save();
+      ctx.translate(p.x, p.y);
+      ctx.rotate(p.angle);
+
+      /* Cuerpo circular de la gota */
+      ctx.beginPath();
+      ctx.arc(0, 0, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = p.color + Math.round(alpha * 255).toString(16).padStart(2,'0');
+      ctx.fill();
+
+      /* Cola de la gota (elipse alargada) */
+      ctx.beginPath();
+      ctx.ellipse(0, p.r + p.tail * .5, p.r * .55, p.tail, 0, 0, Math.PI * 2);
+      ctx.fillStyle = p.color + Math.round(alpha * .6 * 255).toString(16).padStart(2,'0');
+      ctx.fill();
+
+      ctx.restore();
+    });
+
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+/* ═══════════════════════════════════════════
+   INIT
+   ═══════════════════════════════════════════ */
+applyLang('es');
+</script>
+</body>
+</html>
