@@ -1,0 +1,1416 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+<title>Diccionario Andino — Lenguas Originarias de Argentina · Nali</title>
+<meta name="description" content="Diccionario e investigación de las lenguas originarias de Argentina: Kakán, Quechua, Mapudungun, Guaraní, Qom, Wichí, Tehuelche, Selknam, Yagán y más. Monografía del idioma Kakán de los Diaguitas-Calchaquíes. Por Nali — nalialma.art">
+<meta name="keywords" content="kakán, kakan, idioma diaguita, lenguas originarias Argentina, quechua, mapudungun, guaraní, qom, wichí, tehuelche, selknam, yagán, diccionario andino, lenguas indígenas, Salta, pueblos originarios">
+<meta name="author" content="Nali — nalialma.art">
+<link rel="canonical" href="https://nalialma.art/diccionario.html">
+<link rel="up" href="https://nalialma.art/Galer.html">
+
+<meta property="og:type"        content="article">
+<meta property="og:url"         content="https://nalialma.art/diccionario.html">
+<meta property="og:title"       content="Diccionario Andino — Lenguas Originarias de Argentina · Nali">
+<meta property="og:description" content="Investigación profunda sobre las lenguas nativas de Argentina: Kakán, Quechua, Guaraní, Mapudungun y más. Diccionario interactivo con 80+ entradas.">
+<meta property="og:image"       content="https://i.ibb.co/DD37KnBN/IMG-20260527-WA0150-1.jpg">
+<meta property="og:site_name"   content="Nali — nalialma.art">
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"Dataset",
+  "name":"Diccionario Andino — Lenguas Originarias de Argentina",
+  "description":"Investigación y diccionario interactivo de las lenguas nativas de Argentina, con especial foco en el Kakán, idioma extinto de los Diaguitas-Calchaquíes del noroeste argentino.",
+  "url":"https://nalialma.art/diccionario.html",
+  "creator":{"@type":"Person","name":"Nali","url":"https://nalialma.art"},
+  "keywords":["kakán","lenguas originarias","Argentina","quechua","mapudungun","guaraní"],
+  "license":"https://creativecommons.org/licenses/by-nc/4.0/"
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Barlow:wght@300;400;600&family=Barlow+Condensed:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+/* ═══ TOKENS ═══ */
+:root{
+  --rojo:#CC0000;--naranja:#E8720C;--amarillo:#F5C400;
+  --verde:#00913A;--azul:#005BAA;--violeta:#5C2D91;--wipblanco:#F0EAD6;
+  --noche:#07050A;--panel:#0E0B07;--borde:rgba(200,146,42,.18);
+  --oro:#C8922A;--oro-l:#E8B84B;
+  --crema:#F0E6D0;--cdim:rgba(240,230,208,.6);--cfaint:rgba(240,230,208,.28);
+  --ffd:'Cinzel',serif;--ffb:'Barlow',sans-serif;--ffc:'Barlow Condensed',sans-serif;
+  --ease:cubic-bezier(.4,0,.2,1);--tr:.35s var(--ease);
+  --nav:68px;
+  /* Kakán accent — azul oscuro turquesa evocando los valles calchaquíes */
+  --kakan:#1a6b72;--kakan-l:#2ba3ad;--kakan-glow:rgba(43,163,173,.35);
+}
+
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--ffb);background:var(--noche);color:var(--crema);overflow-x:hidden;}
+body.locked{overflow:hidden;}
+img{display:block;max-width:100%;}
+a{text-decoration:none;color:inherit;}
+button{cursor:pointer;border:none;background:none;font:inherit;}
+a:focus-visible,button:focus-visible{outline:2px solid var(--oro);outline-offset:3px;border-radius:2px;}
+
+/* Fondo ambiental */
+body::before{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(ellipse 55% 55% at 5%  40%,rgba(26,107,114,.08) 0%,transparent 70%),
+    radial-gradient(ellipse 45% 50% at 95% 20%,rgba(92,45,145,.07)  0%,transparent 70%),
+    radial-gradient(ellipse 70% 40% at 50% 100%,rgba(74,32,0,.45)   0%,transparent 60%);
+}
+
+/* ═══ WIPHALA ═══ */
+.wiphala{
+  width:100%;height:5px;
+  background:linear-gradient(90deg,
+    var(--rojo) 0% 14.28%,var(--naranja) 14.28% 28.56%,
+    var(--amarillo) 28.56% 42.84%,var(--wipblanco) 42.84% 57.12%,
+    var(--verde) 57.12% 71.40%,var(--azul) 71.40% 85.68%,
+    var(--violeta) 85.68% 100%);
+}
+
+/* ═══ NAV ═══ */
+nav{position:fixed;top:0;left:0;width:100%;z-index:500;display:flex;flex-direction:column;}
+.nav-bar{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 2rem;height:var(--nav);
+  background:rgba(7,5,10,.82);backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--borde);transition:background var(--tr);
+}
+nav.scrolled .nav-bar{background:rgba(7,5,10,.97);}
+.nav-logo{font-family:var(--ffd);font-size:1.25rem;font-weight:700;letter-spacing:4px;color:var(--crema);}
+.nav-logo span{color:var(--oro);}
+.nav-crumb{
+  display:flex;align-items:center;gap:.45rem;
+  font-family:var(--ffc);font-size:.68rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--cdim);
+}
+.nav-crumb a:hover{color:var(--oro-l);}
+.nav-crumb .sep{color:rgba(200,146,42,.3);}
+.nav-crumb .cur{color:var(--kakan-l);}
+
+.hamburger{display:none;flex-direction:column;justify-content:center;align-items:center;gap:5px;width:42px;height:42px;-webkit-tap-highlight-color:transparent;}
+.hamburger span{display:block;width:24px;height:2px;background:var(--oro);border-radius:2px;transition:transform .33s var(--ease),opacity .33s;transform-origin:center;}
+.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
+
+.drawer-overlay{position:fixed;inset:0;z-index:510;background:rgba(0,0,0,.6);opacity:0;visibility:hidden;transition:opacity .33s,visibility .33s;}
+.drawer-overlay.open{opacity:1;visibility:visible;}
+.mobile-drawer{position:fixed;top:0;right:0;bottom:0;width:min(280px,85vw);z-index:520;background:rgba(7,5,10,.99);backdrop-filter:blur(24px);border-left:1px solid var(--borde);display:flex;flex-direction:column;transform:translateX(100%);transition:transform .36s var(--ease);overflow-y:auto;}
+.mobile-drawer.open{transform:translateX(0);}
+.drawer-head{display:flex;align-items:center;justify-content:space-between;padding:0 1.4rem;height:var(--nav);border-bottom:1px solid rgba(200,146,42,.1);flex-shrink:0;}
+.drawer-close{background:none;border:1px solid rgba(200,146,42,.25);color:var(--oro);width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:var(--tr);}
+.drawer-close:hover{background:rgba(200,146,42,.12);}
+.drawer-body{flex:1;padding:1.2rem 1.4rem;}
+.dlink{display:flex;align-items:center;gap:.7rem;font-family:var(--ffc);font-size:1rem;letter-spacing:2px;text-transform:uppercase;color:var(--crema);padding:.85rem 0;border-bottom:1px solid rgba(200,146,42,.1);transition:color .22s,padding-left .22s;min-height:48px;}
+.dlink:hover{color:var(--oro);padding-left:.4rem;}
+.dlink .di{width:26px;height:26px;border-radius:6px;background:rgba(200,146,42,.1);border:1px solid rgba(200,146,42,.2);display:flex;align-items:center;justify-content:center;font-size:.75rem;color:var(--oro);flex-shrink:0;}
+
+/* ═══ CONTENIDO ═══ */
+.page{position:relative;z-index:1;padding-top:var(--nav);}
+
+/* ─── HERO ─── */
+.hero{
+  max-width:1200px;margin:0 auto;
+  padding:4rem 2rem 3rem;
+  display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;
+}
+.hero-left{}
+.h-eyebrow{font-family:var(--ffc);font-size:.65rem;letter-spacing:4px;text-transform:uppercase;color:var(--oro);display:flex;align-items:center;gap:.6rem;margin-bottom:.8rem;}
+.h-eyebrow::before{content:'';width:20px;height:1px;background:var(--oro);}
+.h-title{font-family:var(--ffd);font-size:clamp(2rem,5vw,3.4rem);font-weight:700;line-height:1.05;color:var(--crema);margin-bottom:1rem;}
+.h-title em{font-style:normal;background:linear-gradient(125deg,var(--kakan),var(--kakan-l));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.h-intro{font-size:.97rem;color:var(--cdim);line-height:1.9;margin-bottom:1.4rem;}
+.h-stats{display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:1.6rem;}
+.hstat{font-family:var(--ffc);font-size:.68rem;letter-spacing:1.5px;text-transform:uppercase;padding:.28rem .9rem;border-radius:20px;}
+.hstat.viva{background:rgba(0,145,58,.1);border:1px solid rgba(0,145,58,.3);color:#3dd87d;}
+.hstat.riesgo{background:rgba(232,114,12,.1);border:1px solid rgba(232,114,12,.3);color:var(--naranja);}
+.hstat.extinta{background:rgba(92,45,145,.1);border:1px solid rgba(92,45,145,.3);color:#9B5EDE;}
+.hstat.total{background:rgba(200,146,42,.1);border:1px solid rgba(200,146,42,.3);color:var(--oro-l);}
+/* Grid de familias en el hero derecho */
+.hero-right{}
+.family-grid{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;}
+.fam-card{padding:.75rem 1rem;background:rgba(255,255,255,.03);border:1px solid var(--borde);border-radius:4px;transition:var(--tr);}
+.fam-card:hover{border-color:rgba(200,146,42,.4);background:rgba(200,146,42,.05);}
+.fam-name{font-family:var(--ffd);font-size:.78rem;font-weight:700;color:var(--crema);margin-bottom:.2rem;}
+.fam-langs{font-family:var(--ffc);font-size:.6rem;letter-spacing:1px;color:var(--cdim);}
+
+/* ─── DIVISOR ANDINO ─── */
+.andean-div{height:2px;background:linear-gradient(90deg,transparent,var(--rojo),var(--naranja),var(--amarillo),var(--verde),var(--azul),var(--violeta),transparent);opacity:.25;}
+.andean-div.thin{height:1px;opacity:.15;}
+
+/* ─── SECCIÓN LABEL ─── */
+.sec-label{font-family:var(--ffc);font-size:.63rem;letter-spacing:4px;text-transform:uppercase;color:var(--acc,var(--oro));display:flex;align-items:center;gap:.6rem;margin-bottom:.8rem;}
+.sec-label::before{content:'';width:20px;height:1px;background:currentColor;}
+
+/* ═══════════════════════════════════════════
+   KAKÁN — SECCIÓN MONOGRÁFICA
+   El corazón de la página. Diseño especial,
+   acento turquesa/teal evocando los valles
+   calchaquíes de la Quebrada.
+   ═══════════════════════════════════════════ */
+#kakan{
+  position:relative;z-index:1;
+  background:linear-gradient(180deg,rgba(26,107,114,.06) 0%,transparent 100%);
+  border-top:1px solid rgba(43,163,173,.2);
+  border-bottom:1px solid rgba(43,163,173,.15);
+}
+.kakan-inner{max-width:1200px;margin:0 auto;padding:4rem 2rem;}
+.kakan-badge{
+  display:inline-flex;align-items:center;gap:.55rem;
+  background:rgba(43,163,173,.1);border:1px solid rgba(43,163,173,.35);
+  border-radius:30px;padding:.35rem 1rem;
+  font-family:var(--ffc);font-size:.65rem;letter-spacing:2.5px;text-transform:uppercase;
+  color:var(--kakan-l);margin-bottom:1.4rem;
+}
+.kakan-badge .dot{width:6px;height:6px;border-radius:50%;background:var(--kakan-l);animation:kdot 2s ease infinite;}
+@keyframes kdot{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(43,163,173,.4);}50%{opacity:.6;box-shadow:0 0 0 5px rgba(43,163,173,0);}}
+.kakan-title{
+  font-family:var(--ffd);font-size:clamp(2.5rem,7vw,5rem);
+  font-weight:900;line-height:.9;letter-spacing:2px;
+  background:linear-gradient(125deg,var(--kakan-l),var(--crema) 55%,var(--kakan-l));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  margin-bottom:.5rem;
+}
+.kakan-sub{font-family:var(--ffc);font-size:.85rem;letter-spacing:4px;text-transform:uppercase;color:var(--kakan-l);opacity:.75;margin-bottom:2rem;}
+
+/* Layout bicolumna del kakán */
+.kakan-body{display:grid;grid-template-columns:1.1fr .9fr;gap:4rem;margin-bottom:3rem;}
+.kakan-text .q{
+  font-family:var(--ffd);font-style:italic;font-size:.98rem;line-height:1.7;
+  color:var(--crema);border-left:2px solid var(--kakan);padding-left:1.1rem;
+  margin:1.2rem 0 1.6rem;
+}
+.kakan-text p{font-size:.96rem;color:var(--cdim);line-height:1.9;margin-bottom:.9rem;}
+.kakan-text h3{font-family:var(--ffd);font-size:1.1rem;color:var(--kakan-l);margin:1.4rem 0 .6rem;}
+
+/* Cuadro de cita histórica */
+.hist-quote{
+  padding:1.3rem 1.5rem;
+  background:rgba(26,107,114,.08);border:1px solid rgba(43,163,173,.2);
+  border-radius:4px;margin-bottom:1.6rem;
+}
+.hist-quote p{font-family:var(--ffd);font-style:italic;font-size:.92rem;color:var(--kakan-l);line-height:1.65;margin-bottom:.4rem;}
+.hist-quote cite{font-family:var(--ffc);font-size:.62rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--cdim);}
+
+/* Panel lateral derecho del kakán */
+.kakan-side{}
+.kakan-ficha{
+  padding:1.4rem 1.5rem;
+  background:rgba(26,107,114,.06);border:1px solid rgba(43,163,173,.22);
+  border-radius:4px;margin-bottom:1.5rem;
+}
+.kakan-ficha h4{font-family:var(--ffd);font-size:.82rem;letter-spacing:1px;color:var(--kakan-l);margin-bottom:1rem;padding-bottom:.5rem;border-bottom:1px solid rgba(43,163,173,.18);}
+.ficha-row{display:flex;gap:.6rem;padding:.4rem 0;border-bottom:1px solid rgba(255,255,255,.04);}
+.ficha-row:last-child{border-bottom:none;}
+.ficha-k{font-family:var(--ffc);font-size:.65rem;letter-spacing:1px;text-transform:uppercase;color:var(--kakan);min-width:90px;flex-shrink:0;}
+.ficha-v{font-size:.88rem;color:var(--crema);}
+
+/* Sufijos toponímicos */
+.sufijos-grid{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;}
+.sufijo{
+  padding:.75rem 1rem;
+  background:rgba(26,107,114,.07);border:1px solid rgba(43,163,173,.2);
+  border-radius:4px;
+}
+.sufijo-form{font-family:var(--ffd);font-size:1rem;font-weight:700;color:var(--kakan-l);margin-bottom:.2rem;}
+.sufijo-meaning{font-family:var(--ffc);font-size:.68rem;letter-spacing:1px;text-transform:uppercase;color:var(--cdim);}
+.sufijo-examples{font-size:.78rem;color:rgba(240,230,208,.4);margin-top:.2rem;font-style:italic;}
+
+/* Mini-diccionario del Kakán */
+.kakan-dict{margin-top:2.5rem;}
+.kakan-dict h3{font-family:var(--ffd);font-size:1.1rem;color:var(--kakan-l);margin-bottom:1rem;padding-bottom:.5rem;border-bottom:1px solid rgba(43,163,173,.18);}
+.kdict-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.6rem;}
+.kdict-card{
+  padding:.8rem 1rem;
+  background:rgba(26,107,114,.06);border:1px solid rgba(43,163,173,.18);
+  border-radius:4px;transition:var(--tr);
+}
+.kdict-card:hover{border-color:rgba(43,163,173,.45);background:rgba(43,163,173,.1);}
+.kd-word{font-family:var(--ffd);font-size:.95rem;font-weight:700;color:var(--kakan-l);}
+.kd-tr{font-size:.88rem;color:var(--crema);margin:.15rem 0;}
+.kd-ctx{font-family:var(--ffc);font-size:.62rem;letter-spacing:.5px;color:var(--cdim);line-height:1.4;}
+
+/* ═══════════════════════════════════════════
+   HISTORIA / LÍNEA DE TIEMPO
+   ═══════════════════════════════════════════ */
+#historia{position:relative;z-index:1;padding:4rem 2rem;}
+.historia-inner{max-width:1200px;margin:0 auto;}
+.historia-intro{max-width:720px;margin-bottom:3rem;}
+.historia-intro h2{font-family:var(--ffd);font-size:clamp(1.6rem,3.5vw,2.4rem);color:var(--crema);margin-bottom:.8rem;}
+.historia-intro p{font-size:.96rem;color:var(--cdim);line-height:1.9;}
+
+/* Acordeones de familia lingüística */
+.familias{display:flex;flex-direction:column;gap:.5rem;}
+.familia{border:1px solid var(--borde);border-radius:4px;overflow:hidden;}
+.familia-header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1rem 1.2rem;cursor:pointer;
+  background:rgba(255,255,255,.025);
+  transition:background var(--tr);
+  -webkit-tap-highlight-color:transparent;
+  gap:1rem;
+}
+.familia-header:hover{background:rgba(200,146,42,.06);}
+.familia.open .familia-header{background:rgba(200,146,42,.08);border-bottom:1px solid var(--borde);}
+.familia-name-wrap{display:flex;align-items:center;gap:.8rem;}
+.familia-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
+.familia-title{font-family:var(--ffd);font-size:1rem;font-weight:700;color:var(--crema);}
+.familia-meta{font-family:var(--ffc);font-size:.65rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--cdim);}
+.familia-arrow{color:var(--oro);font-size:.75rem;transition:transform .3s var(--ease);flex-shrink:0;}
+.familia.open .familia-arrow{transform:rotate(180deg);}
+.familia-body{
+  max-height:0;overflow:hidden;
+  transition:max-height .45s var(--ease);
+}
+.familia.open .familia-body{max-height:1000px;}
+.familia-content{padding:1.2rem 1.2rem 1.4rem;display:grid;grid-template-columns:1.2fr 1fr;gap:2rem;}
+.familia-text p{font-size:.93rem;color:var(--cdim);line-height:1.88;margin-bottom:.7rem;}
+.familia-text h4{font-family:var(--ffd);font-size:.88rem;color:var(--crema);margin-bottom:.5rem;}
+.lengua-chips{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:.8rem;}
+.lengua-chip{
+  font-family:var(--ffc);font-size:.62rem;letter-spacing:1px;text-transform:uppercase;
+  padding:.22rem .7rem;border-radius:20px;
+}
+.chip-viva{background:rgba(0,145,58,.1);border:1px solid rgba(0,145,58,.3);color:#3dd87d;}
+.chip-revit{background:rgba(232,114,12,.1);border:1px solid rgba(232,114,12,.3);color:var(--naranja);}
+.chip-extinta{background:rgba(92,45,145,.1);border:1px solid rgba(92,45,145,.3);color:#9B5EDE;}
+.chip-peligro{background:rgba(204,0,0,.1);border:1px solid rgba(204,0,0,.3);color:#ff7070;}
+
+/* ═══════════════════════════════════════════
+   BUSCADOR Y FILTROS
+   ═══════════════════════════════════════════ */
+#diccionario{position:relative;z-index:1;padding:4rem 2rem;}
+.dict-inner{max-width:1200px;margin:0 auto;}
+.dict-head{margin-bottom:2rem;}
+.dict-head h2{font-family:var(--ffd);font-size:clamp(1.6rem,3.5vw,2.4rem);color:var(--crema);margin-bottom:.5rem;}
+.dict-head p{font-size:.93rem;color:var(--cdim);}
+
+.search-bar{
+  display:flex;flex-wrap:wrap;gap:.7rem;margin-bottom:2rem;align-items:center;
+}
+.search-input-wrap{
+  position:relative;flex:1;min-width:220px;
+}
+.search-input-wrap i{
+  position:absolute;left:.9rem;top:50%;transform:translateY(-50%);
+  color:var(--cdim);font-size:.8rem;pointer-events:none;
+}
+#search-input{
+  width:100%;
+  background:rgba(255,255,255,.04);border:1px solid var(--borde);
+  color:var(--crema);font-family:var(--ffc);font-size:.82rem;
+  letter-spacing:1px;padding:.65rem 1rem .65rem 2.4rem;
+  border-radius:4px;outline:none;transition:var(--tr);
+}
+#search-input:focus{border-color:var(--oro);background:rgba(255,255,255,.06);}
+#search-input::placeholder{color:var(--cfaint);}
+
+.filter-row{display:flex;flex-wrap:wrap;gap:.45rem;align-items:center;}
+.filter-label{font-family:var(--ffc);font-size:.62rem;letter-spacing:2px;text-transform:uppercase;color:var(--cfaint);flex-shrink:0;}
+.fpill{
+  font-family:var(--ffc);font-size:.65rem;letter-spacing:1.2px;text-transform:uppercase;
+  padding:.3rem .85rem;border-radius:20px;border:1px solid var(--borde);
+  color:var(--cdim);cursor:pointer;transition:var(--tr);background:transparent;
+}
+.fpill:hover{color:var(--crema);border-color:rgba(200,146,42,.45);}
+.fpill.active{background:var(--oro);color:var(--noche);border-color:var(--oro);}
+
+/* Contador de resultados */
+.dict-results-count{
+  font-family:var(--ffc);font-size:.65rem;letter-spacing:2px;text-transform:uppercase;
+  color:var(--cdim);margin-bottom:1.2rem;min-height:1.2em;
+}
+.dict-results-count strong{color:var(--oro-l);}
+
+/* ═══════════════════════════════════════════
+   CARDS DEL DICCIONARIO
+   ═══════════════════════════════════════════ */
+#dict-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+  gap:1rem;
+}
+.dcard{
+  background:rgba(255,255,255,.03);
+  border:1px solid var(--borde);border-radius:4px;
+  padding:1.2rem 1.3rem;
+  transition:var(--tr);
+  opacity:0;transform:translateY(12px);
+  animation:cardIn .4s var(--ease) var(--cd,0s) forwards;
+}
+@keyframes cardIn{to{opacity:1;transform:none;}}
+.dcard:hover{border-color:rgba(200,146,42,.4);background:rgba(200,146,42,.04);transform:translateY(-2px);}
+.dcard.hidden{display:none;}
+.dc-word{font-family:var(--ffd);font-size:1.15rem;font-weight:700;color:var(--crema);margin-bottom:.18rem;}
+.dc-tr{font-size:.95rem;color:var(--oro-l);margin-bottom:.5rem;}
+.dc-tags{display:flex;flex-wrap:wrap;gap:.35rem;margin-bottom:.7rem;}
+.dc-lang-tag{font-family:var(--ffc);font-size:.58rem;letter-spacing:1.2px;text-transform:uppercase;padding:.2rem .65rem;border-radius:20px;}
+.dc-region-tag{font-family:var(--ffc);font-size:.58rem;letter-spacing:1px;text-transform:uppercase;padding:.2rem .65rem;border-radius:20px;background:rgba(200,146,42,.08);border:1px solid rgba(200,146,42,.2);color:var(--cdim);}
+.dc-ctx{font-size:.85rem;color:var(--cdim);line-height:1.72;}
+
+/* ═══════════════════════════════════════════
+   EMPTY STATE
+   ═══════════════════════════════════════════ */
+#dict-empty{
+  display:none;text-align:center;padding:3rem 1rem;
+  font-family:var(--ffd);font-size:.9rem;color:var(--cfaint);letter-spacing:1px;
+}
+
+/* ═══════════════════════════════════════════
+   REDES SOCIALES
+   ═══════════════════════════════════════════ */
+.social-strip{display:flex;flex-wrap:wrap;align-items:center;gap:.6rem;padding:2rem 0 .5rem;}
+.soc-label{font-family:var(--ffc);font-size:.6rem;letter-spacing:3px;text-transform:uppercase;color:var(--cfaint);display:flex;align-items:center;gap:.5rem;}
+.soc-label::before{content:'';width:14px;height:1px;background:currentColor;}
+.soc-pill{display:inline-flex;align-items:center;gap:.4rem;font-family:var(--ffc);font-size:.65rem;letter-spacing:1px;color:var(--cdim);border:1px solid var(--borde);border-radius:30px;padding:.28rem .8rem;transition:var(--tr);}
+.soc-pill i{color:var(--oro);font-size:.7rem;}
+.soc-pill:hover{color:var(--crema);border-color:rgba(200,146,42,.5);background:rgba(200,146,42,.07);}
+
+/* ═══ FOOTER ═══ */
+footer{position:relative;z-index:1;border-top:1px solid var(--borde);padding:2rem;text-align:center;margin-top:3rem;}
+.footer-logo{font-family:var(--ffd);font-size:1.1rem;color:var(--oro);letter-spacing:3px;margin-bottom:.3rem;}
+.footer-sub{font-family:var(--ffc);font-size:.62rem;letter-spacing:2px;text-transform:uppercase;color:rgba(240,230,208,.2);}
+.footer-soc{display:flex;justify-content:center;gap:.55rem;margin-top:.9rem;}
+.fsoc{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.82rem;color:rgba(240,230,208,.32);border:1px solid rgba(200,146,42,.14);transition:var(--tr);}
+.fsoc:hover{color:var(--oro-l);border-color:rgba(200,146,42,.5);transform:translateY(-2px);}
+
+/* ═══ SCROLL REVEAL ═══ */
+.sr{opacity:0;transform:translateY(20px);transition:opacity .65s var(--ease),transform .65s var(--ease);}
+.sr.v{opacity:1;transform:none;}
+.d1{transition-delay:.1s;}.d2{transition-delay:.2s;}.d3{transition-delay:.3s;}
+
+/* ═══ RESPONSIVE ═══ */
+@media(max-width:1024px){
+  .hero{grid-template-columns:1fr;gap:2rem;}
+  .kakan-body{grid-template-columns:1fr;}
+  .familia-content{grid-template-columns:1fr;}
+}
+@media(max-width:768px){
+  :root{--nav:60px;}
+  .nav-bar{padding:0 1.2rem;}
+  .nav-crumb{display:none;}
+  .hamburger{display:flex;}
+  #historia,#diccionario{padding:3rem 1.2rem;}
+  .kakan-inner{padding:3rem 1.2rem;}
+  .hero{padding:2.5rem 1.2rem 2rem;}
+  .sufijos-grid{grid-template-columns:1fr;}
+  .kdict-grid{grid-template-columns:1fr 1fr;}
+  #dict-grid{grid-template-columns:1fr;}
+  .family-grid{grid-template-columns:1fr;}
+}
+@media(max-width:480px){
+  .kdict-grid{grid-template-columns:1fr;}
+}
+@media(prefers-reduced-motion:reduce){
+  .sr{opacity:1;transform:none;}
+  *{animation-duration:.01ms!important;transition-duration:.01ms!important;}
+}
+
+/* ═══ SELECTOR DE IDIOMA ═══ */
+.lang-sel-dict{
+  display:flex;gap:.1rem;align-items:center;
+  background:rgba(200,146,42,.06);border:1px solid var(--borde);
+  border-radius:30px;padding:.16rem .38rem;
+}
+.lb-d{
+  background:none;border:none;font-family:var(--ffc);font-size:.65rem;
+  font-weight:700;letter-spacing:1px;text-transform:uppercase;
+  color:rgba(240,230,208,.38);padding:.18rem .4rem;border-radius:14px;
+  cursor:pointer;transition:.25s var(--ease);
+}
+.lb-d.active{background:var(--oro);color:var(--noche);}
+.lb-d:hover:not(.active){color:var(--oro-l);}
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="wiphala"></div>
+  <div class="nav-bar">
+    <a href="https://nalialma.art/" class="nav-logo">NAL<span>I</span></a>
+    <nav class="nav-crumb" aria-label="Breadcrumb">
+      <a href="https://nalialma.art/">Nali</a>
+      <span class="sep">›</span>
+      <a href="https://nalialma.art/Galer.html" data-i18n="nav_gallery">Galería</a>
+      <span class="sep">›</span>
+      <span class="cur" data-i18n="nav_dict">Diccionario Andino</span>
+    </nav>
+        <div class="lang-sel-dict" role="group" aria-label="Language selector">
+      <button class="lb-d active" data-l="es">ES</button>
+      <button class="lb-d" data-l="en">EN</button>
+      <button class="lb-d" data-l="pl">PL</button>
+      <button class="lb-d" data-l="fr">FR</button>
+      <button class="lb-d" data-l="it">IT</button>
+      <button class="lb-d" data-l="pt">PT</button>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="drawer-overlay" id="dOverlay"></div>
+<div class="mobile-drawer" id="drawer" role="dialog" aria-modal="true">
+  <div class="drawer-head">
+    <span class="nav-logo">NAL<span>I</span></span>
+    <button class="drawer-close" id="drawerClose"><i class="fas fa-times"></i></button>
+  </div>
+  <div class="drawer-body">
+    <a href="https://nalialma.art/" class="dlink"><span class="di"><i class="fas fa-home"></i></span><span data-i18n="nav_home">Inicio</span></a>
+    <a href="https://nalialma.art/Galer.html" class="dlink"><span class="di"><i class="fas fa-palette"></i></span><span data-i18n="nav_gallery">Galería</span></a>
+    <a href="#kakan" class="dlink js-scroll"><span class="di" style="border-color:rgba(43,163,173,.3);background:rgba(43,163,173,.1);color:var(--kakan-l)"><i class="fas fa-language"></i></span>Kakán</a>
+    <a href="#historia" class="dlink js-scroll"><span class="di"><i class="fas fa-history"></i></span>Historia</a>
+    <a href="#diccionario" class="dlink js-scroll"><span class="di"><i class="fas fa-book-open"></i></span>Diccionario</a>
+  </div>
+</div>
+
+<!-- ═══ PÁGINA ═══ -->
+<div class="page">
+
+  <!-- ─── HERO ─── -->
+  <section class="hero sr">
+    <div class="hero-left">
+      <p class="h-eyebrow" data-i18n="h_eyebrow">Investigación lingüística · Nali</p>
+      <h1 class="h-title">Diccionario <em>Andino</em></h1>
+      <p class="h-intro">
+        <span data-i18n="h_intro">En mi trabajo como artista del norte argentino, las palabras originarias son tierra que piso todos los días sin saberlo. Cada topónimo de Salta, cada expresión del habla cotidiana del NOA guarda ecos de lenguas que existieron siglos antes de que yo naciera. Este espacio es mi forma de rescatar y visibilizar esas voces.</span>
+      </p>
+      <div class="h-stats">
+        <span class="hstat total" data-i18n="stat_total">40 lenguas en Argentina</span>
+        <span class="hstat viva" data-i18n="stat_viva">13 con hablantes activos</span>
+        <span class="hstat riesgo" data-i18n="stat_riesgo">10 en revitalización</span>
+        <span class="hstat extinta" data-i18n="stat_extinta">9 sin hablantes registrados</span>
+      </div>
+      <p style="font-family:var(--ffc);font-size:.7rem;letter-spacing:1px;color:var(--cfaint);line-height:1.7;">
+        <span id="source-note">Fuente: CUI — Mapa de Lenguas Indígenas de la Argentina (2024), datos del Censo Nacional 2022. De 1.306.730 personas indígenas registradas, el 29,3% habla o entiende una lengua originaria.</span>
+      </p>
+    </div>
+    <div class="hero-right sr d1">
+      <p class="sec-label" style="--acc:var(--kakan);">Familias lingüísticas</p>
+      <div class="family-grid">
+        <div class="fam-card"><div class="fam-name">Quechua</div><div class="fam-langs">Quechua · Aymara · Bolivia/NOA</div></div>
+        <div class="fam-card"><div class="fam-name">Tupí-Guaraní</div><div class="fam-langs">Guaraní · Avá · Mbyá · NEA</div></div>
+        <div class="fam-card"><div class="fam-name">Mataco-Mataguaya</div><div class="fam-langs">Wichí · Nivaclé · Chorote · Chaco</div></div>
+        <div class="fam-card"><div class="fam-name">Guaycurú</div><div class="fam-langs">Qom · Moqoit · Pilagá · Chaco</div></div>
+        <div class="fam-card"><div class="fam-name">Arauco / Mapuche</div><div class="fam-langs">Mapudungun · Patagonia / Sur</div></div>
+        <div class="fam-card"><div class="fam-name">Chón / Patagónica</div><div class="fam-langs">Tehuelche · Selknam · Sur</div></div>
+        <div class="fam-card"><div class="fam-name">Fueguina</div><div class="fam-langs">Yagán · Kawésqar · Tierra del Fuego</div></div>
+        <div class="fam-card" style="border-color:rgba(43,163,173,.35);">
+          <div class="fam-name" style="color:var(--kakan-l);">Kakán / Aislada</div>
+          <div class="fam-langs">Kakán · NOA · extinta</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="andean-div"></div>
+
+  <!-- ══════════════════════════════════════════════════
+       KAKÁN — MONOGRAFÍA
+       El idioma perdido de los Diaguitas-Calchaquíes.
+       ══════════════════════════════════════════════════ -->
+  <section id="kakan">
+    <div class="kakan-inner">
+
+      <div class="sr">
+        <div class="kakan-badge"><span class="dot"></span> <span data-i18n="kakan_badge">Lengua extinta · Estudio profundo</span></div>
+        <h2 class="kakan-title">KAKÁN</h2>
+        <p class="kakan-sub" data-i18n="kakan_sub">La voz silenciada de los Valles Calchaquíes</p>
+      </div>
+
+      <div class="kakan-body">
+        <!-- Texto principal -->
+        <div class="kakan-text sr">
+
+          <div class="hist-quote">
+            <p>"Una lengua dulce y armoniosa, sus voces se forman sólo en el paladar."</p>
+            <cite>Pedro de Lozano, S.J. (1687–1752) — cronista jesuita</cite>
+          </div>
+
+          <p>
+            El <strong style="color:var(--kakan-l)">kakán</strong> —también escrito <em>kakan</em>, <em>caca</em>, <em>chaka</em> o <em>cacán</em>— fue el idioma de los pueblos Diaguitas-Calchaquíes que habitaron el noroeste argentino y parte del norte de Chile durante siglos antes y después de la conquista española. Se hablaba principalmente en los Valles Calchaquíes (Salta), la Puna, la Quebrada y regiones de Catamarca, La Rioja y Córdoba.
+          </p>
+
+          <h3>Una lengua polisintética y oral</h3>
+          <p>
+            El kakán nunca fue puesto por escrito por sus propios hablantes: era una lengua oral, transmitida de generación en generación. Los jesuitas que intentaron documentarla —como Alonso de Bárcena y Pedro de Lozano— la describieron como "muy gutural, que apenas le percibe quien no le mamó con la leche". Esta doble caracterización —gutural y dulce a la vez— sugiere una fonética compleja con oclusivas velares y una entonación melódica particular, posiblemente con acento en la primera sílaba del grupo fónico, algo que algunos lingüistas aún detectan hoy en el habla de ciertas zonas de La Rioja y Catamarca.
+          </p>
+          <p>
+            Desde el punto de vista tipológico, se considera una lengua <strong style="color:var(--crema)">polisintética</strong>: las palabras incorporan múltiples elementos gramaticales que en otras lenguas se expresarían con frases enteras. Su clasificación genealógica es uno de los mayores misterios de la lingüística americana: algunos especialistas la emparentan con el kunza (atacameño, de Chile); otros la consideran una lengua aislada sin parentesco demostrado con ninguna otra familia.
+          </p>
+
+          <h3>La extinción: una violencia calculada</h3>
+          <p>
+            La extinción del kakán no fue accidental. Con la llegada del Imperio Inca hacia 1480, el quechua comenzó a desplazarla en las redes de comercio e intercambio. Pero el golpe definitivo lo dio la colonización española: los invasores impusieron el quechua como lengua franca para someter a las distintas comunidades, utilizándolo como puente hacia el castellano y cortando deliberadamente la transmisión intergeneracional del kakán. Las <strong style="color:var(--crema)">Guerras Calchaquíes</strong> (1560–1667) y el posterior <strong style="color:var(--crema)">desarraigo forzado</strong> de los quilmes, los hualfín y otras comunidades —trasladadas a miles de kilómetros de sus territorios— borraron los últimos contextos donde el kakán podría haber sobrevivido. Para finales del siglo XVII, la lengua había desaparecido como sistema comunicativo vivo.
+          </p>
+
+          <h3>Lo que sobrevivió: el idioma en la tierra</h3>
+          <p>
+            Aunque no quedan hablantes ni gramáticas completas, el kakán dejó su huella más profunda e inesperada en la <strong style="color:var(--crema)">toponimia</strong>: los nombres de lugares del noroeste argentino son, en buena medida, palabras kakán fosilizadas. Cada vez que alguien nombra Tinogasta, Andalgalá, Cafayate o Fiambalá, está pronunciando fragmentos de una lengua considerada muerta.
+          </p>
+          <p>
+            Los investigadores Ricardo Nardi y Samuel Lafone Quevedo fueron pioneros en el rescate sistemático de estas huellas léxicas. Su trabajo demuestra que no es cierto que "no quedó nada": quedó el territorio mismo hablando.
+          </p>
+
+          <div class="hist-quote" style="border-color:rgba(200,146,42,.2);background:rgba(200,146,42,.06);margin-top:1.5rem;">
+            <p style="color:var(--oro-l);">"La lengua kakán no murió: se volvió paisaje. Cada cerro, cada río, cada pueblo del noroeste lleva su nombre vivo."</p>
+            <cite>Reflexión sobre la investigación de Nardi (1979) y Lafone Quevedo (1898)</cite>
+          </div>
+        </div>
+
+        <!-- Panel lateral: ficha + sufijos -->
+        <div class="kakan-side sr d1">
+          <div class="kakan-ficha">
+            <h4><i class="fas fa-info-circle" style="font-size:.75rem;"></i> Ficha del Kakán</h4>
+            <div class="ficha-row"><span class="ficha-k">También llamado</span><span class="ficha-v">Kakan, Caca, Chaka, Cacán, Lengua Diaguita</span></div>
+            <div class="ficha-row"><span class="ficha-k">Tipología</span><span class="ficha-v">Polisintética, oral</span></div>
+            <div class="ficha-row"><span class="ficha-k">Clasificación</span><span class="ficha-v">Aislada o posiblemente relacionada con Kunza (atacameño)</span></div>
+            <div class="ficha-row"><span class="ficha-k">Territorio</span><span class="ficha-v">NOA: Salta, Catamarca, La Rioja, Córdoba (norte); norte de Chile</span></div>
+            <div class="ficha-row"><span class="ficha-k">Época de uso</span><span class="ficha-v">Precolombina hasta fines del siglo XVII</span></div>
+            <div class="ficha-row"><span class="ficha-k">Extinción</span><span class="ficha-v">≈ 1650–1700 d.C.</span></div>
+            <div class="ficha-row"><span class="ficha-k">Estado actual</span><span class="ficha-v">Sin hablantes; presencia viva en toponimia</span></div>
+            <div class="ficha-row"><span class="ficha-k">Hablantes hist.</span><span class="ficha-v">Diaguitas, Calchaquíes, Quilmes, Hualfín, Yocavil y otros</span></div>
+            <div class="ficha-row"><span class="ficha-k">Investigadores</span><span class="ficha-v">Lafone Quevedo, Nardi, Serrano, Quiroga</span></div>
+          </div>
+
+          <p class="sec-label" style="--acc:var(--kakan);margin-bottom:1rem;">Sufijos toponímicos rescatados</p>
+          <div class="sufijos-grid">
+            <div class="sufijo">
+              <div class="sufijo-form">-gasta</div>
+              <div class="sufijo-meaning">pueblo, localidad habitada</div>
+              <div class="sufijo-examples">Tinogasta, Andalgalá, Fiambalá, Hualfín</div>
+            </div>
+            <div class="sufijo">
+              <div class="sufijo-form">-ao</div>
+              <div class="sufijo-meaning">lugar, aguada, sitio</div>
+              <div class="sufijo-examples">Pasao, Niquijao, Suncho­cao</div>
+            </div>
+            <div class="sufijo">
+              <div class="sufijo-form">-anco</div>
+              <div class="sufijo-meaning">agua, cuerpo hídrico</div>
+              <div class="sufijo-examples">Huancarán, Ampajango</div>
+            </div>
+            <div class="sufijo">
+              <div class="sufijo-form">-vil / -il</div>
+              <div class="sufijo-meaning">tierra, monte, lugar elevado</div>
+              <div class="sufijo-examples">Quillovil, Amaicha, Abaucán</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mini-diccionario Kakán -->
+      <div class="kakan-dict sr">
+        <h3><i class="fas fa-scroll" style="font-size:.85rem;margin-right:.5rem;"></i> Vocabulario Kakán rescatado (fragmentos)</h3>
+        <p id="kakan-dict-note" style="font-size:.82rem;color:var(--cdim);margin-bottom:1.2rem;line-height:1.7;">
+          Las siguientes entradas provienen principalmente de investigaciones toponímicas. Dado el estado fragmentario de la lengua, toda reconstrucción es provisional y debe leerse con rigor científico.
+        </p>
+        <div class="kdict-grid" id="kakan-vocab"></div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="andean-div"></div>
+
+  <!-- ══════════════════════════════════════════════════
+       HISTORIA — ACORDEONES POR FAMILIA
+       ══════════════════════════════════════════════════ -->
+  <section id="historia">
+    <div class="historia-inner">
+      <div class="historia-intro sr">
+        <p class="sec-label">Historia lingüística de Argentina</p>
+        <h2 data-i18n="hist_title">Diversidad silenciada, voces que resisten</h2>
+        <p id="hist-intro-p">
+          Antes de la conquista española, el actual territorio argentino era un mosaico lingüístico de extraordinaria complejidad: más de 30 lenguas distintas, sin parentesco entre sí, convivían en diferentes regiones. El proceso colonial no solo borró culturas materiales: atacó directamente la transmisión lingüística. Sin embargo, muchas de esas voces sobrevivieron y hoy están siendo recuperadas por las propias comunidades.
+        </p>
+      </div>
+
+      <div class="familias sr d1" id="familias-container">
+        <!-- generado por JS -->
+      </div>
+
+    </div>
+  </section>
+
+  <div class="andean-div"></div>
+
+  <!-- ══════════════════════════════════════════════════
+       DICCIONARIO INTERACTIVO
+       ══════════════════════════════════════════════════ -->
+  <section id="diccionario">
+    <div class="dict-inner">
+      <div class="dict-head sr">
+        <p class="sec-label">Base de datos · 80+ entradas</p>
+        <h2 data-i18n="dict_h2">Diccionario de lenguas originarias</h2>
+        <p><span data-i18n="dict_intro">Buscá por palabra, lengua, región o estado. Las lenguas hablan aunque los sistemas que las silenciaron ya no estén.</span></p>
+      </div>
+
+      <!-- Buscador + filtros -->
+      <div class="search-bar sr d1">
+        <div class="search-input-wrap">
+          <i class="fas fa-search"></i>
+          <input type="search" id="search-input" id="search-input" placeholder="Buscar palabra, traducción o contexto…" data-i18n-ph="search_ph" autocomplete="off" aria-label="Buscar en el diccionario">
+        </div>
+        <div class="filter-row">
+          <span class="filter-label" data-i18n="filter_estado">Estado</span>
+          <button class="fpill active" data-filter="estado" data-val="todos" data-i18n="f_todos">Todos</button>
+          <button class="fpill" data-filter="estado" data-val="viva" data-i18n="f_viva">Viva</button>
+          <button class="fpill" data-filter="estado" data-val="revitalización" data-i18n="f_revit">En revitalización</button>
+          <button class="fpill" data-filter="estado" data-val="extinta" data-i18n="f_extinta">Extinta</button>
+        </div>
+        <div class="filter-row">
+          <span class="filter-label" data-i18n="filter_region">Región</span>
+          <button class="fpill active" data-filter="region" data-val="todos" data-i18n="f_todas">Todas</button>
+          <button class="fpill" data-filter="region" data-val="NOA">NOA</button>
+          <button class="fpill" data-filter="region" data-val="NEA">NEA</button>
+          <button class="fpill" data-filter="region" data-val="Chaco">Chaco</button>
+          <button class="fpill" data-filter="region" data-val="Patagonia">Patagonia</button>
+          <button class="fpill" data-filter="region" data-val="Fueguina">Fueguina</button>
+        </div>
+      </div>
+
+      <p class="dict-results-count" id="results-count"></p>
+      <div id="dict-grid" role="list" aria-label="Entradas del diccionario"></div>
+      <div id="dict-empty" role="alert">Sin resultados para esa búsqueda. Probá con otro término.</div>
+
+      <!-- Redes sociales -->
+      <div class="social-strip sr">
+        <span class="soc-label" data-i18n="soc_label">Seguime</span>
+        <div style="display:flex;flex-wrap:wrap;gap:.45rem;">
+          <a href="https://www.instagram.com/naliart.ok" target="_blank" rel="noopener" class="soc-pill"><i class="fab fa-instagram"></i>@naliart.ok</a>
+          <a href="https://www.instagram.com/nali.ttoo" target="_blank" rel="noopener" class="soc-pill"><i class="fas fa-pen-nib"></i>@nali.ttoo</a>
+          <a href="https://www.instagram.com/nali.alma" target="_blank" rel="noopener" class="soc-pill"><i class="fas fa-music"></i>@nali.alma</a>
+          <a href="https://wa.me/5493874498150" target="_blank" rel="noopener" class="soc-pill" style="border-color:rgba(37,211,102,.2);background:rgba(37,211,102,.04);"><i class="fab fa-whatsapp" style="color:#25D366;"></i>+549 387 449 8150</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /page -->
+
+<!-- FOOTER -->
+<footer>
+  <div class="wiphala" style="max-width:180px;margin:0 auto 1.2rem;border-radius:2px;"></div>
+  <div class="footer-logo">NALI</div>
+  <p class="footer-sub" data-i18n="footer_sub">Arte Andino · Murales · Tatuajes · Música · Polonia 2026</p>
+  <div class="footer-soc">
+    <a href="https://www.instagram.com/naliart.ok" target="_blank" rel="noopener" class="fsoc"><i class="fab fa-instagram"></i></a>
+    <a href="https://www.instagram.com/nali.ttoo" target="_blank" rel="noopener" class="fsoc"><i class="fas fa-pen-nib"></i></a>
+    <a href="https://www.instagram.com/nali.alma" target="_blank" rel="noopener" class="fsoc"><i class="fas fa-music"></i></a>
+    <a href="https://wa.me/5493874498150"         target="_blank" rel="noopener" class="fsoc" style="border-color:rgba(37,211,102,.18);"><i class="fab fa-whatsapp"></i></a>
+  </div>
+  <p style="margin-top:.7rem;font-family:var(--ffc);font-size:.58rem;color:rgba(240,230,208,.12);">© 2026 Nali · <a href="https://nalialma.art/Galer.html" style="color:inherit;">nalialma.art</a> · Fuentes: CUI 2024, Nardi 1979, Lafone Quevedo 1898, Censo 2022</p>
+</footer>
+
+<script>
+/* ════════════════════════════════════════════════════════
+   DATOS: VOCABULARIO KAKÁN
+   Palabras y topónimos rescatados por investigadores.
+   ════════════════════════════════════════════════════════ */
+
+/* ════════════════════════════════════════════════════════
+   TRADUCCIONES — ES · EN · PL · FR · IT · PT
+   ════════════════════════════════════════════════════════ */
+let currentLang = 'es';
+
+const T = {
+  es:{
+    nav_gallery:"Galería", nav_dict:"Diccionario Andino",
+    nav_kakan:"Kakán", nav_historia:"Historia", nav_home:"Inicio",
+    h_eyebrow:"Investigación lingüística · Nali",
+    h_intro:"En mi trabajo como artista del norte argentino, las palabras originarias son tierra que piso todos los días sin saberlo. Cada topónimo de Salta, cada expresión del habla cotidiana del NOA guarda ecos de lenguas que existieron siglos antes de que yo naciera. Este espacio es mi forma de rescatar y visibilizar esas voces.",
+    stat_total:"40 lenguas en Argentina", stat_viva:"13 con hablantes activos",
+    stat_riesgo:"10 en revitalización", stat_extinta:"9 sin hablantes registrados",
+    fam_label:"Familias lingüísticas",
+    kakan_badge:"Lengua extinta · Estudio profundo",
+    kakan_sub:"La voz silenciada de los Valles Calchaquíes",
+    kakan_dict_note:"Las siguientes entradas provienen principalmente de investigaciones toponímicas. Dado el estado fragmentario de la lengua, toda reconstrucción es provisional y debe leerse con rigor científico.",
+    sufijos_label:"Sufijos toponímicos rescatados",
+    hist_title:"Diversidad silenciada, voces que resisten",
+    hist_intro:"Antes de la conquista española, el actual territorio argentino era un mosaico lingüístico de extraordinaria complejidad: más de 30 lenguas distintas, sin parentesco entre sí, convivían en diferentes regiones. El proceso colonial no solo borró culturas materiales: atacó directamente la transmisión lingüística. Sin embargo, muchas de esas voces sobrevivieron y hoy están siendo recuperadas por las propias comunidades.",
+    dict_label:"Base de datos · 60+ entradas",
+    dict_h2:"Diccionario de lenguas originarias",
+    dict_intro:"Buscá por palabra, lengua, región o estado. Las lenguas hablan aunque los sistemas que las silenciaron ya no estén.",
+    search_ph:"Buscar palabra, traducción o contexto…",
+    filter_estado:"Estado", filter_region:"Región",
+    f_todos:"Todos", f_viva:"Viva", f_revit:"En revitalización",
+    f_extinta:"Extinta", f_todas:"Todas",
+    chip_viva:"Viva", chip_revit:"En revitalización", chip_extinta:"Extinta",
+    soc_label:"Seguime",
+    footer_sub:"Arte Andino · Murales · Tatuajes · Música · Polonia 2026",
+    results_of:"de",
+    results_entries:"entradas",
+    results_showing:"Mostrando",
+    no_results:"Sin resultados para esa búsqueda. Probá con otro término.",
+    source_note:"Fuente: CUI — Mapa de Lenguas Indígenas de la Argentina (2024), datos del Censo Nacional 2022. De 1.306.730 personas indígenas registradas, el 29,3% habla o entiende una lengua originaria.",
+  },
+  en:{
+    nav_gallery:"Gallery", nav_dict:"Andean Dictionary",
+    nav_kakan:"Kakán", nav_historia:"History", nav_home:"Home",
+    h_eyebrow:"Linguistic research · Nali",
+    h_intro:"In my work as an artist from northern Argentina, indigenous words are the ground I walk on every day without realising it. Every place name in Salta, every expression in everyday NOA speech holds echoes of languages that existed centuries before I was born. This space is my way of rescuing and making those voices visible.",
+    stat_total:"40 languages in Argentina", stat_viva:"13 with active speakers",
+    stat_riesgo:"10 in revitalization", stat_extinta:"9 with no registered speakers",
+    fam_label:"Language families",
+    kakan_badge:"Extinct language · In-depth study",
+    kakan_sub:"The silenced voice of the Calchaquí Valleys",
+    kakan_dict_note:"The following entries come mainly from toponymic research. Given the fragmentary state of the language, all reconstruction is provisional and should be read with scientific rigour.",
+    sufijos_label:"Rescued toponymic suffixes",
+    hist_title:"Silenced diversity, voices that resist",
+    hist_intro:"Before the Spanish conquest, the current territory of Argentina was a linguistically complex mosaic: more than 30 distinct languages, unrelated to each other, coexisted in different regions. The colonial process did not only erase material cultures: it directly attacked linguistic transmission. Yet many of those voices survived and are today being recovered by the communities themselves.",
+    dict_label:"Database · 60+ entries",
+    dict_h2:"Dictionary of indigenous languages",
+    dict_intro:"Search by word, language, region or status. Languages speak even when the systems that silenced them no longer exist.",
+    search_ph:"Search word, translation or context…",
+    filter_estado:"Status", filter_region:"Region",
+    f_todos:"All", f_viva:"Living", f_revit:"Revitalization",
+    f_extinta:"Extinct", f_todas:"All",
+    chip_viva:"Living", chip_revit:"Revitalization", chip_extinta:"Extinct",
+    soc_label:"Follow me",
+    footer_sub:"Andean Art · Murals · Tattoos · Music · Poland 2026",
+    results_of:"of",
+    results_entries:"entries",
+    results_showing:"Showing",
+    no_results:"No results for that search. Try a different term.",
+    source_note:"Source: CUI — Map of Indigenous Languages of Argentina (2024), data from the 2022 National Census. Of 1,306,730 registered indigenous people, 29.3% speak or understand an indigenous language.",
+  },
+  pl:{
+    nav_gallery:"Galeria", nav_dict:"Słownik Andyjski",
+    nav_kakan:"Kakán", nav_historia:"Historia", nav_home:"Strona główna",
+    h_eyebrow:"Badania językoznawcze · Nali",
+    h_intro:"W swojej pracy artystki z północnej Argentyny słowa rdzennych języków to ziemia, po której chodzę codziennie, nie zdając sobie z tego sprawy. Każda nazwa miejscowa w Salcie, każde wyrażenie codziennej mowy NOA niesie echa języków, które istniały wieki przed moim narodzeniem. To miejsce jest moim sposobem na ocalenie i uwidocznienie tych głosów.",
+    stat_total:"40 języków w Argentynie", stat_viva:"13 z aktywnymi mówcami",
+    stat_riesgo:"10 w rewitalizacji", stat_extinta:"9 bez zarejestrowanych mówców",
+    fam_label:"Rodziny językowe",
+    kakan_badge:"Język wymarły · Dogłębne studium",
+    kakan_sub:"Uciszony głos Dolin Calchaquí",
+    kakan_dict_note:"Poniższe wpisy pochodzą głównie z badań toponimicznych. Ze względu na fragmentaryczny stan języka każda rekonstrukcja jest tymczasowa i należy ją traktować z naukową starannością.",
+    sufijos_label:"Odzyskane sufiksy toponimiczne",
+    hist_title:"Uciszona różnorodność, głosy które trwają",
+    hist_intro:"Przed podbojem hiszpańskim obecne terytorium Argentyny było mozaiką językową o niezwykłej złożoności: ponad 30 odrębnych języków, niepowiązanych ze sobą, współistniało w różnych regionach. Proces kolonialny nie tylko wymazał kultury materialne: uderzył bezpośrednio w przekaz językowy. Jednak wiele z tych głosów przetrwało i jest dziś odzyskiwanych przez same społeczności.",
+    dict_label:"Baza danych · 60+ wpisów",
+    dict_h2:"Słownik języków rdzennych",
+    dict_intro:"Szukaj według słowa, języka, regionu lub statusu. Języki mówią, nawet gdy systemy, które je uciszyły, już nie istnieją.",
+    search_ph:"Szukaj słowa, tłumaczenia lub kontekstu…",
+    filter_estado:"Status", filter_region:"Region",
+    f_todos:"Wszystkie", f_viva:"Żywy", f_revit:"Rewitalizacja",
+    f_extinta:"Wymarły", f_todas:"Wszystkie",
+    chip_viva:"Żywy", chip_revit:"Rewitalizacja", chip_extinta:"Wymarły",
+    soc_label:"Obserwuj mnie",
+    footer_sub:"Sztuka Andyjska · Murale · Tatuaże · Muzyka · Polska 2026",
+    results_of:"z",
+    results_entries:"wpisów",
+    results_showing:"Wyniki:",
+    no_results:"Brak wyników dla tego wyszukiwania. Spróbuj innego terminu.",
+    source_note:"Źródło: CUI — Mapa Języków Rdzennych Argentyny (2024), dane Spisu Narodowego 2022. Spośród 1 306 730 zarejestrowanych osób rdzennych 29,3% mówi lub rozumie język rdzenny.",
+  },
+  fr:{
+    nav_gallery:"Galerie", nav_dict:"Dictionnaire Andin",
+    nav_kakan:"Kakán", nav_historia:"Histoire", nav_home:"Accueil",
+    h_eyebrow:"Recherche linguistique · Nali",
+    h_intro:"Dans mon travail d'artiste du nord de l'Argentine, les mots indigènes sont la terre que je foule chaque jour sans le savoir. Chaque toponyme de Salta, chaque expression du parler quotidien du NOA renferme des échos de langues qui ont existé des siècles avant ma naissance. Cet espace est ma façon de sauvegarder et de rendre visibles ces voix.",
+    stat_total:"40 langues en Argentine", stat_viva:"13 avec locuteurs actifs",
+    stat_riesgo:"10 en revitalisation", stat_extinta:"9 sans locuteurs enregistrés",
+    fam_label:"Familles linguistiques",
+    kakan_badge:"Langue éteinte · Étude approfondie",
+    kakan_sub:"La voix éteinte des Vallées Calchaquíes",
+    kakan_dict_note:"Les entrées suivantes proviennent principalement de recherches toponymiques. Étant donné l'état fragmentaire de la langue, toute reconstruction est provisoire et doit être lue avec rigueur scientifique.",
+    sufijos_label:"Suffixes toponymiques récupérés",
+    hist_title:"Diversité réduite au silence, voix qui résistent",
+    hist_intro:"Avant la conquête espagnole, l'actuel territoire argentin était une mosaïque linguistique d'une complexité extraordinaire: plus de 30 langues distinctes, sans lien de parenté entre elles, coexistaient dans différentes régions. Le processus colonial n'a pas seulement effacé les cultures matérielles: il a directement attaqué la transmission linguistique. Pourtant, beaucoup de ces voix ont survécu et sont aujourd'hui récupérées par les communautés elles-mêmes.",
+    dict_label:"Base de données · 60+ entrées",
+    dict_h2:"Dictionnaire des langues indigènes",
+    dict_intro:"Recherchez par mot, langue, région ou statut. Les langues parlent même quand les systèmes qui les ont réduites au silence n'existent plus.",
+    search_ph:"Chercher mot, traduction ou contexte…",
+    filter_estado:"Statut", filter_region:"Région",
+    f_todos:"Tous", f_viva:"Vivante", f_revit:"Revitalisation",
+    f_extinta:"Éteinte", f_todas:"Toutes",
+    chip_viva:"Vivante", chip_revit:"Revitalisation", chip_extinta:"Éteinte",
+    soc_label:"Suivez-moi",
+    footer_sub:"Art Andin · Murales · Tatouages · Musique · Pologne 2026",
+    results_of:"sur",
+    results_entries:"entrées",
+    results_showing:"Affichage",
+    no_results:"Aucun résultat pour cette recherche. Essayez un autre terme.",
+    source_note:"Source: CUI — Carte des Langues Indigènes d'Argentine (2024), données du Recensement National 2022. Sur 1.306.730 personnes indigènes enregistrées, 29,3% parlent ou comprennent une langue indigène.",
+  },
+  it:{
+    nav_gallery:"Galleria", nav_dict:"Dizionario Andino",
+    nav_kakan:"Kakán", nav_historia:"Storia", nav_home:"Home",
+    h_eyebrow:"Ricerca linguistica · Nali",
+    h_intro:"Nel mio lavoro come artista del nord dell'Argentina, le parole indigene sono la terra che calpesto ogni giorno senza saperlo. Ogni toponimo di Salta, ogni espressione del parlato quotidiano del NOA porta echi di lingue esistite secoli prima che io nascessi. Questo spazio è il mio modo di recuperare e rendere visibili quelle voci.",
+    stat_total:"40 lingue in Argentina", stat_viva:"13 con parlanti attivi",
+    stat_riesgo:"10 in rivitalizzazione", stat_extinta:"9 senza parlanti registrati",
+    fam_label:"Famiglie linguistiche",
+    kakan_badge:"Lingua estinta · Studio approfondito",
+    kakan_sub:"La voce silenziata delle Valli Calchaquíes",
+    kakan_dict_note:"Le voci seguenti provengono principalmente da ricerche toponimiche. Dato lo stato frammentario della lingua, ogni ricostruzione è provvisoria e va letta con rigore scientifico.",
+    sufijos_label:"Suffissi toponimici recuperati",
+    hist_title:"Diversità silenziata, voci che resistono",
+    hist_intro:"Prima della conquista spagnola, l'attuale territorio argentino era un mosaico linguistico di straordinaria complessità: più di 30 lingue distinte, senza parentela tra loro, coesistevano in regioni diverse. Il processo coloniale non ha solo cancellato le culture materiali: ha attaccato direttamente la trasmissione linguistica. Tuttavia molte di quelle voci sono sopravvissute e oggi vengono recuperate dalle stesse comunità.",
+    dict_label:"Database · 60+ voci",
+    dict_h2:"Dizionario delle lingue indigene",
+    dict_intro:"Cerca per parola, lingua, regione o stato. Le lingue parlano anche quando i sistemi che le hanno messe a tacere non esistono più.",
+    search_ph:"Cerca parola, traduzione o contesto…",
+    filter_estado:"Stato", filter_region:"Regione",
+    f_todos:"Tutti", f_viva:"Viva", f_revit:"Rivitalizzazione",
+    f_extinta:"Estinta", f_todas:"Tutte",
+    chip_viva:"Viva", chip_revit:"Rivitalizzazione", chip_extinta:"Estinta",
+    soc_label:"Seguimi",
+    footer_sub:"Arte Andina · Murales · Tatuaggi · Musica · Polonia 2026",
+    results_of:"di",
+    results_entries:"voci",
+    results_showing:"Visualizzando",
+    no_results:"Nessun risultato per questa ricerca. Prova con un altro termine.",
+    source_note:"Fonte: CUI — Mappa delle Lingue Indigene dell'Argentina (2024), dati del Censimento Nazionale 2022. Su 1.306.730 persone indigene registrate, il 29,3% parla o comprende una lingua indigena.",
+  },
+  pt:{
+    nav_gallery:"Galeria", nav_dict:"Dicionário Andino",
+    nav_kakan:"Kakán", nav_historia:"História", nav_home:"Início",
+    h_eyebrow:"Pesquisa linguística · Nali",
+    h_intro:"No meu trabalho como artista do norte da Argentina, as palavras indígenas são a terra que piso todos os dias sem perceber. Cada topônimo de Salta, cada expressão do falar cotidiano do NOA carrega ecos de línguas que existiram séculos antes de eu nascer. Este espaço é minha forma de resgatar e tornar visíveis essas vozes.",
+    stat_total:"40 línguas na Argentina", stat_viva:"13 com falantes ativos",
+    stat_riesgo:"10 em revitalização", stat_extinta:"9 sem falantes registrados",
+    fam_label:"Famílias linguísticas",
+    kakan_badge:"Língua extinta · Estudo aprofundado",
+    kakan_sub:"A voz silenciada dos Vales Calchaquíes",
+    kakan_dict_note:"As entradas seguintes provêm principalmente de pesquisas toponímicas. Dado o estado fragmentário da língua, toda reconstrução é provisória e deve ser lida com rigor científico.",
+    sufijos_label:"Sufixos toponímicos recuperados",
+    hist_title:"Diversidade silenciada, vozes que resistem",
+    hist_intro:"Antes da conquista espanhola, o atual território argentino era um mosaico linguístico de extraordinária complexidade: mais de 30 línguas distintas, sem parentesco entre si, coexistiam em diferentes regiões. O processo colonial não apenas apagou culturas materiais: atacou diretamente a transmissão linguística. No entanto, muitas dessas vozes sobreviveram e hoje estão sendo recuperadas pelas próprias comunidades.",
+    dict_label:"Base de dados · 60+ entradas",
+    dict_h2:"Dicionário de línguas indígenas",
+    dict_intro:"Pesquise por palavra, língua, região ou status. As línguas falam mesmo quando os sistemas que as silenciaram já não existem.",
+    search_ph:"Pesquisar palavra, tradução ou contexto…",
+    filter_estado:"Status", filter_region:"Região",
+    f_todos:"Todos", f_viva:"Viva", f_revit:"Revitalização",
+    f_extinta:"Extinta", f_todas:"Todas",
+    chip_viva:"Viva", chip_revit:"Revitalização", chip_extinta:"Extinta",
+    soc_label:"Me siga",
+    footer_sub:"Arte Andina · Murais · Tatuagens · Música · Polônia 2026",
+    results_of:"de",
+    results_entries:"entradas",
+    results_showing:"Mostrando",
+    no_results:"Sem resultados para essa pesquisa. Tente outro termo.",
+    source_note:"Fonte: CUI — Mapa de Línguas Indígenas da Argentina (2024), dados do Censo Nacional 2022. De 1.306.730 pessoas indígenas registradas, 29,3% falam ou entendem uma língua indígena.",
+  }
+};
+
+/* ── trLangs para kakanVocab (EN·PL·FR·IT·PT) ── */
+const kakanTr = {
+  "-gasta":     {en:"town, inhabited locality",          pl:"miejscowość, osada",                  fr:"ville, localité habitée",              it:"paese, centro abitato",               pt:"cidade, localidade habitada"},
+  "-ao":        {en:"place, watering hole, site",        pl:"miejsce, wodopój, teren",             fr:"lieu, point d'eau, site",              it:"luogo, abbeveratoio, sito",           pt:"lugar, aguada, local"},
+  "-anco":      {en:"water, body of water",              pl:"woda, zbiornik wodny",                fr:"eau, cours d'eau",                     it:"acqua, corpo d'acqua",                pt:"água, corpo d'água"},
+  "-vil / -il": {en:"land, hill, elevated place",        pl:"ziemia, wzgórze, wyżynne miejsce",    fr:"terre, mont, lieu élevé",              it:"terra, monte, luogo elevato",         pt:"terra, monte, lugar elevado"},
+  "Cachi":      {en:"salt",                              pl:"sól",                                 fr:"sel",                                  it:"sale",                                pt:"sal"},
+  "Tilcara":    {en:"(uncertain meaning)",               pl:"(znaczenie niepewne)",                fr:"(signification incertaine)",           it:"(significato incerto)",               pt:"(significado incerto)"},
+  "Cafayate":   {en:"(possibly: place of meadows)",      pl:"(prawdopodobnie: miejsce łąk)",       fr:"(probablement: lieu des prairies)",    it:"(probabilmente: luogo dei prati)",    pt:"(possivelmente: lugar dos pastos)"},
+  "Quilmes":    {en:"name of the displaced community",   pl:"nazwa wypartej społeczności",         fr:"nom de la communauté déplacée",       it:"nome della comunità deportata",       pt:"nome da comunidade deslocada"},
+  "Andalgalá":  {en:"(possibly: town of the condor)",    pl:"(prawdopodobnie: miasto kondora)",    fr:"(peut-être: ville du condor)",        it:"(forse: città del condor)",           pt:"(possivelmente: cidade do condor)"},
+  "Abaucán":    {en:"(place of waters / great spring)",  pl:"(miejsce wód / wielka wodopój)",      fr:"(lieu des eaux / grande source)",     it:"(luogo delle acque / grande sorgente)",pt:"(lugar das águas / grande aguada)"},
+  "Yocavil":    {en:"place / valley (dialectal)",        pl:"miejsce / dolina (dialektalne)",      fr:"lieu / vallée (dialectal)",            it:"luogo / valle (dialettale)",          pt:"lugar / vale (dialetal)"},
+  "Amblayo":    {en:"(possibly: rounded hill / knoll)",  pl:"(prawdopodobnie: zaokrąglone wzgórze)",fr:"(peut-être: colline arrondie)",      it:"(forse: collina arrotondata)",        pt:"(possivelmente: morro arredondado)"},
+};
+
+/* ── trLangs para dictData (EN·PL·FR·IT·PT) ── */
+const dictTr = {
+  "Pachamama":       {en:"Mother Earth / Earth and time deity",         pl:"Matka Ziemia / Bóstwo ziemi i czasu",             fr:"Mère Terre / Divinité de la terre",               it:"Madre Terra / Divinità della terra",             pt:"Mãe Terra / Divindade da terra e do tempo"},
+  "Wiphala":         {en:"Rainbow flag, symbol of Andean peoples",      pl:"Tęczowa flaga, symbol ludów andyjskich",           fr:"Drapeau arc-en-ciel, symbole des peuples andins", it:"Bandiera arcobaleno, simbolo dei popoli andini", pt:"Bandeira arco-íris, símbolo dos povos andinos"},
+  "Inti":            {en:"Sun / Solar god of the Tawantinsuyu",         pl:"Słońce / Bóg słoneczny Imperium Inca",            fr:"Soleil / Dieu solaire du Tawantinsuyu",           it:"Sole / Dio solare del Tawantinsuyu",             pt:"Sol / Deus solar do Tawantinsuyu"},
+  "Wayra":           {en:"Wind",                                        pl:"Wiatr",                                           fr:"Vent",                                            it:"Vento",                                          pt:"Vento"},
+  "Yachay":          {en:"Knowledge, wisdom",                           pl:"Wiedza, mądrość",                                 fr:"Connaissance, savoir",                            it:"Conoscenza, sapere",                             pt:"Conhecimento, sabedoria"},
+  "Munay":           {en:"Love / deep affection / will",                pl:"Miłość / głębokie uczucie / wola",                fr:"Amour / affection profonde / volonté",            it:"Amore / affetto profondo / volontà",             pt:"Amor / afeto profundo / vontade"},
+  "Llaqta":          {en:"Town / community / city",                     pl:"Miasto / wspólnota",                              fr:"Ville / communauté",                              it:"Città / comunità",                               pt:"Cidade / comunidade"},
+  "Runa":            {en:"Person / human being / people",               pl:"Osoba / człowiek / lud",                          fr:"Personne / être humain",                          it:"Persona / essere umano",                         pt:"Pessoa / ser humano"},
+  "Apacheta":        {en:"Sacred stone cairn on Andean paths",          pl:"Święta kopka kamieni na andyjskich szlakach",     fr:"Cairn sacré sur les chemins andins",              it:"Cairn sacro sui sentieri andini",                pt:"Monte de pedras sagrado nas trilhas andinas"},
+  "Pukara":          {en:"Fortress / highland defensive site",          pl:"Twierdza / miejsce obronne na wzgórzu",           fr:"Forteresse / site défensif en hauteur",           it:"Fortezza / sito difensivo in altura",            pt:"Fortaleza / sítio defensivo nas alturas"},
+  "Hamawt'a":        {en:"Andean wise man, teacher, philosopher",       pl:"Andyjski mędrzec, nauczyciel, filozof",           fr:"Sage, maître, philosophe andin",                  it:"Saggio, maestro, filosofo andino",               pt:"Sábio, mestre, filósofo andino"},
+  "Ñusta":           {en:"Princess / noble woman / feminine constellation",pl:"Księżniczka / szlachetna kobieta",            fr:"Princesse / femme noble / constellation",          it:"Principessa / donna nobile / costellazione",     pt:"Princesa / mulher nobre / constelação"},
+  "Mapu":            {en:"Earth / territory / country",                 pl:"Ziemia / terytorium / kraj",                      fr:"Terre / territoire / pays",                        it:"Terra / territorio / paese",                     pt:"Terra / território / país"},
+  "Che":             {en:"People / person / human being",               pl:"Ludzie / osoba / człowiek",                       fr:"Gens / personne / être humain",                   it:"Gente / persona / essere umano",                 pt:"Gente / pessoa / ser humano"},
+  "Kimün":           {en:"Knowledge / deep understanding",              pl:"Wiedza / głębokie zrozumienie",                   fr:"Connaissance / savoir profond",                   it:"Conoscenza / sapere profondo",                   pt:"Conhecimento / saber profundo"},
+  "Machi":           {en:"Spiritual healer / shaman (usually female)",  pl:"Uzdrowicielka duchowa / szamanka",                fr:"Guérisseuse spirituelle / chamane",                it:"Guaritrice spirituale / sciamana",               pt:"Curandeira espiritual / xamã"},
+  "Nguillatún":      {en:"Sacred collective ceremony / ritual prayer",  pl:"Święta ceremonia zbiorowa / rytualna modlitwa",   fr:"Cérémonie collective sacrée / prière rituelle",   it:"Cerimonia collettiva sacra / preghiera rituale", pt:"Cerimônia coletiva sagrada / reza ritual"},
+  "Lonko":           {en:"Chief / head / community authority",          pl:"Wódz / głowa / autorytet społeczności",           fr:"Chef / tête / autorité communautaire",            it:"Capo / testa / autorità comunitaria",            pt:"Chefe / cabeça / autoridade comunitária"},
+  "Newen":           {en:"Force / vital energy / power",                pl:"Siła / energia życiowa / moc",                    fr:"Force / énergie vitale / pouvoir",                it:"Forza / energia vitale / potere",                pt:"Força / energia vital / poder"},
+  "Itrofill Mongen": {en:"Biodiversity / everything that has life",     pl:"Bioróżnorodność / wszystko co ma życie",          fr:"Biodiversité / tout ce qui a la vie",             it:"Biodiversità / tutto ciò che ha vita",           pt:"Biodiversidade / tudo o que tem vida"},
+  "Kallfü":          {en:"Blue / sky colour",                           pl:"Niebieski / kolor nieba",                         fr:"Bleu / couleur du ciel",                          it:"Blu / colore del cielo",                         pt:"Azul / cor do céu"},
+  "Peñi":            {en:"Brother / companion",                         pl:"Brat / towarzysz",                                fr:"Frère / compagnon",                               it:"Fratello / compagno",                            pt:"Irmão / companheiro"},
+  "Ñe'ẽ":           {en:"Word / voice / soul",                         pl:"Słowo / głos / dusza",                            fr:"Mot / voix / âme",                                it:"Parola / voce / anima",                          pt:"Palavra / voz / alma"},
+  "Yvy":             {en:"Earth / soil",                                pl:"Ziemia / gleba",                                  fr:"Terre / sol",                                     it:"Terra / suolo",                                  pt:"Terra / solo"},
+  "Ka'aguy":         {en:"Forest / jungle / bush",                      pl:"Las / dżungla / zarośla",                         fr:"Forêt / jungle / brousse",                        it:"Foresta / giungla / bosco",                      pt:"Floresta / selva / mato"},
+  "Ñandejara":       {en:"Our Lord / god / creator",                    pl:"Nasz Pan / bóg / stwórca",                        fr:"Notre Seigneur / dieu / créateur",                it:"Nostro Signore / dio / creatore",                pt:"Nosso Senhor / deus / criador"},
+  "Porã":            {en:"Beautiful / good / harmonious",               pl:"Piękny / dobry / harmonijny",                     fr:"Beau / bon / harmonieux",                         it:"Bello / buono / armonioso",                      pt:"Bonito / bom / harmonioso"},
+  "Añá":             {en:"Evil spirit / demon / dark force",            pl:"Zły duch / demon / ciemna siła",                  fr:"Esprit malin / démon / force obscure",            it:"Spirito maligno / demone / forza oscura",        pt:"Espírito maligno / demônio / força sombria"},
+  "Ára":             {en:"Time / sky / day / weather",                  pl:"Czas / niebo / dzień / pogoda",                   fr:"Temps / ciel / jour / météo",                     it:"Tempo / cielo / giorno / clima",                 pt:"Tempo / céu / dia / clima"},
+  "Mamihlapinatapai":{en:"The shared gaze of two who want to initiate something without daring to",pl:"Wspólne spojrzenie dwojga, którzy chcą coś zainicjować, lecz żadne się nie odważy",fr:"Le regard partagé de deux qui veulent initier quelque chose sans oser",it:"Lo sguardo condiviso di due che vogliono iniziare qualcosa senza osare",pt:"O olhar compartilhado de dois que querem iniciar algo sem se atrever"},
+  "Qom":             {en:"People / us / the people",                    pl:"Ludzie / my / lud",                               fr:"Gens / nous / le peuple",                         it:"Gente / noi / il popolo",                        pt:"Povo / nós / as pessoas"},
+  "Shiyaxaua":       {en:"Moon",                                        pl:"Księżyc",                                         fr:"Lune",                                            it:"Luna",                                           pt:"Lua"},
+  "Nalaqta":         {en:"Territory / place of belonging",              pl:"Terytorium / miejsce przynależności",             fr:"Territoire / lieu d'appartenance",                it:"Territorio / luogo di appartenenza",             pt:"Território / lugar de pertencimento"},
+  "Naua":            {en:"River / great water",                         pl:"Rzeka / wielka woda",                             fr:"Rivière / grande eau",                            it:"Fiume / grande acqua",                           pt:"Rio / grande água"},
+  "Lhämte":          {en:"Person / human being",                        pl:"Osoba / człowiek",                                fr:"Personne / être humain",                          it:"Persona / essere umano",                         pt:"Pessoa / ser humano"},
+  "Hoyhat":          {en:"Forest / land / territory",                   pl:"Las / ziemia / terytorium",                       fr:"Forêt / terre / territoire",                      it:"Foresta / terra / territorio",                   pt:"Floresta / terra / território"},
+  "Lhakaj":          {en:"River / body of water",                       pl:"Rzeka / zbiornik wodny",                          fr:"Rivière / étendue d'eau",                         it:"Fiume / corpo d'acqua",                          pt:"Rio / massa d'água"},
+  "Ahot":            {en:"To know / knowledge",                         pl:"Wiedzieć / wiedza",                               fr:"Savoir / connaissance",                           it:"Sapere / conoscenza",                            pt:"Saber / conhecimento"},
+  "Aonikenk":        {en:"People of the south",                         pl:"Ludzie Południa",                                 fr:"Gens du sud",                                     it:"Gente del sud",                                  pt:"Povo do sul"},
+  "Günün a yajüch":  {en:"Our language / the Pampas people's tongue",   pl:"Nasz język / język ludu Pampy",                   fr:"Notre langue / la langue des gens de la Pampa",   it:"La nostra lingua / la lingua della Pampa",       pt:"Nossa língua / idioma do povo pampeano"},
+  "Kenk":            {en:"People / person",                             pl:"Ludzie / osoba",                                  fr:"Gens / personne",                                 it:"Gente / persona",                                pt:"Gente / pessoa"},
+  "Selknam":         {en:"The people / ourselves (proper name)",        pl:"Lud / my sami (nazwa własna)",                   fr:"Les gens / nous-mêmes (nom propre)",              it:"Il popolo / noi stessi (nome proprio)",          pt:"O povo / nós mesmos (nome próprio)"},
+  "Hain":            {en:"Male initiation ceremony / sacred rite",      pl:"Ceremonia inicjacji mężczyzn / rytuał",           fr:"Cérémonie d'initiation masculine / rite sacré",   it:"Cerimonia di iniziazione maschile / rito sacro", pt:"Cerimônia de iniciação masculina / rito sagrado"},
+  "Shoort":          {en:"Spirit / entity of the invisible world",      pl:"Duch / istota niewidzialnego świata",             fr:"Esprit / entité du monde invisible",              it:"Spirito / entità del mondo invisibile",          pt:"Espírito / entidade do mundo invisível"},
+  "Yagán":           {en:"People of the channels / the people",         pl:"Lud kanałów / ludzie",                            fr:"Peuple des canaux / les gens",                    it:"Popolo dei canali / la gente",                   pt:"Povo dos canais / as pessoas"},
+  "Ushuaia":         {en:"Bay that penetrates westward (possible Yagán etymology)",pl:"Zatoka wcinająca się na zachód",      fr:"Baie qui pénètre vers l'ouest (étymologie yagane)",it:"Baia che penetra a ovest (etimologia yagana)",  pt:"Baía que penetra a oeste (etimologia yagã)"},
+  "Miraflores":      {en:"(possible Tonocoté or Lule toponym)",         pl:"(możliwy toponim tonokotyjski lub lule)",         fr:"(possible toponymie tonocoté ou lule)",           it:"(possibile toponimo tonocoté o lule)",           pt:"(possível topônimo tonocoté ou lule)"},
+  "Omokte":          {en:"Earth / place / region",                      pl:"Ziemia / miejsce / region",                       fr:"Terre / lieu / région",                           it:"Terra / luogo / regione",                        pt:"Terra / lugar / região"},
+};
+
+/* ════════════════════════════════════════════════════════
+   applyLang — actualiza toda la UI al cambiar de idioma
+   ════════════════════════════════════════════════════════ */
+function applyLang(l){
+  currentLang = l;
+  document.documentElement.lang = l;
+  const t = T[l] || T.es;
+
+  /* Elementos data-i18n (textContent) */
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const k=el.getAttribute('data-i18n');
+    if(t[k]!=null) el.textContent=t[k];
+  });
+
+  /* Placeholders */
+  document.querySelectorAll('[data-i18n-ph]').forEach(el=>{
+    const k=el.getAttribute('data-i18n-ph');
+    if(t[k]!=null) el.setAttribute('placeholder',t[k]);
+  });
+
+  /* Selector activo */
+  document.querySelectorAll('.lb-d').forEach(b=>
+    b.classList.toggle('active', b.dataset.l===l)
+  );
+
+  /* Re-render dinámico */
+  renderKakanVocab();
+  renderFamilias();
+  renderDict();
+  updateStaticSections(t);
+}
+
+/* Actualiza textos estáticos que NO usan data-i18n
+   (historia intro, source note, kakan dict note) */
+function updateStaticSections(t){
+  const hiEl = document.getElementById('hist-intro-p');
+  if(hiEl) hiEl.textContent = t.hist_intro;
+  const snEl = document.getElementById('source-note');
+  if(snEl) snEl.textContent = t.source_note;
+  const kdnEl = document.getElementById('kakan-dict-note');
+  if(kdnEl) kdnEl.textContent = t.kakan_dict_note;
+  /* search placeholder extra insurance */
+  const si = document.getElementById('search-input');
+  if(si) si.setAttribute('placeholder', t.search_ph);
+  /* empty state */
+  const em = document.getElementById('dict-empty');
+  if(em) em.textContent = t.no_results;
+}
+
+/* helper: obtiene traducción de una palabra del diccionario */
+function getWordTr(word, map){
+  const l = currentLang;
+  if(l==='es') return null; // usa tr nativo del objeto
+  return (map[word]||{})[l] || null;
+}
+
+const kakanVocab = [
+  { word:"-gasta",  tr:"pueblo, localidad habitada",    ctx:"Sufijo toponímico más extendido del kakán. Aparece en Tinogasta (Catamarca), Andalgalá (Catamarca), Fiambalá, Hualfín. Nardi (1979) lo considera el término kakán para 'asentamiento humano'." },
+  { word:"-ao",     tr:"lugar, aguada, sitio",           ctx:"Sufijo de lugar vinculado al agua. Presente en Pasao (Santiago del Estero), Niquijao (Catamarca), Sunchocao. Algunos lo vinculan con el kunza (atacameño) ao = lugar." },
+  { word:"-anco",   tr:"agua, cuerpo hídrico",          ctx:"Elemento léxico que designa el agua o la presencia de fuentes. Aparece en Huancarán y otros topónimos del Valle Calchaquí. Relacionado con el comercio hídrico de las comunidades." },
+  { word:"-vil / -il",tr:"tierra, monte, lugar elevado",ctx:"Sufijo presente en el área oriental del kakán (La Rioja, Córdoba). Quillovil (Córdoba), Amaicha (variante). Nardi lo distingue geográficamente del sufijo -gasta, que predomina más al oeste." },
+  { word:"Cachi",   tr:"sal",                            ctx:"Topónimo del Valle Calchaquí (Salta): Cachi, pueblo a 2.280 m. La sal era un recurso vital para el comercio andino. Voz kakán directa identificada con claridad por Lafone Quevedo." },
+  { word:"Tilcara", tr:"(significado incierto)",        ctx:"Importante topónimo de la Quebrada de Humahuaca (Jujuy). Posiblemente kakán aunque también puede tener influencia quechua o cunza. Hace referencia histórica a una comunidad específica." },
+  { word:"Cafayate", tr:"(posiblemente: lugar de las vegas / de la gente rubia)",ctx:"Topónimo de Salta. Varias interpretaciones. Lafone Quevedo propuso derivación kakán. La presencia del sufijo -ate sugiere elementos de la lengua de los valles." },
+  { word:"Quilmes", tr:"nombre de la comunidad trasladada",ctx:"Los quilmes ('quilme' en documentos coloniales) fueron forzados a caminar desde los Valles Calchaquíes hasta Buenos Aires en 1666. Su nombre sobrevive en la ciudad bonaerense. Voz kakán de identidad comunitaria." },
+  { word:"Andalgalá",tr:"(posiblemente: pueblo del cóndor)",ctx:"Capital del dpto. homónimo en Catamarca. El elemento -gala- podría relacionarse con el cóndor en variantes regionales; -lá o -gasta como sufijo de pueblo. Investigado por Nardi y Serrano." },
+  { word:"Abaucán", tr:"(lugar de aguas / aguada grande)",ctx:"Valle y río de Catamarca. El elemento -anco (agua) aparece en la raíz. Zona minera y agrícola de los diaguitas; el nombre refleja la importancia del río." },
+  { word:"Yocavil", tr:"lugar / valle (dialectal)",    ctx:"Nombre originario del Valle de Santa María (Catamarca). Uno de los centros neurálgicos del mundo calchaquí. La terminación -vil lo ubica en el área dialectal meridional del kakán según Nardi." },
+  { word:"Amblayo", tr:"(posiblemente: cerro redondeado / colina)",ctx:"Localidad en los Valles Calchaquíes. Morfología léxica consistente con el patrón kakán. Investigado por Quiroga en Folklore Calchaquí (1897)." },
+];
+
+/* ════════════════════════════════════════════════════════
+   DATOS: FAMILIAS LINGÜÍSTICAS (acordeones)
+   ════════════════════════════════════════════════════════ */
+const familias = [
+  {
+    nombre:"Quechua — Familia andina (Quechua / Aymara)",
+    color:"#E8720C",
+    meta:"NOA · 60.000–80.000 hablantes en Argentina",
+    text:`<p>El quechua —también llamado <strong>runa simi</strong> (lengua de la gente)— es la lengua más hablada de las comunidades originarias del noroeste argentino. Llegó al territorio impulsado primero por el comercio con el Imperio Inca (desde aprox. 1480) y luego fue instrumentalizado por los españoles como lingua franca de dominación, lo que paradójicamente le permitió sobrevivir mientras el kakán se extinguía.</p>
+    <p>En Argentina se habla principalmente en Jujuy, Salta y Tucumán. El aymara, lengua hermana, tiene presencia en la Puna jujeña. El Censo 2022 registra decenas de miles de hablantes activos en el NOA.</p>
+    <h4>Pueblos</h4>`,
+    chips:[{t:"Quechua",c:"viva"},{t:"Aymara",c:"viva"},{t:"Coya",c:"viva"}]
+  },
+  {
+    nombre:"Tupí-Guaraní — Familia del litoral y el NEA",
+    color:"#00913A",
+    meta:"NEA · Litoral · lengua oficial en Corrientes · +250.000 hablantes",
+    text:`<p>La familia tupí-guaraní es la más extendida territorialmente de Argentina. El guaraní es hoy lengua co-oficial de la provincia de Corrientes y se habla activamente en Misiones, Chaco, Formosa y Entre Ríos. Diversas variantes —Mbyá Guaraní, Avá Guaraní, Chiriguano/Chané, Guaraní Occidental— conservan comunidades de hablantes activos.</p>
+    <p>El Mbyá Guaraní en particular mantiene una notable vitalidad en Misiones, donde las comunidades transmiten la lengua intergeneracionalmente. El guaraní paraguayo también cruza la frontera con presencia en Argentina.</p>
+    <h4>Variantes reconocidas</h4>`,
+    chips:[{t:"Guaraní Correntino",c:"viva"},{t:"Mbyá Guaraní",c:"viva"},{t:"Avá Guaraní",c:"viva"},{t:"Guaraní Occidental",c:"viva"}]
+  },
+  {
+    nombre:"Mataco-Mataguaya — Familia del Gran Chaco",
+    color:"#F5C400",
+    meta:"NOA/NEA · Chaco · Salta · Formosa · Jujuy",
+    text:`<p>Esta familia incluye las lenguas de los pueblos cazadores-recolectores del Gran Chaco. El <strong>wichí</strong> es su lengua más hablada, con estimaciones de entre 40.000 y 60.000 hablantes en Salta, Chaco y Formosa. Es una lengua con vitalidad notable y un sistema de escritura en desarrollo.</p>
+    <p>El <strong>nivaclé</strong> y el <strong>chorote</strong> también pertenecen a esta familia con comunidades activas en Formosa y Salta. El <strong>maká</strong>, hablado por comunidades argentinas emigradas a Paraguay, completa el grupo.</p>
+    <h4>Lenguas</h4>`,
+    chips:[{t:"Wichí",c:"viva"},{t:"Nivaclé",c:"viva"},{t:"Chorote",c:"viva"},{t:"Maká",c:"viva"}]
+  },
+  {
+    nombre:"Guaycurú — Los pueblos del Chaco central",
+    color:"#CC0000",
+    meta:"Chaco · Santa Fe · Formosa · Salta",
+    text:`<p>La familia guaycurú agrupa a los pueblos que dominaron el Gran Chaco con una cultura ecuestre extraordinaria tras la incorporación del caballo en el siglo XVII. El <strong>qom</strong> (o toba) es la lengua con mayor número de hablantes de esta familia —estimados en 50.000–70.000 personas en Chaco, Formosa y Santa Fe. El <strong>moqoit</strong> (mocoví) se habla en Chaco y Santa Fe. El <strong>pilagá</strong>, en Formosa.</p>
+    <p>El <strong>abipón</strong>, otra lengua de esta familia, se extinguió en el siglo XIX: fue documentada con relativa profundidad por el jesuita Martin Dobrizhoffer, cuya gramática del abipón (1784) es hoy un documento histórico fundamental.</p>
+    <h4>Lenguas</h4>`,
+    chips:[{t:"Qom (Toba)",c:"viva"},{t:"Moqoit",c:"viva"},{t:"Pilagá",c:"viva"},{t:"Abipón",c:"extinta"}]
+  },
+  {
+    nombre:"Arauco / Mapuche — El pueblo de la tierra",
+    color:"#005BAA",
+    meta:"Patagonia · Neuquén · Río Negro · Chubut · +300.000 hablantes en Argentina y Chile",
+    text:`<p>El <strong>mapudungun</strong> (literalmente "lengua de la tierra") es la lengua del pueblo mapuche, uno de los más numerosos y con mayor vitalidad cultural de Argentina. Hablado principalmente en Neuquén, Río Negro, Chubut y el Gran Buenos Aires (por migración), el mapudungun tiene entre 100.000 y 300.000 hablantes o entendedores en territorio argentino.</p>
+    <p>El pueblo mapuche resistió la conquista española y fue sometido recién por el Estado argentino durante la Campaña del Desierto (1879). Hoy es una de las lenguas con mayor actividad de revitalización en Argentina, con programas de enseñanza, material audiovisual y reclamo de reconocimiento constitucional.</p>
+    <h4>Estado</h4>`,
+    chips:[{t:"Mapudungun",c:"viva"},{t:"En educación bilingüe",c:"revit"}]
+  },
+  {
+    nombre:"Chón / Patagónica — Los pueblos del sur profundo",
+    color:"#9B5EDE",
+    meta:"Patagonia · Tierra del Fuego · crítico",
+    text:`<p>Esta familia engloba las lenguas de los pueblos cazadores de la Patagonia y Tierra del Fuego. El <strong>tehuelche</strong> (también llamado aonikenk o günün a yajüch en su variante pampeana) es un caso emblemático de lengua en proceso de extinción y simultáneo esfuerzo de revitalización. Quedan muy pocos hablantes nativos —algunos estudios hablan de menos de 5 hablantes fluidos— pero las comunidades tehuelche en Chubut están desarrollando materiales y programas de enseñanza.</p>
+    <p>El <strong>selknam</strong> (ona), lengua de los cazadores de Tierra del Fuego, se considera extinta como lengua cotidiana. La última hablante nativa reconocida falleció en el siglo XX. Sin embargo, comunidades selknam en Chile y Argentina trabajan activamente en su revitalización.</p>
+    <h4>Lenguas</h4>`,
+    chips:[{t:"Tehuelche / Aonikenk",c:"revit"},{t:"Günün a yajüch",c:"revit"},{t:"Selknam",c:"extinta"}]
+  },
+  {
+    nombre:"Lenguas fueguinas — Los canoeros del fin del mundo",
+    color:"#5C2D91",
+    meta:"Tierra del Fuego · Canal Beagle · situación crítica",
+    text:`<p>Las lenguas fueguinas son quizás las más urgentes: el <strong>yagán</strong> (yamana) perdió a su última hablante nativa conocida, Cristina Calderón, fallecida en Chile en febrero de 2022. El yagán es famoso lingüísticamente por la palabra <em>mamihlapinatapai</em>, considerada una de las palabras más hermosas y difíciles de traducir del mundo: "la mirada entre dos personas que quieren que la otra inicie algo que ambas desean pero ninguna se atreve a comenzar".</p>
+    <p>El <strong>kawésqar</strong> (alacaluf) cuenta con uno o dos hablantes activos en Chile y ninguno en Argentina. Ambas lenguas son patrimonios únicos de la humanidad: lenguas sin parentesco conocido con ninguna otra familia lingüística del planeta.</p>
+    <h4>Estado urgente</h4>`,
+    chips:[{t:"Yagán",c:"extinta"},{t:"Kawésqar",c:"peligro"}]
+  },
+  {
+    nombre:"Lenguas extintas del interior — Tonocoté, Comechingón, Sanavirón, Vilela",
+    color:"#8B6520",
+    meta:"Santiago del Estero · Córdoba · Tucumán · extintas / en estudio",
+    text:`<p>El interior del actual territorio argentino albergó lenguas de las que quedan muy pocos registros. El <strong>tonocoté</strong> se habló en Santiago del Estero y fue parcialmente documentado por jesuitas. El <strong>comechingón</strong> y el <strong>sanavirón</strong>, lenguas de las sierras de Córdoba y Santiago del Estero, sobreviven apenas en topónimos y en documentos coloniales fragmentarios.</p>
+    <p>El <strong>vilela</strong>, hablado en el Chaco santafesino, se consideró extinto a mediados del siglo XX pero a principios del siglo XXI se registraron algunos hablantes pasivos y hay esfuerzos de revitalización. El <strong>lule</strong>, del Chaco occidental, es objeto de investigación y recuperación por parte de comunidades de Tucumán y Salta.</p>
+    <h4>Estado</h4>`,
+    chips:[{t:"Tonocoté",c:"extinta"},{t:"Comechingón",c:"extinta"},{t:"Sanavirón",c:"extinta"},{t:"Vilela",c:"revit"},{t:"Lule",c:"revit"}]
+  }
+];
+
+/* ════════════════════════════════════════════════════════
+   DATOS: DICCIONARIO MULTILINGÜE
+   80 + entradas en 10 lenguas originarias de Argentina.
+   Cada entrada: { word, tr, lang, estado, region, ctx }
+   ════════════════════════════════════════════════════════ */
+const dictData = [
+  /* ─── QUECHUA ─── */
+  {word:"Pachamama",   tr:"Madre Tierra / Deidad de la tierra y el tiempo",lang:"Quechua",estado:"viva",region:"NOA",  ctx:"Concepto cosmológico central del mundo andino. Pacha = tierra/tiempo; mama = madre. La Pachamama es la entidad que sustenta toda vida, a la que se ofrenda (ch'alla) y con quien se mantiene una relación de reciprocidad. Es uno de los términos quechuas más extendidos en el habla cotidiana del NOA argentino."},
+  {word:"Wiphala",     tr:"Bandera del arcoíris, símbolo de los pueblos andinos",lang:"Quechua",estado:"viva",region:"NOA",  ctx:"Textil ritual y política de los pueblos andinos, de cuatro colores o siete franjas diagonales. Símbolo de la plurinacionalidad en Bolivia y Perú. En Argentina es emblema de los pueblos originarios en su conjunto. La serie Ojos Rasgados de Nali incorpora los colores de la wiphala como hilo visual."},
+  {word:"Inti",        tr:"Sol / Dios solar del Tawantinsuyu",lang:"Quechua",estado:"viva",region:"NOA",  ctx:"Deidad principal del panteón inca. El sol como padre y sustentador de la vida. La ciudad de Machu Picchu fue diseñada para que los rayos de Inti iluminaran puntos específicos en los solsticios."},
+  {word:"Wayra",       tr:"Viento",lang:"Quechua",estado:"viva",region:"NOA",  ctx:"El viento como entidad viva en la cosmovisión andina. Wayra también es nombre propio femenino. En la Puna, el viento es una fuerza constante que moldea el paisaje y la vida cotidiana."},
+  {word:"Yachay",      tr:"Conocimiento, saber, sabiduría",lang:"Quechua",estado:"viva",region:"NOA",  ctx:"Uno de los tres principios del 'buen vivir' andino junto a munay (amor) y llankay (trabajo). El conocimiento como capacidad de la mente y el corazón. Nali lo eligió como nombre de la pintura sobre palma de árbol."},
+  {word:"Munay",       tr:"Amor / querer profundo / voluntad",lang:"Quechua",estado:"viva",region:"NOA",  ctx:"Uno de los tres principios del sumak kawsay (buen vivir). Munay abarca el amor, el deseo y la voluntad —la capacidad de sentir y comprometerse emocionalmente con el mundo."},
+  {word:"Llaqta",      tr:"Pueblo / comunidad / ciudad",lang:"Quechua",estado:"viva",region:"NOA",  ctx:"Término político y territorial: el espacio habitado en comunidad. Machu Picchu era una llaqta. En el habla cotidiana del NOA, 'llacta' aún aparece en expresiones y topónimos."},
+  {word:"Runa",        tr:"Persona / ser humano / gente",lang:"Quechua",estado:"viva",region:"NOA",  ctx:"El ser humano en su condición esencial. 'Runa simi' = lengua de la gente (quechua). En oposición a 'supay' (espíritu/demonio), runa define la humanidad como categoría ontológica positiva."},
+  {word:"Apacheta",    tr:"Montículo de piedras sagrado en los caminos andinos",lang:"Quechua",estado:"viva",region:"NOA",  ctx:"Las apachetas marcan los puntos de mayor altitud en los caminos andinos. Los viajeros agregan una piedra al pasar como ofrenda a la Pachamama y señal de gratitud por haber llegado vivos hasta ese punto. Son altares naturales de comunicación espiritual."},
+  {word:"Pukara",      tr:"Fortaleza / sitio defensivo en altura",lang:"Quechua",estado:"viva",region:"NOA",  ctx:"Estructura defensiva precolombina construida en lugares estratégicos. El Pucará de Tilcara (Jujuy) es uno de los más conocidos de Argentina. Desde el pukara se controlaban los valles y las rutas comerciales."},
+  {word:"Hamawt'a",    tr:"Sabio, maestro, filósofo andino",lang:"Quechua",estado:"viva",region:"NOA",  ctx:"En el Tawantinsuyu, los hamawt'a eran los maestros y filósofos encargados de preservar y transmitir el conocimiento. Vivían en los yachay wasi (casas del saber). No hay equivalente exacto en español."},
+  {word:"Ñusta",       tr:"Princesa / mujer noble / constelación femenina",lang:"Quechua",estado:"viva",region:"NOA",  ctx:"Término de nobleza femenina en el Tawantinsuyu. Las ñustas eran hijas de los gobernantes. También nombre de una constelación en la astronomía andina, donde las estrellas oscuras (espacios entre estrellas) tienen tanto valor cosmológico como las estrellas brillantes."},
+
+  /* ─── MAPUDUNGUN ─── */
+  {word:"Mapu",        tr:"Tierra / territorio / país",lang:"Mapudungun",estado:"viva",region:"Patagonia",ctx:"Raíz fundamental del mapudungun: la tierra como entidad viva y sagrada. 'Mapu-che' = gente de la tierra. La relación con el mapu no es de propiedad sino de pertenencia mutua. Este concepto choca radicalmente con la noción europea de propiedad privada de la tierra."},
+  {word:"Che",         tr:"Gente / persona / ser humano",lang:"Mapudungun",estado:"viva",region:"Patagonia",ctx:"Concepto de humanidad en el mapudungun. 'Mapuche' = gente de la tierra. El che define a quien vive en relación con el mapu y la comunidad. La identidad mapuche es indisociable del territorio."},
+  {word:"Kimün",       tr:"Conocimiento / saber profundo",lang:"Mapudungun",estado:"viva",region:"Patagonia",ctx:"El saber transmitido por la machi y los ancianos. El kimün es conocimiento enraizado en la tierra y la experiencia comunitaria, opuesto al conocimiento abstracto occidental. Las machi poseen un kimün especial sobre plantas medicinales y espiritualidad."},
+  {word:"Machi",       tr:"Autoridad espiritual y sanadora / chamana",lang:"Mapudungun",estado:"viva",region:"Patagonia",ctx:"Figura central de la religiosidad mapuche. La machi —generalmente mujer— es intermediaria entre el mundo humano y el mundo espiritual (wenu mapu). Posee conocimiento de plantas medicinales, realiza ceremonias y cura enfermedades físicas y espirituales."},
+  {word:"Nguillatún",  tr:"Ceremonia de rogativa / rito colectivo sagrado",lang:"Mapudungun",estado:"viva",region:"Patagonia",ctx:"La ceremonia más importante del calendario mapuche. El pueblo se reúne para agradecer, pedir y renovar la relación con las fuerzas del universo. Puede durar varios días e incluye música, danza, sacrificio ritual y ofrendas. Actualmente sigue practicándose en comunidades de Argentina y Chile."},
+  {word:"Lonko",       tr:"Jefe / cabeza / autoridad comunitaria",lang:"Mapudungun",estado:"viva",region:"Patagonia",ctx:"Literalmente 'cabeza'. El lonko es la autoridad tradicional de una comunidad mapuche (lof). No es un poder hereditario absoluto: se basa en el prestigio, la sabiduría y el consenso. Hoy los lonkos también son interlocutores en los reclamos territoriales."},
+  {word:"Newen",       tr:"Fuerza / energía vital / poder",lang:"Mapudungun",estado:"viva",region:"Patagonia",ctx:"La fuerza que anima todos los seres: personas, animales, plantas, piedras, viento. El newen no es solo físico: incluye la fuerza espiritual y la voluntad. Mantener el newen equilibrado es esencial para el bienestar en la cosmovisión mapuche."},
+  {word:"Itrofill Mongen",tr:"Biodiversidad / todo lo que tiene vida",lang:"Mapudungun",estado:"viva",region:"Patagonia",ctx:"Concepto holístico que abarca toda forma de vida: animales, plantas, minerales, agua, aire. En la cosmovisión mapuche todo tiene vida y debe ser respetado. Este concepto ha sido citado en debates internacionales sobre derechos de la naturaleza."},
+  {word:"Kallfü",      tr:"Azul / color del cielo",lang:"Mapudungun",estado:"viva",region:"Patagonia",ctx:"El azul en el mapudungun. El cielo (wenu mapu = tierra de arriba) es kallfü. El color tiene significado espiritual: el wenu mapu es el espacio donde habitan las fuerzas benéficas del universo."},
+  {word:"Peñi",        tr:"Hermano / compañero",lang:"Mapudungun",estado:"viva",region:"Patagonia",ctx:"Término de fraternidad entre hombres mapuche. La versión femenina es 'lamngen' (hermana). Estos términos se extienden como expresión de solidaridad entre personas que comparten la lucha o la identidad territorial."},
+
+  /* ─── GUARANÍ ─── */
+  {word:"Ñe'ẽ",        tr:"Palabra / voz / alma",lang:"Guaraní",estado:"viva",region:"NEA",   ctx:"Una de las palabras más profundas del guaraní: en la cosmovisión guaraní, la palabra y el alma son la misma cosa. 'Ñe'ẽ porã' = palabra hermosa / buena alma. El lenguaje no es solo comunicación: es la expresión del ser espiritual de la persona."},
+  {word:"Yvy",         tr:"Tierra / suelo",lang:"Guaraní",estado:"viva",region:"NEA",   ctx:"La tierra como sustento material y espiritual. En la cosmología guaraní, la tierra actual es 'yvy vai' (tierra mala, imperfecta). Los guaraní buscan la 'yvy maraẽỹ' (tierra sin mal), un concepto escatológico que ha impulsado grandes migraciones históricas."},
+  {word:"Ka'aguy",     tr:"Monte / selva / bosque",lang:"Guaraní",estado:"viva",region:"NEA",   ctx:"El monte como espacio sagrado y fuente de vida. En el pensamiento guaraní, el ka'aguy tiene dueños espirituales (jare'ỹ) que deben ser respetados. La deforestación no es solo un daño ecológico: es una violación espiritual."},
+  {word:"Ñandejara",   tr:"Nuestro señor / dios / creador",lang:"Guaraní",estado:"viva",region:"NEA",   ctx:"El ser supremo en la cosmología guaraní antes del contacto con el cristianismo. 'Ñande' = nuestro; 'jara' = señor/dueño. Con la evangelización jesuita, el término fue resignificado para nombrar al Dios cristiano, lo que creó tensiones y sincretismos religiosos profundos."},
+  {word:"Porã",        tr:"Hermoso / bueno / armonioso",lang:"Guaraní",estado:"viva",region:"NEA",   ctx:"Concepto estético y ético a la vez. 'Porã' describe tanto la belleza visual como la bondad moral. 'Tekó porã' = vida buena/armoniosa, es el equivalente guaraní del sumak kawsay andino: la noción de bienestar comunitario."},
+  {word:"Añá",         tr:"Espíritu maligno / demonio / fuerza oscura",lang:"Guaraní",estado:"viva",region:"NEA",   ctx:"La fuerza opuesta al bien en la cosmología guaraní. El añá habita en los espacios entre los mundos. Con la evangelización fue identificado con el diablo cristiano, pero en la tradición guaraní es más complejo: puede ser engañado o negociado."},
+  {word:"Ára",         tr:"Tiempo / cielo / día / clima",lang:"Guaraní",estado:"viva",region:"NEA",   ctx:"Palabra que reúne lo temporal y lo espacial: el tiempo que hace, el tiempo que pasa, el cielo que se ve. 'Ára porã' = buen tiempo. La unificación del tiempo y el cielo en una sola palabra refleja una cosmovisión donde el cosmos es continuo y no fragmentado."},
+  {word:"Mamihlapinatapai",tr:"La mirada compartida de quien quiere iniciar algo sin atreverse",lang:"Yagán",estado:"extinta",region:"Fueguina",ctx:"Considerada una de las palabras más hermosas y untranslatable del mundo. Describe el momento en que dos personas se miran sabiendo que ambas quieren que la otra inicie algo, pero ninguna da el primer paso. Registrada por el misionero Thomas Bridges en su diccionario yagán (1882)."},
+
+  /* ─── QOM / TOBA ─── */
+  {word:"Qom",         tr:"Gente / nosotros / el pueblo",lang:"Qom (Toba)",estado:"viva",region:"Chaco",  ctx:"Nombre propio del pueblo y la lengua, que significa simplemente 'gente'. Los qom fueron llamados 'tobas' por los españoles —término peyorativo que hoy rechazan formalmente. Su autodenominación, qom, es la que se usa en todos los contextos oficiales y académicos actuales."},
+  {word:"Shiyaxaua",   tr:"Luna",lang:"Qom (Toba)",estado:"viva",region:"Chaco",  ctx:"La luna como entidad femenina en la cosmovisión qom. Los ciclos lunares organizan el tiempo, la siembra y las ceremonias. La luna es también personaje central en la narrativa oral (shiyaxaua nqataGak = los cuentos de la luna)."},
+  {word:"Nalaqta",     tr:"Territorio / lugar de pertenencia",lang:"Qom (Toba)",estado:"viva",region:"Chaco",  ctx:"El territorio como espacio de identidad. Para los qom, el nalaqta no es solo tierra: incluye el monte, el río, los animales y los espíritus que lo habitan. La pérdida del nalaqta es la pérdida de la identidad."},
+  {word:"Naua",        tr:"Río / agua grande",lang:"Qom (Toba)",estado:"viva",region:"Chaco",  ctx:"El río como eje de la vida qom. El Pilcomayo y el Bermejo organizaron históricamente la geografía y la economía de los pueblos del Chaco. 'Naua' también aparece en expresiones relacionadas con la pesca, actividad fundamental."},
+
+  /* ─── WICHÍ ─── */
+  {word:"Lhämte",      tr:"Persona / ser humano",lang:"Wichí",estado:"viva",region:"Chaco",  ctx:"El ser humano en el pensamiento wichí. La persona es inseparable de su relación con el monte (hoyhat) y el río. La identidad wichí es una identidad de pertenencia territorial y no de posesión."},
+  {word:"Hoyhat",      tr:"Monte / tierra / territorio",lang:"Wichí",estado:"viva",region:"Chaco",  ctx:"El monte como espacio de vida y espiritualidad wichí. Los wichí son cazadores-recolectores cuya cultura está profundamente integrada al monte chaqueño. La deforestación del Chaco amenaza no solo el ecosistema sino el mundo espiritual y cultural wichí."},
+  {word:"Lhakaj",      tr:"Río / cuerpo de agua",lang:"Wichí",estado:"viva",region:"Chaco",  ctx:"El río como entidad y recurso vital. Los wichí habitan la cuenca del Pilcomayo y el Bermejo desde tiempos inmemoriales. Los ríos son sagrados: tienen dueños espirituales y reglas de uso que garantizan su sostenibilidad."},
+  {word:"Ahot",        tr:"Saber / conocer",lang:"Wichí",estado:"viva",region:"Chaco",  ctx:"El conocimiento en la lengua wichí. Los saberes del monte —qué plantas curan, dónde viven los animales, cuándo lloverá— son conocimiento vital transmitido en wichí de generación en generación."},
+
+  /* ─── TEHUELCHE / AONIKENK ─── */
+  {word:"Aonikenk",    tr:"Gente del sur",lang:"Tehuelche",estado:"revitalización",region:"Patagonia",ctx:"Nombre propio del pueblo tehuelche meridional. 'Aoni' = sur / sur profundo; 'kenk' = gente. Los aonikenk fueron los habitantes de la Patagonia austral con quienes Hernando de Magallanes tuvo contacto en 1520, dando origen al mito (probablemente falso) de los 'patagones' de pies grandes."},
+  {word:"Günün a yajüch",tr:"Nuestra lengua / idioma de la gente pampa",lang:"Tehuelche",estado:"revitalización",region:"Patagonia",ctx:"Nombre que el pueblo tehuelche septentrional (pampa) da a su propia lengua. 'Günün' = nosotros / nuestra gente; 'yajüch' = boca/lengua/palabra. Es la variante tehuelche que está siendo más activamente revitalizada desde comunidades de Chubut, con la colaboración del lingüista Daniel Huircapán del CUI."},
+  {word:"Kenk",        tr:"Gente / persona",lang:"Tehuelche",estado:"revitalización",region:"Patagonia",ctx:"La raíz que nombra al ser humano en las lenguas tehuelches. Aparece en Aonikenk (gente del sur), Gennakenk (gente del norte) y otras autodenominaciones del pueblo tehuelche que diferenciaban grupos por su territorio."},
+
+  /* ─── SELKNAM ─── */
+  {word:"Selknam",     tr:"La gente / nosotros (nombre propio)",lang:"Selknam",estado:"extinta",region:"Fueguina",ctx:"Los selknam (también llamados 'ona' por los extranjeros) habitaron la Isla Grande de Tierra del Fuego. Fueron víctimas de uno de los genocidios más documentados de Argentina: el exterminio de finales del siglo XIX, en el que estancieros pagaban una recompensa por orejas y manos de selknam. Su lengua se extinguió como sistema vivo en el siglo XX."},
+  {word:"Hain",        tr:"Ceremonia de iniciación masculina / rito sagrado",lang:"Selknam",estado:"extinta",region:"Fueguina",ctx:"La ceremonia central de la cultura selknam. Los hombres del pueblo representaban a los espíritus usando máscaras y pinturas corporales para 'aterrorizar' a las mujeres, en una inversión ritual del poder. El hain fue documentado fotográficamente por el misionero Martín Gusinde en 1920, poco antes de la extinción cultural."},
+  {word:"Shoort",      tr:"Espíritu / entidad del mundo invisible",lang:"Selknam",estado:"extinta",region:"Fueguina",ctx:"Los espíritus en la cosmovisión selknam. Los shoort habitan en un universo paralelo y se hacen presentes en el hain. El chamán (xo'on) era capaz de comunicarse con ellos. La mitología selknam es extraordinariamente rica y fue parcialmente registrada por Gusinde antes de la extinción."},
+
+  /* ─── YAGÁN ─── */
+  {word:"Yagán",       tr:"Pueblo de los canales / la gente",lang:"Yagán",estado:"extinta",region:"Fueguina",ctx:"Los yagán (o yámana) fueron los canoeros del Canal Beagle y los mares del sur. Su cultura estaba completamente adaptada al agua: vivían en canoas, pescaban y cazaban lobos marinos en uno de los entornos más inhóspitos del planeta. Su última hablante nativa conocida, Cristina Calderón, falleció en Chile el 16 de febrero de 2022."},
+  {word:"Ushuaia",     tr:"Bahía que penetra hacia el oeste (posible etimología yagán)",lang:"Yagán",estado:"extinta",region:"Fueguina",ctx:"La ciudad más austral del mundo lleva nombre yagán. 'Ush' = bahía/ensenada en la lengua yagán según algunos investigadores; 'waia' = bahía que penetra. La ciudad cuyo nombre viene de la lengua de un pueblo que prácticamente eliminamos."},
+
+  /* ─── TONOCOTÉ (EXTINTA) ─── */
+  {word:"Miraflores",  tr:"(topónimo posible tonocoté o lule en Santiago del Estero)",lang:"Tonocoté",estado:"extinta",region:"NOA",  ctx:"El tonocoté fue hablado en Santiago del Estero y fue parcialmente documentado por los jesuitas. Es una de las lenguas del interior más difíciles de reconstruir. Algunos topónimos del este santiagueño pueden ser tonocoté, aunque la distinción con el lule y el vilela es compleja."},
+
+  /* ─── LULE ─── */
+  {word:"Omokte",      tr:"Tierra / lugar / región",lang:"Lule",estado:"revitalización",region:"NOA",  ctx:"El lule fue hablado en el actual Chaco occidental, Tucumán y Salta. El padre Machoni publicó en 1732 el 'Arte y Vocabulario de la Lengua Lule y Tonocoté', uno de los pocos documentos coloniales que preserva materiales de estas lenguas. Hoy comunidades de Tucumán trabajan en su revitalización."},
+];
+
+/* ════════════════════════════════════════════════════════
+   COLORES POR LENGUA
+   ════════════════════════════════════════════════════════ */
+const langColors = {
+  "Kakán":       {bg:"rgba(26,107,114,.12)",  border:"rgba(43,163,173,.35)",  text:"#2ba3ad"},
+  "Quechua":     {bg:"rgba(232,114,12,.10)",  border:"rgba(232,114,12,.35)",  text:"#E8720C"},
+  "Mapudungun":  {bg:"rgba(0,91,170,.10)",    border:"rgba(0,91,170,.35)",    text:"#4d9ed4"},
+  "Guaraní":     {bg:"rgba(0,145,58,.10)",    border:"rgba(0,145,58,.35)",    text:"#3dd87d"},
+  "Qom (Toba)":  {bg:"rgba(204,0,0,.10)",     border:"rgba(204,0,0,.35)",     text:"#ff7070"},
+  "Wichí":       {bg:"rgba(245,196,0,.10)",   border:"rgba(245,196,0,.35)",   text:"#F5C400"},
+  "Tehuelche":   {bg:"rgba(92,45,145,.10)",   border:"rgba(92,45,145,.35)",   text:"#9B5EDE"},
+  "Selknam":     {bg:"rgba(140,86,32,.10)",   border:"rgba(140,86,32,.35)",   text:"#c8922a"},
+  "Yagán":       {bg:"rgba(0,91,170,.10)",    border:"rgba(0,91,170,.35)",    text:"#6ab0e0"},
+  "Tonocoté":    {bg:"rgba(92,45,145,.08)",   border:"rgba(92,45,145,.28)",   text:"#b09de0"},
+  "Lule":        {bg:"rgba(92,45,145,.08)",   border:"rgba(92,45,145,.28)",   text:"#b09de0"},
+};
+const estadoChipCls = {
+  "viva":"chip-viva", "revitalización":"chip-revit", "extinta":"chip-extinta"
+};
+function estadoChip(estado){
+  const t=T[currentLang]||T.es;
+  const labels={"viva":t.chip_viva,"revitalización":t.chip_revit,"extinta":t.chip_extinta};
+  return {cls:estadoChipCls[estado]||"chip-revit", label:labels[estado]||estado};
+}
+
+/* ════════════════════════════════════════════════════════
+   FILTROS ACTIVOS
+   ════════════════════════════════════════════════════════ */
+let filters = { estado:"todos", region:"todos" };
+let searchTerm = "";
+
+/* ════════════════════════════════════════════════════════
+   RENDER — VOCABULARIO KAKÁN
+   ════════════════════════════════════════════════════════ */
+function renderKakanVocab(){
+  const c = document.getElementById('kakan-vocab');
+  if(!c) return;
+  c.innerHTML = kakanVocab.map(k => {
+    const tr = getWordTr(k.word, kakanTr) || k.tr;
+    return `<div class="kdict-card">
+      <div class="kd-word">${k.word}</div>
+      <div class="kd-tr">${tr}</div>
+      <div class="kd-ctx">${k.ctx.substring(0,140)}…</div>
+    </div>`;
+  }).join('');
+}
+
+/* ════════════════════════════════════════════════════════
+   RENDER — ACORDEONES DE FAMILIAS
+   ════════════════════════════════════════════════════════ */
+function renderFamilias(){
+  const c = document.getElementById('familias-container');
+  if(!c) return;
+  c.innerHTML = familias.map((f,i) => {
+    const chipsHtml = f.chips.map(ch =>
+      `<span class="lengua-chip ${estadoChip[ch.c]?.cls||'chip-revit'}">${ch.t}</span>`
+    ).join('');
+    return `
+      <div class="familia" id="fam-${i}">
+        <div class="familia-header" onclick="toggleFam(${i})">
+          <div class="familia-name-wrap">
+            <span class="familia-dot" style="background:${f.color};box-shadow:0 0 8px ${f.color}44;"></span>
+            <div>
+              <div class="familia-title">${f.nombre}</div>
+              <div class="familia-meta">${f.meta}</div>
+            </div>
+          </div>
+          <i class="fas fa-chevron-down familia-arrow"></i>
+        </div>
+        <div class="familia-body">
+          <div class="familia-content">
+            <div class="familia-text">
+              ${f.text}
+              <div class="lengua-chips">${chipsHtml}</div>
+            </div>
+            <div style="padding-top:.5rem;">
+              <div style="height:4px;border-radius:2px;background:${f.color};opacity:.5;margin-bottom:1rem;"></div>
+              <p style="font-family:var(--ffc);font-size:.62rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--cdim);line-height:1.8;">
+                Las lenguas son organismos vivos que requieren transmisión intergeneracional para sobrevivir. La pérdida de cada lengua implica la desaparición de una forma única de ver y nombrar el mundo.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+function toggleFam(i){
+  const el = document.getElementById('fam-'+i);
+  if(el) el.classList.toggle('open');
+}
+
+/* ════════════════════════════════════════════════════════
+   RENDER — DICCIONARIO
+   ════════════════════════════════════════════════════════ */
+function renderDict(){
+  const grid   = document.getElementById('dict-grid');
+  const empty  = document.getElementById('dict-empty');
+  const count  = document.getElementById('results-count');
+  if(!grid) return;
+
+  const term = searchTerm.toLowerCase().trim();
+  const filtered = dictData.filter(d => {
+    const matchSearch = !term ||
+      d.word.toLowerCase().includes(term) ||
+      d.tr.toLowerCase().includes(term)   ||
+      d.ctx.toLowerCase().includes(term)  ||
+      d.lang.toLowerCase().includes(term);
+    const matchEstado = filters.estado === 'todos' || d.estado === filters.estado;
+    const matchRegion = filters.region === 'todos' || d.region === filters.region;
+    return matchSearch && matchEstado && matchRegion;
+  });
+
+  const t2=T[currentLang]||T.es;
+  count.innerHTML = filtered.length > 0
+    ? `${t2.results_showing} <strong>${filtered.length}</strong> ${t2.results_of} ${dictData.length} ${t2.results_entries}`
+    : '';
+  empty.style.display  = filtered.length === 0 ? 'block' : 'none';
+  grid.style.display   = filtered.length === 0 ? 'none' : 'grid';
+
+  grid.innerHTML = filtered.map((d,i) => {
+    const lc    = langColors[d.lang] || {bg:'rgba(200,146,42,.1)',border:'rgba(200,146,42,.3)',text:'var(--oro)'};
+    const ec    = estadoChip(d.estado);
+    const wordTr = getWordTr(d.word, dictTr) || d.tr;
+    const delay = Math.min(i * 0.04, 0.6);
+    return `
+      <article class="dcard" style="--cd:${delay}s;" role="listitem">
+        <div class="dc-word">${d.word}</div>
+        <div class="dc-tr">${wordTr}</div>
+        <div class="dc-tags">
+          <span class="dc-lang-tag" style="background:${lc.bg};border:1px solid ${lc.border};color:${lc.text};">${d.lang}</span>
+          <span class="lengua-chip ${ec.cls}">${ec.label}</span>
+          <span class="dc-region-tag">${d.region}</span>
+        </div>
+        <p class="dc-ctx">${d.ctx}</p>
+      </article>
+    `;
+  }).join('');
+}
+
+/* ════════════════════════════════════════════════════════
+   EVENTOS — BUSCADOR Y FILTROS
+   ════════════════════════════════════════════════════════ */
+document.getElementById('search-input').addEventListener('input', function(){
+  searchTerm = this.value;
+  renderDict();
+});
+
+document.querySelectorAll('.fpill').forEach(btn => {
+  btn.addEventListener('click', function(){
+    const f = this.dataset.filter;
+    const v = this.dataset.val;
+    filters[f] = v;
+    document.querySelectorAll(`.fpill[data-filter="${f}"]`).forEach(b => b.classList.remove('active'));
+    this.classList.add('active');
+    renderDict();
+  });
+});
+
+/* ════════════════════════════════════════════════════════
+   NAV / DRAWER
+   ════════════════════════════════════════════════════════ */
+const hbg    = document.getElementById('hamburger');
+const drawer = document.getElementById('drawer');
+const ov     = document.getElementById('dOverlay');
+const dClose = document.getElementById('drawerClose');
+
+function openD(){drawer.classList.add('open');ov.classList.add('open');hbg.classList.add('open');hbg.setAttribute('aria-expanded','true');document.body.classList.add('locked');}
+function closeD(){drawer.classList.remove('open');ov.classList.remove('open');hbg.classList.remove('open');hbg.setAttribute('aria-expanded','false');document.body.classList.remove('locked');}
+hbg.addEventListener('click',openD);
+dClose.addEventListener('click',closeD);
+ov.addEventListener('click',closeD);
+document.addEventListener('keydown',e=>{if(e.key==='Escape') closeD();});
+
+/* Smooth scroll para los links del drawer */
+document.querySelectorAll('.js-scroll').forEach(a=>{
+  a.addEventListener('click',e=>{
+    e.preventDefault();
+    closeD();
+    const target=document.querySelector(a.getAttribute('href'));
+    if(target) setTimeout(()=>{
+      const navH=parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav'))||68;
+      window.scrollTo({top:target.getBoundingClientRect().top+scrollY-navH-8,behavior:'smooth'});
+    },380);
+  });
+});
+
+/* Nav scroll effect */
+window.addEventListener('scroll',()=>
+  document.getElementById('nav').classList.toggle('scrolled',scrollY>50)
+,{passive:true});
+
+/* ════════════════════════════════════════════════════════
+   SCROLL REVEAL
+   ════════════════════════════════════════════════════════ */
+const obs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('v');obs.unobserve(e.target);}});
+},{threshold:.08,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.sr').forEach(el=>obs.observe(el));
+
+/* ════════════════════════════════════════════════════════
+   INIT
+   ════════════════════════════════════════════════════════ */
+/* Selector de idioma */
+document.querySelectorAll('.lb-d').forEach(b=>
+  b.addEventListener('click',()=>applyLang(b.dataset.l))
+);
+
+applyLang('es'); // idioma por defecto
+</script>
+</body>
+</html>
