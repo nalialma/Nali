@@ -314,6 +314,10 @@ nav.scrolled .nav-bar{background:rgba(7,5,10,.97);}
   font-family:var(--ffc);font-size:.74rem;letter-spacing:2px;text-transform:uppercase;
   color:#3dd87d;margin-bottom:1.8rem;
 }
+.avail-pill.is-inactive{
+  background:rgba(240,230,208,.06);border-color:rgba(240,230,208,.16);color:var(--cdim);
+}
+.avail-pill.is-inactive .pill-dot{background:rgba(240,230,208,.35);animation:none;}
 .pill-dot{width:7px;height:7px;border-radius:50%;background:#00913A;flex-shrink:0;animation:pdot 2s ease infinite;}
 @keyframes pdot{0%,100%{box-shadow:0 0 0 0 rgba(0,145,58,.5);}50%{box-shadow:0 0 0 7px rgba(0,145,58,0);}}
 .hero-eyebrow{font-family:var(--ffc);font-size:.78rem;letter-spacing:4px;text-transform:uppercase;color:var(--oro);margin-bottom:.8rem;}
@@ -652,7 +656,7 @@ footer{position:relative;z-index:1;border-top:1px solid rgba(200,146,42,.1);padd
     <a href="#contacto"        class="drawer-link" data-i18n="n_con"><span class="di"><i class="fas fa-envelope"></i></span>Contacto</a>
   </div>
   <div class="drawer-foot">
-    <a href="https://wa.me/48692971895?text=Hola%20Nali" target="_blank" rel="noopener" class="drawer-wa">
+    <a href="https://wa.me/48692971895?text=Hola%20Nali" target="_blank" rel="noopener" class="drawer-wa" id="drawerWaBtn">
       <i class="fab fa-whatsapp"></i>
       <span data-i18n="cta_wa">WhatsApp</span>
     </a>
@@ -674,6 +678,7 @@ footer{position:relative;z-index:1;border-top:1px solid rgba(200,146,42,.1);padd
       <div class="hero-photo-frame">
         <div class="photo-wiphala" aria-hidden="true"></div>
         <img
+          id="heroPhotoImg"
           src="https://i.ibb.co/MDTvFcMc/IMG-20260421-WA0079-1.jpg"
           alt="Nali Alma, artista multidisciplinar andina de Salta, Argentina — retrato"
           loading="eager"
@@ -691,7 +696,7 @@ footer{position:relative;z-index:1;border-top:1px solid rgba(200,146,42,.1);padd
     </div>
 
     <div class="hero-text">
-      <div class="avail-pill" role="status">
+      <div class="avail-pill" id="availPill" role="status">
         <span class="pill-dot" aria-hidden="true"></span>
         <span data-i18n="pill">Disponible · Polonia 2026</span>
       </div>
@@ -705,7 +710,7 @@ footer{position:relative;z-index:1;border-top:1px solid rgba(200,146,42,.1);padd
         Artista multidisciplinar nacida en Salta, Argentina. Llevo los colores de la Quebrada, los símbolos de los pueblos andinos y la energía de la Pachamama a muros, piel y sonido — ahora en Europa.
       </p>
 
-      <div class="worlds" role="list">
+      <div class="worlds" id="worldsRow1" role="list">
         <a href="Galer.html" class="world-card art" role="listitem">
           <div class="world-icon" aria-hidden="true">🎨</div>
           <div>
@@ -732,7 +737,7 @@ footer{position:relative;z-index:1;border-top:1px solid rgba(200,146,42,.1);padd
         </a>
       </div><!-- /worlds -->
 
-      <div class="worlds-row2" role="list">
+      <div class="worlds-row2" id="worldsRow2" role="list">
         <a href="nali-fotografia.html" class="world-card photo" role="listitem">
           <div class="world-icon" aria-hidden="true">📷</div>
           <div>
@@ -753,11 +758,11 @@ footer{position:relative;z-index:1;border-top:1px solid rgba(200,146,42,.1);padd
 
       <div class="hero-contacts" id="contacto">
         <a href="https://wa.me/48692971895?text=Hola%20Nali%2C%20me%20interesa%20tu%20trabajo"
-           target="_blank" rel="noopener" class="btn-wa">
+           target="_blank" rel="noopener" class="btn-wa" id="heroWaBtn">
           <i class="fab fa-whatsapp" aria-hidden="true"></i>
           <span data-i18n="cta_wa_l">Escribir por WhatsApp</span>
         </a>
-        <div class="soc-row">
+        <div class="soc-row" id="socRow">
           <a href="https://www.instagram.com/naliart.ok"  target="_blank" rel="noopener" class="soc-btn" aria-label="Instagram Arte — @naliart.ok"><i class="fab fa-instagram" aria-hidden="true"></i></a>
           <a href="https://www.instagram.com/nali.ttoo"   target="_blank" rel="noopener" class="soc-btn" aria-label="Instagram Tattoo — @nali.ttoo"><i class="fas fa-pen-nib" aria-hidden="true"></i></a>
           <a href="https://www.instagram.com/nali.alma"   target="_blank" rel="noopener" class="soc-btn" aria-label="Instagram Música — @nali.alma"><i class="fas fa-music" aria-hidden="true"></i></a>
@@ -769,7 +774,7 @@ footer{position:relative;z-index:1;border-top:1px solid rgba(200,146,42,.1);padd
 
   <!-- STATS -->
   <aside class="stats" aria-label="Datos destacados">
-    <div class="stats-inner">
+    <div class="stats-inner" id="statsInner">
       <div class="stat sr"><div><div class="stat-num">7+</div><div class="stat-label" data-i18n="sy">Años tatuando</div></div></div>
       <div class="stat sr d1"><div><div class="stat-num">2</div><div class="stat-label" data-i18n="sc">Continentes</div></div></div>
       <div class="stat sr d2"><div><div class="stat-num">2</div><div class="stat-label" data-i18n="sd">Discos editados</div></div></div>
@@ -793,7 +798,7 @@ footer{position:relative;z-index:1;border-top:1px solid rgba(200,146,42,.1);padd
       <p class="bio-p" data-i18n="bio_p2">
         Con más de 7 años tatuando, dos discos editados y una trayectoria activa en muralismo, pintura, ilustración y fotografía, llevo mi identidad andina a Europa. Fundadora de Séptima Pacha Co. Disponible en Polonia durante 2026 para proyectos artísticos, residencias y convocatorias internacionales.
       </p>
-      <div class="skills" aria-label="Disciplinas artísticas">
+      <div class="skills" id="skillsList" aria-label="Disciplinas artísticas">
         <span class="skill" data-i18n="sk1">Arte Mural</span>
         <span class="skill" data-i18n="sk2">Tatuaje</span>
         <span class="skill" data-i18n="sk3">Pintura</span>
@@ -805,19 +810,19 @@ footer{position:relative;z-index:1;border-top:1px solid rgba(200,146,42,.1);padd
       </div>
     </div>
     <div class="bio-visual sr d2" aria-hidden="true">
-      <div class="bio-img">
-        <img src="https://i.ibb.co/DD37KnBN/IMG-20260527-WA0150-1.jpg"
+      <div class="bio-img" id="bioImgMainWrap">
+        <img id="bioImgMain" src="https://i.ibb.co/DD37KnBN/IMG-20260527-WA0150-1.jpg"
              alt="Mural Abya Yala pintado por Nali Alma en Salta, Argentina — arte mural andino con simbolismo originario"
              loading="lazy" width="600" height="400">
       </div>
       <div class="bio-row">
-        <div class="bio-img">
-          <img src="https://i.ibb.co/MKGq6K7/IMG-20260527-WA0050-1.jpg"
+        <div class="bio-img" id="bioImgSec1Wrap">
+          <img id="bioImgSec1" src="https://i.ibb.co/MKGq6K7/IMG-20260527-WA0050-1.jpg"
                alt="Mural Coya de Nali Alma — pintura mural con identidad andina en Salta"
                loading="lazy" width="300" height="200">
         </div>
-        <div class="bio-img">
-          <img src="https://i.ibb.co/d0P0Knz4/IMG-20260521-WA0023.jpg"
+        <div class="bio-img" id="bioImgSec2Wrap">
+          <img id="bioImgSec2" src="https://i.ibb.co/d0P0Knz4/IMG-20260521-WA0023.jpg"
                alt="Obra mural de Nali Alma en Salta, Argentina — muralismo social y ambiental"
                loading="lazy" width="300" height="200">
         </div>
@@ -863,6 +868,7 @@ footer{position:relative;z-index:1;border-top:1px solid rgba(200,146,42,.1);padd
         <div class="sec-label" data-i18n="tr_l">Formación y Trayectoria</div>
         <h2 id="tray-heading" data-i18n="tr_h">Un camino <span>multidisciplinar</span></h2>
 
+        <div id="trayFormacion">
         <article class="tray-item">
           <div class="tray-icon" aria-hidden="true"><i class="fas fa-palette"></i></div>
           <div>
@@ -907,12 +913,14 @@ footer{position:relative;z-index:1;border-top:1px solid rgba(200,146,42,.1);padd
             <span class="tray-tag" data-i18n="tr5_tag">Tech · Diseño Digital</span>
           </div>
         </article>
+        </div>
       </div>
 
       <div class="tray-col sr d2">
         <div class="sec-label" data-i18n="tr_l2">Activismo y Obra</div>
         <h2 data-i18n="tr_h2">Arte como <span>acto</span></h2>
 
+        <div id="trayActivismo">
         <article class="tray-item">
           <div class="tray-icon" aria-hidden="true"><i class="fas fa-fist-raised"></i></div>
           <div>
@@ -957,6 +965,7 @@ footer{position:relative;z-index:1;border-top:1px solid rgba(200,146,42,.1);padd
             <span class="tray-tag" data-i18n="ta5_tag">Proyecto Cultural</span>
           </div>
         </article>
+        </div>
       </div>
     </div>
   </section>
@@ -977,7 +986,7 @@ footer{position:relative;z-index:1;border-top:1px solid rgba(200,146,42,.1);padd
 
 <!-- ══ SCRIPTS ══ -->
 <script>
-/* ─── TRANSLATIONS ─── */
+/* ─── TRANSLATIONS (fallback estático — se sobreescribe con Supabase si está disponible) ─── */
 const T={
   es:{
     n_about:'Sobre mí',n_st:'Declaración',n_art:'Arte Visual',n_tat:'Tatuajes',n_mus:'Música',n_con:'Contacto',
@@ -1142,6 +1151,7 @@ function applyLang(l){
     if(T[l]&&T[l][k]!=null) el.innerHTML=T[l][k];
   });
   document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.dataset.lang===l));
+  renderCmsSections(l);
 }
 document.querySelectorAll('.lang-btn').forEach(b=>b.addEventListener('click',()=>applyLang(b.dataset.lang)));
 
@@ -1251,6 +1261,173 @@ const obs = new IntersectionObserver(entries=>{
   entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); } });
 },{threshold:.1,rootMargin:'0px 0px -28px 0px'});
 document.querySelectorAll('.sr').forEach(el=>obs.observe(el));
+
+/* ══════════════════════════════════════════════════════════════
+   ── SUPABASE CMS (Nali Project) ──
+   Todo el texto/imágenes de esta página vive en Supabase.
+   El HTML estático de arriba queda como fallback si la API
+   no responde (offline, RLS mal configurado, etc).
+   Administrable desde el Table Editor de Supabase:
+   translations, portals, stats, skills_tags, timeline_items,
+   bio_images, social_links, site_settings.
+   ══════════════════════════════════════════════════════════════ */
+const SUPABASE_URL = 'https://ampkoprhrujdwfodxrav.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFtcGtvcHJocnVqZHdmb2R4cmF2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODg0MjIxMDksImV4cCI6MjEwMzk5ODEwOX0.YhX3BgLH0woLCpbMRy5Q7J9fR1xdKbtG5SBRyu1T6TQ';
+
+let CMS = null; // se llena si el fetch a Supabase funciona; si no, queda null y todo usa el fallback estático
+
+async function sb(table, params=''){
+  const res = await fetch(`${SUPABASE_URL}/rest/v1/${table}?${params}`, {
+    headers:{ apikey: SUPABASE_ANON_KEY, Authorization: `Bearer ${SUPABASE_ANON_KEY}` }
+  });
+  if(!res.ok) throw new Error(`Supabase ${table}: ${res.status}`);
+  return res.json();
+}
+
+async function loadCms(){
+  try{
+    const [translations, stats, skills, portals, timeline, bioImages, social, settingsArr] = await Promise.all([
+      sb('translations','select=*'),
+      sb('stats','select=*&is_published=eq.true&order=sort_order.asc'),
+      sb('skills_tags','select=*&is_published=eq.true&order=sort_order.asc'),
+      sb('portals','select=*&is_published=eq.true&order=sort_order.asc'),
+      sb('timeline_items','select=*&is_published=eq.true&order=sort_order.asc'),
+      sb('bio_images','select=*&is_published=eq.true&order=sort_order.asc'),
+      sb('social_links','select=*&is_published=eq.true&order=sort_order.asc'),
+      sb('site_settings','select=*&id=eq.1'),
+    ]);
+
+    // fusiona las traducciones de textos fijos (nav, hero, bio, statement, footer) en T
+    translations.forEach(row=>{
+      ['es','en','pl','fr'].forEach(l=>{
+        if(row[l]) T[l][row.key] = row[l];
+      });
+    });
+
+    CMS = { stats, skills, portals, timeline, bioImages, social, settings: settingsArr[0] || null };
+
+    renderHeroPhoto();
+    renderAvailability();
+    applyLang(lang); // vuelve a pintar todo (textos + secciones dinámicas) con datos frescos
+  }catch(err){
+    console.warn('CMS Supabase no disponible, usando contenido estático de respaldo.', err);
+  }
+}
+
+function renderHeroPhoto(){
+  if(!CMS || !CMS.settings || !CMS.settings.hero_photo_url) return;
+  const img = document.getElementById('heroPhotoImg');
+  if(img) img.src = CMS.settings.hero_photo_url;
+}
+
+function renderAvailability(){
+  if(!CMS || !CMS.settings) return;
+  const pill = document.getElementById('availPill');
+  if(pill) pill.classList.toggle('is-inactive', CMS.settings.availability_active === false);
+}
+
+function renderPortals(l){
+  if(!CMS || !CMS.portals || !CMS.portals.length) return;
+  const row1 = document.getElementById('worldsRow1');
+  const row2 = document.getElementById('worldsRow2');
+  if(!row1 || !row2) return;
+  const cardHtml = p => `
+    <a href="${p.href}" class="world-card ${p.color_key||p.slug}" role="listitem">
+      <div class="world-icon" aria-hidden="true">${p.icon||'✦'}</div>
+      <div>
+        <div class="world-title">${p['title_'+l] || p.title_es || ''}</div>
+        <div class="world-sub">${p['subtitle_'+l] || p.subtitle_es || ''}</div>
+      </div>
+      <i class="fas fa-arrow-right world-arrow" aria-hidden="true"></i>
+    </a>`;
+  const first3 = CMS.portals.slice(0,3);
+  const rest = CMS.portals.slice(3);
+  row1.innerHTML = first3.map(cardHtml).join('');
+  row2.innerHTML = rest.map(cardHtml).join('');
+}
+
+function renderStats(l){
+  if(!CMS || !CMS.stats || !CMS.stats.length) return;
+  const wrap = document.getElementById('statsInner');
+  if(!wrap) return;
+  const delays = ['','d1','d2','d3','d1','d2','d3'];
+  wrap.innerHTML = CMS.stats.map((s,i)=>`
+    <div class="stat sr ${delays[i]||''}"><div>
+      <div class="stat-num">${s.value}</div>
+      <div class="stat-label">${s['label_'+l] || s.label_es || ''}</div>
+    </div></div>`).join('');
+  wrap.querySelectorAll('.sr').forEach(el=>obs.observe(el));
+}
+
+function renderSkills(l){
+  if(!CMS || !CMS.skills || !CMS.skills.length) return;
+  const wrap = document.getElementById('skillsList');
+  if(!wrap) return;
+  wrap.innerHTML = CMS.skills.map(s=>`<span class="skill">${s['label_'+l] || s.label_es || ''}</span>`).join('');
+}
+
+function renderTrayectoria(l){
+  if(!CMS || !CMS.timeline || !CMS.timeline.length) return;
+  const fWrap = document.getElementById('trayFormacion');
+  const aWrap = document.getElementById('trayActivismo');
+  if(!fWrap || !aWrap) return;
+  const itemHtml = it => `
+    <article class="tray-item">
+      <div class="tray-icon" aria-hidden="true"><i class="fas ${it.icon||'fa-star'}"></i></div>
+      <div>
+        <div class="tray-title">${it['title_'+l] || it.title_es || ''}</div>
+        <div class="tray-desc">${it['desc_'+l] || it.desc_es || ''}</div>
+        <span class="tray-tag">${it['tag_'+l] || it.tag_es || ''}</span>
+      </div>
+    </article>`;
+  fWrap.innerHTML = CMS.timeline.filter(t=>t.section==='formacion').map(itemHtml).join('');
+  aWrap.innerHTML = CMS.timeline.filter(t=>t.section==='activismo').map(itemHtml).join('');
+}
+
+function renderBioImages(l){
+  if(!CMS || !CMS.bioImages || !CMS.bioImages.length) return;
+  const slots = { main:'bioImgMain', secondary_1:'bioImgSec1', secondary_2:'bioImgSec2' };
+  CMS.bioImages.forEach(b=>{
+    const id = slots[b.slot];
+    if(!id) return;
+    const img = document.getElementById(id);
+    if(!img) return;
+    if(b.image_url) img.src = b.image_url;
+    const alt = b['alt_'+l] || b.alt_es;
+    if(alt) img.alt = alt;
+  });
+}
+
+function renderSocial(){
+  if(!CMS || !CMS.social || !CMS.social.length) return;
+  const wa = CMS.social.find(s=>s.platform==='whatsapp');
+  if(wa){
+    const heroWa = document.getElementById('heroWaBtn');
+    const drawerWa = document.getElementById('drawerWaBtn');
+    if(heroWa) heroWa.href = wa.url;
+    if(drawerWa) drawerWa.href = wa.url;
+  }
+  const others = CMS.social.filter(s=>s.platform!=='whatsapp');
+  const row = document.getElementById('socRow');
+  if(row && others.length){
+    row.innerHTML = others.map(s=>`
+      <a href="${s.url}" target="${s.url.startsWith('mailto:')?'_self':'_blank'}" rel="noopener" class="soc-btn" aria-label="${s.platform}">
+        <i class="${s.icon||'fas fa-link'}" aria-hidden="true"></i>
+      </a>`).join('');
+  }
+}
+
+function renderCmsSections(l){
+  if(!CMS) return; // fallback estático se queda tal cual hasta que cargue Supabase
+  renderPortals(l);
+  renderStats(l);
+  renderSkills(l);
+  renderTrayectoria(l);
+  renderBioImages(l);
+  renderSocial();
+}
+
+loadCms();
 </script>
 </body>
 </html>
