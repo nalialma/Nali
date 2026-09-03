@@ -172,6 +172,53 @@ nav.scrolled{background:rgba(8,5,8,.95);box-shadow:0 8px 32px rgba(0,0,0,.5);}
 .gitem::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;z-index:2;background:linear-gradient(90deg,var(--wip-rojo),var(--wip-naranja),var(--wip-amarillo),var(--wip-blanco),var(--wip-verde),var(--wip-azul),var(--wip-violeta));opacity:0;transition:opacity .35s;}
 .gitem:hover::before{opacity:1;}
 .gallery-empty,.styles-empty{text-align:center;padding:3rem 1rem;color:rgba(240,230,208,.4);font-family:var(--font-cond);letter-spacing:1px;grid-column:1/-1;}
+.gitem-multi{position:absolute;top:1rem;left:1rem;z-index:3;width:26px;height:26px;border-radius:6px;background:rgba(8,5,8,.65);border:1px solid rgba(240,230,208,.35);display:flex;align-items:center;justify-content:center;color:var(--crema);font-size:.8rem;}
+.gitem-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:3;width:52px;height:52px;border-radius:50%;background:rgba(8,5,8,.55);border:1px solid rgba(240,230,208,.4);display:flex;align-items:center;justify-content:center;color:var(--crema);font-size:1.1rem;pointer-events:none;}
+
+/* ══ POST MODAL (visor estilo Instagram) ══ */
+#postModal{position:fixed;inset:0;z-index:2000;background:rgba(8,5,8,.97);backdrop-filter:blur(16px);display:flex;align-items:center;justify-content:center;padding:2rem;opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s;}
+#postModal.open{opacity:1;visibility:visible;}
+.pm-close{position:absolute;top:1.2rem;right:1.5rem;z-index:20;width:42px;height:42px;border-radius:50%;background:rgba(200,146,42,.1);border:1px solid var(--glass-border);color:var(--crema);font-size:1.1rem;display:flex;align-items:center;justify-content:center;transition:var(--tr);}
+.pm-close:hover{background:rgba(204,0,0,.3);}
+.pm-wrap{position:relative;width:100%;max-width:1100px;height:min(720px,88vh);background:var(--tierra-dark);border:1px solid var(--glass-border);border-radius:18px;overflow:hidden;display:grid;grid-template-columns:1.3fr 1fr;box-shadow:var(--shadow-deep);animation:lbIn .3s ease;}
+@keyframes lbIn{from{opacity:0;transform:scale(.94);}to{opacity:1;transform:none;}}
+.pm-media{position:relative;background:#000;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.pm-media img,.pm-media video{width:100%;height:100%;object-fit:contain;background:#000;}
+.pm-media-caption{position:absolute;bottom:0;left:0;right:0;padding:1rem 1.2rem 1rem;background:linear-gradient(to top,rgba(0,0,0,.75),transparent);font-family:var(--font-cond);font-size:.85rem;letter-spacing:.5px;color:var(--crema);min-height:20px;}
+.pm-nav{position:absolute;top:50%;transform:translateY(-50%);width:38px;height:38px;border-radius:50%;background:rgba(8,5,8,.5);border:1px solid rgba(240,230,208,.25);color:var(--crema);display:flex;align-items:center;justify-content:center;transition:var(--tr);z-index:5;}
+.pm-nav:hover{background:rgba(200,146,42,.4);}
+.pm-nav.prev{left:.8rem;}
+.pm-nav.next{right:.8rem;}
+.pm-dots{position:absolute;top:.8rem;left:50%;transform:translateX(-50%);display:flex;gap:5px;z-index:5;}
+.pm-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.35);transition:var(--tr);}
+.pm-dot.active{background:var(--oro);width:18px;border-radius:3px;}
+.pm-side{display:flex;flex-direction:column;min-height:0;}
+.pm-head{padding:1.1rem 1.3rem;border-bottom:1px solid rgba(200,146,42,.15);}
+.pm-title{font-family:var(--font-display);font-size:1.15rem;color:var(--crema);}
+.pm-sub{font-family:var(--font-cond);font-size:.75rem;color:rgba(240,230,208,.5);letter-spacing:1px;margin-top:.2rem;}
+.pm-styletags{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.6rem;}
+.pm-comments{flex:1;overflow-y:auto;padding:1rem 1.3rem;display:flex;flex-direction:column;gap:.9rem;}
+.pm-comment{display:flex;gap:.7rem;}
+.pm-avatar{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--wip-naranja),var(--wip-amarillo));display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:.8rem;color:var(--noche);flex-shrink:0;}
+.pm-comment-body{flex:1;min-width:0;}
+.pm-comment-name{font-family:var(--font-cond);font-size:.8rem;font-weight:700;color:var(--oro-light);letter-spacing:.5px;}
+.pm-comment-text{font-size:.85rem;color:rgba(240,230,208,.85);line-height:1.5;margin-top:.1rem;word-wrap:break-word;}
+.pm-comment-time{font-family:var(--font-cond);font-size:.65rem;color:rgba(240,230,208,.35);margin-top:.25rem;letter-spacing:.5px;}
+.pm-comment-del{background:none;border:none;color:rgba(240,230,208,.25);font-size:.75rem;padding:.2rem;flex-shrink:0;}
+.pm-comment-del:hover{color:#ff7070;}
+.pm-no-comments{color:rgba(240,230,208,.35);font-family:var(--font-cond);font-size:.8rem;letter-spacing:.5px;text-align:center;padding:2rem 0;}
+.pm-comment-form{border-top:1px solid rgba(200,146,42,.15);padding:.9rem 1.1rem;display:flex;flex-direction:column;gap:.5rem;}
+.pm-comment-form input,.pm-comment-form textarea{width:100%;background:rgba(255,255,255,.04);border:1px solid var(--glass-border);border-radius:8px;padding:.55rem .75rem;font-size:.82rem;color:var(--crema);font-family:var(--font-body);}
+.pm-comment-form textarea{resize:none;min-height:44px;}
+.pm-comment-form input:focus,.pm-comment-form textarea:focus{outline:none;border-color:var(--oro);}
+.pm-send{align-self:flex-end;display:inline-flex;align-items:center;gap:.4rem;background:linear-gradient(135deg,var(--wip-naranja),var(--wip-amarillo));color:var(--noche);font-family:var(--font-cond);font-size:.75rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:.5rem 1.1rem;border-radius:20px;transition:var(--tr);}
+.pm-send:hover{transform:translateY(-2px);}
+.pm-send:disabled{opacity:.5;transform:none;}
+
+@media(max-width:860px){
+  #postModal{padding:0;}
+  .pm-wrap{max-width:100%;height:100vh;border-radius:0;grid-template-columns:1fr;grid-template-rows:52vh 1fr;}
+}
 
 .styles-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.2rem;margin-top:3rem;}
 .style-card{background:var(--glass-bg);border:1px solid var(--glass-border);border-radius:16px;padding:1.6rem;backdrop-filter:blur(12px);transition:var(--tr);position:relative;overflow:hidden;}
@@ -223,18 +270,6 @@ nav.scrolled{background:rgba(8,5,8,.95);box-shadow:0 8px 32px rgba(0,0,0,.5);}
 .soc-pill i{color:var(--oro);font-size:.8rem;}
 .soc-pill:hover{color:var(--crema);border-color:rgba(200,146,42,.5);background:var(--glass-hover);}
 .soc-row{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin-top:1.5rem;}
-
-#lb{position:fixed;inset:0;z-index:2000;background:rgba(8,5,8,.97);backdrop-filter:blur(20px);display:flex;align-items:center;justify-content:center;padding:2rem;opacity:0;visibility:hidden;transition:opacity .35s,visibility .35s;}
-#lb.open{opacity:1;visibility:visible;}
-.lb-wrap{position:relative;max-width:90vw;max-height:90vh;animation:lbIn .35s ease;}
-@keyframes lbIn{from{opacity:0;transform:scale(.92);}to{opacity:1;transform:none;}}
-#lb-img{max-width:90vw;max-height:88vh;object-fit:contain;border-radius:6px;}
-#lb-close{position:absolute;top:-48px;right:0;width:42px;height:42px;border-radius:50%;background:rgba(200,146,42,.1);border:1px solid var(--glass-border);color:var(--crema);font-size:1.1rem;display:flex;align-items:center;justify-content:center;transition:var(--tr);}
-#lb-close:hover{background:rgba(204,0,0,.3);}
-#lb-prev,#lb-next{position:fixed;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;background:rgba(200,146,42,.1);border:1px solid var(--glass-border);color:var(--crema);font-size:1rem;display:flex;align-items:center;justify-content:center;transition:var(--tr);}
-#lb-prev{left:1rem;}#lb-next{right:1rem;}
-#lb-prev:hover,#lb-next:hover{background:rgba(200,146,42,.2);}
-#lb-overlay{position:fixed;inset:0;z-index:-1;cursor:zoom-out;}
 
 footer{position:relative;z-index:2;border-top:1px solid rgba(200,146,42,.12);padding:2.5rem 2rem 1.8rem;text-align:center;}
 .footer-logo{font-family:var(--font-display);font-size:1.2rem;color:var(--oro);letter-spacing:3px;margin-bottom:.3rem;}
@@ -335,11 +370,7 @@ footer{position:relative;z-index:2;border-top:1px solid rgba(200,146,42,.12);pad
 <div id="content">
 
   <section class="hero-tt" id="hero">
-    <div class="hero-carousel" id="heroCarousel">
-      <div class="hero-slide hs1 active" style="background-image:url('https://i.ibb.co/MDTvFcMc/IMG-20260421-WA0079-1.jpg');"></div>
-      <div class="hero-slide hs2" style="background-image:url('https://i.ibb.co/8gCzB9ZS/In-Shot-20260530-145740384.jpg');"></div>
-      <div class="hero-slide hs3" style="background-image:url('https://i.ibb.co/GfKdnKsc/TOMANDO-PEDIDOS-3872200803-Un-retrato-de-tu-mejor-amigo-WEBP-1.webp');"></div>
-    </div>
+    <div class="hero-carousel" id="heroCarousel"></div>
     <div class="hero-inner">
       <div>
         <div class="hero-badge">
@@ -543,14 +574,29 @@ footer{position:relative;z-index:2;border-top:1px solid rgba(200,146,42,.12);pad
 
 </div>
 
-<div id="lb" role="dialog" aria-modal="true" aria-label="Visor de imagen">
-  <div id="lb-overlay"></div>
-  <div class="lb-wrap">
-    <button id="lb-close"><i class="fas fa-times"></i></button>
-    <img id="lb-img" src="" alt="">
+<div id="postModal" role="dialog" aria-modal="true" aria-label="Publicación">
+  <div class="pm-wrap">
+    <button class="pm-close" id="pmClose"><i class="fas fa-times"></i></button>
+    <div class="pm-media" id="pmMedia">
+      <button class="pm-nav prev" id="pmPrev"><i class="fas fa-chevron-left"></i></button>
+      <button class="pm-nav next" id="pmNext"><i class="fas fa-chevron-right"></i></button>
+      <div class="pm-dots" id="pmDots"></div>
+      <div class="pm-media-caption" id="pmCaption"></div>
+    </div>
+    <div class="pm-side">
+      <div class="pm-head">
+        <div class="pm-title" id="pmTitle"></div>
+        <div class="pm-sub" id="pmSub"></div>
+        <div class="pm-styletags" id="pmStyleTags"></div>
+      </div>
+      <div class="pm-comments" id="pmComments"></div>
+      <form class="pm-comment-form" id="pmCommentForm">
+        <input type="text" id="pmCommentName" maxlength="60" placeholder="Tu nombre" required>
+        <textarea id="pmCommentText" maxlength="500" placeholder="Escribí un comentario…" required></textarea>
+        <button type="submit" class="pm-send" id="pmSendBtn"><i class="fas fa-paper-plane"></i> <span data-i18n="comment_send">Comentar</span></button>
+      </form>
+    </div>
   </div>
-  <button id="lb-prev"><i class="fas fa-chevron-left"></i></button>
-  <button id="lb-next"><i class="fas fa-chevron-right"></i></button>
 </div>
 
 <footer>
@@ -581,17 +627,21 @@ function publicUrl(path){ return db.storage.from(BUCKET).getPublicUrl(path).data
 
 let STYLES = [];
 let TATTOOS = [];
+let HERO_SLIDES = [];
 
 async function loadContent(){
-  const [{data: styles}, {data: tattoos}] = await Promise.all([
+  const [{data: styles}, {data: tattoos}, {data: hero}] = await Promise.all([
     db.from('styles').select('*').order('sort_order'),
-    db.from('tattoos').select('*').eq('is_published', true).order('sort_order')
+    db.from('tattoos').select('*, tattoo_media(*)').eq('is_published', true).order('sort_order').order('sort_order', { foreignTable: 'tattoo_media' }),
+    db.from('hero_slides').select('*').eq('is_published', true).order('sort_order')
   ]);
   STYLES = styles || [];
   TATTOOS = tattoos || [];
+  HERO_SLIDES = hero || [];
   renderGallery();
   renderStyles();
   renderPhiloChips();
+  buildHeroSlides();
   document.getElementById('statWorks').textContent = TATTOOS.length || '∞';
 }
 
@@ -599,23 +649,48 @@ function styleNamesFor(ids){
   return (ids||[]).map(id => STYLES.find(s=>s.id===id)?.name).filter(Boolean);
 }
 
+function mediaOf(t){ return (t.tattoo_media||[]).slice().sort((a,b)=>a.sort_order-b.sort_order); }
+
 function renderGallery(){
   const wrap = document.getElementById('tattooGallery');
   if(!TATTOOS.length){
     wrap.innerHTML = `<div class="gallery-empty">${T[lang]?.gallery_empty || 'Muy pronto vas a ver acá las obras del portafolio.'}</div>`;
     return;
   }
-  wrap.innerHTML = TATTOOS.map((t,i)=>`
+  wrap.innerHTML = TATTOOS.map((t,i)=>{
+    const media = mediaOf(t);
+    const cover = media[0];
+    const isVideo = cover && cover.media_type === 'video';
+    const coverEl = cover
+      ? (isVideo
+          ? `<video src="${publicUrl(cover.storage_path)}" muted playsinline preload="metadata"></video>`
+          : `<img src="${publicUrl(cover.storage_path)}" alt="${escapeAttr(t.title)} — Nali tatuadora Salta Argentina, disponible Polonia 2026" loading="lazy">`)
+      : '';
+    return `
     <div class="gitem g-${t.size_variant}" data-idx="${i}" tabindex="0" role="button" aria-label="Ver ${escapeAttr(t.title)}">
-      <img src="${publicUrl(t.image_path)}" alt="${escapeAttr(t.title)} — Nali tatuadora Salta Argentina, disponible Polonia 2026" loading="lazy">
+      ${media.length > 1 ? `<div class="gitem-multi"><i class="fas fa-clone"></i></div>` : ''}
+      ${isVideo ? `<div class="gitem-play"><i class="fas fa-play"></i></div>` : ''}
+      ${coverEl}
       <div class="gitem-overlay">
         <div class="gitem-title">${escapeHtml(t.title)}${styleNamesFor(t.style_ids).length ? ' · ' + escapeHtml(styleNamesFor(t.style_ids).join(' · ')) : ''}</div>
         <div class="gitem-sub">${escapeHtml(t.subtitle||'')}</div>
       </div>
       <button class="gitem-expand"><i class="fas fa-expand"></i></button>
-    </div>
-  `).join('');
-  bindLightbox();
+    </div>`;
+  }).join('');
+  bindGalleryClicks();
+}
+
+function buildHeroSlides(){
+  const wrap = document.getElementById('heroCarousel');
+  const fallback = [
+    'https://i.ibb.co/MDTvFcMc/IMG-20260421-WA0079-1.jpg',
+    'https://i.ibb.co/8gCzB9ZS/In-Shot-20260530-145740384.jpg',
+    'https://i.ibb.co/GfKdnKsc/TOMANDO-PEDIDOS-3872200803-Un-retrato-de-tu-mejor-amigo-WEBP-1.webp'
+  ];
+  const urls = HERO_SLIDES.length ? HERO_SLIDES.map(s=>publicUrl(s.image_path)) : fallback;
+  wrap.innerHTML = urls.map((u,i)=>`<div class="hero-slide${i===0?' active':''}" style="background-image:url('${u}');"></div>`).join('');
+  initHeroCarousel();
 }
 
 function renderStyles(){
@@ -681,7 +756,8 @@ const T = {
     care6:"<strong>Dudas:</strong> Cualquier consulta durante la cicatrización, escribime. Estoy disponible para el seguimiento.",
     final_title:"¿Querés una pieza única en tu piel?", final_desc:"Escribime contando tu idea. La consulta inicial no tiene costo y el diseño lo creamos juntos desde cero.",
     final_wa:"Escribir por WhatsApp", final_ig:"@nali.ttoo", footer_sub:"Tatuadora · Muralista · Música · Salta, Argentina → Polonia 2026",
-    wa_msg:"Hola Nali, me interesa reservar una sesión de tatuaje. ¿Podés darme más información?"
+    wa_msg:"Hola Nali, me interesa reservar una sesión de tatuaje. ¿Podés darme más información?",
+    comment_send:"Comentar", comments_loading:"Cargando comentarios…", comments_empty:"Todavía no hay comentarios. ¡Sé el primero!", comment_error:"No se pudo publicar el comentario."
   },
   pl:{
     nav_cur:"Tatuaże", nav_home:"Start", nav_gallery:"Galeria", nav_portfolio:"Portfolio", nav_styles:"Style", nav_booking:"Rezerwacje", nav_music:"Muzyka",
@@ -717,7 +793,8 @@ const T = {
     care6:"<strong>Pytania:</strong> W razie wątpliwości podczas gojenia, napisz do mnie.",
     final_title:"Chcesz unikalny kawałek na swojej skórze?", final_desc:"Napisz mi o swoim pomyśle. Wstępna konsultacja jest bezpłatna.",
     final_wa:"Napisz przez WhatsApp", final_ig:"@nali.ttoo", footer_sub:"Tatuażystka · Muralistka · Muzyka · Salta, Argentyna → Polska 2026",
-    wa_msg:"Cześć Nali, interesuję się rezerwacją sesji tatuażu. Czy możesz podać mi więcej informacji?"
+    wa_msg:"Cześć Nali, interesuję się rezerwacją sesji tatuażu. Czy możesz podać mi więcej informacji?",
+    comment_send:"Skomentuj", comments_loading:"Ładowanie komentarzy…", comments_empty:"Jeszcze nie ma komentarzy. Bądź pierwszy!", comment_error:"Nie udało się opublikować komentarza."
   },
   en:{
     nav_cur:"Tattoos", nav_home:"Home", nav_gallery:"Gallery", nav_portfolio:"Portfolio", nav_styles:"Styles", nav_booking:"Booking", nav_music:"Music",
@@ -753,7 +830,8 @@ const T = {
     care6:"<strong>Questions:</strong> Any queries during healing, write to me.",
     final_title:"Want a unique piece on your skin?", final_desc:"Write to me with your idea. The initial consultation is free.",
     final_wa:"Write on WhatsApp", final_ig:"@nali.ttoo", footer_sub:"Tattoo Artist · Muralist · Music · Salta, Argentina → Poland 2026",
-    wa_msg:"Hi Nali, I'm interested in booking a tattoo session. Could you give me more info?"
+    wa_msg:"Hi Nali, I'm interested in booking a tattoo session. Could you give me more info?",
+    comment_send:"Comment", comments_loading:"Loading comments…", comments_empty:"No comments yet. Be the first!", comment_error:"Couldn't post the comment."
   },
   fr:{
     nav_cur:"Tatouages", nav_home:"Accueil", nav_gallery:"Galerie", nav_portfolio:"Portfolio", nav_styles:"Styles", nav_booking:"Réservations", nav_music:"Musique",
@@ -789,7 +867,8 @@ const T = {
     care6:"<strong>Questions:</strong> En cas de doute pendant la cicatrisation, écrivez-moi.",
     final_title:"Vous voulez une pièce unique sur votre peau?", final_desc:"Écrivez-moi avec votre idée. La consultation initiale est gratuite.",
     final_wa:"Écrire sur WhatsApp", final_ig:"@nali.ttoo", footer_sub:"Tatoueuse · Muraliste · Musique · Salta, Argentine → Pologne 2026",
-    wa_msg:"Bonjour Nali, je suis intéressé(e) par une réservation de session de tatouage. Pourriez-vous me donner plus d'informations?"
+    wa_msg:"Bonjour Nali, je suis intéressé(e) par une réservation de session de tatouage. Pourriez-vous me donner plus d'informations?",
+    comment_send:"Commenter", comments_loading:"Chargement des commentaires…", comments_empty:"Pas encore de commentaires. Soyez le premier !", comment_error:"Impossible de publier le commentaire."
   }
 };
 
@@ -823,7 +902,7 @@ function closeD(){drawer.classList.remove('open');ov.classList.remove('open');hb
 hbg.addEventListener('click',openD);
 dc.addEventListener('click',closeD);
 ov.addEventListener('click',closeD);
-document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeD();closeLB();}});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeD();closePost();}});
 document.querySelectorAll('.js-scroll').forEach(a=>{
   a.addEventListener('click',e=>{
     e.preventDefault(); closeD();
@@ -832,60 +911,166 @@ document.querySelectorAll('.js-scroll').forEach(a=>{
   });
 });
 
-/* ── CAROUSEL ── */
-const slides=document.querySelectorAll('.hero-slide');
-const dotsWrap=document.getElementById('cDots');
-let curSlide=0, slideTimer;
-function buildDots(){
+/* ── HERO CAROUSEL (llamado tras cargar los slides) ── */
+let heroCurSlide=0, heroSlideTimer;
+function initHeroCarousel(){
+  const slides=document.querySelectorAll('.hero-slide');
+  const dotsWrap=document.getElementById('cDots');
+  dotsWrap.innerHTML='';
+  heroCurSlide=0;
+  clearInterval(heroSlideTimer);
+  if(!slides.length) return;
   slides.forEach((_,i)=>{
     const b=document.createElement('button');
     b.className='cdot'+(i===0?' active':'');
     b.setAttribute('aria-label',`Slide ${i+1}`);
-    b.onclick=()=>goSlide(i);
+    b.onclick=()=>goHeroSlide(i);
     dotsWrap.appendChild(b);
   });
+  if(slides.length > 1) heroSlideTimer=setInterval(()=>goHeroSlide((heroCurSlide+1)%slides.length),5000);
 }
-function goSlide(i){
-  slides[curSlide].classList.remove('active');
-  dotsWrap.querySelectorAll('.cdot')[curSlide]?.classList.remove('active');
-  curSlide=i;
-  slides[curSlide].classList.add('active');
-  dotsWrap.querySelectorAll('.cdot')[curSlide]?.classList.add('active');
-  clearInterval(slideTimer);
-  slideTimer=setInterval(()=>goSlide((curSlide+1)%slides.length),5000);
+function goHeroSlide(i){
+  const slides=document.querySelectorAll('.hero-slide');
+  const dotsWrap=document.getElementById('cDots');
+  slides[heroCurSlide]?.classList.remove('active');
+  dotsWrap.querySelectorAll('.cdot')[heroCurSlide]?.classList.remove('active');
+  heroCurSlide=i;
+  slides[heroCurSlide]?.classList.add('active');
+  dotsWrap.querySelectorAll('.cdot')[heroCurSlide]?.classList.add('active');
+  clearInterval(heroSlideTimer);
+  if(slides.length > 1) heroSlideTimer=setInterval(()=>goHeroSlide((heroCurSlide+1)%slides.length),5000);
 }
-buildDots();
-slideTimer=setInterval(()=>goSlide((curSlide+1)%slides.length),5000);
 
-/* ── LIGHTBOX ── */
-const lbEl=document.getElementById('lb');
-const lbImg=document.getElementById('lb-img');
-let lbIdx=0;
-function openLB(idx){
-  const items = document.querySelectorAll('.gitem');
-  lbIdx=idx;
-  const img=items[lbIdx]?.querySelector('img');
-  if(!img) return;
-  lbImg.src=img.src; lbImg.alt=img.alt;
-  lbEl.classList.add('open'); document.body.style.overflow='hidden';
-}
-function closeLB(){lbEl.classList.remove('open');document.body.style.overflow='';}
-function stepLB(d){ const items=document.querySelectorAll('.gitem'); openLB((lbIdx+d+items.length)%items.length); }
-function bindLightbox(){
+/* ══════════════════════════════════════════
+   POST MODAL — visor estilo Instagram + comentarios
+   ══════════════════════════════════════════ */
+const pmEl = document.getElementById('postModal');
+let pmPostIdx = 0;
+let pmMediaIdx = 0;
+let pmComments = [];
+
+function bindGalleryClicks(){
   document.querySelectorAll('.gitem').forEach((item,i)=>{
-    const open=()=>openLB(i);
+    const open=()=>openPost(i);
     item.addEventListener('click',open);
     item.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open();}});
   });
 }
-document.getElementById('lb-close').addEventListener('click',closeLB);
-document.getElementById('lb-prev').addEventListener('click',()=>stepLB(-1));
-document.getElementById('lb-next').addEventListener('click',()=>stepLB(1));
-document.getElementById('lb-overlay').addEventListener('click',closeLB);
-document.addEventListener('keydown',e=>{
-  if(!lbEl.classList.contains('open')) return;
-  if(e.key==='ArrowLeft') stepLB(-1);
-  if(e.key==='ArrowRight') stepLB(1);
+
+async function openPost(idx){
+  pmPostIdx = idx;
+  pmMediaIdx = 0;
+  const t = TATTOOS[idx];
+  if(!t) return;
+
+  document.getElementById('pmTitle').textContent = t.title;
+  document.getElementById('pmSub').textContent = t.subtitle || '';
+  const classes = ['st-rojo','st-naranja','st-amarillo','st-verde','st-azul','st-violeta','st-crema'];
+  document.getElementById('pmStyleTags').innerHTML = styleNamesFor(t.style_ids)
+    .map((n,i)=>`<span class="style-tag ${classes[i%classes.length]}" style="font-size:.68rem;padding:.25rem .7rem;">${escapeHtml(n)}</span>`).join('');
+
+  renderPmMedia();
+  pmEl.classList.add('open');
+  document.body.style.overflow='hidden';
+
+  document.getElementById('pmComments').innerHTML = `<div class="pm-no-comments">${T[lang]?.comments_loading || 'Cargando comentarios…'}</div>`;
+  const { data, error } = await db.from('comments').select('*').eq('tattoo_id', t.id).order('created_at', { ascending: true });
+  pmComments = error ? [] : (data || []);
+  renderPmComments();
+}
+
+function closePost(){
+  pmEl.classList.remove('open');
+  document.body.style.overflow='';
+  document.querySelectorAll('#pmMedia video').forEach(v=>v.pause());
+}
+
+function renderPmMedia(){
+  const t = TATTOOS[pmPostIdx];
+  const media = mediaOf(t);
+  const mediaWrap = document.getElementById('pmMedia');
+  const existing = mediaWrap.querySelector('.pm-current-media');
+  if(existing) existing.remove();
+  document.querySelectorAll('#pmMedia video').forEach(v=>v.pause());
+
+  const m = media[pmMediaIdx];
+  if(m){
+    const el = document.createElement(m.media_type === 'video' ? 'video' : 'img');
+    el.className = 'pm-current-media';
+    el.src = publicUrl(m.storage_path);
+    if(m.media_type === 'video'){ el.controls = true; el.playsInline = true; }
+    else { el.alt = t.title; }
+    mediaWrap.insertBefore(el, mediaWrap.firstChild);
+    document.getElementById('pmCaption').textContent = m.caption || '';
+  } else {
+    document.getElementById('pmCaption').textContent = '';
+  }
+
+  const dotsWrap = document.getElementById('pmDots');
+  dotsWrap.innerHTML = media.length > 1 ? media.map((_,i)=>`<span class="pm-dot${i===pmMediaIdx?' active':''}"></span>`).join('') : '';
+  document.getElementById('pmPrev').style.display = media.length > 1 ? 'flex' : 'none';
+  document.getElementById('pmNext').style.display = media.length > 1 ? 'flex' : 'none';
+}
+
+function stepPmMedia(d){
+  const media = mediaOf(TATTOOS[pmPostIdx]);
+  if(!media.length) return;
+  pmMediaIdx = (pmMediaIdx + d + media.length) % media.length;
+  renderPmMedia();
+}
+
+function renderPmComments(){
+  const wrap = document.getElementById('pmComments');
+  if(!pmComments.length){
+    wrap.innerHTML = `<div class="pm-no-comments">${T[lang]?.comments_empty || 'Todavía no hay comentarios. ¡Sé el primero!'}</div>`;
+    return;
+  }
+  wrap.innerHTML = pmComments.map(c => `
+    <div class="pm-comment">
+      <div class="pm-avatar">${escapeHtml((c.author_name||'?').trim().charAt(0).toUpperCase())}</div>
+      <div class="pm-comment-body">
+        <div class="pm-comment-name">${escapeHtml(c.author_name)}</div>
+        <div class="pm-comment-text">${escapeHtml(c.content)}</div>
+        <div class="pm-comment-time">${formatCommentDate(c.created_at)}</div>
+      </div>
+    </div>
+  `).join('');
+  wrap.scrollTop = wrap.scrollHeight;
+}
+
+function formatCommentDate(iso){
+  try{
+    return new Date(iso).toLocaleDateString(lang==='es'?'es-AR':lang==='pl'?'pl-PL':lang==='fr'?'fr-FR':'en-US', { day:'numeric', month:'short', year:'numeric' });
+  } catch(e){ return ''; }
+}
+
+document.getElementById('pmClose').addEventListener('click', closePost);
+document.getElementById('pmPrev').addEventListener('click', ()=>stepPmMedia(-1));
+document.getElementById('pmNext').addEventListener('click', ()=>stepPmMedia(1));
+document.addEventListener('keydown', e=>{
+  if(!pmEl.classList.contains('open')) return;
+  if(e.key==='Escape') closePost();
+  if(e.key==='ArrowLeft') stepPmMedia(-1);
+  if(e.key==='ArrowRight') stepPmMedia(1);
+});
+
+document.getElementById('pmCommentForm').addEventListener('submit', async (e)=>{
+  e.preventDefault();
+  const t = TATTOOS[pmPostIdx];
+  const nameInput = document.getElementById('pmCommentName');
+  const textInput = document.getElementById('pmCommentText');
+  const btn = document.getElementById('pmSendBtn');
+  const author_name = nameInput.value.trim();
+  const content = textInput.value.trim();
+  if(!author_name || !content || !t) return;
+
+  btn.disabled = true;
+  const { data, error } = await db.from('comments').insert({ tattoo_id: t.id, author_name, content }).select().single();
+  btn.disabled = false;
+  if(error){ alert((T[lang]?.comment_error) || 'No se pudo publicar el comentario.'); return; }
+  pmComments.push(data);
+  renderPmComments();
+  textInput.value = '';
 });
 
 /* ── SCROLL REVEAL ── */
