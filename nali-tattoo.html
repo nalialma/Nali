@@ -141,28 +141,11 @@ nav.scrolled{background:rgba(8,5,8,.95);box-shadow:0 8px 32px rgba(0,0,0,.5);}
 .st-violeta{color:#9B5EDE;border-color:rgba(92,45,145,.4);}
 .st-crema{color:var(--crema);border-color:rgba(240,230,208,.3);}
 
-.philosophy-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
-.philosophy-img-wrap{position:relative;}
-.philosophy-img{width:100%;aspect-ratio:4/5;overflow:hidden;border-radius:20px;border:2px solid rgba(200,146,42,.25);box-shadow:var(--shadow-deep);}
-.philosophy-img img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s ease;}
-.philosophy-img:hover img{transform:scale(1.04);}
-.philosophy-img-badge{position:absolute;bottom:-1.5rem;right:-1.5rem;background:var(--glass-bg);backdrop-filter:blur(16px);border:1px solid var(--glass-border);border-radius:14px;padding:1rem 1.2rem;text-align:center;min-width:120px;}
-.pib-num{font-family:var(--font-display);font-size:2.2rem;font-weight:700;color:var(--oro);}
-.pib-label{font-family:var(--font-cond);font-size:.68rem;letter-spacing:2px;text-transform:uppercase;color:rgba(240,230,208,.55);}
-.philosophy-text p{font-size:clamp(.93rem,1.7vw,1.05rem);color:rgba(240,230,208,.72);line-height:1.9;margin-bottom:1rem;}
-.philosophy-text blockquote{font-family:var(--font-display);font-style:italic;font-size:clamp(1rem,1.8vw,1.2rem);color:var(--oro-light);line-height:1.6;border-left:2.5px solid var(--wip-naranja);padding-left:1.2rem;margin:1.5rem 0;}
-.styles-wrap{margin:1.5rem 0;}
-.styles-wrap h4{font-family:var(--font-cond);font-size:.7rem;letter-spacing:3px;text-transform:uppercase;color:var(--oro);margin-bottom:.8rem;}
-.styles-chips{display:flex;flex-wrap:wrap;gap:.5rem;}
-
-.tt-gallery{display:grid;grid-template-columns:1fr 1fr 1fr;grid-template-rows:auto auto;gap:1rem;}
-.gitem{position:relative;overflow:hidden;border-radius:16px;cursor:pointer;border:1px solid rgba(200,146,42,.15);transition:var(--tr);}
-.gitem img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .7s ease;}
+.tt-gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;}
+.gitem{position:relative;overflow:hidden;border-radius:16px;cursor:pointer;border:1px solid rgba(200,146,42,.15);transition:var(--tr);aspect-ratio:1;}
+.gitem img,.gitem video{width:100%;height:100%;object-fit:cover;display:block;transition:transform .7s ease;}
 .gitem:hover{border-color:rgba(200,146,42,.5);transform:translateY(-4px);box-shadow:var(--shadow-deep);}
-.gitem:hover img{transform:scale(1.07);}
-.gitem.g-big{grid-column:span 1;grid-row:span 2;aspect-ratio:auto;min-height:520px;}
-.gitem.g-med{aspect-ratio:1;}
-.gitem.g-wide{grid-column:span 2;aspect-ratio:16/9;}
+.gitem:hover img,.gitem:hover video{transform:scale(1.07);}
 .gitem-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(8,5,8,.9) 0%,rgba(8,5,8,.25) 50%,transparent 100%);display:flex;flex-direction:column;justify-content:flex-end;padding:1.2rem;opacity:0;transition:opacity .35s ease;}
 .gitem:hover .gitem-overlay{opacity:1;}
 .gitem-title{font-family:var(--font-cond);font-size:1rem;font-weight:700;color:var(--crema);letter-spacing:1px;}
@@ -219,14 +202,6 @@ nav.scrolled{background:rgba(8,5,8,.95);box-shadow:0 8px 32px rgba(0,0,0,.5);}
   #postModal{padding:0;}
   .pm-wrap{max-width:100%;height:100vh;border-radius:0;grid-template-columns:1fr;grid-template-rows:52vh 1fr;}
 }
-
-.styles-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.2rem;margin-top:3rem;}
-.style-card{background:var(--glass-bg);border:1px solid var(--glass-border);border-radius:16px;padding:1.6rem;backdrop-filter:blur(12px);transition:var(--tr);position:relative;overflow:hidden;}
-.style-card:hover{border-color:rgba(200,146,42,.45);transform:translateY(-4px);}
-.sc-icon{font-size:2rem;margin-bottom:.9rem;}
-.sc-title{font-family:var(--font-display);font-size:1.1rem;font-weight:700;color:var(--crema);margin-bottom:.5rem;}
-.sc-desc{font-size:.9rem;color:rgba(240,230,208,.62);line-height:1.75;}
-.sc-tag{display:inline-block;margin-top:.9rem;font-family:var(--font-cond);font-size:.68rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--oro);border:1px solid rgba(200,146,42,.3);border-radius:20px;padding:.2rem .7rem;}
 
 .guest-section{background:linear-gradient(180deg,var(--noche) 0%,rgba(26,13,8,.7) 50%,var(--noche) 100%);border-top:1px solid rgba(200,146,42,.1);border-bottom:1px solid rgba(200,146,42,.1);}
 .guest-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;}
@@ -289,18 +264,14 @@ footer{position:relative;z-index:2;border-top:1px solid rgba(200,146,42,.12);pad
 
 @media(max-width:1024px){
   .hero-inner{grid-template-columns:1fr;gap:3rem;padding:7rem 2rem 4rem;}
-  .philosophy-grid,.guest-grid,.care-grid{grid-template-columns:1fr;}
-  .philosophy-img-badge{bottom:-1rem;right:0;}
+  .guest-grid,.care-grid{grid-template-columns:1fr;}
   .tt-gallery{grid-template-columns:1fr 1fr;}
-  .gitem.g-big{grid-column:span 2;}
-  .gitem.g-wide{grid-column:span 2;}
 }
 @media(max-width:768px){
   .nav-crumb,.lang-selector{display:none;}
   .hamburger{display:flex;}
   .section{padding:5rem 1.2rem;}
-  .tt-gallery{grid-template-columns:1fr;}
-  .gitem.g-big,.gitem.g-wide{grid-column:span 1;min-height:280px;aspect-ratio:4/3;}
+  .tt-gallery{grid-template-columns:1fr 1fr;gap:.6rem;}
   .hero-inner{padding:6rem 1.2rem 3rem;}
   .process-steps{grid-template-columns:1fr 1fr;}
 }
@@ -353,7 +324,6 @@ footer{position:relative;z-index:2;border-top:1px solid rgba(200,146,42,.12);pad
     <a href="https://nalialma.art/" class="mn-link"><span class="mi"><i class="fas fa-home"></i></span><span data-i18n="nav_home">Inicio</span></a>
     <a href="https://nalialma.art/Galer.html" class="mn-link"><span class="mi"><i class="fas fa-palette"></i></span><span data-i18n="nav_gallery">Galería</span></a>
     <a href="#portafolio" class="mn-link js-scroll"><span class="mi"><i class="fas fa-images"></i></span><span data-i18n="nav_portfolio">Portafolio</span></a>
-    <a href="#estilos" class="mn-link js-scroll"><span class="mi"><i class="fas fa-pen-nib"></i></span><span data-i18n="nav_styles">Estilos</span></a>
     <a href="#reservas" class="mn-link js-scroll"><span class="mi"><i class="fas fa-calendar-check"></i></span><span data-i18n="nav_booking">Reservas</span></a>
     <a href="https://nalialma.art/nali-musica.html" class="mn-link"><span class="mi"><i class="fas fa-music"></i></span><span data-i18n="nav_music">Música</span></a>
   </div>
@@ -412,41 +382,12 @@ footer{position:relative;z-index:2;border-top:1px solid rgba(200,146,42,.12);pad
 
   <div class="andean-div"></div>
 
-  <section class="section" id="sobre">
-    <div class="section-inner">
-      <div class="philosophy-grid sr">
-        <div class="philosophy-img-wrap">
-          <div class="philosophy-img">
-            <img src="https://i.ibb.co/MDTvFcMc/IMG-20260421-WA0079-1.jpg" alt="Nali — tatuadora de Salta Argentina, guest artist Polonia 2026, fine line blackwork arte andino" loading="lazy">
-          </div>
-          <div class="philosophy-img-badge"><div class="pib-num">7+</div><div class="pib-label" data-i18n="badge_years">años</div></div>
-        </div>
-        <div class="philosophy-text">
-          <p class="section-label" data-i18n="philo_label">Mi enfoque</p>
-          <h2 class="section-title" data-i18n-html="philo_title">La piel como <em>territorio</em></h2>
-          <blockquote data-i18n="philo_quote">"Para mí tatuar es dibujar sobre el cuerpo de otra persona con la misma seriedad y cuidado con que dibujo un mural. La piel es el soporte más vivo que existe."</blockquote>
-          <p data-i18n="philo_p1">Con siete años de experiencia tatuando en Salta, desarrollé un lenguaje propio que combina el fine line con elementos de la simbología andina, la geometría sagrada y las formas orgánicas de la naturaleza del NOA.</p>
-          <p data-i18n="philo_p2">Cada diseño lo concibo desde cero junto con la persona: escucho su historia, entiendo qué quiere dejar en su piel, y desde ahí propongo. El resultado siempre es único, irrepetible y pensado para ese cuerpo específico.</p>
-          <div class="styles-wrap">
-            <h4 data-i18n="styles_label">Técnicas y estilos</h4>
-            <div class="styles-chips" id="philoChips"></div>
-          </div>
-          <a href="#reservas" class="btn-primary js-scroll" style="display:inline-flex;margin-top:1.5rem;">
-            <i class="fas fa-calendar-check"></i><span data-i18n="cta_contact">Consultar disponibilidad</span>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <div class="andean-div"></div>
-
   <section class="section" id="portafolio">
     <div class="section-inner">
       <div class="sr" style="margin-bottom:3rem;">
         <p class="section-label" data-i18n="port_label">Portafolio</p>
         <h2 class="section-title" data-i18n-html="port_title">Trabajos <em>seleccionados</em></h2>
-        <p class="section-desc" data-i18n="port_desc">Cada línea, cada punto tiene una intención. El portafolio muestra distintos estilos y tamaños — desde piezas minimalistas hasta trabajos de gran formato con simbología andina.</p>
+        <p class="section-desc" data-i18n="port_desc">Cada línea, cada punto tiene una intención. El portafolio muestra el trabajo de Nali en fine line, blackwork y simbología andina.</p>
       </div>
       <div class="tt-gallery" id="tattooGallery">
         <div class="gallery-empty" data-i18n="gallery_loading">Cargando obras…</div>
@@ -456,20 +397,6 @@ footer{position:relative;z-index:2;border-top:1px solid rgba(200,146,42,.12);pad
           <i class="fab fa-instagram"></i><span data-i18n="cta_instagram">Ver más en @nali.ttoo</span>
         </a>
       </p>
-    </div>
-  </section>
-
-  <div class="andean-div"></div>
-
-  <section class="section" id="estilos">
-    <div class="section-inner">
-      <div class="sr">
-        <p class="section-label" data-i18n="styles_sec_label">Especialidades</p>
-        <h2 class="section-title" data-i18n-html="styles_sec_title">Estilos que <em>domino</em></h2>
-      </div>
-      <div class="styles-grid" id="stylesGrid">
-        <div class="styles-empty" data-i18n="styles_loading">Cargando estilos…</div>
-      </div>
     </div>
   </section>
 
@@ -643,8 +570,6 @@ async function loadContent(){
   TATTOOS = tattoos || [];
   HERO_SLIDES = hero || [];
   renderGallery();
-  renderStyles();
-  renderPhiloChips();
   buildHeroSlides();
   document.getElementById('statWorks').textContent = TATTOOS.length || '∞';
 }
@@ -671,7 +596,7 @@ function renderGallery(){
           : `<img src="${publicUrl(cover.storage_path)}" alt="${escapeAttr(t.title)} — Nali tatuadora Salta Argentina, disponible Polonia 2026" loading="lazy">`)
       : '';
     return `
-    <div class="gitem g-${t.size_variant}" data-idx="${i}" tabindex="0" role="button" aria-label="Ver ${escapeAttr(t.title)}">
+    <div class="gitem" data-idx="${i}" tabindex="0" role="button" aria-label="Ver ${escapeAttr(t.title)}">
       ${media.length > 1 ? `<div class="gitem-multi"><i class="fas fa-clone"></i></div>` : ''}
       ${isVideo ? `<div class="gitem-play"><i class="fas fa-play"></i></div>` : ''}
       ${coverEl}
@@ -695,28 +620,6 @@ function buildHeroSlides(){
   const urls = HERO_SLIDES.length ? HERO_SLIDES.map(s=>publicUrl(s.image_path)) : fallback;
   wrap.innerHTML = urls.map((u,i)=>`<div class="hero-slide${i===0?' active':''}" style="background-image:url('${u}');"></div>`).join('');
   initHeroCarousel();
-}
-
-function renderStyles(){
-  const wrap = document.getElementById('stylesGrid');
-  if(!STYLES.length){
-    wrap.innerHTML = `<div class="styles-empty">${T[lang]?.styles_empty || 'Muy pronto vas a ver acá los estilos que domina Nali.'}</div>`;
-    return;
-  }
-  wrap.innerHTML = STYLES.map(s=>`
-    <div class="style-card sr v">
-      <div class="sc-icon">${escapeHtml(s.icon||'✦')}</div>
-      <div class="sc-title">${escapeHtml(s.name)}</div>
-      <p class="sc-desc">${escapeHtml(s.description||'')}</p>
-      ${s.tag_label ? `<span class="sc-tag">${escapeHtml(s.tag_label)}</span>` : ''}
-    </div>
-  `).join('');
-}
-
-function renderPhiloChips(){
-  const wrap = document.getElementById('philoChips');
-  const classes = ['st-rojo','st-naranja','st-amarillo','st-verde','st-azul','st-violeta','st-crema'];
-  wrap.innerHTML = STYLES.map((s,i)=>`<span class="style-tag ${classes[i%classes.length]}">${escapeHtml(s.name)}</span>`).join('');
 }
 
 function escapeHtml(str){ return (str||'').replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
@@ -889,7 +792,6 @@ function applyLang(l){
   const waUrl = `https://wa.me/5493874498150?text=${msg}`;
   ['wa-hero','wa-guest','wa-final'].forEach(id=>{ const el=document.getElementById(id); if(el) el.href=waUrl; });
   renderGallery();
-  renderStyles();
 }
 document.querySelectorAll('.lang-btn').forEach(b=>b.addEventListener('click',()=>applyLang(b.dataset.lang)));
 
