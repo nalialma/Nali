@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Panel de Administración | Nali Tattoo</title>
+<meta name="robots" content="noindex, nofollow">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Barlow+Condensed:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+
+<style>
+:root{
+  --noche:#080508; --tierra-dark:#1A0D08; --tierra:#4A2000;
+  --oro:#C8922A; --oro-light:#E8B84B; --crema:#F0E6D0;
+  --glass-bg:rgba(10,4,2,.6); --glass-border:rgba(200,146,42,.25); --glass-hover:rgba(200,146,42,.12);
+  --font-display:'Cinzel',serif; --font-body:'Barlow',sans-serif; --font-cond:'Barlow Condensed',sans-serif;
+  --wip-rojo:#CC0000; --wip-naranja:#E8720C; --wip-amarillo:#F5C400; --wip-verde:#00913A; --wip-azul:#005BAA; --wip-violeta:#5C2D91;
+  --ok:#00913A; --err:#CC0000;
+  --tr:all .3s cubic-bezier(.4,0,.2,1);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:var(--font-body);background:var(--noche);color:var(--crema);min-height:100vh;line-height:1.55;}
+body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:radial-gradient(ellipse at 15% 10%,rgba(204,0,0,.06) 0%,transparent 55%),
+             radial-gradient(ellipse at 85% 90%,rgba(92,45,145,.07) 0%,transparent 55%),
+             radial-gradient(ellipse at 50% 50%,rgba(74,32,0,.35) 0%,transparent 70%);}
+a{color:inherit;text-decoration:none;}
+button{font:inherit;cursor:pointer;}
+input,textarea,select{font:inherit;color:var(--crema);}
+::selection{background:var(--oro);color:var(--noche);}
+
+.wiphala{height:5px;width:100%;background:linear-gradient(90deg,var(--wip-rojo) 0% 14.28%,var(--wip-naranja) 14.28% 28.56%,var(--wip-amarillo) 28.56% 42.84%,#F0EAD6 42.84% 57.12%,var(--wip-verde) 57.12% 71.4%,var(--wip-azul) 71.4% 85.68%,var(--wip-violeta) 85.68% 100%);}
+
+/* ── LOGIN ── */
+#loginScreen{position:relative;z-index:2;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:2rem;}
+.login-card{width:100%;max-width:380px;background:var(--glass-bg);border:1px solid var(--glass-border);border-radius:18px;padding:2.4rem 2rem;backdrop-filter:blur(16px);text-align:center;}
+.login-logo{font-family:var(--font-display);font-size:1.8rem;letter-spacing:4px;margin-bottom:.3rem;}
+.login-logo span{color:var(--oro);}
+.login-sub{font-family:var(--font-cond);font-size:.75rem;letter-spacing:2px;text-transform:uppercase;color:rgba(240,230,208,.5);margin-bottom:2rem;}
+.field{text-align:left;margin-bottom:1.1rem;}
+.field label{display:block;font-family:var(--font-cond);font-size:.7rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--oro-light);margin-bottom:.4rem;}
+.field input{width:100%;background:rgba(255,255,255,.04);border:1px solid var(--glass-border);border-radius:8px;padding:.7rem .9rem;font-size:.95rem;transition:var(--tr);}
+.field input:focus{outline:none;border-color:var(--oro);background:rgba(255,255,255,.06);}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;font-family:var(--font-cond);font-size:.85rem;letter-spacing:1.5px;text-transform:uppercase;font-weight:700;padding:.75rem 1.4rem;border-radius:30px;transition:var(--tr);border:1px solid transparent;}
+.btn-gold{background:linear-gradient(135deg,var(--oro),var(--oro-light));color:var(--noche);width:100%;}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(200,146,42,.35);}
+.btn-gold:disabled{opacity:.5;cursor:not-allowed;transform:none;}
+.btn-ghost{background:rgba(200,146,42,.08);border-color:var(--glass-border);color:var(--crema);}
+.btn-ghost:hover{background:var(--glass-hover);border-color:var(--oro);}
+.btn-danger{background:rgba(204,0,0,.12);border:1px solid rgba(204,0,0,.4);color:#ff8a8a;}
+.btn-danger:hover{background:rgba(204,0,0,.25);}
+.btn-sm{padding:.4rem .8rem;font-size:.7rem;border-radius:20px;}
+.msg{margin-top:1rem;font-size:.82rem;font-family:var(--font-cond);letter-spacing:.5px;}
+.msg.err{color:#ff7070;}
+.msg.ok{color:#3dd87d;}
+
+/* ── APP SHELL ── */
+#app{display:none;position:relative;z-index:2;min-height:100vh;}
+header.topbar{position:sticky;top:0;z-index:50;background:rgba(8,5,8,.9);backdrop-filter:blur(16px);border-bottom:1px solid var(--glass-border);}
+.topbar-inner{max-width:1200px;margin:0 auto;padding:0 1.5rem;height:64px;display:flex;align-items:center;justify-content:space-between;gap:1rem;}
+.tb-logo{font-family:var(--font-display);font-size:1.25rem;letter-spacing:3px;}
+.tb-logo span{color:var(--oro);}
+.tb-right{display:flex;align-items:center;gap:.8rem;}
+.tb-email{font-family:var(--font-cond);font-size:.75rem;color:rgba(240,230,208,.5);letter-spacing:1px;}
+
+.tabs{display:flex;gap:.5rem;max-width:1200px;margin:1.5rem auto 0;padding:0 1.5rem;flex-wrap:wrap;}
+.tab-btn{font-family:var(--font-cond);font-size:.85rem;letter-spacing:1.5px;text-transform:uppercase;padding:.65rem 1.3rem;border-radius:30px 30px 0 0;color:rgba(240,230,208,.55);border-bottom:2px solid transparent;transition:var(--tr);position:relative;}
+.tab-btn.active{color:var(--oro-light);border-color:var(--oro);background:rgba(200,146,42,.06);}
+.tab-btn:hover:not(.active){color:var(--crema);}
+.tab-badge{display:inline-block;margin-left:.35rem;background:var(--oro);color:var(--noche);font-weight:900;border-radius:10px;padding:0 .4rem;font-size:.65rem;}
+
+main{max-width:1200px;margin:0 auto;padding:1.5rem;}
+.panel{display:none;}
+.panel.active{display:block;}
+
+.panel-head{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:1.5rem;}
+.panel-title{font-family:var(--font-display);font-size:1.5rem;color:var(--crema);}
+.panel-desc{font-family:var(--font-cond);font-size:.8rem;color:rgba(240,230,208,.45);letter-spacing:1px;margin-top:.2rem;}
+
+/* ── UPLOAD CARD (obras) ── */
+.upload-card{background:var(--glass-bg);border:1px dashed var(--glass-border);border-radius:16px;padding:1.6rem;margin-bottom:2rem;}
+.upload-fields{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;}
+.upload-fields .full{grid-column:1/-1;}
+.chip-select{display:flex;flex-wrap:wrap;gap:.4rem;}
+.chip-opt{font-family:var(--font-cond);font-size:.72rem;letter-spacing:1px;text-transform:uppercase;padding:.3rem .8rem;border-radius:20px;border:1px solid var(--glass-border);color:rgba(240,230,208,.6);transition:var(--tr);}
+.chip-opt.sel{background:var(--oro);border-color:var(--oro);color:var(--noche);font-weight:700;}
+.chip-opt:hover{border-color:var(--oro);}
+.size-opt{display:flex;gap:.5rem;}
+.upload-actions{grid-column:1/-1;display:flex;justify-content:flex-end;gap:.7rem;margin-top:.3rem;}
+
+/* ── media queue (multi-file, estilo carrusel IG) ── */
+.media-drop{border:1px dashed var(--glass-border);border-radius:12px;padding:1rem;text-align:center;font-family:var(--font-cond);font-size:.8rem;color:rgba(240,230,208,.5);cursor:pointer;transition:var(--tr);}
+.media-drop:hover{border-color:var(--oro);color:var(--crema);}
+.media-drop input{display:none;}
+.media-queue{display:flex;flex-direction:column;gap:.6rem;margin-top:.8rem;}
+.mq-item{display:grid;grid-template-columns:64px 1fr auto;gap:.7rem;align-items:center;background:rgba(255,255,255,.03);border:1px solid var(--glass-border);border-radius:10px;padding:.5rem .6rem;}
+.mq-thumb{width:64px;height:64px;border-radius:8px;object-fit:cover;background:#000;}
+.mq-thumb-video{width:64px;height:64px;border-radius:8px;background:#000;display:flex;align-items:center;justify-content:center;color:var(--oro);font-size:1.2rem;}
+.mq-caption{width:100%;background:rgba(255,255,255,.04);border:1px solid var(--glass-border);border-radius:6px;padding:.4rem .6rem;font-size:.78rem;}
+.mq-actions{display:flex;flex-direction:column;gap:.25rem;}
+
+/* ── TATTOO LIST ── */
+.tt-list{display:flex;flex-direction:column;gap:.7rem;}
+.tt-row{display:grid;grid-template-columns:70px 1fr auto;gap:1rem;align-items:center;background:var(--glass-bg);border:1px solid var(--glass-border);border-radius:12px;padding:.7rem .9rem;transition:var(--tr);}
+.tt-row:hover{border-color:rgba(200,146,42,.45);}
+.tt-thumb-wrap{position:relative;width:70px;height:70px;flex-shrink:0;}
+.tt-thumb{width:70px;height:70px;border-radius:8px;object-fit:cover;background:rgba(255,255,255,.04);}
+.tt-thumb-badge{position:absolute;top:-4px;right:-4px;background:var(--oro);color:var(--noche);font-size:.6rem;font-weight:900;border-radius:8px;padding:.05rem .35rem;}
+.tt-info h4{font-family:var(--font-display);font-size:1rem;color:var(--crema);}
+.tt-info .tt-sub{font-family:var(--font-cond);font-size:.72rem;color:rgba(240,230,208,.45);letter-spacing:1px;margin-top:.15rem;}
+.tt-tags{display:flex;flex-wrap:wrap;gap:.3rem;margin-top:.4rem;}
+.tt-tag{font-family:var(--font-cond);font-size:.62rem;letter-spacing:1px;text-transform:uppercase;padding:.15rem .55rem;border-radius:14px;background:rgba(200,146,42,.1);border:1px solid rgba(200,146,42,.25);color:var(--oro-light);}
+.tt-actions{display:flex;align-items:center;gap:.35rem;flex-wrap:wrap;justify-content:flex-end;}
+.icon-btn{width:32px;height:32px;border-radius:8px;background:rgba(200,146,42,.08);border:1px solid var(--glass-border);display:flex;align-items:center;justify-content:center;color:var(--crema);transition:var(--tr);font-size:.8rem;}
+.icon-btn:hover{background:var(--glass-hover);border-color:var(--oro);color:var(--oro-light);}
+.icon-btn.danger:hover{background:rgba(204,0,0,.2);border-color:var(--err);color:#ff7070;}
+.empty-state{text-align:center;padding:3rem 1rem;color:rgba(240,230,208,.4);font-family:var(--font-cond);letter-spacing:1px;}
+
+/* ── inline edit panel ── */
+.edit-panel{grid-column:1/-1;margin-top:.8rem;padding-top:.8rem;border-top:1px solid rgba(200,146,42,.15);display:none;}
+.edit-panel.open{display:block;}
+.edit-panel .upload-fields{margin-bottom:1rem;}
+
+/* ── STYLES LIST ── */
+.style-row{display:grid;grid-template-columns:auto 1fr auto;gap:1rem;align-items:center;background:var(--glass-bg);border:1px solid var(--glass-border);border-radius:12px;padding:.9rem 1rem;margin-bottom:.7rem;}
+.style-icon-badge{width:42px;height:42px;border-radius:10px;background:rgba(200,146,42,.08);border:1px solid var(--glass-border);display:flex;align-items:center;justify-content:center;font-size:1.2rem;}
+.style-fields{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;}
+.style-fields .full{grid-column:1/-1;}
+.style-fields input,.style-fields select,.style-fields textarea{background:rgba(255,255,255,.04);border:1px solid var(--glass-border);border-radius:6px;padding:.4rem .6rem;font-size:.82rem;width:100%;}
+.mini-label{font-family:var(--font-cond);font-size:.6rem;letter-spacing:1px;text-transform:uppercase;color:rgba(240,230,208,.4);margin-bottom:.15rem;display:block;}
+
+.add-style-card{background:var(--glass-bg);border:1px dashed var(--glass-border);border-radius:12px;padding:1.2rem;margin-bottom:1.5rem;display:flex;gap:.7rem;flex-wrap:wrap;align-items:flex-end;}
+.add-style-card .field2{flex:1;min-width:140px;}
+.add-style-card label{display:block;font-family:var(--font-cond);font-size:.65rem;letter-spacing:1px;text-transform:uppercase;color:var(--oro-light);margin-bottom:.3rem;}
+.add-style-card input{width:100%;background:rgba(255,255,255,.04);border:1px solid var(--glass-border);border-radius:6px;padding:.5rem .7rem;font-size:.85rem;}
+
+/* ── HERO SLIDES ── */
+.hero-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem;margin-bottom:1.5rem;}
+.hero-card{background:var(--glass-bg);border:1px solid var(--glass-border);border-radius:14px;overflow:hidden;}
+.hero-card img{width:100%;height:140px;object-fit:cover;}
+.hero-card-body{padding:.7rem .8rem;display:flex;align-items:center;justify-content:space-between;gap:.5rem;}
+.hero-add-card{background:var(--glass-bg);border:1px dashed var(--glass-border);border-radius:14px;padding:1.4rem;text-align:center;}
+
+/* ── COMMENTS MODERATION ── */
+.comment-row{display:grid;grid-template-columns:1fr auto;gap:1rem;align-items:start;background:var(--glass-bg);border:1px solid var(--glass-border);border-radius:12px;padding:.9rem 1.1rem;margin-bottom:.6rem;}
+.comment-meta{font-family:var(--font-cond);font-size:.72rem;color:var(--oro-light);letter-spacing:.5px;margin-bottom:.25rem;}
+.comment-post{color:rgba(240,230,208,.4);}
+.comment-text{font-size:.88rem;color:var(--crema);line-height:1.5;}
+.comment-date{font-family:var(--font-cond);font-size:.65rem;color:rgba(240,230,208,.35);margin-top:.3rem;}
+
+/* ── TOASTS ── */
+#toastWrap{position:fixed;bottom:1.5rem;right:1.5rem;z-index:999;display:flex;flex-direction:column;gap:.6rem;}
+.toast{background:rgba(10,4,2,.95);border:1px solid var(--glass-border);border-left:3px solid var(--oro);border-radius:8px;padding:.8rem 1.1rem;font-family:var(--font-cond);font-size:.82rem;letter-spacing:.5px;box-shadow:0 10px 30px rgba(0,0,0,.5);animation:toastIn .3s ease;max-width:320px;}
+.toast.err{border-left-color:var(--err);}
+.toast.ok{border-left-color:var(--ok);}
+@keyframes toastIn{from{opacity:0;transform:translateX(20px);}to{opacity:1;transform:none;}}
+
+.spinner{display:inline-block;width:14px;height:14px;border:2px solid rgba(255,255,255,.25);border-top-color:var(--noche);border-radius:50%;animation:spin .7s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg);}}
+
+@media(max-width:640px){
+  .upload-fields{grid-template-columns:1fr;}
+  .tt-row{grid-template-columns:56px 1fr;}
+  .tt-actions{grid-column:1/-1;justify-content:flex-start;margin-top:.4rem;}
+  .style-row{grid-template-columns:1fr;}
+  .style-fields{grid-template-columns:1fr;}
+  .comment-row{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<div class="wiphala"></div>
+<div id="toastWrap"></div>
+
+<!-- ══ LOGIN ══ -->
+<div id="loginScreen">
+  <div class="login-card">
+    <div class="login-logo">NAL<span>I</span></div>
+    <div class="login-sub">Panel de Administración</div>
+    <form id="loginForm">
+      <div class="field">
+        <label>Email</label>
+        <input type="email" id="loginEmail" autocomplete="username" required>
+      </div>
+      <div class="field">
+        <label>Contraseña</label>
+        <input type="password" id="loginPassword" autocomplete="current-password" required>
+      </div>
+      <button type="submit" class="btn btn-gold" id="loginBtn">Ingresar</button>
+      <p class="msg" id="loginMsg"></p>
+    </form>
+  </div>
+</div>
+
+<!-- ══ APP ══ -->
+<div id="app">
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="tb-logo">NAL<span>I</span> · Admin</div>
+      <div class="tb-right">
+        <span class="tb-email" id="userEmail"></span>
+        <button class="btn btn-ghost btn-sm" id="changePwBtn"><i class="fas fa-key"></i></button>
+        <button class="btn btn-ghost btn-sm" id="logoutBtn"><i class="fas fa-arrow-right-from-bracket"></i></button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="tabs">
+    <button class="tab-btn active" data-tab="hero">Hero</button>
+    <button class="tab-btn" data-tab="tattoos">Obras</button>
+    <button class="tab-btn" data-tab="styles">Estilos</button>
+    <button class="tab-btn" data-tab="comments">Comentarios <span class="tab-badge" id="commentsBadge" style="display:none;">0</span></button>
+  </nav>
+
+  <main>
+    <!-- ═══ PANEL: HERO ═══ -->
+    <section class="panel" id="panel-hero">
+      <div class="panel-head">
+        <div>
+          <div class="panel-title">Fotos del hero</div>
+          <div class="panel-desc">Las imágenes que rotan en la portada del sitio. Se muestran en el orden de la lista.</div>
+        </div>
+      </div>
+      <div class="hero-add-card" style="margin-bottom:1.5rem;">
+        <label class="media-drop" style="display:block;">
+          <i class="fas fa-cloud-arrow-up" style="font-size:1.4rem;display:block;margin-bottom:.4rem;"></i>
+          Hacé clic o soltá una imagen para agregarla al hero
+          <input type="file" id="heroFileInput" accept="image/*">
+        </label>
+      </div>
+      <div class="hero-grid" id="heroGrid"></div>
+    </section>
+
+    <!-- ═══ PANEL: OBRAS ═══ -->
+    <section class="panel active" id="panel-tattoos">
+      <div class="panel-head">
+        <div>
+          <div class="panel-title">Publicaciones</div>
+          <div class="panel-desc">Cada publicación puede tener varias fotos o videos en carrusel, cada uno con su propio epígrafe — igual que en Instagram.</div>
+        </div>
+      </div>
+
+      <div class="upload-card">
+        <div class="upload-fields">
+          <div class="full">
+            <label class="mini-label">Nombre / título de la publicación</label>
+            <input type="text" id="ttTitle" placeholder="Ej: Cóndor andino, antebrazo">
+          </div>
+          <div class="full">
+            <label class="mini-label">Subtítulo (opcional — lugar, año)</label>
+            <input type="text" id="ttSubtitle" placeholder="Ej: Salta, Argentina · 2026">
+          </div>
+          <div>
+            <label class="mini-label">Tamaño en la grilla</label>
+            <div class="size-opt" id="sizeOpt">
+              <button type="button" class="chip-opt sel" data-size="med">Mediano</button>
+              <button type="button" class="chip-opt" data-size="big">Grande</button>
+              <button type="button" class="chip-opt" data-size="wide">Ancho</button>
+            </div>
+          </div>
+          <div class="full">
+            <label class="mini-label">Estilos</label>
+            <div class="chip-select" id="uploadStyleChips"></div>
+          </div>
+          <div class="full">
+            <label class="mini-label">Fotos / videos (podés elegir varios — se muestran como carrusel)</label>
+            <label class="media-drop">
+              <i class="fas fa-images" style="margin-right:.4rem;"></i>Hacé clic para elegir fotos o videos
+              <input type="file" id="mediaFileInput" accept="image/*,video/*" multiple>
+            </label>
+            <div class="media-queue" id="mediaQueue"></div>
+          </div>
+          <div class="upload-actions">
+            <button class="btn btn-gold" id="addTattooBtn"><i class="fas fa-plus"></i> Publicar</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="tt-list" id="ttList"></div>
+    </section>
+
+    <!-- ═══ PANEL: ESTILOS ═══ -->
+    <section class="panel" id="panel-styles">
+      <div class="panel-head">
+        <div>
+          <div class="panel-title">Estilos de tatuaje</div>
+          <div class="panel-desc">Agregá, editá o quitá las especialidades que se muestran en la web.</div>
+        </div>
+      </div>
+
+      <div class="add-style-card">
+        <div class="field2">
+          <label>Ícono (emoji o símbolo)</label>
+          <input type="text" id="newStyleIcon" placeholder="✦" maxlength="4">
+        </div>
+        <div class="field2" style="flex:2;">
+          <label>Nombre del estilo</label>
+          <input type="text" id="newStyleName" placeholder="Ej: Ornamental">
+        </div>
+        <div class="field2">
+          <label>Etiqueta corta</label>
+          <input type="text" id="newStyleTag" placeholder="Ej: Detalle fino">
+        </div>
+        <button class="btn btn-gold btn-sm" id="addStyleBtn"><i class="fas fa-plus"></i> Agregar</button>
+      </div>
+
+      <div id="stylesList"></div>
+    </section>
+
+    <!-- ═══ PANEL: COMENTARIOS ═══ -->
+    <section class="panel" id="panel-comments">
+      <div class="panel-head">
+        <div>
+          <div class="panel-title">Comentarios de visitantes</div>
+          <div class="panel-desc">Moderá los comentarios que dejan los visitantes en cada publicación.</div>
+        </div>
+      </div>
+      <div id="commentsList"></div>
+    </section>
+  </main>
+</div>
+
+<script>
+const SUPABASE_URL = 'https://ampkoprhrujdwfodxrav.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFtcGtvcHJocnVqZHdmb2R4cmF2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODg0MjIxMDksImV4cCI6MjEwMzk5ODEwOX0.YhX3BgLH0woLCpbMRy5Q7J9fR1xdKbtG5SBRyu1T6TQ';
+const { createClient } = supabase;
+const db = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+const BUCKET = 'tattoos';
+
+let STYLES = [];
+let TATTOOS = [];
+let HERO_SLIDES = [];
+let selectedStyleIds = [];
+let selectedSize = 'med';
+let mediaQueue = []; // { file, previewUrl, caption, type }
+let editMediaState = {}; // tattooId -> { existing:[...], newQueue:[...] }
+
+/* ── TOASTS ── */
+function toast(msg, type='ok'){
+  const wrap = document.getElementById('toastWrap');
+  const el = document.createElement('div');
+  el.className = 'toast ' + type;
+  el.textContent = msg;
+  wrap.appendChild(el);
+  setTimeout(()=>{ el.style.opacity='0'; el.style.transition='opacity .3s'; setTimeout(()=>el.remove(),300); }, 3200);
+}
+
+/* ── AUTH ── */
+async function checkSession(){
+  const { data:{ session } } = await db.auth.getSession();
+  if(session){ showApp(session); } else { showLogin(); }
+}
+function showLogin(){
+  document.getElementById('loginScreen').style.display='flex';
+  document.getElementById('app').style.display='none';
+}
+async function showApp(session){
+  document.getElementById('loginScreen').style.display='none';
+  document.getElementById('app').style.display='block';
+  document.getElementById('userEmail').textContent = session.user.email;
+  await loadStyles();
+  await loadTattoos();
+  await loadHero();
+  await loadComments();
+}
+
+document.getElementById('loginForm').addEventListener('submit', async (e)=>{
+  e.preventDefault();
+  const btn = document.getElementById('loginBtn');
+  const msg = document.getElementById('loginMsg');
+  msg.textContent=''; msg.className='msg';
+  btn.disabled = true; btn.innerHTML = '<span class="spinner"></span> Ingresando…';
+  const email = document.getElementById('loginEmail').value.trim();
+  const password = document.getElementById('loginPassword').value;
+  const { data, error } = await db.auth.signInWithPassword({ email, password });
+  btn.disabled = false; btn.textContent = 'Ingresar';
+  if(error){ msg.textContent = 'Email o contraseña incorrectos.'; msg.className='msg err'; return; }
+  showApp(data.session);
+});
+
+document.getElementById('logoutBtn').addEventListener('click', async ()=>{
+  await db.auth.signOut();
+  showLogin();
+});
+
+document.getElementById('changePwBtn').addEventListener('click', async ()=>{
+  const pw = prompt('Nueva contraseña (mínimo 6 caracteres):');
+  if(!pw) return;
+  if(pw.length < 6){ toast('La contraseña debe tener al menos 6 caracteres.', 'err'); return; }
+  const { error } = await db.auth.updateUser({ password: pw });
+  if(error){ toast('No se pudo cambiar la contraseña: ' + error.message, 'err'); return; }
+  toast('Contraseña actualizada correctamente.');
+});
+
+/* ── TABS ── */
+document.querySelectorAll('.tab-btn').forEach(b=>{
+  b.addEventListener('click', ()=>{
+    document.querySelectorAll('.tab-btn').forEach(x=>x.classList.remove('active'));
+    document.querySelectorAll('.panel').forEach(x=>x.classList.remove('active'));
+    b.classList.add('active');
+    document.getElementById('panel-'+b.dataset.tab).classList.add('active');
+  });
+});
+
+/* ── HELPERS ── */
+function publicUrl(path){ return db.storage.from(BUCKET).getPublicUrl(path).data.publicUrl; }
+function styleNamesFor(ids){ return (ids||[]).map(id => STYLES.find(s=>s.id===id)?.name).filter(Boolean); }
+function escapeHtml(str){ return (str||'').replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+function escapeAttr(str){ return escapeHtml(str); }
+function slugify(str){ return (str||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,''); }
+function fileExt(name){ return (name.split('.').pop()||'jpg').toLowerCase(); }
+
+/* ══════════════════════════════════════════
+   HERO
+   ══════════════════════════════════════════ */
+async function loadHero(){
+  const { data, error } = await db.from('hero_slides').select('*').order('sort_order');
+  if(error){ toast('Error cargando el hero: '+error.message, 'err'); return; }
+  HERO_SLIDES = data || [];
+  renderHero();
+}
+function renderHero(){
+  const wrap = document.getElementById('heroGrid');
+  if(!HERO_SLIDES.length){ wrap.innerHTML = '<div class="empty-state">Todavía no subiste fotos para el hero. La web usará imágenes por defecto.</div>'; return; }
+  wrap.innerHTML = HERO_SLIDES.map((s,i)=>`
+    <div class="hero-card" data-id="${s.id}">
+      <img src="${publicUrl(s.image_path)}" alt="">
+      <div class="hero-card-body">
+        <div style="display:flex;gap:.3rem;">
+          <button class="icon-btn move-up" ${i===0?'disabled':''}><i class="fas fa-arrow-up"></i></button>
+          <button class="icon-btn move-down" ${i===HERO_SLIDES.length-1?'disabled':''}><i class="fas fa-arrow-down"></i></button>
+        </div>
+        <button class="icon-btn danger del-hero"><i class="fas fa-trash"></i></button>
+      </div>
+    </div>
+  `).join('');
+  wrap.querySelectorAll('.hero-card').forEach(card=>{
+    const id = card.dataset.id;
+    card.querySelector('.move-up')?.addEventListener('click', ()=>swapOrder(HERO_SLIDES,'hero_slides',id,-1,loadHero));
+    card.querySelector('.move-down')?.addEventListener('click', ()=>swapOrder(HERO_SLIDES,'hero_slides',id,1,loadHero));
+    card.querySelector('.del-hero').addEventListener('click', async ()=>{
+      if(!confirm('¿Eliminar esta foto del hero?')) return;
+      const slide = HERO_SLIDES.find(s=>s.id===id);
+      await db.from('hero_slides').delete().eq('id', id);
+      if(slide) await db.storage.from(BUCKET).remove([slide.image_path]);
+      toast('Foto eliminada del hero.');
+      await loadHero();
+    });
+  });
+}
+document.getElementById('heroFileInput').addEventListener('change', async (e)=>{
+  const file = e.target.files[0];
+  if(!file) return;
+  try{
+    const path = `hero/${Date.now()}-${slugify(file.name)||'hero'}.${fileExt(file.name)}`;
+    const { error: upErr } = await db.storage.from(BUCKET).upload(path, file, { cacheControl: '3600' });
+    if(upErr) throw upErr;
+    const maxOrder = HERO_SLIDES.reduce((m,s)=>Math.max(m,s.sort_order||0),0);
+    const { error: insErr } = await db.from('hero_slides').insert({ image_path: path, sort_order: maxOrder+1 });
+    if(insErr) throw insErr;
+    toast('Foto agregada al hero.');
+    e.target.value = '';
+    await loadHero();
+  } catch(err){ toast('Error al subir: '+(err.message||err), 'err'); }
+});
+
+/* Generic reorder swap helper (works for hero_slides / styles) */
+async function swapOrder(list, table, id, dir, reload){
+  const idx = list.findIndex(x=>x.id===id);
+  const swapIdx = idx + dir;
+  if(swapIdx < 0 || swapIdx >= list.length) return;
+  const a = list[idx], b = list[swapIdx];
+  const { error: e1 } = await db.from(table).update({ sort_order: b.sort_order }).eq('id', a.id);
+  const { error: e2 } = await db.from(table).update({ sort_order: a.sort_order }).eq('id', b.id);
+  if(e1 || e2){ toast('Error al reordenar.', 'err'); return; }
+  await reload();
+}
+
+/* ══════════════════════════════════════════
+   ESTILOS
+   ══════════════════════════════════════════ */
+async function loadStyles(){
+  const { data, error } = await db.from('styles').select('*').order('sort_order');
+  if(error){ toast('Error cargando estilos: '+error.message, 'err'); return; }
+  STYLES = data || [];
+  renderStylesList();
+  renderUploadStyleChips();
+}
+function renderStylesList(){
+  const wrap = document.getElementById('stylesList');
+  if(!STYLES.length){ wrap.innerHTML = '<div class="empty-state">Todavía no hay estilos cargados.</div>'; return; }
+  wrap.innerHTML = STYLES.map((s,i)=>`
+    <div class="style-row" data-id="${s.id}">
+      <div class="style-icon-badge">${escapeHtml(s.icon||'✦')}</div>
+      <div class="style-fields">
+        <div><span class="mini-label">Nombre</span><input type="text" class="f-name" value="${escapeAttr(s.name)}"></div>
+        <div><span class="mini-label">Ícono</span><input type="text" class="f-icon" value="${escapeAttr(s.icon||'')}" maxlength="4"></div>
+        <div class="full"><span class="mini-label">Etiqueta corta</span><input type="text" class="f-tag" value="${escapeAttr(s.tag_label||'')}"></div>
+        <div class="full"><span class="mini-label">Descripción</span><textarea class="f-desc" rows="2">${escapeHtml(s.description||'')}</textarea></div>
+      </div>
+      <div class="tt-actions" style="flex-direction:column;">
+        <div style="display:flex;gap:.3rem;">
+          <button class="icon-btn move-up" ${i===0?'disabled':''}><i class="fas fa-arrow-up"></i></button>
+          <button class="icon-btn move-down" ${i===STYLES.length-1?'disabled':''}><i class="fas fa-arrow-down"></i></button>
+        </div>
+        <div style="display:flex;gap:.3rem;">
+          <button class="icon-btn save-style"><i class="fas fa-check"></i></button>
+          <button class="icon-btn danger del-style"><i class="fas fa-trash"></i></button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+  wrap.querySelectorAll('.style-row').forEach(row=>{
+    const id = row.dataset.id;
+    row.querySelector('.save-style').addEventListener('click', async ()=>{
+      const name = row.querySelector('.f-name').value.trim();
+      const icon = row.querySelector('.f-icon').value.trim() || '✦';
+      const tag_label = row.querySelector('.f-tag').value.trim();
+      const description = row.querySelector('.f-desc').value.trim();
+      if(!name){ toast('El nombre no puede estar vacío.', 'err'); return; }
+      const { error } = await db.from('styles').update({ name, icon, tag_label, description }).eq('id', id);
+      if(error){ toast('Error al guardar: '+error.message, 'err'); return; }
+      toast('Estilo actualizado.');
+      await loadStyles();
+    });
+    row.querySelector('.del-style').addEventListener('click', async ()=>{
+      if(!confirm('¿Eliminar este estilo? Se quitará también de las publicaciones que lo tengan asignado.')) return;
+      const { error } = await db.from('styles').delete().eq('id', id);
+      if(error){ toast('Error al eliminar: '+error.message, 'err'); return; }
+      toast('Estilo eliminado.');
+      await loadStyles(); await loadTattoos();
+    });
+    row.querySelector('.move-up')?.addEventListener('click', ()=>swapOrder(STYLES,'styles',id,-1,loadStyles));
+    row.querySelector('.move-down')?.addEventListener('click', ()=>swapOrder(STYLES,'styles',id,1,loadStyles));
+  });
+}
+document.getElementById('addStyleBtn').addEventListener('click', async ()=>{
+  const name = document.getElementById('newStyleName').value.trim();
+  const icon = document.getElementById('newStyleIcon').value.trim() || '✦';
+  const tag_label = document.getElementById('newStyleTag').value.trim();
+  if(!name){ toast('Escribí un nombre para el estilo.', 'err'); return; }
+  const maxOrder = STYLES.reduce((m,s)=>Math.max(m,s.sort_order||0), 0);
+  const slug = slugify(name) || ('estilo-'+Date.now());
+  const { error } = await db.from('styles').insert({ name, icon, tag_label, slug, sort_order: maxOrder+1 });
+  if(error){ toast('Error al crear el estilo: '+error.message, 'err'); return; }
+  document.getElementById('newStyleName').value='';
+  document.getElementById('newStyleIcon').value='';
+  document.getElementById('newStyleTag').value='';
+  toast('Estilo agregado.');
+  await loadStyles();
+});
+
+/* ══════════════════════════════════════════
+   MEDIA QUEUE (para nueva publicación)
+   ══════════════════════════════════════════ */
+function renderMediaQueue(){
+  const wrap = document.getElementById('mediaQueue');
+  wrap.innerHTML = mediaQueue.map((m,i)=>`
+    <div class="mq-item" data-i="${i}">
+      ${m.type==='video' ? `<div class="mq-thumb-video"><i class="fas fa-video"></i></div>` : `<img class="mq-thumb" src="${m.previewUrl}">`}
+      <input type="text" class="mq-caption" placeholder="Epígrafe de esta foto/video (opcional)" value="${escapeAttr(m.caption)}">
+      <div class="mq-actions">
+        <button class="icon-btn move-up" ${i===0?'disabled':''}><i class="fas fa-arrow-up"></i></button>
+        <button class="icon-btn move-down" ${i===mediaQueue.length-1?'disabled':''}><i class="fas fa-arrow-down"></i></button>
+        <button class="icon-btn danger remove"><i class="fas fa-trash"></i></button>
+      </div>
+    </div>
+  `).join('') || '<div class="mini-label">Todavía no agregaste fotos ni videos.</div>';
+  wrap.querySelectorAll('.mq-item').forEach(item=>{
+    const i = parseInt(item.dataset.i,10);
+    item.querySelector('.mq-caption').addEventListener('input', e=> mediaQueue[i].caption = e.target.value);
+    item.querySelector('.remove').addEventListener('click', ()=>{ mediaQueue.splice(i,1); renderMediaQueue(); });
+    item.querySelector('.move-up')?.addEventListener('click', ()=>{ [mediaQueue[i-1],mediaQueue[i]]=[mediaQueue[i],mediaQueue[i-1]]; renderMediaQueue(); });
+    item.querySelector('.move-down')?.addEventListener('click', ()=>{ [mediaQueue[i+1],mediaQueue[i]]=[mediaQueue[i],mediaQueue[i+1]]; renderMediaQueue(); });
+  });
+}
+document.getElementById('mediaFileInput').addEventListener('change', (e)=>{
+  Array.from(e.target.files).forEach(file=>{
+    const type = file.type.startsWith('video') ? 'video' : 'image';
+    mediaQueue.push({ file, previewUrl: type==='image' ? URL.createObjectURL(file) : '', caption:'', type });
+  });
+  e.target.value = '';
+  renderMediaQueue();
+});
+
+/* ══════════════════════════════════════════
+   ESTILOS chips para el formulario de obra
+   ══════════════════════════════════════════ */
+function renderUploadStyleChips(){
+  const wrap = document.getElementById('uploadStyleChips');
+  wrap.innerHTML = STYLES.map(s=>`<button type="button" class="chip-opt" data-id="${s.id}">${escapeHtml(s.icon||'')} ${escapeHtml(s.name)}</button>`).join('') || '<span class="mini-label">No hay estilos creados todavía.</span>';
+  wrap.querySelectorAll('.chip-opt').forEach(chip=>{
+    chip.addEventListener('click', ()=>{
+      const id = chip.dataset.id;
+      if(selectedStyleIds.includes(id)){ selectedStyleIds = selectedStyleIds.filter(x=>x!==id); chip.classList.remove('sel'); }
+      else { selectedStyleIds.push(id); chip.classList.add('sel'); }
+    });
+  });
+}
+document.querySelectorAll('#sizeOpt .chip-opt').forEach(b=>{
+  b.addEventListener('click', ()=>{
+    document.querySelectorAll('#sizeOpt .chip-opt').forEach(x=>x.classList.remove('sel'));
+    b.classList.add('sel');
+    selectedSize = b.dataset.size;
+  });
+});
+
+/* ══════════════════════════════════════════
+   OBRAS (publicaciones)
+   ══════════════════════════════════════════ */
+async function uploadMediaFile(file, folder){
+  const path = `${folder}/${Date.now()}-${Math.random().toString(36).slice(2,7)}-${slugify(file.name)||'media'}.${fileExt(file.name)}`;
+  const { error } = await db.storage.from(BUCKET).upload(path, file, { cacheControl: '3600' });
+  if(error) throw error;
+  return path;
+}
+
+document.getElementById('addTattooBtn').addEventListener('click', async ()=>{
+  const title = document.getElementById('ttTitle').value.trim();
+  const subtitle = document.getElementById('ttSubtitle').value.trim();
+  const btn = document.getElementById('addTattooBtn');
+
+  if(!title){ toast('Escribí un nombre para la publicación.', 'err'); return; }
+  if(!mediaQueue.length){ toast('Agregá al menos una foto o video.', 'err'); return; }
+
+  btn.disabled = true; btn.innerHTML = '<span class="spinner"></span> Publicando…';
+  try{
+    const maxOrder = TATTOOS.reduce((m,t)=>Math.max(m,t.sort_order||0), 0);
+    const { data: newTattoo, error: insErr } = await db.from('tattoos').insert({
+      title, subtitle, style_ids: selectedStyleIds, size_variant: selectedSize,
+      sort_order: maxOrder + 1, is_published: true
+    }).select().single();
+    if(insErr) throw insErr;
+
+    for(let i=0;i<mediaQueue.length;i++){
+      const m = mediaQueue[i];
+      const path = await uploadMediaFile(m.file, 'posts');
+      const { error: medErr } = await db.from('tattoo_media').insert({
+        tattoo_id: newTattoo.id, media_type: m.type, storage_path: path, caption: m.caption, sort_order: i
+      });
+      if(medErr) throw medErr;
+    }
+
+    toast('Publicación agregada correctamente.');
+    document.getElementById('ttTitle').value='';
+    document.getElementById('ttSubtitle').value='';
+    selectedStyleIds = []; selectedSize = 'med'; mediaQueue = [];
+    document.querySelectorAll('#sizeOpt .chip-opt').forEach(x=>x.classList.remove('sel'));
+    document.querySelector('#sizeOpt .chip-opt[data-size="med"]').classList.add('sel');
+    renderUploadStyleChips();
+    renderMediaQueue();
+    await loadTattoos();
+  } catch(err){
+    toast('Error al publicar: ' + (err.message || err), 'err');
+  } finally {
+    btn.disabled = false; btn.innerHTML = '<i class="fas fa-plus"></i> Publicar';
+  }
+});
+
+async function loadTattoos(){
+  const { data, error } = await db.from('tattoos').select('*, tattoo_media(*)').order('sort_order').order('sort_order', { foreignTable: 'tattoo_media' });
+  if(error){ toast('Error cargando obras: '+error.message, 'err'); return; }
+  TATTOOS = data || [];
+  renderTattoosList();
+}
+
+function mediaOf(t){ return (t.tattoo_media||[]).slice().sort((a,b)=>a.sort_order-b.sort_order); }
+
+function renderTattoosList(){
+  const wrap = document.getElementById('ttList');
+  if(!TATTOOS.length){ wrap.innerHTML = '<div class="empty-state">Todavía no subiste ninguna publicación. Usá el formulario de arriba para empezar.</div>'; return; }
+  wrap.innerHTML = TATTOOS.map((t,i)=>{
+    const media = mediaOf(t);
+    const cover = media[0];
+    return `
+    <div class="tt-row" data-id="${t.id}" style="grid-template-columns:70px 1fr auto;">
+      <div class="tt-thumb-wrap">
+        ${cover ? (cover.media_type==='video'
+            ? `<video class="tt-thumb" src="${publicUrl(cover.storage_path)}" muted></video>`
+            : `<img class="tt-thumb" src="${publicUrl(cover.storage_path)}" alt="">`)
+          : `<div class="tt-thumb" style="display:flex;align-items:center;justify-content:center;color:rgba(240,230,208,.3);"><i class="fas fa-image"></i></div>`}
+        ${media.length > 1 ? `<span class="tt-thumb-badge">${media.length}</span>` : ''}
+      </div>
+      <div class="tt-info">
+        <h4>${escapeHtml(t.title)}</h4>
+        <div class="tt-sub">${escapeHtml(t.subtitle||'')} · ${t.size_variant} ${t.is_published? '' : '· <span style="color:#ff7070">oculto</span>'}</div>
+        <div class="tt-tags">${styleNamesFor(t.style_ids).map(n=>`<span class="tt-tag">${escapeHtml(n)}</span>`).join('') || '<span class="tt-tag" style="opacity:.5">sin estilo</span>'}</div>
+      </div>
+      <div class="tt-actions">
+        <button class="icon-btn move-up" ${i===0?'disabled':''}><i class="fas fa-arrow-up"></i></button>
+        <button class="icon-btn move-down" ${i===TATTOOS.length-1?'disabled':''}><i class="fas fa-arrow-down"></i></button>
+        <button class="icon-btn toggle-pub" title="Mostrar / ocultar"><i class="fas fa-eye${t.is_published?'':'-slash'}"></i></button>
+        <button class="icon-btn edit-tt" title="Editar"><i class="fas fa-pen"></i></button>
+        <button class="icon-btn danger del-tt" title="Eliminar"><i class="fas fa-trash"></i></button>
+      </div>
+      <div class="edit-panel" id="edit-${t.id}"></div>
+    </div>
+  `;}).join('');
+
+  wrap.querySelectorAll('.tt-row').forEach(row=>{
+    const id = row.dataset.id;
+    const t = TATTOOS.find(x=>x.id===id);
+    row.querySelector('.move-up')?.addEventListener('click', ()=>swapOrder(TATTOOS,'tattoos',id,-1,loadTattoos));
+    row.querySelector('.move-down')?.addEventListener('click', ()=>swapOrder(TATTOOS,'tattoos',id,1,loadTattoos));
+    row.querySelector('.toggle-pub').addEventListener('click', async ()=>{
+      const { error } = await db.from('tattoos').update({ is_published: !t.is_published }).eq('id', id);
+      if(error){ toast('Error: '+error.message, 'err'); return; }
+      await loadTattoos();
+    });
+    row.querySelector('.del-tt').addEventListener('click', async ()=>{
+      if(!confirm(`¿Eliminar "${t.title}" y todas sus fotos/videos? Esta acción no se puede deshacer.`)) return;
+      const paths = mediaOf(t).map(m=>m.storage_path);
+      const { error: dbErr } = await db.from('tattoos').delete().eq('id', id);
+      if(dbErr){ toast('Error al eliminar: '+dbErr.message, 'err'); return; }
+      if(paths.length) await db.storage.from(BUCKET).remove(paths);
+      toast('Publicación eliminada.');
+      await loadTattoos();
+    });
+    row.querySelector('.edit-tt').addEventListener('click', ()=>toggleEditPanel(t));
+  });
+}
+
+function toggleEditPanel(t){
+  const panel = document.getElementById('edit-'+t.id);
+  const isOpen = panel.classList.contains('open');
+  document.querySelectorAll('.edit-panel.open').forEach(p=>p.classList.remove('open'));
+  if(isOpen) return;
+  panel.classList.add('open');
+  editMediaState[t.id] = { existing: mediaOf(t).map(m=>({...m, _remove:false})), newQueue: [] };
+  renderEditPanel(t);
+}
+
+function renderEditPanel(t){
+  const panel = document.getElementById('edit-'+t.id);
+  const state = editMediaState[t.id];
+  const styleChips = STYLES.map(s=>`<button type="button" class="chip-opt ${t.style_ids.includes(s.id)?'sel':''}" data-id="${s.id}">${escapeHtml(s.icon||'')} ${escapeHtml(s.name)}</button>`).join('');
+
+  panel.innerHTML = `
+    <div class="upload-fields">
+      <div class="full"><label class="mini-label">Nombre / título</label><input type="text" class="e-title" value="${escapeAttr(t.title)}"></div>
+      <div class="full"><label class="mini-label">Subtítulo</label><input type="text" class="e-subtitle" value="${escapeAttr(t.subtitle||'')}"></div>
+      <div>
+        <label class="mini-label">Tamaño en la grilla</label>
+        <div class="size-opt e-size">
+          <button type="button" class="chip-opt ${t.size_variant==='med'?'sel':''}" data-size="med">Mediano</button>
+          <button type="button" class="chip-opt ${t.size_variant==='big'?'sel':''}" data-size="big">Grande</button>
+          <button type="button" class="chip-opt ${t.size_variant==='wide'?'sel':''}" data-size="wide">Ancho</button>
+        </div>
+      </div>
+      <div class="full"><label class="mini-label">Estilos</label><div class="chip-select e-styles">${styleChips}</div></div>
+      <div class="full">
+        <label class="mini-label">Fotos y videos de esta publicación</label>
+        <div class="media-queue e-existing-media"></div>
+        <label class="media-drop" style="margin-top:.6rem;">
+          <i class="fas fa-plus" style="margin-right:.4rem;"></i>Agregar más fotos o videos
+          <input type="file" class="e-add-media" accept="image/*,video/*" multiple>
+        </label>
+        <div class="media-queue e-new-media"></div>
+      </div>
+      <div class="upload-actions">
+        <button type="button" class="btn btn-ghost btn-sm e-cancel">Cancelar</button>
+        <button type="button" class="btn btn-gold btn-sm e-save"><i class="fas fa-check"></i> Guardar cambios</button>
+      </div>
+    </div>
+  `;
+
+  let editSize = t.size_variant;
+  let editStyleIds = [...t.style_ids];
+
+  panel.querySelectorAll('.e-styles .chip-opt').forEach(chip=>{
+    chip.addEventListener('click', ()=>{
+      const id = chip.dataset.id;
+      if(editStyleIds.includes(id)){ editStyleIds = editStyleIds.filter(x=>x!==id); chip.classList.remove('sel'); }
+      else { editStyleIds.push(id); chip.classList.add('sel'); }
+    });
+  });
+  panel.querySelectorAll('.e-size .chip-opt').forEach(chip=>{
+    chip.addEventListener('click', ()=>{
+      panel.querySelectorAll('.e-size .chip-opt').forEach(x=>x.classList.remove('sel'));
+      chip.classList.add('sel');
+      editSize = chip.dataset.size;
+    });
+  });
+
+  function renderExistingMedia(){
+    const wrap = panel.querySelector('.e-existing-media');
+    const items = state.existing.filter(m=>!m._remove);
+    wrap.innerHTML = items.map((m)=>{
+      const i = state.existing.indexOf(m);
+      return `
+      <div class="mq-item" data-i="${i}">
+        ${m.media_type==='video' ? `<div class="mq-thumb-video"><i class="fas fa-video"></i></div>` : `<img class="mq-thumb" src="${publicUrl(m.storage_path)}">`}
+        <input type="text" class="mq-caption ex-caption" placeholder="Epígrafe (opcional)" value="${escapeAttr(m.caption)}">
+        <div class="mq-actions">
+          <button class="icon-btn ex-up"><i class="fas fa-arrow-up"></i></button>
+          <button class="icon-btn ex-down"><i class="fas fa-arrow-down"></i></button>
+          <button class="icon-btn danger ex-remove"><i class="fas fa-trash"></i></button>
+        </div>
+      </div>`;
+    }).join('') || '<div class="mini-label">Sin fotos/videos actuales.</div>';
+
+    wrap.querySelectorAll('.mq-item').forEach(item=>{
+      const i = parseInt(item.dataset.i,10);
+      item.querySelector('.ex-caption').addEventListener('input', e=> state.existing[i].caption = e.target.value);
+      item.querySelector('.ex-remove').addEventListener('click', ()=>{ state.existing[i]._remove = true; renderExistingMedia(); });
+      item.querySelector('.ex-up').addEventListener('click', ()=>{
+        const visible = state.existing.filter(m=>!m._remove);
+        const pos = visible.indexOf(state.existing[i]);
+        if(pos <= 0) return;
+        const a = state.existing.indexOf(visible[pos-1]), b = i;
+        [state.existing[a], state.existing[b]] = [state.existing[b], state.existing[a]];
+        renderExistingMedia();
+      });
+      item.querySelector('.ex-down').addEventListener('click', ()=>{
+        const visible = state.existing.filter(m=>!m._remove);
+        const pos = visible.indexOf(state.existing[i]);
+        if(pos >= visible.length-1) return;
+        const a = i, b = state.existing.indexOf(visible[pos+1]);
+        [state.existing[a], state.existing[b]] = [state.existing[b], state.existing[a]];
+        renderExistingMedia();
+      });
+    });
+  }
+
+  function renderNewMedia(){
+    const wrap = panel.querySelector('.e-new-media');
+    wrap.innerHTML = state.newQueue.map((m,i)=>`
+      <div class="mq-item" data-i="${i}">
+        ${m.type==='video' ? `<div class="mq-thumb-video"><i class="fas fa-video"></i></div>` : `<img class="mq-thumb" src="${m.previewUrl}">`}
+        <input type="text" class="mq-caption new-caption" placeholder="Epígrafe (opcional)" value="${escapeAttr(m.caption)}">
+        <div class="mq-actions"><button class="icon-btn danger new-remove"><i class="fas fa-trash"></i></button></div>
+      </div>
+    `).join('');
+    wrap.querySelectorAll('.mq-item').forEach(item=>{
+      const i = parseInt(item.dataset.i,10);
+      item.querySelector('.new-caption').addEventListener('input', e=> state.newQueue[i].caption = e.target.value);
+      item.querySelector('.new-remove').addEventListener('click', ()=>{ state.newQueue.splice(i,1); renderNewMedia(); });
+    });
+  }
+
+  panel.querySelector('.e-add-media').addEventListener('change', (e)=>{
+    Array.from(e.target.files).forEach(file=>{
+      const type = file.type.startsWith('video') ? 'video' : 'image';
+      state.newQueue.push({ file, previewUrl: type==='image' ? URL.createObjectURL(file) : '', caption:'', type });
+    });
+    e.target.value = '';
+    renderNewMedia();
+  });
+
+  panel.querySelector('.e-cancel').addEventListener('click', ()=>{ panel.classList.remove('open'); panel.innerHTML=''; });
+
+  panel.querySelector('.e-save').addEventListener('click', async ()=>{
+    const saveBtn = panel.querySelector('.e-save');
+    saveBtn.disabled = true; saveBtn.innerHTML = '<span class="spinner"></span> Guardando…';
+    try{
+      const newTitle = panel.querySelector('.e-title').value.trim();
+      const newSubtitle = panel.querySelector('.e-subtitle').value.trim();
+      if(!newTitle) throw new Error('El título no puede estar vacío.');
+
+      const { error: updErr } = await db.from('tattoos').update({
+        title: newTitle, subtitle: newSubtitle, size_variant: editSize, style_ids: editStyleIds
+      }).eq('id', t.id);
+      if(updErr) throw updErr;
+
+      const toRemove = state.existing.filter(m=>m._remove);
+      if(toRemove.length){
+        await db.from('tattoo_media').delete().in('id', toRemove.map(m=>m.id));
+        await db.storage.from(BUCKET).remove(toRemove.map(m=>m.storage_path));
+      }
+
+      const kept = state.existing.filter(m=>!m._remove);
+      for(let i=0;i<kept.length;i++){
+        await db.from('tattoo_media').update({ caption: kept[i].caption, sort_order: i }).eq('id', kept[i].id);
+      }
+
+      for(let i=0;i<state.newQueue.length;i++){
+        const m = state.newQueue[i];
+        const path = await uploadMediaFile(m.file, 'posts');
+        await db.from('tattoo_media').insert({ tattoo_id: t.id, media_type: m.type, storage_path: path, caption: m.caption, sort_order: kept.length + i });
+      }
+
+      toast('Publicación actualizada.');
+      panel.classList.remove('open'); panel.innerHTML='';
+      delete editMediaState[t.id];
+      await loadTattoos();
+    } catch(err){
+      toast('Error al guardar: ' + (err.message||err), 'err');
+      saveBtn.disabled = false; saveBtn.innerHTML = '<i class="fas fa-check"></i> Guardar cambios';
+    }
+  });
+
+  renderExistingMedia();
+  renderNewMedia();
+}
+
+/* ══════════════════════════════════════════
+   COMENTARIOS
+   ══════════════════════════════════════════ */
+async function loadComments(){
+  const { data, error } = await db.from('comments').select('*, tattoos(title)').order('created_at', { ascending: false });
+  if(error){ toast('Error cargando comentarios: '+error.message, 'err'); return; }
+  renderComments(data || []);
+  const badge = document.getElementById('commentsBadge');
+  if(data && data.length){ badge.style.display='inline-block'; badge.textContent = data.length; }
+  else { badge.style.display='none'; }
+}
+function renderComments(comments){
+  const wrap = document.getElementById('commentsList');
+  if(!comments.length){ wrap.innerHTML = '<div class="empty-state">Todavía no hay comentarios de visitantes.</div>'; return; }
+  wrap.innerHTML = comments.map(c=>`
+    <div class="comment-row" data-id="${c.id}">
+      <div>
+        <div class="comment-meta">${escapeHtml(c.author_name)} <span class="comment-post">· en "${escapeHtml(c.tattoos?.title || 'publicación eliminada')}"</span></div>
+        <div class="comment-text">${escapeHtml(c.content)}</div>
+        <div class="comment-date">${new Date(c.created_at).toLocaleString('es-AR')}</div>
+      </div>
+      <button class="icon-btn danger del-comment"><i class="fas fa-trash"></i></button>
+    </div>
+  `).join('');
+  wrap.querySelectorAll('.del-comment').forEach(btn=>{
+    btn.addEventListener('click', async ()=>{
+      const row = btn.closest('.comment-row');
+      const id = row.dataset.id;
+      if(!confirm('¿Eliminar este comentario?')) return;
+      const { error } = await db.from('comments').delete().eq('id', id);
+      if(error){ toast('Error al eliminar: '+error.message, 'err'); return; }
+      toast('Comentario eliminado.');
+      await loadComments();
+    });
+  });
+}
+
+checkSession();
+</script>
+</body>
+</html>
